@@ -18,8 +18,8 @@ Personagem::~Personagem(){
 }
 
 void Personagem::atualizar(){
-    x += 0.0008;
-    y += 0.0006;
+    x += 0.008;
+    y += 0.006;
     corpo.setPosition(sf::Vector2f(x, y));
 }
 
