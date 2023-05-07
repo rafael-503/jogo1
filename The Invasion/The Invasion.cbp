@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="The Invasion" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/The Invasion" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/The Invasion" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="C:/Users/ariel/OneDrive/Documentos/SFML-2.4.2/include" />
+		</Compiler>
+		<Linker>
+			<Add directory="C:/Users/ariel/OneDrive/Documentos/SFML-2.4.2/lib" />
+		</Linker>
+		<Unit filename="Ente.cpp" />
+		<Unit filename="Ente.h" />
+		<Unit filename="Entidade.cpp" />
+		<Unit filename="Entidade.h" />
+		<Unit filename="Inimigo.cpp" />
+		<Unit filename="Inimigo.h" />
+		<Unit filename="Jogador.cpp" />
+		<Unit filename="Jogador.h" />
+		<Unit filename="Obstaculo.cpp" />
+		<Unit filename="Obstaculo.h" />
+		<Unit filename="Personagem.cpp" />
+		<Unit filename="Personagem.h" />
+		<Unit filename="Principal.cpp" />
+		<Unit filename="Principal.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
