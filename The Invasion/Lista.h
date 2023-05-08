@@ -1,3 +1,9 @@
 #pragma once
 
-class Lista {};
+namespace Listas {
+	class Lista {
+		private:
+			
+	};
+
+}
