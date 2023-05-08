@@ -7,6 +7,7 @@ using namespace Obstaculos;
 Principal::Principal(){
     executar();
 }
+
 Principal::~Principal(){}
 
 void Principal::executar(){
