@@ -1,18 +1,11 @@
 ﻿  Ente.cpp
-C:\Users\rafa1\Desktop\jogo\the invasion\Ente.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Entidade.cpp
-C:\Users\rafa1\Desktop\jogo\the invasion\Ente.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Obstaculo.cpp
-C:\Users\rafa1\Desktop\jogo\the invasion\Ente.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Inimigo.cpp
-C:\Users\rafa1\Desktop\jogo\the invasion\entidades\personagens\Inimigo.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Jogador.cpp
-C:\Users\rafa1\Desktop\jogo\the invasion\entidades\personagens\Jogador.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Personagem.cpp
-C:\Users\rafa1\Desktop\jogo\the invasion\entidades\personagens\Personagem.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Lista.cpp
   main.cpp
-C:\Users\rafa1\Desktop\jogo\the invasion\Entidades\Personagens\Jogador.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Principal.cpp
-C:\Users\rafa1\Desktop\jogo\the invasion\Entidades\Personagens\Jogador.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Generating Code...
+  The Invasion.vcxproj -> C:\Users\rafa1\Desktop\jogo\x64\Debug\The Invasion.exe
