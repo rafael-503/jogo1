@@ -122,7 +122,6 @@
     <ClCompile Include="the invasion\entidades\personagens\Inimigo.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Jogador.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Personagem.cpp" />
-    <ClCompile Include="the invasion\Lista.cpp" />
     <ClCompile Include="the invasion\main.cpp" />
     <ClCompile Include="the invasion\Principal.cpp" />
   </ItemGroup>

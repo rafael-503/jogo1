@@ -18,9 +18,6 @@
     <ClCompile Include="the invasion\Ente.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="the invasion\Lista.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="the invasion\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
