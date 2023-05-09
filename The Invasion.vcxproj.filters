@@ -39,6 +39,9 @@
     <ClCompile Include="the invasion\entidades\personagens\Personagem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="The Invasion\Gerenciadores\GerenciadorGrafico.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="the invasion\Ente.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="the invasion\entidades\personagens\Personagem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Gerenciadores\GerenciadorGrafico.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
