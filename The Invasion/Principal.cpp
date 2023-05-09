@@ -55,9 +55,11 @@ void Principal::executar(){
         }
         pGrafico->limparJanela();
         for (int i = 0; i < (int)vet_entidades.size(); i++) {
-            //vet_entidades[i]->executar();
+            vet_entidades[i]->executar();
             pGrafico->desenharElemento(vet_entidades[i]->getCorpo());
         }
+        sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
+        sf::sleep(tempo_por_frame);
         pGrafico->mostrarElementos();
     }
     vet_entidades.clear();
