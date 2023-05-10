@@ -6,9 +6,6 @@
 
 Entidades::Personagens::Personagem::Personagem(sf::Vector2f tam_corpo):
     Entidade(tam_corpo)
-{
-}
-Entidades::Personagens::Personagem::~Personagem(){
+{}
 
-}
-
+Entidades::Personagens::Personagem::~Personagem(){}

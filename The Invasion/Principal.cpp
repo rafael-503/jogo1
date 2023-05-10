@@ -28,7 +28,7 @@ void Principal::executar(){
 
     //apenas um jeito de colocar plataformas TEMPORARIO
     Obstaculo* pObstaculo = NULL;
-    int tamx = 800,tamy = 600, pos_x, pos_y,  n_obs = 8;
+    int tamx = 1200,tamy = 800, pos_x, pos_y,  n_obs = 8;
     for (int i = 1; i <= n_obs; i++){
         pos_x = rand()%(tamx / n_obs);
         pos_y = rand()% tamy;

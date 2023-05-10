@@ -2,8 +2,6 @@
 #include "stdafx.h"
 #include <SFML/Graphics.hpp>
 
-
-
 class Ente{
     protected:
 
@@ -11,6 +9,5 @@ class Ente{
         Ente();
         ~Ente();
         virtual void executar() = 0;
-
 };
 

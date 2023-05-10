@@ -4,13 +4,11 @@ using namespace Entidades;
 
 
 Entidade::Entidade(sf::Vector2f tam_corpo):
-    corpo(tam_corpo)
-{
+    Ente(), corpo(tam_corpo)
+{}
 
-}
-Entidade::~Entidade(){
+Entidade::~Entidade(){}
 
-}
 sf::RectangleShape Entidade::getCorpo(){
     return corpo;
 }
@@ -18,4 +16,3 @@ sf::RectangleShape Entidade::getCorpo(){
 const sf::Vector2f Entidade::getPosition() const{
     return corpo.getPosition();
 }
-

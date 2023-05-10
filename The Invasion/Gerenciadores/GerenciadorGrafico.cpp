@@ -1,6 +1,6 @@
 #include "../Gerenciadores/GerenciadorGrafico.h"
-#define TAM_X 800.0f
-#define TAM_Y 600.0f
+#define TAM_X 1200.0f
+#define TAM_Y 800.0f
 using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;

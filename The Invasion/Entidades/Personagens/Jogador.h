@@ -10,11 +10,11 @@ namespace Entidades{
         class Jogador: public Personagem{
 
             private:
-
                 sf::Vector2f pos_inicial;
                 sf::Vector2f vel;
-            public:
+                void inicializa();
 
+            public:
                 Jogador(sf::Vector2f tam_corpo);
                 ~Jogador();
                 void executar();
