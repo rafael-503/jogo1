@@ -18,14 +18,16 @@ Principal::Principal(): pGrafico(pGrafico->getGerenciadorGrafico()){
 Principal::~Principal(){}
 
 void Principal::executar(){
+
+
+
     Inimigo inimigo(sf::Vector2f(40.0f, 40.0f));
     Jogador jogador(sf::Vector2f(40.0f, 40.0f));
     Obstaculo obstaculo_1(sf::Vector2f(120.0f, 50.0f), 200.0f, 400.0f);
     inimigo.setJogador(&jogador);
 
     Entidade* pEntidade = NULL;
-    std::vector<Entidade*> vet_entidades;
-
+    Listas::Lista<Entidade> listaEntidades;
     //apenas um jeito de colocar plataformas TEMPORARIO
     Obstaculo* pObstaculo = NULL;
     int tamx = 1200,tamy = 800, pos_x, pos_y,  n_obs = 8;
@@ -35,15 +37,15 @@ void Principal::executar(){
         pObstaculo = new Obstaculo(sf::Vector2f(80.0f, 30.0f), pos_x * i, pos_y);
         pEntidade = static_cast<Entidade*> (pObstaculo);
         if(pEntidade)
-            vet_entidades.push_back(pEntidade);
+            listaEntidades.inserir(pEntidade);
     }
 
     Jogador* pJogador = &jogador;
     Inimigo* pInimigo = &inimigo;
     pEntidade = static_cast<Entidade*> (pJogador);
-    vet_entidades.push_back(pEntidade);
+    listaEntidades.inserir(pEntidade);
     pEntidade = static_cast<Entidade*> (pInimigo);
-    vet_entidades.push_back(pEntidade);
+    listaEntidades.inserir(pEntidade);
 
     while (pGrafico->verificarJanelaAberta())
     {
@@ -54,13 +56,15 @@ void Principal::executar(){
                 pGrafico->fecharJanela();
         }
         pGrafico->limparJanela();
-        for (int i = 0; i < (int)vet_entidades.size(); i++) {
-            vet_entidades[i]->executar();
-            pGrafico->desenharElemento(vet_entidades[i]->getCorpo());
-        }
+
+        listaEntidades.executar();
+        listaEntidades.seDesenhe();
+       // pGrafico->desenharElemento(pAux->getCorpo());
+
+
         sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
         sf::sleep(tempo_por_frame);
         pGrafico->mostrarElementos();
     }
-    vet_entidades.clear();
+    listaEntidades.esvaziar();
 }
