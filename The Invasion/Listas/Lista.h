@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include <iostream>
+#include "../Gerenciadores/GerenciadorGrafico.h"
 
 namespace Listas {
 	template <class TL>
@@ -9,43 +10,45 @@ namespace Listas {
 			template <class TE>
 			class Elemento {
 				private:
-					TE info;
+					TE* pInfo;
 					Elemento<TE> *pAnt;
 					Elemento<TE> *pProx;
 				public:
-					Elemento(TIPO info = NULL, Elemento<TE> *ant = NULL, Elemento<TE> *prox = NULL ) : 
-						info(info), pAnt(ant), pProx(prox){}
+					Elemento(TE* pInfo_aux = NULL) :
+						pInfo(pInfo_aux), pAnt(NULL), pProx(NULL){}
 					~Elemento(){}
-					void setProx(Elemento<TE>* proximo) { pProx = proximo; }
-					Elemento<TE> *getAnt() { return anterior; }
+					void setAnt(Elemento<TE>* anterior) { pAnt = anterior; }
+					Elemento<TE> *getAnt() const { return pAnt; }
 
 					void setProx(Elemento<TE>* proximo) { pProx = proximo; }
-					Elemento<TE>* getProx() { return proximo; }
+					Elemento<TE>* getProx() const { return pProx; }
 
-					void setInfo(TIPO* Info) { info = Info; }
-					TIPO getInfo() { return info; }
+					void setInfo(TE* pInfo_aux) { pInfo = pInfo_aux; }
+					TE* getInfo() const { return pInfo; }
 			};
 
 			Elemento<TL> *pPrimeiro;
 			Elemento<TL> *pAtual;
 			Elemento<TL> *pUltimo;
-			
+
 		public:
-			Lista() : pPrimeiro(NULL), pAtual(NULL), pUltimo(NULL);
+			Lista() : pPrimeiro(NULL), pAtual(NULL), pUltimo(NULL){}
 			~Lista() { esvaziar(); }
-			
-			void inserir(TL tipo) {
-				if (tipo) {
-					Elemento<TL> *novo = new Elemento<TL>(info);
+
+			void inserir(TL* pTipo) {
+				if (pTipo) {
+                    Elemento<TL>* pNovo = NULL;
+                    pNovo = new Elemento<TL>(pTipo);
+
 					if (!pPrimeiro){
-						pPrimeiro = novo;
-						pUltimo = novo;
+						pPrimeiro = pNovo;
+						pUltimo = pNovo;
 					}
 					else{
-						pUltimo->setProx(novo);
-						novo->setAnt(pUltimo);
-		
-						pUltimo = novo;
+						pUltimo->setProx(pNovo);
+						pNovo->setAnt(pUltimo);
+
+						pUltimo = pNovo;
 					}
 				}
 			}
@@ -64,16 +67,17 @@ namespace Listas {
 				pUltimo = NULL;
 			}
 
-			void retornaInicio(){ // retorna o primeiro elemento da lista
+			TL* retornaInicio(){ // retorna o primeiro elemento da lista
 				pAtual = pPrimeiro;
 
 				if(pAtual)
 					return pAtual->getInfo();
 				else
 					return NULL;
-				
+
 			}
-			void retornaProximo() { // retorna o proximo elemento da lista
+
+			TL* retornaProximo() { // retorna o proximo elemento da lista
 				pAtual = pAtual->getProx();
 
 				if (pAtual)
@@ -81,5 +85,22 @@ namespace Listas {
 				else
 					return NULL;
 			}
+            void executar(){
+                pAtual = pPrimeiro;
+                while(pAtual){
+                    TL* pAux = pAtual->getInfo();
+                    pAux->executar();
+                    pAtual = pAtual->getProx();
+                }
+            }
+            void seDesenhe (){
+                pAtual = pPrimeiro;
+                while(pAtual){
+                    TL* pAux = pAtual->getInfo();
+                    Gerenciadores::GerenciadorGrafico* pGrafico = pGrafico->getGerenciadorGrafico();
+                    pGrafico->desenharElemento(pAux->getCorpo());
+                    pAtual = pAtual->getProx();
+                }
+            }
 	};
 }
