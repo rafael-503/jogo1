@@ -1,6 +1,6 @@
 #include "Principal.h"
 
-int main(){
-    Principal principal;
-    return 0;
+int main()
+{
+    Principal objJogo;
 }
