@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Principal.h"
 #include <iostream>
+#include "Listas/Lista.h"
 
 using namespace Entidades;
 using namespace Personagens;
@@ -56,7 +57,7 @@ void Principal::executar(){
                 pGrafico->fecharJanela();
         }
         pGrafico->limparJanela();
-
+        inimigo.executar();
         listaEntidades.executar();
         listaEntidades.seDesenhe();
        // pGrafico->desenharElemento(pAux->getCorpo());

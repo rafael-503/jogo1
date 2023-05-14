@@ -3,21 +3,22 @@
 #include <SFML/Graphics.hpp>
 #include "Personagem.h"
 
-namespace Entidades{
+namespace Entidades {
 
-    namespace Personagens{
+    namespace Personagens {
 
-        class Jogador: public Personagem{
+        class Jogador : public Personagem {
 
-            private:
-                sf::Vector2f pos_inicial;
-                sf::Vector2f vel;
-                void inicializa();
+        private:
+            sf::Vector2f pos_inicial;
+            sf::Vector2f vel;
+            void inicializa();
 
-            public:
-                Jogador(sf::Vector2f tam_corpo);
-                ~Jogador();
-                void executar();
+        public:
+            Jogador(sf::Vector2f tam_corpo);
+            ~Jogador();
+            void executar();
+            void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades);
 
         };
     }

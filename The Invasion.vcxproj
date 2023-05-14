@@ -123,6 +123,7 @@
     <ClCompile Include="the invasion\entidades\personagens\Jogador.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Personagem.cpp" />
     <ClCompile Include="The Invasion\Gerenciadores\GerenciadorGrafico.cpp" />
+    <ClCompile Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.cpp" />
     <ClCompile Include="the invasion\main.cpp" />
     <ClCompile Include="the invasion\Principal.cpp" />
   </ItemGroup>
@@ -134,7 +135,8 @@
     <ClInclude Include="the invasion\entidades\personagens\Jogador.h" />
     <ClInclude Include="the invasion\entidades\personagens\Personagem.h" />
     <ClInclude Include="The Invasion\Gerenciadores\GerenciadorGrafico.h" />
-    <ClInclude Include="the invasion\Lista.h" />
+    <ClInclude Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.h" />
+    <ClInclude Include="The Invasion\Listas\Lista.h" />
     <ClInclude Include="the invasion\Principal.h" />
     <ClInclude Include="the invasion\stdafx.h" />
   </ItemGroup>

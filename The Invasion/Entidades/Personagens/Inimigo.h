@@ -7,11 +7,11 @@
 #define RAIO_PERSEG_X 150.0f
 #define RAIO_PERSEG_Y 150.0f
 
-namespace Entidades{
-    namespace Personagens{
+namespace Entidades {
+    namespace Personagens {
 
         class Jogador;
-        class Inimigo: public Personagem{
+        class Inimigo : public Personagem {
 
         private:
             Jogador* jogador;
@@ -27,6 +27,8 @@ namespace Entidades{
             void persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim);
             void moveAleatorio();
             void executar();
+            void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades);
+
         };
     }
 }
