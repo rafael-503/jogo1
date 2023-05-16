@@ -63,8 +63,23 @@ void Inimigo::executar() {
     }
 }
 
-void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades) {
+void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) {
+    if (pOutra->getTipo() == "Jogador")
+        cout << "Inimigo Colidiu com Jogador" << endl;
+    if (pOutra->getTipo() == "Obstaculo") {
+        sf::Vector2f posInimigo = getPosition(), posOutro = pOutra->getPosition();
+        if (!Colidiu_em_x) {
+            if (posInimigo.y < posOutro.y)
+                corpo.move(0.0f, DistanciaExtremidades.y);
+            else
+                corpo.move(0.0f, -DistanciaExtremidades.y);
+        }
+        else    {
+            if (posInimigo.x < posOutro.x)
+                corpo.move(DistanciaExtremidades.x, 0.0f);
+            else
+                corpo.move(-DistanciaExtremidades.x, 0.0f);
+        }
 
-
-
+    }
 }

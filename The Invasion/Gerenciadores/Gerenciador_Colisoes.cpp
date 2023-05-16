@@ -1,6 +1,8 @@
 ﻿#include "Gerenciador_Colisoes.h"
 
-Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes() : pGerenciador_Colisoes(NULL) {
+
+Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
+Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes() {
 
 }
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
@@ -28,40 +30,72 @@ void Gerenciadores::Gerenciador_Colisoes::testa_colisoes(Personagens::Jogador* p
     if (pJogador) {
 
         Entidade* pEntiJogador = static_cast<Entidade*> (pJogador);
-        Entidade* pEnti = NULL;
+        Entidade* pEnti_1 = NULL;
+        Entidade* pEnti_2 = NULL;
         sf::Vector2f DistanciaExtremidades;
-
+        bool Colidiu_em_x = false;
+        int i = 0, j = 0;
         //testa coli�o com os inimigos
-        for (int i = 0; i < (int)vetor_inimigos.size(); i++) {
+        for (i = 0; i < (int)vetor_inimigos.size(); i++) {
             if (vetor_inimigos[i]) {
-                pEnti = static_cast<Entidade*> (vetor_inimigos[i]);
+                pEnti_1 = static_cast<Entidade*> (vetor_inimigos[i]);
 
                 //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
-                DistanciaExtremidades = Calcula_colisao(pEntiJogador, pEnti);
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                    pEntiJogador->colisao(pEnti, DistanciaExtremidades);
+                DistanciaExtremidades = Calcula_colisao(pEntiJogador, pEnti_1);
+                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
+                    if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
+                        Colidiu_em_x = true;
+                    else
+                        Colidiu_em_x = false;
+                    pEntiJogador->colisao(pEnti_1, DistanciaExtremidades, Colidiu_em_x);
+                    pEnti_1->colisao(pEntiJogador, DistanciaExtremidades, Colidiu_em_x);
+                }
 
             }
         }
         //testa coli�o com os Obstaculos
-        for (int i = 0; i < (int)vetor_obstaculos.size(); i++) {
+        for (i = 0; i < (int)vetor_obstaculos.size(); i++) {
             if (vetor_obstaculos[i]) {
-                pEnti = static_cast<Entidade*> (vetor_obstaculos[i]);
+                pEnti_1 = static_cast<Entidade*> (vetor_obstaculos[i]);
 
                 //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
-                DistanciaExtremidades = Calcula_colisao(pEntiJogador, pEnti);
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                    pEntiJogador->colisao(pEnti, DistanciaExtremidades);
+                DistanciaExtremidades = Calcula_colisao(pEntiJogador, pEnti_1);
+                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
+                    if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
+                        Colidiu_em_x = false;
+                    else
+                        Colidiu_em_x = true;
+                    pEntiJogador->colisao(pEnti_1, DistanciaExtremidades, Colidiu_em_x);
 
+                }
             }
         }
+        //testa colisoes entre inimigos com obstaculos
+        for(i = 0; i < (int) vetor_inimigos.size(); i++){
+            if(vetor_inimigos[i]){
+                pEnti_1 = static_cast<Entidade*> (vetor_inimigos[i]);
+                for(j = 0; j < (int) vetor_obstaculos.size(); j++){
+                    if (vetor_obstaculos[j]) {
+                        pEnti_2 = static_cast<Entidade*> (vetor_obstaculos[j]);
 
+                        //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
+                        DistanciaExtremidades = Calcula_colisao(pEnti_1, pEnti_2);
+                        if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
+                            if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
+                                Colidiu_em_x = false;
+                            else
+                                Colidiu_em_x = true;
+                            pEnti_1->colisao(pEnti_2, DistanciaExtremidades, Colidiu_em_x);
+
+                        }
+                    }
+                }
+            }
+
+        }
 
     }
-    //
-
 }
-
 
 sf::Vector2f Gerenciadores::Gerenciador_Colisoes::Calcula_colisao(Entidade* pEnti1, Entidade* pEnti2) {
 
@@ -77,9 +111,6 @@ sf::Vector2f Gerenciadores::Gerenciador_Colisoes::Calcula_colisao(Entidade* pEnt
         distanciaCentros.y - (tamanho_1.y / 2.0f + tamanho_2.y / 2.0f)
     );
     return DistanciaExtremidades;
-
-
-
 
 }
 

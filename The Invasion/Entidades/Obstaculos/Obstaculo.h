@@ -11,7 +11,7 @@ namespace Entidades {
         public:
             Obstaculo(sf::Vector2f tam_corpo, float pos_x = 0.0f, float pos_y = 0.0f);
             ~Obstaculo();
-            virtual void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades);
+            virtual void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x);
             virtual void executar();
         };
     }

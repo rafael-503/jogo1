@@ -11,8 +11,9 @@
 #include <string.h>
 #include <iostream>
 #include <time.h>
+#include <math.h>
 
-
+using namespace std;
 using std::cout;
 using std::endl;
 using std::cin;

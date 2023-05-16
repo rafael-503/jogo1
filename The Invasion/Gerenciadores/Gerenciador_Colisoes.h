@@ -12,11 +12,11 @@ namespace Gerenciadores {
 
     class Gerenciador_Colisoes {
     private:
-        Gerenciador_Colisoes* pGerenciador_Colisoes;
-        vector<Personagens::Inimigo*> vetor_inimigos; 
+        static Gerenciador_Colisoes* pGerenciador_Colisoes;
+        vector<Personagens::Inimigo*> vetor_inimigos;
         vector<Obstaculos::Obstaculo*> vetor_obstaculos; // list_obstaculos
-    public:
         Gerenciador_Colisoes();
+    public:
         ~Gerenciador_Colisoes();
         void incluiInimigo(Personagens::Inimigo* pInimigo);
         void incluiObstaculo(Obstaculos::Obstaculo* pObs);

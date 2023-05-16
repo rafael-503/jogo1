@@ -20,6 +20,7 @@ Principal::~Principal(){}
 
 void Principal::executar(){
 
+    Gerenciadores::Gerenciador_Colisoes* pGerencia_colisoes = pGerencia_colisoes->getGerenciador_Colisoes();
 
 
     Inimigo inimigo(sf::Vector2f(40.0f, 40.0f));
@@ -36,17 +37,24 @@ void Principal::executar(){
         pos_x = rand()%(tamx / n_obs);
         pos_y = rand()% tamy;
         pObstaculo = new Obstaculo(sf::Vector2f(80.0f, 30.0f), pos_x * i, pos_y);
+        if(pObstaculo)
+            pGerencia_colisoes->incluiObstaculo(pObstaculo);
+
         pEntidade = static_cast<Entidade*> (pObstaculo);
-        if(pEntidade)
+        if(pEntidade){
             listaEntidades.inserir(pEntidade);
+        }
+
     }
 
     Jogador* pJogador = &jogador;
     Inimigo* pInimigo = &inimigo;
+    pGerencia_colisoes->incluiInimigo(pInimigo);
     pEntidade = static_cast<Entidade*> (pJogador);
     listaEntidades.inserir(pEntidade);
     pEntidade = static_cast<Entidade*> (pInimigo);
     listaEntidades.inserir(pEntidade);
+
 
     while (pGrafico->verificarJanelaAberta())
     {
@@ -57,8 +65,9 @@ void Principal::executar(){
                 pGrafico->fecharJanela();
         }
         pGrafico->limparJanela();
-        inimigo.executar();
         listaEntidades.executar();
+        pGerencia_colisoes->testa_colisoes(&jogador);
+
         listaEntidades.seDesenhe();
        // pGrafico->desenharElemento(pAux->getCorpo());
 

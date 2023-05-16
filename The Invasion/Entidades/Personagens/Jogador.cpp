@@ -31,18 +31,18 @@ void Jogador::executar() {
     }
 }
 
-void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades) {
+void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) {
     if (pOutra->getTipo() == "Inimigo")
         cout << "Jogador Colidiu com Inimigo" << endl;
     if (pOutra->getTipo() == "Obstaculo") {
         sf::Vector2f posJogador = getPosition(), posOutro = pOutra->getPosition();
-        if ((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) && DistanciaExtremidades.y < 0.0f) {
+        if (!Colidiu_em_x) {
             if (posJogador.y < posOutro.y)
                 corpo.move(0.0f, DistanciaExtremidades.y);
             else
                 corpo.move(0.0f, -DistanciaExtremidades.y);
         }
-        else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) && DistanciaExtremidades.x < 0.0f) {
+        else    {
             if (posJogador.x < posOutro.x)
                 corpo.move(DistanciaExtremidades.x, 0.0f);
             else

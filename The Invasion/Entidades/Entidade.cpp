@@ -21,7 +21,7 @@ const sf::Vector2f Entidade::getSize() const {
     return corpo.getSize();
 
 }
-void Entidade::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades) {
+void Entidade::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) {
 
 
 }
