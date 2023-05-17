@@ -8,10 +8,17 @@ namespace Entidades {
 
         class Personagem : public Entidade {
         protected:
-
+            sf::Clock relogio;
+            bool colidiu_em_y;
+            float massa;
+            sf::Vector2f vel;
         public:
             Personagem(sf::Vector2f tam_corpo, string tipo);
             ~Personagem();
+            void setMassa(float massa_aux);
+            float getMassa();
+            void efeitoGravidade();
+            void setVelocidade(sf::Vector2f velocidade);
             virtual void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) = 0;
             virtual void executar() = 0;
         };

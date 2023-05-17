@@ -60,7 +60,7 @@ void Gerenciadores::Gerenciador_Colisoes::testa_colisoes(Personagens::Jogador* p
 
                 //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
                 DistanciaExtremidades = Calcula_colisao(pEntiJogador, pEnti_1);
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
+                if (DistanciaExtremidades.x <= 0.0f && DistanciaExtremidades.y <= 0.0f){
                     if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
                         Colidiu_em_x = false;
                     else

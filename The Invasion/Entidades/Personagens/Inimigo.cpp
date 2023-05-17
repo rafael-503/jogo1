@@ -7,12 +7,15 @@ using namespace Entidades;
 using namespace Personagens;
 
 Inimigo::Inimigo(sf::Vector2f tam_corpo) :
-    Personagem(tam_corpo, "Inimigo"), vel(3.0f, 3.0f), jogador(NULL)
+    Personagem(tam_corpo, "Inimigo"), jogador(NULL)
 {
     corpo.setFillColor(sf::Color::Red);
     corpo.setPosition(100.0f, 100.0f);
     srand(time(NULL));
     move_aleatorio = rand() % 4;
+    setMassa(60.0f);
+    setVelocidade(sf::Vector2f(3.0f, 0.0f));
+
 }
 
 Inimigo::~Inimigo() {}
@@ -42,10 +45,10 @@ void Inimigo::moveAleatorio() {
     else if (move_aleatorio == 3)
         corpo.move(0.0f, -vel.y);
 
-    float dt = relogio.getElapsedTime().asSeconds();
+    float dt = relogioInimigo.getElapsedTime().asSeconds();
     if (dt > 1.0f) {
         move_aleatorio = rand() % 4;
-        relogio.restart();
+        relogioInimigo.restart();
     }
 }
 

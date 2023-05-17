@@ -11,7 +11,6 @@ namespace Entidades {
 
         private:
             sf::Vector2f pos_inicial;
-            sf::Vector2f vel;
             void inicializa();
 
         public:

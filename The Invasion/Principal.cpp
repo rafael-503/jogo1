@@ -32,6 +32,8 @@ void Principal::executar(){
     Listas::Lista<Entidade> listaEntidades;
     //apenas um jeito de colocar plataformas TEMPORARIO
     Obstaculo* pObstaculo = NULL;
+
+/*
     int tamx = 1200,tamy = 800, pos_x, pos_y,  n_obs = 8;
     for (int i = 1; i <= n_obs; i++){
         pos_x = rand()%(tamx / n_obs);
@@ -47,6 +49,8 @@ void Principal::executar(){
 
     }
 
+*/
+
     Jogador* pJogador = &jogador;
     Inimigo* pInimigo = &inimigo;
     pGerencia_colisoes->incluiInimigo(pInimigo);
@@ -55,6 +59,30 @@ void Principal::executar(){
     pEntidade = static_cast<Entidade*> (pInimigo);
     listaEntidades.inserir(pEntidade);
 
+    pObstaculo = new Obstaculo(sf::Vector2f(200.0f, 50.0f), 100.0f, 700.0f);
+    pGerencia_colisoes->incluiObstaculo(pObstaculo);
+    pEntidade = static_cast<Entidade*> (pObstaculo);
+    listaEntidades.inserir(pEntidade);
+    pObstaculo = new Obstaculo(sf::Vector2f(180.0f, 50.0f), 300.0f, 600.0f);
+    pGerencia_colisoes->incluiObstaculo(pObstaculo);
+    pEntidade = static_cast<Entidade*> (pObstaculo);
+    listaEntidades.inserir(pEntidade);
+    pObstaculo = new Obstaculo(sf::Vector2f(180.0f, 50.0f), 500.0f, 500.0f);
+    pGerencia_colisoes->incluiObstaculo(pObstaculo);
+    pEntidade = static_cast<Entidade*> (pObstaculo);
+    listaEntidades.inserir(pEntidade);
+    pObstaculo = new Obstaculo(sf::Vector2f(50.0f, 50.0f), 600.0f, 400.0f);
+    pGerencia_colisoes->incluiObstaculo(pObstaculo);
+    pEntidade = static_cast<Entidade*> (pObstaculo);
+    listaEntidades.inserir(pEntidade);
+    pObstaculo = new Obstaculo(sf::Vector2f(180.0f, 50.0f), 300.0f, 350.0f);
+    pGerencia_colisoes->incluiObstaculo(pObstaculo);
+    pEntidade = static_cast<Entidade*> (pObstaculo);
+    listaEntidades.inserir(pEntidade);
+    pObstaculo = new Obstaculo(sf::Vector2f(180.0f, 50.0f), 800.0f, 600.0f);
+    pGerencia_colisoes->incluiObstaculo(pObstaculo);
+    pEntidade = static_cast<Entidade*> (pObstaculo);
+    listaEntidades.inserir(pEntidade);
 
     while (pGrafico->verificarJanelaAberta())
     {

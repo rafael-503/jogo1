@@ -15,9 +15,8 @@ namespace Entidades {
 
         private:
             Jogador* jogador;
-            sf::Clock relogio;
+            sf::Clock relogioInimigo;
             sf::Vector2f pos_inicial;
-            sf::Vector2f vel;
             short move_aleatorio;
 
         public:

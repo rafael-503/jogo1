@@ -4,6 +4,7 @@
 #include "Entidades/Personagens/Inimigo.h"
 #include "Entidades/Obstaculos/Obstaculo.h"
 #include "Gerenciadores/GerenciadorGrafico.h"
+#include "Gerenciadores/Gerenciador_Colisoes.h"
 
 class Principal {
     private:
