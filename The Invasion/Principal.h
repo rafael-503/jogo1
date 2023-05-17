@@ -9,6 +9,7 @@
 class Principal {
     private:
         Gerenciadores::GerenciadorGrafico* pGrafico;
+        Gerenciadores::Gerenciador_Colisoes* pGerencia_Colisoes;
     public:
         Principal();
         ~Principal();

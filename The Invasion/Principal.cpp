@@ -20,7 +20,7 @@ Principal::~Principal(){}
 
 void Principal::executar(){
 
-    Gerenciadores::Gerenciador_Colisoes* pGerencia_colisoes = pGerencia_colisoes->getGerenciador_Colisoes();
+    Gerenciadores::Gerenciador_Colisoes* pGerencia_colisoes(pGerencia_Colisoes->getGerenciador_Colisoes());
 
 
     Inimigo inimigo(sf::Vector2f(40.0f, 40.0f));
