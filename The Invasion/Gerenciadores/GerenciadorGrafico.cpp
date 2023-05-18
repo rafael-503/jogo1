@@ -45,3 +45,10 @@ void GerenciadorGrafico::fecharJanela() {
 const bool GerenciadorGrafico::verificarJanelaAberta() {
 	return window->isOpen();
 }
+
+sf::Texture GerenciadorGrafico::carregarTextura(const char* caminho){
+	sf::Texture textura;
+	if (!textura.loadFromFile(caminho))
+		std::cout << "Erro ao carregar a textura" << std::endl;
+	return textura;
+}

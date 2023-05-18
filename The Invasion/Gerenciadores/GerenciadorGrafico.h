@@ -18,5 +18,6 @@ namespace Gerenciadores {
 		void mostrarElementos();
 		void fecharJanela();
 		const bool verificarJanelaAberta();
+		sf::Texture carregarTextura(const char* caminho);
 	};
 }

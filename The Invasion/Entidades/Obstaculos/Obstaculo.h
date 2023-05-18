@@ -7,7 +7,7 @@ namespace Entidades {
 
         class Obstaculo : public Entidade {
         protected:
-
+            sf::Texture textura;
         public:
             Obstaculo(sf::Vector2f tam_corpo, float pos_x = 0.0f, float pos_y = 0.0f);
             ~Obstaculo();
