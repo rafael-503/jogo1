@@ -9,12 +9,15 @@ using namespace Personagens;
 Inimigo::Inimigo(sf::Vector2f tam_corpo) :
     Personagem(tam_corpo, "Inimigo"), jogador(NULL)
 {
-    corpo.setFillColor(sf::Color::Red);
-    corpo.setPosition(100.0f, 100.0f);
+    //corpo.setFillColor(sf::Color::Red);
+    corpo.setPosition(300.0f, 100.0f);
     srand(time(NULL));
     move_aleatorio = rand() % 4;
     setMassa(60.0f);
     setVelocidade(sf::Vector2f(3.0f, 0.0f));
+
+    textura = pGrafico->carregarTextura("The Invasion/assets/inimigo/cachorro/cachorro.png");
+    corpo.setTexture(&textura);
 
 }
 

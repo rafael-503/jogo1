@@ -23,7 +23,7 @@ void Principal::executar(){
     Gerenciadores::Gerenciador_Colisoes* pGerencia_colisoes(pGerencia_Colisoes->getGerenciador_Colisoes());
 
 
-    Inimigo inimigo(sf::Vector2f(40.0f, 40.0f));
+    Inimigo inimigo(sf::Vector2f(80.0f, 80.0f));
     Jogador jogador(sf::Vector2f(80.0f, 80.0f));
     Obstaculo obstaculo_1(sf::Vector2f(120.0f, 50.0f), 200.0f, 400.0f);
     inimigo.setJogador(&jogador);
