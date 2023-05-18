@@ -9,10 +9,13 @@ void Jogador::inicializa() {
 Jogador::Jogador(sf::Vector2f tam_corpo) :
     Personagem(tam_corpo, "Jogador")
 {
-    corpo.setFillColor(sf::Color::Blue);
-    corpo.setPosition(0.0f, 0.0f);
+    //corpo.setFillColor(sf::Color::Blue);
+    corpo.setPosition(10.0f, 0.0f);
     setMassa(60.0f);
     setVelocidade(sf::Vector2f(10.0f, 0.0f));
+
+    textura = pGrafico->carregarTextura("The Invasion/assets/personagem/jogador/personagem.png");
+    corpo.setTexture(&textura);
 }
 Jogador::~Jogador() {}
 

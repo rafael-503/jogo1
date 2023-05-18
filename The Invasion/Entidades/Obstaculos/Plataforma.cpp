@@ -2,7 +2,7 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Plataforma::Plataforma(sf::Vector2f pos) : Obstaculo{}
+Plataforma::Plataforma(sf::Vector2f pos) : Obstaculo(pos){}
 
 Plataforma::~Plataforma() {}
 

@@ -24,7 +24,7 @@ void Principal::executar(){
 
 
     Inimigo inimigo(sf::Vector2f(40.0f, 40.0f));
-    Jogador jogador(sf::Vector2f(40.0f, 40.0f));
+    Jogador jogador(sf::Vector2f(80.0f, 80.0f));
     Obstaculo obstaculo_1(sf::Vector2f(120.0f, 50.0f), 200.0f, 400.0f);
     inimigo.setJogador(&jogador);
 
@@ -71,7 +71,7 @@ void Principal::executar(){
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-    pObstaculo = new Obstaculo(sf::Vector2f(50.0f, 50.0f), 600.0f, 400.0f);
+    pObstaculo = new Obstaculo(sf::Vector2f(50.0f, 50.0f), 700.0f, 400.0f);
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
