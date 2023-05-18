@@ -119,6 +119,7 @@
     <ClCompile Include="the invasion\Ente.cpp" />
     <ClCompile Include="the invasion\entidades\Entidade.cpp" />
     <ClCompile Include="the invasion\entidades\obstaculos\Obstaculo.cpp" />
+    <ClCompile Include="The Invasion\Entidades\Obstaculos\Plataforma.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Inimigo.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Jogador.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Personagem.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="the invasion\Ente.h" />
     <ClInclude Include="the invasion\entidades\Entidade.h" />
     <ClInclude Include="the invasion\entidades\obstaculos\Obstaculo.h" />
+    <ClInclude Include="The Invasion\Entidades\Obstaculos\Plataforma.h" />
     <ClInclude Include="the invasion\entidades\personagens\Inimigo.h" />
     <ClInclude Include="the invasion\entidades\personagens\Jogador.h" />
     <ClInclude Include="the invasion\entidades\personagens\Personagem.h" />

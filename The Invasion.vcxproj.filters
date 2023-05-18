@@ -45,6 +45,9 @@
     <ClCompile Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="The Invasion\Entidades\Obstaculos\Plataforma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="the invasion\Ente.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Entidades\Obstaculos\Plataforma.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
