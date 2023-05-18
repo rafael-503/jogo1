@@ -2,7 +2,7 @@
 #include "Obstaculo.h"
 
 
-Entidades::Obstaculos::Obstaculo::Obstaculo(sf::Vector2f tam_corpo, sf::Vector2f(pos)) :
+Entidades::Obstaculos::Obstaculo::Obstaculo(sf::Vector2f tam_corpo, sf::Vector2f pos) :
     Entidade(tam_corpo, "Obstaculo")
 {
     //corpo.setFillColor(sf::Color::Green);
