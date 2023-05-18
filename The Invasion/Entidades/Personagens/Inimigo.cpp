@@ -36,18 +36,14 @@ void Inimigo::persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim) {
 }
 
 void Inimigo::moveAleatorio() {
-    if (move_aleatorio == 0)
+    if (move_aleatorio == 0) // direita
         corpo.move(vel.x, 0.0f);
-    else if (move_aleatorio == 1)
+    else if (move_aleatorio == 1) //esquerda
         corpo.move(-vel.x, 0.0f);
-    else if (move_aleatorio == 2)
-        corpo.move(0.0f, vel.y);
-    else if (move_aleatorio == 3)
-        corpo.move(0.0f, -vel.y);
 
     float dt = relogioInimigo.getElapsedTime().asSeconds();
     if (dt > 1.0f) {
-        move_aleatorio = rand() % 4;
+        move_aleatorio = rand() % 2;
         relogioInimigo.restart();
     }
 }

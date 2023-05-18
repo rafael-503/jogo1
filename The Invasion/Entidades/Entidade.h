@@ -10,6 +10,7 @@ namespace Entidades{
     protected:
         sf::RectangleShape corpo;
         string Tipo;
+        sf::Clock relogio;
 
     public:
         Entidade(sf::Vector2f tam_corpo, string tipo);

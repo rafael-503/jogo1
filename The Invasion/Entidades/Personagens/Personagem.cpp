@@ -16,7 +16,7 @@ void Entidades::Personagens::Personagem::efeitoGravidade(){
     float aceleracao = G * getMassa();
     float dt = relogio.getElapsedTime().asSeconds();
     vel.y = vel.y + dt*aceleracao;
-    cout << "GRAVIDADE" << endl;
+    //cout << "GRAVIDADE" << endl;
 }
 void Entidades::Personagens::Personagem::setMassa(float massa_aux){
     massa = massa_aux;

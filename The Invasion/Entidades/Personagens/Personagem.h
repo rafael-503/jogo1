@@ -8,7 +8,7 @@ namespace Entidades {
 
         class Personagem : public Entidade {
         protected:
-            sf::Clock relogio;
+            
             bool colidiu_em_y;
             float massa;
             sf::Vector2f vel;
