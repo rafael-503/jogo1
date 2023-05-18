@@ -10,7 +10,6 @@ namespace Entidades {
         class Jogador : public Personagem {
 
         private:
-            sf::Vector2f pos_inicial;
             void inicializa();
 
         public:

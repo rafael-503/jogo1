@@ -25,6 +25,3 @@ void Entidades::Personagens::Personagem::setMassa(float massa_aux){
 float Entidades::Personagens::Personagem::getMassa(){
     return massa;
 }
-void Entidades::Personagens::Personagem::setVelocidade(sf::Vector2f velocidade){
-    vel = velocidade;
-}

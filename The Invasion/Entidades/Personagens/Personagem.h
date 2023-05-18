@@ -16,7 +16,6 @@ namespace Entidades {
             void setMassa(float massa_aux);
             float getMassa();
             void efeitoGravidade();
-            void setVelocidade(sf::Vector2f velocidade);
             virtual void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) = 0;
             virtual void executar() = 0;
         };
