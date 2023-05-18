@@ -8,7 +8,7 @@ namespace Entidades {
 
         class Plataforma: public Obstaculo{
         public:
-			Plataforma(sf::Vector2f pos);
+			Plataforma(sf::Vector2f tam_corpo, sf::Vector2f pos);
 			~Plataforma();
             void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x);
             void executar();
