@@ -8,9 +8,11 @@ namespace Entidades{
 
     class Entidade: public Ente{
     protected:
-        sf::RectangleShape corpo;
         string Tipo;
+        sf::RectangleShape corpo;
         sf::Clock relogio;
+        sf::Vector2f pos;
+        sf::Vector2f vel;
 
     public:
         Entidade(sf::Vector2f tam_corpo, string tipo);
@@ -20,6 +22,7 @@ namespace Entidades{
         const sf::Vector2f getSize() const;
         virtual void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x);
         virtual string getTipo();
+        void setVelocidade(sf::Vector2f v);
         virtual void executar() = 0;
     };
 }

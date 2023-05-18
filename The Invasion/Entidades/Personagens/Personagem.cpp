@@ -5,8 +5,9 @@
 
 
 Entidades::Personagens::Personagem::Personagem(sf::Vector2f tam_corpo, string tipo) :
-    Entidade(tam_corpo, tipo), colidiu_em_y(false), massa(0), vel(0.0f, 0.0f)
+    Entidade(tam_corpo, tipo), colidiu_em_y(false), massa(0)
 {
+    setVelocidade(sf::Vector2f(0.0f, 0.0f));
 }
 
 Entidades::Personagens::Personagem::~Personagem() {}

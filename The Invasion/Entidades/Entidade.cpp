@@ -28,3 +28,7 @@ void Entidade::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, boo
 string Entidade::getTipo() {
     return Tipo;
 }
+
+void Entidade::setVelocidade(sf::Vector2f v) {
+    vel = v;
+}

@@ -40,11 +40,13 @@ void Inimigo::moveAleatorio() {
         corpo.move(vel.x, 0.0f);
     else if (move_aleatorio == 1) //esquerda
         corpo.move(-vel.x, 0.0f);
+    else if(move_aleatorio == 2) //parado
+        corpo.move(0.0f, 0.0f);
 
-    float dt = relogioInimigo.getElapsedTime().asSeconds();
+    float dt = relogio.getElapsedTime().asSeconds();
     if (dt > 1.0f) {
-        move_aleatorio = rand() % 2;
-        relogioInimigo.restart();
+        move_aleatorio = rand() % 3;
+        relogio.restart();
     }
 }
 

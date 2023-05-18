@@ -8,10 +8,8 @@ namespace Entidades {
 
         class Personagem : public Entidade {
         protected:
-            
             bool colidiu_em_y;
             float massa;
-            sf::Vector2f vel;
         public:
             Personagem(sf::Vector2f tam_corpo, string tipo);
             ~Personagem();
