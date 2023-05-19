@@ -436,10 +436,10 @@
 	"Entidades/Obstaculos/Espinhos.h"
 	"Entidades/Obstaculos/Caixa.h"
 
-1684503024 c:\users\ariel\onedrive\documentos\jogo\the invasion\stdafx.h
+1684525491 c:\users\ariel\onedrive\documentos\jogo\the invasion\stdafx.h
 	<stdio.h>
 	<tchar.h>
-	<stdio.h>
+	<stdlib.h>
 	<string.h>
 	<iostream>
 	<time.h>
@@ -483,12 +483,12 @@
 	<SFML/Graphics.hpp>
 	"Personagem.h"
 
-1684503024 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\personagem.h
+1684524786 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\personagem.h
 	"../../stdafx.h"
 	<SFML/Graphics.hpp>
 	"../Entidade.h"
 
-1684505810 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\entidade.h
+1684524786 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\entidade.h
 	"../stdafx.h"
 	"../Ente.h"
 	<SFML/Graphics.hpp>
@@ -502,26 +502,26 @@
 1684503024 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\obstaculo.h
 	"../Entidade.h"
 
-1684504785 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\inimigo.cpp
+1684524786 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\inimigo.cpp
 	"../../stdafx.h"
 	"Inimigo.h"
 	"Jogador.h"
 	<math.h>
 
-1684523285 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\jogador.cpp
+1684525162 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\jogador.cpp
 	"../../stdafx.h"
 	"Jogador.h"
 
-1684503024 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\personagem.cpp
+1684524786 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\personagem.cpp
 	"../../stdafx.h"
 	"Personagem.h"
 	<SFML/Graphics.hpp>
 
-1684503024 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\entidade.cpp
+1684524786 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\entidade.cpp
 	"../stdafx.h"
 	"Entidade.h"
 
-1684504842 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\obstaculo.cpp
+1684524786 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\obstaculo.cpp
 	"../../stdafx.h"
 	"Obstaculo.h"
 
@@ -546,14 +546,15 @@
 	"Lista.h"
 	"../Entidades/Entidade.h"
 
-1684503024 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\gerenciadores\gerenciador_colisoes.cpp
+1684526639 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\gerenciadores\gerenciador_colisoes.cpp
 
-1684503024 c:\users\ariel\onedrive\documentos\jogo\the invasion\gerenciadores\gerenciador_colisoes.h
+1684525470 c:\users\ariel\onedrive\documentos\jogo\the invasion\gerenciadores\gerenciador_colisoes.h
 	"../stdafx.h"
 	"../Entidades/Obstaculos/Obstaculo.h"
 	"../Entidades/Personagens/Inimigo.h"
 	"../Entidades/Personagens/Jogador.h"
 	<SFML/Graphics.hpp>
+	<list>
 
 1684503024 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\plataforma.h
 	"Obstaculo.h"
@@ -564,12 +565,12 @@
 1684503991 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\caixa.h
 	"Obstaculo.h"
 
-1684503024 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\plataforma.cpp
+1684524230 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\plataforma.cpp
 	"Plataforma.h"
 
-1684504801 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\caixa.cpp
+1684524230 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\caixa.cpp
 	"Caixa.h"
 
-1684504589 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\espinhos.cpp
+1684524230 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\espinhos.cpp
 	"Espinhos.h"
 

@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <tchar.h>
 // TODO: reference additional headers your program requires here
-#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <iostream>
 #include <time.h>

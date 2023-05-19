@@ -3,8 +3,8 @@
 using namespace Entidades;
 
 
-Entidade::Entidade(sf::Vector2f tam_corpo, string tipo) :
-    Ente(), corpo(tam_corpo), Tipo(tipo)
+Entidade::Entidade(sf::Vector2f tam_corpo) :
+    Ente(), corpo(tam_corpo)
 {
 }
 

@@ -11,7 +11,7 @@ namespace Entidades {
             bool colidiu_em_y;
             float massa;
         public:
-            Personagem(sf::Vector2f tam_corpo, string tipo);
+            Personagem(sf::Vector2f tam_corpo);
             ~Personagem();
             void setMassa(float massa_aux);
             float getMassa();

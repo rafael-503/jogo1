@@ -5,7 +5,7 @@
 namespace Entidades {
 	namespace Obstaculos {
 		class Caixa : public Obstaculo {
-			public:	
+			public:
 				Caixa(sf::Vector2f tam_corpo, sf::Vector2f pos);
 				~Caixa();
 				void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);

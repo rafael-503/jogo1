@@ -3,10 +3,15 @@
 
 Gerenciadores::GerenciadorGrafico* Ente::pGrafico = Gerenciadores::GerenciadorGrafico::getGerenciadorGrafico();
 
-Ente::Ente(){}
+Ente::Ente(): ID(0){}
 
 Ente::~Ente(){}
 
 void Ente::desenhar() {
 
 }
+int Ente::getID() const{
+    return ID;
+}
+
+

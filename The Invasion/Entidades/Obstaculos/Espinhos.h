@@ -5,6 +5,7 @@
 namespace Entidades {
 	namespace Obstaculos {
 		class Espinhos : public Obstaculo {
+        private:
 		public:
 			Espinhos(sf::Vector2f tam_corpo, sf::Vector2f pos);
 			~Espinhos();

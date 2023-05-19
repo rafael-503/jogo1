@@ -8,15 +8,15 @@ namespace Entidades{
 
     class Entidade: public Ente{
     protected:
-        string Tipo;
         sf::RectangleShape corpo;
+        string Tipo;
         sf::Clock relogio;
         sf::Vector2f pos;
         sf::Vector2f vel;
         sf::Texture textura;
 
     public:
-        Entidade(sf::Vector2f tam_corpo, string tipo);
+        Entidade(sf::Vector2f tam_corpo);
         ~Entidade();
         sf::RectangleShape getCorpo();
         const sf::Vector2f getPosition() const;

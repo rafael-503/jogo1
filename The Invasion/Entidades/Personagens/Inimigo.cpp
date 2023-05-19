@@ -6,9 +6,11 @@
 using namespace Entidades;
 using namespace Personagens;
 
+
 Inimigo::Inimigo(sf::Vector2f tam_corpo) :
-    Personagem(tam_corpo, "Inimigo"), jogador(NULL)
+    Personagem(tam_corpo), jogador(NULL)
 {
+    ID = 2;
     //corpo.setFillColor(sf::Color::Red);
     corpo.setPosition(300.0f, 100.0f);
     srand(time(NULL));
@@ -68,9 +70,11 @@ void Inimigo::executar() {
 }
 
 void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) {
-    if (pOutra->getTipo() == "Jogador")
+
+    int ID_aux = pOutra->getID();
+    if (ID_aux == 1)
         cout << "Inimigo Colidiu com Jogador" << endl;
-    if (pOutra->getTipo() == "Obstaculo") {
+    if (ID_aux >= 5 && ID_aux <=7) {
         sf::Vector2f posInimigo = getPosition(), posOutro = pOutra->getPosition();
         if (!Colidiu_em_x) {
             if (posInimigo.y < posOutro.y)

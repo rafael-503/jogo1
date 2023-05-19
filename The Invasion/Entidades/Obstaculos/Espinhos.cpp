@@ -3,10 +3,12 @@ using namespace Entidades;
 using namespace Obstaculos;
 
 Espinhos::Espinhos(sf::Vector2f tam_corpo, sf::Vector2f pos): Obstaculo(tam_corpo, pos) {
+    ID = 7;
     corpo.setPosition(pos);
     textura = pGrafico->carregarTextura(ESPINHOS);
     corpo.setTexture(&textura);
 }
+
 
 Espinhos::~Espinhos() {}
 
