@@ -85,32 +85,27 @@ namespace Listas {
 			else
 				return NULL;
 		}
-		void executar() {
-			pAtual = pPrimeiro;
-			while (pAtual) {
-				TL* pAux = pAtual->getInfo();
-				pAux->executar();
-				pAtual = pAtual->getProx();
-			}
-		}
-		void seDesenhe() {
-			pAtual = pPrimeiro;
-			Gerenciadores::GerenciadorGrafico* pGrafico = pGrafico->getGerenciadorGrafico();
-			while (pAtual) {
-				TL* pAux = pAtual->getInfo();
-				pGrafico->desenharElemento(pAux->getCorpo());
-				pAtual = pAtual->getProx();
-			}
-		}
+
 		Elemento<TL>* getPrimeiroElemento() const { return pPrimeiro; }
 
+		int getSize() const {
+			Elemento<TL>* pAux = pPrimeiro;
+			int tam = 0;
+			while (pAux){
+                tam++;
+                pAux = pAux->getProx();
+            }
+            return tam;
+
+		}
+
 		TL* operator[](int pos) {
-			pAtual = pPrimeiro;
+			Elemento<TL>* pAux = pPrimeiro;
 			int i = 0;
-			while (pAtual) {
-				if (i = pos)
-					return pAtual->getInfo();
-				pAtual = pAtual->getProx();
+			while (pAux) {
+				if (i == pos)
+					return pAux->getInfo();
+				pAux = pAux->getProx();
 				i++;
 			}
 			return NULL;

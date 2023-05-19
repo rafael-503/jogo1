@@ -48,8 +48,14 @@
 		<Unit filename="Ente.h" />
 		<Unit filename="Entidades/Entidade.cpp" />
 		<Unit filename="Entidades/Entidade.h" />
+		<Unit filename="Entidades/Obstaculos/Caixa.cpp" />
+		<Unit filename="Entidades/Obstaculos/Caixa.h" />
+		<Unit filename="Entidades/Obstaculos/Espinhos.cpp" />
+		<Unit filename="Entidades/Obstaculos/Espinhos.h" />
 		<Unit filename="Entidades/Obstaculos/Obstaculo.cpp" />
 		<Unit filename="Entidades/Obstaculos/Obstaculo.h" />
+		<Unit filename="Entidades/Obstaculos/Plataforma.cpp" />
+		<Unit filename="Entidades/Obstaculos/Plataforma.h" />
 		<Unit filename="Entidades/Personagens/Inimigo.cpp" />
 		<Unit filename="Entidades/Personagens/Inimigo.h" />
 		<Unit filename="Entidades/Personagens/Jogador.cpp" />

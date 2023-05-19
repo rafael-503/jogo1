@@ -23,6 +23,9 @@ Principal::~Principal(){}
 
 void Principal::executar(){
 
+   // ListaEntidades lista;
+
+
     Gerenciadores::Gerenciador_Colisoes* pGerencia_colisoes(pGerencia_Colisoes->getGerenciador_Colisoes());
 
     Inimigo inimigo(sf::Vector2f(80.0f, 80.0f));
@@ -30,19 +33,22 @@ void Principal::executar(){
     inimigo.setJogador(&jogador);
 
     Entidade* pEntidade = NULL;
-    Listas::Lista<Entidade> listaEntidades;
+    Listas::ListaEntidades listaEntidades;
 
     Obstaculo* pObstaculo = NULL;
 
     Jogador* pJogador = &jogador;
     Inimigo* pInimigo = &inimigo;
 
+
+
     pGerencia_colisoes->incluiInimigo(pInimigo);
     pEntidade = static_cast<Entidade*> (pJogador);
     listaEntidades.inserir(pEntidade);
     pEntidade = static_cast<Entidade*> (pInimigo);
     listaEntidades.inserir(pEntidade);
-    
+
+
     pObstaculo = new Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
@@ -62,7 +68,7 @@ void Principal::executar(){
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-    
+
     pObstaculo = new Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(500.0f, 500.0f));
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
@@ -85,8 +91,9 @@ void Principal::executar(){
 
     /// Fundo temporario
     sf::Texture texture;
-    if (!texture.loadFromFile("The Invasion/assets/fundo/fundo1.png"))
-        std::cout << "Erro ao carregar a textura" << std::endl;
+   // if (!texture.loadFromFile("The invasion/assets/fundo/fundo1.png"))
+    //    std::cout << "Erro ao carregar a textura" << std::endl;
+
     sf::Sprite sprite;
     sprite.setTexture(texture);
     sprite.setPosition(0, 0);
@@ -101,7 +108,7 @@ void Principal::executar(){
     while (pGrafico->verificarJanelaAberta())
     {
         sf::Event event;
-       
+
         if(pGrafico->getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 pGrafico->fecharJanela();
@@ -113,7 +120,7 @@ void Principal::executar(){
         pGerencia_colisoes->testa_colisoes(&jogador);
         listaEntidades.seDesenhe();
        // pGrafico->desenharElemento(pAux->getCorpo());
-        
+
         sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
         sf::sleep(tempo_por_frame);
         pGrafico->mostrarElementos();
