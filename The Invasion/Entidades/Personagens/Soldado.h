@@ -1,5 +1,5 @@
 #pragma once
-#define SOLDADO "The Invasion/assets/personagem/inimigo/soldado.png"
+#define SOLDADO "The Invasion/assets/inimigo/soldado/soldado.png"
 #include "Inimigo.h"
 
 namespace Entidades {

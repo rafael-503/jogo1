@@ -11,16 +11,11 @@ Inimigo::Inimigo(sf::Vector2f tam_corpo) :
     Personagem(tam_corpo), jogador(NULL)
 {
     ID = 2;
-    //corpo.setFillColor(sf::Color::Red);
     corpo.setPosition(300.0f, 100.0f);
     srand(time(NULL));
     move_aleatorio = rand() % 4;
     setMassa(60.0f);
     setVelocidade(sf::Vector2f(3.0f, 0.0f));
-
-    textura = pGrafico->carregarTextura("The Invasion/assets/inimigo/cachorro/cachorro.png");
-    corpo.setTexture(&textura);
-
 }
 
 Inimigo::~Inimigo() {}

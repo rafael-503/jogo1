@@ -5,6 +5,10 @@
 #include "Entidades/Obstaculos/Plataforma.h"
 #include "Entidades/Obstaculos/Espinhos.h"
 #include "Entidades/Obstaculos/Caixa.h"
+#include "Entidades/Personagens/Cachorro.h"
+#include "Entidades/Personagens/Lenhador.h"
+#include "Entidades/Personagens/Soldado.h"
+
 
 using namespace Entidades;
 using namespace Personagens;
@@ -28,7 +32,7 @@ void Principal::executar(){
 
     Gerenciadores::Gerenciador_Colisoes* pGerencia_colisoes(pGerencia_Colisoes->getGerenciador_Colisoes());
 
-    Inimigo inimigo(sf::Vector2f(80.0f, 80.0f));
+    Soldado inimigo(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(80.0f, 80.0f));
     Jogador jogador(sf::Vector2f(80.0f, 80.0f));
     inimigo.setJogador(&jogador);
 
@@ -39,7 +43,6 @@ void Principal::executar(){
 
     Jogador* pJogador = &jogador;
     Inimigo* pInimigo = &inimigo;
-
 
 
     pGerencia_colisoes->incluiInimigo(pInimigo);
