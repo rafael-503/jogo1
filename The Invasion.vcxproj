@@ -128,6 +128,7 @@
     <ClCompile Include="The Invasion\Entidades\Personagens\Lenhador.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Personagem.cpp" />
     <ClCompile Include="The Invasion\Entidades\Personagens\Soldado.cpp" />
+    <ClCompile Include="The Invasion\Fases\Fase.cpp" />
     <ClCompile Include="The Invasion\Gerenciadores\GerenciadorGrafico.cpp" />
     <ClCompile Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.cpp" />
     <ClCompile Include="The Invasion\Listas\ListaEntidades.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="The Invasion\Entidades\Personagens\Lenhador.h" />
     <ClInclude Include="the invasion\entidades\personagens\Personagem.h" />
     <ClInclude Include="The Invasion\Entidades\Personagens\Soldado.h" />
+    <ClInclude Include="The Invasion\Fases\Fase.h" />
     <ClInclude Include="The Invasion\Gerenciadores\GerenciadorGrafico.h" />
     <ClInclude Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.h" />
     <ClInclude Include="The Invasion\Listas\Lista.h" />
