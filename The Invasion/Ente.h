@@ -5,7 +5,7 @@
 
 class Ente{
     protected:
-        int id;
+        int ID;
         static Gerenciadores::GerenciadorGrafico* pGrafico;
 
     public:
@@ -13,5 +13,6 @@ class Ente{
         ~Ente();
         virtual void executar() = 0;
         void desenhar();
+        int getID() const;
 };
 
