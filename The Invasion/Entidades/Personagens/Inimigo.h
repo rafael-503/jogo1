@@ -2,6 +2,7 @@
 #include "../../stdafx.h"
 #include <SFML/Graphics.hpp>
 #include "Personagem.h"
+#include "Jogador.h"
 #include <time.h>
 
 #define RAIO_PERSEG_X 150.0f

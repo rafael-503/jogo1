@@ -91,8 +91,8 @@ void Principal::executar(){
 
     /// Fundo temporario
     sf::Texture texture;
-   // if (!texture.loadFromFile("The invasion/assets/fundo/fundo1.png"))
-    //    std::cout << "Erro ao carregar a textura" << std::endl;
+    if (!texture.loadFromFile("The invasion/assets/fundo/fundo1.png"))
+        std::cout << "Erro ao carregar a textura" << std::endl;
 
     sf::Sprite sprite;
     sprite.setTexture(texture);

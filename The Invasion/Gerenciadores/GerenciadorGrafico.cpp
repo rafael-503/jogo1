@@ -48,7 +48,7 @@ const bool GerenciadorGrafico::verificarJanelaAberta() {
 
 sf::Texture GerenciadorGrafico::carregarTextura(const char* caminho){
 	sf::Texture textura;
-//    if (!textura.loadFromFile(caminho))
-	//	std::cout << "Erro ao carregar a textura" << std::endl;
+    if (!textura.loadFromFile(caminho))
+		std::cout << "Erro ao carregar a textura" << std::endl;
 	return textura;
 }

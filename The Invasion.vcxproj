@@ -122,11 +122,15 @@
     <ClCompile Include="The Invasion\Entidades\Obstaculos\Espinhos.cpp" />
     <ClCompile Include="the invasion\entidades\obstaculos\Obstaculo.cpp" />
     <ClCompile Include="The Invasion\Entidades\Obstaculos\Plataforma.cpp" />
+    <ClCompile Include="The Invasion\Entidades\Personagens\Cachorro.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Inimigo.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Jogador.cpp" />
+    <ClCompile Include="The Invasion\Entidades\Personagens\Lenhador.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Personagem.cpp" />
+    <ClCompile Include="The Invasion\Entidades\Personagens\Soldado.cpp" />
     <ClCompile Include="The Invasion\Gerenciadores\GerenciadorGrafico.cpp" />
     <ClCompile Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.cpp" />
+    <ClCompile Include="The Invasion\Listas\ListaEntidades.cpp" />
     <ClCompile Include="the invasion\main.cpp" />
     <ClCompile Include="the invasion\Principal.cpp" />
   </ItemGroup>
@@ -137,12 +141,16 @@
     <ClInclude Include="The Invasion\Entidades\Obstaculos\Espinhos.h" />
     <ClInclude Include="the invasion\entidades\obstaculos\Obstaculo.h" />
     <ClInclude Include="The Invasion\Entidades\Obstaculos\Plataforma.h" />
+    <ClInclude Include="The Invasion\Entidades\Personagens\Cachorro.h" />
     <ClInclude Include="the invasion\entidades\personagens\Inimigo.h" />
     <ClInclude Include="the invasion\entidades\personagens\Jogador.h" />
+    <ClInclude Include="The Invasion\Entidades\Personagens\Lenhador.h" />
     <ClInclude Include="the invasion\entidades\personagens\Personagem.h" />
+    <ClInclude Include="The Invasion\Entidades\Personagens\Soldado.h" />
     <ClInclude Include="The Invasion\Gerenciadores\GerenciadorGrafico.h" />
     <ClInclude Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.h" />
     <ClInclude Include="The Invasion\Listas\Lista.h" />
+    <ClInclude Include="The Invasion\Listas\ListaEntidades.h" />
     <ClInclude Include="the invasion\Principal.h" />
     <ClInclude Include="the invasion\stdafx.h" />
   </ItemGroup>

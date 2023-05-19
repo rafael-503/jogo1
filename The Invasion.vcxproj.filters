@@ -54,6 +54,18 @@
     <ClCompile Include="The Invasion\Entidades\Obstaculos\Caixa.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="The Invasion\Listas\ListaEntidades.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="The Invasion\Entidades\Personagens\Cachorro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="The Invasion\Entidades\Personagens\Lenhador.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="The Invasion\Entidades\Personagens\Soldado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="the invasion\Ente.h">
@@ -96,6 +108,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="The Invasion\Entidades\Obstaculos\Caixa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Listas\ListaEntidades.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Entidades\Personagens\Cachorro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Entidades\Personagens\Lenhador.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Entidades\Personagens\Soldado.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
