@@ -8,7 +8,7 @@ namespace Entidades {
 		public:
 			Espinhos(sf::Vector2f tam_corpo, sf::Vector2f pos);
 			~Espinhos();
-			void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x);
+			void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
 			void executar();
 		};
 	}

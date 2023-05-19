@@ -10,6 +10,6 @@ Plataforma::Plataforma(sf::Vector2f tam_corpo, sf::Vector2f pos) : Obstaculo(tam
 
 Plataforma::~Plataforma() {}
 
-void Plataforma::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) {}
+void Plataforma::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {}
 
 void Plataforma::executar() {}

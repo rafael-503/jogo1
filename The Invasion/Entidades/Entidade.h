@@ -21,7 +21,7 @@ namespace Entidades{
         sf::RectangleShape getCorpo();
         const sf::Vector2f getPosition() const;
         const sf::Vector2f getSize() const;
-        virtual void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x);
+        virtual void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
         virtual string getTipo();
         void setVelocidade(sf::Vector2f v);
         virtual void executar() = 0;
