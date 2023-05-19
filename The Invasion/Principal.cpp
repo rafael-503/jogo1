@@ -4,6 +4,7 @@
 #include "Listas/Lista.h"
 #include "Entidades/Obstaculos/Plataforma.h"
 #include "Entidades/Obstaculos/Espinhos.h"
+#include "Entidades/Obstaculos/Caixa.h"
 
 using namespace Entidades;
 using namespace Personagens;
@@ -48,6 +49,11 @@ void Principal::executar(){
     listaEntidades.inserir(pEntidade);
 
     pObstaculo = new Espinhos(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
+    pGerencia_colisoes->incluiObstaculo(pObstaculo);
+    pEntidade = static_cast<Entidade*> (pObstaculo);
+    listaEntidades.inserir(pEntidade);
+
+    pObstaculo = new Caixa(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(750.0f, 450.0f));
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
