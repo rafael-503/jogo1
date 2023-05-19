@@ -83,22 +83,37 @@ void Principal::executar(){
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
 
+    /// Fundo temporario
+    sf::Texture texture;
+    if (!texture.loadFromFile("The Invasion/assets/fundo/fundo1.png"))
+        std::cout << "Erro ao carregar a textura" << std::endl;
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    sprite.setPosition(0, 0);
+
+    sf::Vector2u windowSize = pGrafico->getWindow()->getSize();
+    sprite.setScale(
+        static_cast<float>(windowSize.x) / sprite.getTexture()->getSize().x,
+        static_cast<float>(windowSize.y) / sprite.getTexture()->getSize().y
+    );
+    ///
+
     while (pGrafico->verificarJanelaAberta())
     {
         sf::Event event;
-
+       
         if(pGrafico->getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 pGrafico->fecharJanela();
         }
         pGrafico->limparJanela();
+        pGrafico->getWindow()->draw(sprite); // fundo
+
         listaEntidades.executar();
         pGerencia_colisoes->testa_colisoes(&jogador);
-
         listaEntidades.seDesenhe();
        // pGrafico->desenharElemento(pAux->getCorpo());
-
-
+        
         sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
         sf::sleep(tempo_por_frame);
         pGrafico->mostrarElementos();
