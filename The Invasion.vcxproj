@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClCompile Include="the invasion\Ente.cpp" />
     <ClCompile Include="the invasion\entidades\Entidade.cpp" />
+    <ClCompile Include="The Invasion\Entidades\Obstaculos\Espinhos.cpp" />
     <ClCompile Include="the invasion\entidades\obstaculos\Obstaculo.cpp" />
     <ClCompile Include="The Invasion\Entidades\Obstaculos\Plataforma.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Inimigo.cpp" />
@@ -131,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="the invasion\Ente.h" />
     <ClInclude Include="the invasion\entidades\Entidade.h" />
+    <ClInclude Include="The Invasion\Entidades\Obstaculos\Espinhos.h" />
     <ClInclude Include="the invasion\entidades\obstaculos\Obstaculo.h" />
     <ClInclude Include="The Invasion\Entidades\Obstaculos\Plataforma.h" />
     <ClInclude Include="the invasion\entidades\personagens\Inimigo.h" />

@@ -1,5 +1,5 @@
 #pragma once
-#define CAMINHO "The Invasion/assets/obstaculos/plataformas/plataforma1.png"
+#define PLATAFORMA "The Invasion/assets/obstaculos/plataformas/plataforma1.png"
 #include "Obstaculo.h"
 
 namespace Entidades {

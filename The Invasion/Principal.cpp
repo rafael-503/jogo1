@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Listas/Lista.h"
 #include "Entidades/Obstaculos/Plataforma.h"
+#include "Entidades/Obstaculos/Espinhos.h"
 
 using namespace Entidades;
 using namespace Personagens;
@@ -40,12 +41,17 @@ void Principal::executar(){
     listaEntidades.inserir(pEntidade);
     pEntidade = static_cast<Entidade*> (pInimigo);
     listaEntidades.inserir(pEntidade);
-
+    
     pObstaculo = new Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-    
+
+    pObstaculo = new Espinhos(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
+    pGerencia_colisoes->incluiObstaculo(pObstaculo);
+    pEntidade = static_cast<Entidade*> (pObstaculo);
+    listaEntidades.inserir(pEntidade);
+
     pObstaculo = new Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 600.0f));
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
@@ -55,12 +61,12 @@ void Principal::executar(){
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-
+    /*
     pObstaculo = new Plataforma(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-
+    */
     pObstaculo = new Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 350.0f));
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);

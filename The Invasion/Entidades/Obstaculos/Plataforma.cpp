@@ -4,7 +4,7 @@ using namespace Obstaculos;
 
 Plataforma::Plataforma(sf::Vector2f tam_corpo, sf::Vector2f pos) : Obstaculo(tam_corpo, pos){
     corpo.setPosition(pos);
-    textura = pGrafico->carregarTextura("The Invasion/assets/obstaculos/plataformas/plataforma1.png");
+    textura = pGrafico->carregarTextura(PLATAFORMA);
     corpo.setTexture(&textura);
 }
 
