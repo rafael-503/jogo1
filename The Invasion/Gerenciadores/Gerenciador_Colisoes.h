@@ -15,8 +15,8 @@ namespace Gerenciadores {
         static Gerenciador_Colisoes* pGerenciador_Colisoes;
         vector<Personagens::Inimigo*> vetor_inimigos;
         list<Obstaculos::Obstaculo*> lista_obstaculos;
-        Gerenciador_Colisoes();
     public:
+        Gerenciador_Colisoes();
         ~Gerenciador_Colisoes();
         void incluiInimigo(Personagens::Inimigo* pInimigo);
         void incluiObstaculo(Obstaculos::Obstaculo* pObs);
