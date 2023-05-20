@@ -14,11 +14,16 @@ namespace Entidades{
         sf::Vector2f pos;
         sf::Vector2f vel;
         sf::Texture textura;
+        bool SuspensoNoAR;
+        float massa;
 
     public:
         Entidade(sf::Vector2f tam_corpo);
         ~Entidade();
         sf::RectangleShape getCorpo();
+        float getMassa() const;
+        void setMassa(float Massa);
+        void efeitoGravidade();
         const sf::Vector2f getPosition() const;
         const sf::Vector2f getSize() const;
         virtual void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);

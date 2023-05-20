@@ -62,7 +62,7 @@ void Principal::executar(){
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
 
-    pObstaculo = new Caixa(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(750.0f, 450.0f));
+    pObstaculo = new Caixa(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(900.0f, 450.0f));
     pGerencia_colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
@@ -94,8 +94,8 @@ void Principal::executar(){
 
     /// Fundo temporario
     sf::Texture texture;
-    if (!texture.loadFromFile("The invasion/assets/fundo/fundo1.png"))
-        std::cout << "Erro ao carregar a textura" << std::endl;
+//    if (!texture.loadFromFile("The invasion/assets/fundo/fundo1.png"))
+ //       std::cout << "Erro ao carregar a textura" << std::endl;
 
     sf::Sprite sprite;
     sprite.setTexture(texture);
