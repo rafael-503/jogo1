@@ -2,7 +2,7 @@
 using namespace Fases;
 
 Fase2::Fase2() {
-	carregarFundo("The invasion/assets/fundo/fundo2.png");
+	pGrafico->carregarFundo("The invasion/assets/fundo/fundo2.png");
 	criarInimigos();
 	criarObstaculos();
 }
