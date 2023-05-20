@@ -3,7 +3,7 @@
 
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
 Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes() {
-
+    getGerenciador_Colisoes();
 }
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
     delete pGerenciador_Colisoes;

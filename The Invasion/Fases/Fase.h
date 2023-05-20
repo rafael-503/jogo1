@@ -19,6 +19,3 @@ namespace Fases {
 			virtual void criarObstaculos() = 0;
 	};
 }
-
-
-

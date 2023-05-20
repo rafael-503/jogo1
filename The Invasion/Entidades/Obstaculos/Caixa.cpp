@@ -4,8 +4,8 @@ using namespace Obstaculos;
 
 
 Caixa::Caixa(sf::Vector2f tam_corpo, sf::Vector2f pos): Obstaculo(tam_corpo, pos) {
-	ID = 6;
-    corpo.setPosition(pos);
+  ID = 6;
+  corpo.setPosition(pos);
 	textura = pGrafico->carregarTextura(CAIXA);
 	corpo.setTexture(&textura);
 }
