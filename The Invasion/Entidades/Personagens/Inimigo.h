@@ -5,8 +5,8 @@
 #include "Jogador.h"
 #include <time.h>
 
-#define RAIO_PERSEG_X 150.0f
-#define RAIO_PERSEG_Y 150.0f
+#define RAIO_PERSEG_X 300.0f
+#define RAIO_PERSEG_Y 300.0f
 
 namespace Entidades {
     namespace Personagens {

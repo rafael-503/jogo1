@@ -22,8 +22,6 @@ Jogador::Jogador(sf::Vector2f tam_corpo) :
 Jogador::~Jogador() {}
 
 void Jogador::executar() {
-    if(!colidiu_em_y)
-        efeitoGravidade();
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         corpo.move(-vel.x, 0.0f);
@@ -31,21 +29,13 @@ void Jogador::executar() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         corpo.move(vel.x, 0.0f);
     }
-    if (colidiu_em_y && (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))) {
+    if (!SuspensoNoAR && (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))) {
         vel.y = -10.0f;
-    }
-
- /*
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        corpo.move(0.0f, -vel.y);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
         corpo.move(0.0f, vel.y);
     }
+    efeitoGravidade();
 
-*/
-    colidiu_em_y = false;
-    corpo.move(0.0f, vel.y);
+
 }
 
 void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) {
@@ -61,13 +51,12 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool
         if (!Colidiu_em_x) {
             if (posJogador.y < posOutro.y){
                 corpo.move(0.0f, DistanciaExtremidades.y);
-                colidiu_em_y = true;
-                relogio.restart();
+                SuspensoNoAR = false;
             }
             else{
                 corpo.move(0.0f, -DistanciaExtremidades.y);
                 //bateu a cabeça
-                //if (vel.y > 0.0f)
+                if (vel.y < 0.0f)
                     vel.y = 0.0f;
             }
         }
@@ -76,6 +65,7 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool
                 corpo.move(DistanciaExtremidades.x, 0.0f);
             else
                 corpo.move(-DistanciaExtremidades.x, 0.0f);
+
         }
 
         if(ID_aux == 5)

@@ -5,23 +5,11 @@
 
 
 Entidades::Personagens::Personagem::Personagem(sf::Vector2f tam_corpo) :
-    Entidade(tam_corpo), colidiu_em_y(false), massa(0)
+    Entidade(tam_corpo)
 {
     setVelocidade(sf::Vector2f(0.0f, 0.0f));
 }
 
 Entidades::Personagens::Personagem::~Personagem() {}
 
-void Entidades::Personagens::Personagem::efeitoGravidade(){
-    float G = 0.01f;
-    float aceleracao = G * getMassa();
-    float dt = relogio.getElapsedTime().asSeconds();
-    vel.y = vel.y + dt*aceleracao;
-    //cout << "GRAVIDADE" << endl;
-}
-void Entidades::Personagens::Personagem::setMassa(float massa_aux){
-    massa = massa_aux;
-}
-float Entidades::Personagens::Personagem::getMassa(){
-    return massa;
-}
+

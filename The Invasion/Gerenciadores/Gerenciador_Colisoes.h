@@ -5,7 +5,6 @@
 #include "../Entidades/Personagens/Jogador.h"
 #include <SFML/Graphics.hpp>
 #include <list>
-
 using namespace Entidades;
 
 namespace Gerenciadores {
