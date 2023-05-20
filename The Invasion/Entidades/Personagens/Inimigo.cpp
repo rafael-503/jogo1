@@ -68,7 +68,7 @@ void Inimigo::executar() {
     }
 }
 
-void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) {
+void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
 
     int ID_aux = pOutra->getID();
     if (ID_aux == 1)
@@ -77,18 +77,17 @@ void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool
         sf::Vector2f posInimigo = getPosition(), posOutro = pOutra->getPosition();
         if (!Colidiu_em_x) {
             if (posInimigo.y < posOutro.y){
-                corpo.move(0.0f, DistanciaExtremidades.y);
+                corpo.move(0.0f, DistExt.y);
                 SuspensoNoAR = false;
             }
             else
-                corpo.move(0.0f, -DistanciaExtremidades.y);
+                corpo.move(0.0f, -DistExt.y);
         }
         else    {
             if (posInimigo.x < posOutro.x)
-                corpo.move(DistanciaExtremidades.x, 0.0f);
+                corpo.move(DistExt.x, 0.0f);
             else
-                corpo.move(-DistanciaExtremidades.x, 0.0f);
+                corpo.move(-DistExt.x, 0.0f);
         }
-
     }
 }

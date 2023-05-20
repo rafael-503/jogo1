@@ -16,7 +16,7 @@ namespace Entidades {
             Jogador(sf::Vector2f tam_corpo);
             ~Jogador();
             void executar();
-            void colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x);
+            void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
 
         };
     }

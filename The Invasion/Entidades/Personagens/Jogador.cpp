@@ -38,7 +38,7 @@ void Jogador::executar() {
 
 }
 
-void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool Colidiu_em_x) {
+void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
 
     //ID_aux recebe id da entidade com qual esta colidindo
     int ID_aux = pOutra->getID();
@@ -50,11 +50,11 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool
         //colisão
         if (!Colidiu_em_x) {
             if (posJogador.y < posOutro.y){
-                corpo.move(0.0f, DistanciaExtremidades.y);
+                corpo.move(0.0f, DistExt.y);
                 SuspensoNoAR = false;
             }
             else{
-                corpo.move(0.0f, -DistanciaExtremidades.y);
+                corpo.move(0.0f, -DistExt.y);
                 //bateu a cabeça
                 if (vel.y < 0.0f)
                     vel.y = 0.0f;
@@ -62,9 +62,9 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool
         }
         else    {
             if (posJogador.x < posOutro.x)
-                corpo.move(DistanciaExtremidades.x, 0.0f);
+                corpo.move(DistExt.x, 0.0f);
             else
-                corpo.move(-DistanciaExtremidades.x, 0.0f);
+                corpo.move(-DistExt.x, 0.0f);
 
         }
 
