@@ -101,7 +101,7 @@ void Principal::executar(){
                 pGrafico->fecharJanela();
         }
         pGrafico->limparJanela();
-        pGrafico->getWindow()->draw(sprite); // fundo
+        //pGrafico->getWindow()->draw(sprite); // fundo
 
         listaEntidades.executar();
         pGerencia_colisoes->testa_colisoes(&jogador);
