@@ -2,10 +2,8 @@
 using namespace Fases;
 
 Fase2::Fase2() {
-    // Definir imagem de fundo da fase
-    carregarFundo("The invasion/assets/fundo/fundo1.png");
-    criarInimigos();
-    criarObstaculos();
+	criarInimigos();
+	criarObstaculos();
 }
 
 Fase2::~Fase2() {
