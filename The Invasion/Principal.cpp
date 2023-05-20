@@ -27,13 +27,6 @@ Principal::~Principal(){}
 
 void Principal::executar(){
 
-   // ListaEntidades lista;
-
-    
-    //Gerenciadores::Gerenciador_Colisoes* pGerencia_colisoes(pGerencia_Colisoes->getGerenciador_Colisoes());
-    //pGerencia_colisoes = new Gerenciadores::Gerenciador_Colisoes();
-    //pGerencia_Colisoes = Gerenciador_Colisoes::getGerenciador_Colisoes();
-
     Soldado inimigo(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(80.0f, 80.0f));
     Jogador jogador(sf::Vector2f(80.0f, 80.0f));
     inimigo.setJogador(&jogador);
