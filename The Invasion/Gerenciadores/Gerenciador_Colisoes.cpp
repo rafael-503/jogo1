@@ -118,6 +118,46 @@ void Gerenciadores::Gerenciador_Colisoes::testa_colisoes(Personagens::Jogador* p
                 cout << "ponteiro nulo no vetor do gereniador de colisões" << endl;
         }
 
+
+        it_obs = lista_obstaculos.begin();
+        list<Obstaculos::Obstaculo*>::iterator it_obs2 = lista_obstaculos.begin();
+        Obstaculos::Obstaculo* pObs2;
+
+        //testa colisoes entre obstaculos
+
+        while(it_obs != lista_obstaculos.end()){
+            pObs = *it_obs;
+            if(pObs){
+                it_obs2 = it_obs;
+                it_obs2++;
+                pEnti_1 = static_cast<Entidade*> (pObs);
+                while(it_obs2 != lista_obstaculos.end()){
+                    pObs2 = *it_obs2;
+                    if(pObs2){
+                        pEnti_2 = static_cast<Entidade*> (pObs2);
+
+                        //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
+                        DistanciaExtremidades = Calcula_colisao(pEnti_1, pEnti_2);
+                        if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
+                            if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
+                                Colidiu_em_x = false;
+                            else
+                                Colidiu_em_x = true;
+                            pEnti_1->colisao(pEnti_2, DistanciaExtremidades, Colidiu_em_x);
+
+                        }
+                    }
+                    else
+                        cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
+                    it_obs2++;
+                }
+            }
+            else
+                cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
+            it_obs++;
+        }
+
+
     }
 }
 

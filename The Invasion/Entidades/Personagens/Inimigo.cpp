@@ -15,7 +15,7 @@ Inimigo::Inimigo(sf::Vector2f tam_corpo) :
     srand(time(NULL));
     move_aleatorio = rand() % 4;
     setMassa(60.0f);
-    setVelocidade(sf::Vector2f(3.0f, 0.0f));
+    setVelocidade(sf::Vector2f(3.0f, 10.0f));
 }
 
 Inimigo::~Inimigo() {}
@@ -29,10 +29,12 @@ void Inimigo::persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim) {
         corpo.move(vel.x, 0.0f);
     else
         corpo.move(-vel.x, 0.0f);
-    if (posJog.y - posInim.y > 0.0f)
-        corpo.move(0.0f, vel.y);
-    else
-        corpo.move(0.0f, -vel.y);
+    if(!SuspensoNoAR){
+        if (posJog.y - posInim.y > 0.0f)
+            corpo.move(0.0f, -vel.y);
+        else
+            corpo.move(0.0f, vel.y);
+    }
 }
 
 void Inimigo::moveAleatorio() {
@@ -61,6 +63,8 @@ void Inimigo::executar() {
         }
         else
             moveAleatorio();
+        efeitoGravidade();
+
     }
 }
 
@@ -72,8 +76,10 @@ void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistanciaExtremidades, bool
     if (ID_aux >= 5 && ID_aux <=7) {
         sf::Vector2f posInimigo = getPosition(), posOutro = pOutra->getPosition();
         if (!Colidiu_em_x) {
-            if (posInimigo.y < posOutro.y)
+            if (posInimigo.y < posOutro.y){
                 corpo.move(0.0f, DistanciaExtremidades.y);
+                SuspensoNoAR = false;
+            }
             else
                 corpo.move(0.0f, -DistanciaExtremidades.y);
         }

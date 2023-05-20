@@ -4,7 +4,7 @@ using namespace Entidades;
 
 
 Entidade::Entidade(sf::Vector2f tam_corpo) :
-    Ente(), corpo(tam_corpo)
+    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true)
 {
 }
 
@@ -31,4 +31,26 @@ string Entidade::getTipo() {
 
 void Entidade::setVelocidade(sf::Vector2f v) {
     vel = v;
+}
+float Entidade::getMassa() const{
+    return massa;
+}
+
+void Entidade::setMassa(float Massa){
+    massa = Massa;
+}
+void Entidade::efeitoGravidade(){
+
+    if(SuspensoNoAR){
+        //cout << "GRAVIDADE" << endl;
+        float G = 1.0f;
+        float dt = relogio.getElapsedTime().asSeconds();
+        vel.y = vel.y + dt*G;
+        corpo.move(0.0f, vel.y);
+    }
+    else
+        relogio.restart();
+
+    SuspensoNoAR = true;
+
 }
