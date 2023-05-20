@@ -13,7 +13,6 @@ namespace Entidades{
         sf::Clock relogio;
         sf::Vector2f pos;
         sf::Vector2f vel;
-        sf::Texture textura;
 
     public:
         Entidade(sf::Vector2f tam_corpo);
