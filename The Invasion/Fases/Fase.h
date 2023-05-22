@@ -7,8 +7,8 @@ namespace Fases {
 	class Fase : public Ente {
 		protected:
 			Gerenciadores::Gerenciador_Colisoes* pColisao;
-			Listas::ListaEntidades listaPersonagens;
 			Listas::ListaEntidades listaObstaculos;
+			Listas::ListaEntidades listaPersonagens;
 
 		public:
 			Fase();

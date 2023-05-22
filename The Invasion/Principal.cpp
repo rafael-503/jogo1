@@ -15,7 +15,10 @@ using namespace Personagens;
 using namespace Obstaculos;
 
 //Gerenciadores::GerenciadorGrafico* Principal::pGrafico = NULL;
-Principal::Principal(): pGrafico(pGrafico->getGerenciadorGrafico()), pGerencia_Colisoes(pGerencia_Colisoes->getGerenciador_Colisoes()){
+Principal::Principal():
+    pGrafico(pGrafico->getGerenciadorGrafico()), pGerencia_Colisoes(pGerencia_Colisoes->getGerenciador_Colisoes()),
+    pGerenciaEventos(pGerenciaEventos->getGerenciadorEvento())
+{
     if (pGrafico == NULL) {
         std::cout << "Erro ao criar o gerenciador gráfico" << std::endl;
         exit(1);
@@ -39,7 +42,7 @@ void Principal::executar(){
     Jogador* pJogador = &jogador;
     Inimigo* pInimigo = &inimigo;
 
-    
+
     pGerencia_Colisoes->incluiInimigo(pInimigo);
     pEntidade = static_cast<Entidade*> (pJogador);
     listaEntidades.inserir(pEntidade);
@@ -71,7 +74,7 @@ void Principal::executar(){
     pGerencia_Colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-    // 
+    //
     //pObstaculo = new Plataforma(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
     //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
     //pEntidade = static_cast<Entidade*> (pObstaculo);
@@ -86,15 +89,19 @@ void Principal::executar(){
     pGerencia_Colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-    
+    pGerenciaEventos->setJogador(pJogador);
+
     while (pGrafico->verificarJanelaAberta())
     {
+        /*
         sf::Event event;
 
         if(pGrafico->getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 pGrafico->fecharJanela();
         }
+        */
+        pGerenciaEventos->verificarEventos();
         pGrafico->limparJanela();
         //pGrafico->getWindow()->draw(sprite); // fundo
 

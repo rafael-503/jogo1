@@ -5,12 +5,15 @@
 #include "Entidades/Obstaculos/Obstaculo.h"
 #include "Gerenciadores/GerenciadorGrafico.h"
 #include "Gerenciadores/Gerenciador_Colisoes.h"
+#include "Gerenciadores/GerenciadorEvento.h"
 #include "Listas/ListaEntidades.h"
 
 class Principal {
     private:
         Gerenciadores::GerenciadorGrafico* pGrafico;
         Gerenciadores::Gerenciador_Colisoes* pGerencia_Colisoes;
+        Gerenciadores::GerenciadorEvento* pGerenciaEventos;
+
     public:
         Principal();
         ~Principal();

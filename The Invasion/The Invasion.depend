@@ -418,16 +418,17 @@
 	"stdafx.h"
 	"Jogador.h"
 
-1684591428 c:\users\ariel\onedrive\documentos\jogo\the invasion\principal.h
+1684794713 c:\users\ariel\onedrive\documentos\jogo\the invasion\principal.h
 	"stdafx.h"
 	"Entidades/Personagens/Jogador.h"
 	"Entidades/Personagens/Inimigo.h"
 	"Entidades/Obstaculos/Obstaculo.h"
 	"Gerenciadores/GerenciadorGrafico.h"
 	"Gerenciadores/Gerenciador_Colisoes.h"
+	"Gerenciadores/GerenciadorEvento.h"
 	"Listas/ListaEntidades.h"
 
-1684591428 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\principal.cpp
+1684794845 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\principal.cpp
 	"stdafx.h"
 	"Principal.h"
 	<iostream>
@@ -481,7 +482,7 @@
 	"../stdafx.h"
 	"Obstaculo.h"
 
-1684591428 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\jogador.h
+1684794332 c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\jogador.h
 	"../../stdafx.h"
 	<SFML/Graphics.hpp>
 	"Personagem.h"
@@ -512,7 +513,7 @@
 	"Jogador.h"
 	<math.h>
 
-1684785435 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\jogador.cpp
+1684794701 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\personagens\jogador.cpp
 	"../../stdafx.h"
 	"Jogador.h"
 
@@ -572,7 +573,7 @@
 1684591428 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\plataforma.cpp
 	"Plataforma.h"
 
-1684785940 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\caixa.cpp
+1684785997 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\caixa.cpp
 	"Caixa.h"
 
 1684591428 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\entidades\obstaculos\espinhos.cpp
@@ -600,7 +601,7 @@
 1684591428 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\fases\fase.cpp
 	"Fase.h"
 
-1684591428 c:\users\ariel\onedrive\documentos\jogo\the invasion\fases\fase.h
+1684796790 c:\users\ariel\onedrive\documentos\jogo\the invasion\fases\fase.h
 	"../Ente.h"
 	"../Listas/ListaEntidades.h"
 	"../Gerenciadores/Gerenciador_Colisoes.h"
@@ -616,4 +617,10 @@
 
 1684591428 c:\users\ariel\onedrive\documentos\jogo\the invasion\fases\fase2.h
 	"Fase.h"
+
+1684794894 source:c:\users\ariel\onedrive\documentos\jogo\the invasion\gerenciadores\gerenciadorevento.cpp
+	"GerenciadorEvento.h"
+
+1684794494 c:\users\ariel\onedrive\documentos\jogo\the invasion\gerenciadores\gerenciadorevento.h
+	"../Entidades/Personagens/Jogador.h"
 

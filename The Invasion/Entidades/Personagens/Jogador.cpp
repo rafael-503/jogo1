@@ -23,6 +23,8 @@ Jogador::~Jogador() {}
 
 void Jogador::executar() {
 
+    /*
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         corpo.move(-vel.x, 0.0f);
     }
@@ -33,10 +35,28 @@ void Jogador::executar() {
         vel.y = -10.0f;
         corpo.move(0.0f, vel.y);
     }
+    */
     efeitoGravidade();
 
 
 }
+void Jogador::move(bool Direita, bool pulo){
+
+    if(pulo){
+        if (!SuspensoNoAR) {
+            vel.y = -10.0f;
+            corpo.move(0.0f, vel.y);
+        }
+    }
+    else{
+        if (Direita)
+            corpo.move(vel.x, 0.0f);
+        else
+            corpo.move(-vel.x, 0.0f);
+    }
+
+}
+
 
 void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
 
