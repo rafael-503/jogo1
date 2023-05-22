@@ -8,7 +8,7 @@
 #include "Entidades/Personagens/Cachorro.h"
 #include "Entidades/Personagens/Lenhador.h"
 #include "Entidades/Personagens/Soldado.h"
-
+#include "Fases/Fase1.h"
 
 using namespace Entidades;
 using namespace Personagens;
@@ -27,7 +27,8 @@ Principal::~Principal(){}
 
 void Principal::executar(){
 
-    Soldado inimigo(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(80.0f, 80.0f));
+    /*
+    Cachorro inimigo(sf::Vector2f(60.0f, 60.0f), sf::Vector2f(180.0f, 180.0f));
     Jogador jogador(sf::Vector2f(80.0f, 80.0f));
     inimigo.setJogador(&jogador);
 
@@ -38,7 +39,6 @@ void Principal::executar(){
 
     Jogador* pJogador = &jogador;
     Inimigo* pInimigo = &inimigo;
-
     
     pGerencia_Colisoes->incluiInimigo(pInimigo);
     pEntidade = static_cast<Entidade*> (pJogador);
@@ -46,6 +46,7 @@ void Principal::executar(){
     pEntidade = static_cast<Entidade*> (pInimigo);
     listaEntidades.inserir(pEntidade);
 
+    //pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
 
     pObstaculo = new Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
     pGerencia_Colisoes->incluiObstaculo(pObstaculo);
@@ -86,7 +87,10 @@ void Principal::executar(){
     pGerencia_Colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-    
+    */
+    Fases::Fase1 fase1;
+    //fase1();
+
     while (pGrafico->verificarJanelaAberta())
     {
         sf::Event event;
@@ -97,14 +101,14 @@ void Principal::executar(){
         }
         pGrafico->limparJanela();
         //pGrafico->getWindow()->draw(sprite); // fundo
-
-        listaEntidades.executar();
-        pGerencia_Colisoes->testa_colisoes(&jogador);
-        listaEntidades.seDesenhe();
+        fase1.executar();
+        //listaEntidades.executar();
+        //pGerencia_Colisoes->testa_colisoes(&jogador);
+        //listaEntidades.seDesenhe();
 
         sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
         sf::sleep(tempo_por_frame);
         pGrafico->mostrarElementos();
     }
-    listaEntidades.esvaziar();
+    //listaEntidades.esvaziar();
 }
