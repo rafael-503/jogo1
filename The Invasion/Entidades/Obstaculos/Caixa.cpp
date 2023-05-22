@@ -17,19 +17,27 @@ void Caixa::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
 
     int ID_aux = pOutra->getID();
     //colidiu com obstaculo
+    //colisão com jogador
+    if(ID_aux == 1 && Colidiu_em_x){
+        sf::Vector2f posCaixa = getPosition(), posOutra = pOutra->getPosition();
+        if(posCaixa.x > posOutra.x)
+            corpo.move(-DistExt.x, 0.0f);
+        else
+            corpo.move(DistExt.x, 0.0f);
 
+    }
 
-    if(ID_aux >= 5 && ID_aux <=7){
+    else if(ID_aux >= 5 && ID_aux <=7){
         sf::Vector2f posCaixa = getPosition(), posOutra = pOutra->getPosition();
         if(!Colidiu_em_x){
             corpo.move(0.0f, DistExt.y);
             SuspensoNoAR = false;
         }
         else{
-            if(posCaixa.x > posOutra.x)
-                corpo.move(0.0f, DistExt.x);
+           if(posCaixa.x > posOutra.x)
+                corpo.move(-DistExt.x, 0.0f);
             else
-                corpo.move(0.0f, DistExt.x);
+                corpo.move(DistExt.x, 0.0f);
         }
 
     }

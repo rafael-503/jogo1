@@ -61,10 +61,12 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
             }
         }
         else    {
-            if (posJogador.x < posOutro.x)
-                corpo.move(DistExt.x, 0.0f);
-            else
-                corpo.move(-DistExt.x, 0.0f);
+            if(ID_aux != 6){
+                if (posJogador.x < posOutro.x)
+                    corpo.move(DistExt.x, 0.0f);
+                else
+                    corpo.move(-DistExt.x, 0.0f);
+            }
 
         }
 
