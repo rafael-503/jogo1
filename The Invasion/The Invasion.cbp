@@ -70,6 +70,10 @@
 		<Unit filename="Entidades/Personagens/Soldado.h" />
 		<Unit filename="Fases/Fase.cpp" />
 		<Unit filename="Fases/Fase.h" />
+		<Unit filename="Fases/Fase1.cpp" />
+		<Unit filename="Fases/Fase1.h" />
+		<Unit filename="Fases/Fase2.cpp" />
+		<Unit filename="Fases/Fase2.h" />
 		<Unit filename="Gerenciadores/GerenciadorGrafico.cpp" />
 		<Unit filename="Gerenciadores/GerenciadorGrafico.h" />
 		<Unit filename="Gerenciadores/Gerenciador_Colisoes.cpp" />

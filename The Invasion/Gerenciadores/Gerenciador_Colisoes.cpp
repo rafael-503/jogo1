@@ -3,7 +3,7 @@
 
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
 Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes() {
-    
+
 }
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
     delete pGerenciador_Colisoes;
@@ -75,6 +75,8 @@ void Gerenciadores::Gerenciador_Colisoes::testa_colisoes(Personagens::Jogador* p
                     else
                         Colidiu_em_x = true;
                     pEntiJogador->colisao(pEnti_1, DistanciaExtremidades, Colidiu_em_x);
+                    pEnti_1->colisao(pEntiJogador, DistanciaExtremidades, Colidiu_em_x);
+
                 }
             }
             else
