@@ -75,6 +75,9 @@
     <ClCompile Include="The Invasion\Fases\Fase2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="The Invasion\Gerenciadores\GerenciadorEvento.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="the invasion\Ente.h">
@@ -138,6 +141,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="The Invasion\Fases\Fase2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Gerenciadores\GerenciadorEvento.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
