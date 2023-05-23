@@ -54,14 +54,21 @@ sf::Texture GerenciadorGrafico::carregarTextura(const char* caminho){
 }
 
 void GerenciadorGrafico::carregarFundo(const std::string& caminho) {
+	sf::Texture textura;
+	if (!textura.loadFromFile(caminho)) {
+		// Tratar erro de carregamento da textura, se necessário
+		return;
+	}
+
 	sf::Sprite sprite;
-	sprite.setTexture(pGrafico->carregarTextura(caminho.c_str()));
+	sprite.setTexture(textura);
 	sprite.setPosition(0, 0);
 
-	sf::Vector2u windowSize = pGrafico->getWindow()->getSize();
+	sf::Vector2u windowSize = getWindow()->getSize();
 	sprite.setScale(
 		static_cast<float>(windowSize.x) / sprite.getTexture()->getSize().x,
 		static_cast<float>(windowSize.y) / sprite.getTexture()->getSize().y
 	);
-	pGrafico->getWindow()->draw(sprite);
+
+	getWindow()->draw(sprite);
 }

@@ -87,7 +87,7 @@ void Principal::executar(){
     pGerenciaEventos->setJogador(pJogador);
     */
     Fases::Fase1 fase1;
-    
+    fase1.executar();
     while (pGrafico->verificarJanelaAberta())
     {
         /*

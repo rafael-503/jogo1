@@ -12,16 +12,16 @@ Fase1::~Fase1() {
 }
 
 void Fase1::executar() {
-	//listaObstaculos.executar();
-	//listaPersonagens.executar();
 	pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
+	listaObstaculos.executar();
+	listaPersonagens.executar();
 
 	//gerenciarColisoes();
-	//criarPersonagens();
+	criarPersonagens();
 	//criarObstaculos();
 
 	//listaObstaculos.seDesenhe();
-	//listaPersonagens.seDesenhe();
+	listaPersonagens.seDesenhe();
 }
 
 void Fase1::criarPersonagens() {
