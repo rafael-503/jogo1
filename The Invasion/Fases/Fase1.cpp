@@ -2,9 +2,7 @@
 using namespace Fases;
 
 Fase1::Fase1() {
-	pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
-	//criarPersonagens();
-	//criarObstaculos();
+
 }
 
 Fase1::~Fase1() {
@@ -12,7 +10,7 @@ Fase1::~Fase1() {
 }
 
 void Fase1::executar() {
-	//pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
+	pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
 	listaObstaculos.executar();
 	listaPersonagens.executar();
 
