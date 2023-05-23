@@ -15,11 +15,11 @@ void Fase1::executar() {
 	listaPersonagens.executar();
 
 	//gerenciarColisoes();
-	//criarPersonagens();
+	criarPersonagens();
 	//criarObstaculos();
 
+	//listaPersonagens.seDesenhe();
 	//listaObstaculos.seDesenhe();
-	//.seDesenhe();
 }
 
 void Fase1::criarPersonagens() {
