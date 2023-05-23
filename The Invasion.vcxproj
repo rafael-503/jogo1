@@ -131,6 +131,7 @@
     <ClCompile Include="The Invasion\Fases\Fase.cpp" />
     <ClCompile Include="The Invasion\Fases\Fase1.cpp" />
     <ClCompile Include="The Invasion\Fases\Fase2.cpp" />
+    <ClCompile Include="The Invasion\Gerenciadores\GerenciadorEvento.cpp" />
     <ClCompile Include="The Invasion\Gerenciadores\GerenciadorGrafico.cpp" />
     <ClCompile Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.cpp" />
     <ClCompile Include="The Invasion\Listas\ListaEntidades.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="The Invasion\Fases\Fase.h" />
     <ClInclude Include="The Invasion\Fases\Fase1.h" />
     <ClInclude Include="The Invasion\Fases\Fase2.h" />
+    <ClInclude Include="The Invasion\Gerenciadores\GerenciadorEvento.h" />
     <ClInclude Include="The Invasion\Gerenciadores\GerenciadorGrafico.h" />
     <ClInclude Include="The Invasion\Gerenciadores\Gerenciador_Colisoes.h" />
     <ClInclude Include="The Invasion\Listas\Lista.h" />
