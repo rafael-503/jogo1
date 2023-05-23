@@ -19,7 +19,8 @@ namespace Entidades{
     public:
         Entidade(sf::Vector2f tam_corpo);
         ~Entidade();
-        sf::RectangleShape getCorpo();
+        //sf::RectangleShape getCorpo();
+        const sf::RectangleShape& getCorpo() const;
         float getMassa() const;
         void setMassa(float Massa);
         void efeitoGravidade();

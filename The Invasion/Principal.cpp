@@ -15,7 +15,10 @@ using namespace Personagens;
 using namespace Obstaculos;
 
 //Gerenciadores::GerenciadorGrafico* Principal::pGrafico = NULL;
-Principal::Principal(): pGrafico(pGrafico->getGerenciadorGrafico()), pGerencia_Colisoes(pGerencia_Colisoes->getGerenciador_Colisoes()){
+Principal::Principal():
+    pGrafico(pGrafico->getGerenciadorGrafico()), pGerencia_Colisoes(pGerencia_Colisoes->getGerenciador_Colisoes()),
+    pGerenciaEventos(pGerenciaEventos->getGerenciadorEvento())
+{
     if (pGrafico == NULL) {
         std::cout << "Erro ao criar o gerenciador gráfico" << std::endl;
         exit(1);
@@ -26,9 +29,8 @@ Principal::Principal(): pGrafico(pGrafico->getGerenciadorGrafico()), pGerencia_C
 Principal::~Principal(){}
 
 void Principal::executar(){
-
-    /*
-    Cachorro inimigo(sf::Vector2f(60.0f, 60.0f), sf::Vector2f(180.0f, 180.0f));
+/*
+    Soldado inimigo(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(80.0f, 80.0f));
     Jogador jogador(sf::Vector2f(80.0f, 80.0f));
     inimigo.setJogador(&jogador);
 
@@ -39,6 +41,7 @@ void Principal::executar(){
 
     Jogador* pJogador = &jogador;
     Inimigo* pInimigo = &inimigo;
+
     
     pGerencia_Colisoes->incluiInimigo(pInimigo);
     pEntidade = static_cast<Entidade*> (pJogador);
@@ -46,7 +49,6 @@ void Principal::executar(){
     pEntidade = static_cast<Entidade*> (pInimigo);
     listaEntidades.inserir(pEntidade);
 
-    //pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
 
     pObstaculo = new Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
     pGerencia_Colisoes->incluiObstaculo(pObstaculo);
@@ -72,12 +74,7 @@ void Principal::executar(){
     pGerencia_Colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
-    // 
-    //pObstaculo = new Plataforma(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
-    //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    //pEntidade = static_cast<Entidade*> (pObstaculo);
-    //listaEntidades.inserir(pEntidade);
-    //
+
     pObstaculo = new Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 350.0f));
     pGerencia_Colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
@@ -87,21 +84,25 @@ void Principal::executar(){
     pGerencia_Colisoes->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaEntidades.inserir(pEntidade);
+    pGerenciaEventos->setJogador(pJogador);
     */
     Fases::Fase1 fase1;
-    //fase1();
-
+    
     while (pGrafico->verificarJanelaAberta())
     {
+        /*
         sf::Event event;
 
         if(pGrafico->getWindow()->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 pGrafico->fecharJanela();
         }
+        */
+        pGerenciaEventos->verificarEventos();
         pGrafico->limparJanela();
-        //pGrafico->getWindow()->draw(sprite); // fundo
+        // // // //pGrafico->getWindow()->draw(sprite); // fundo
         fase1.executar();
+
         //listaEntidades.executar();
         //pGerencia_Colisoes->testa_colisoes(&jogador);
         //listaEntidades.seDesenhe();

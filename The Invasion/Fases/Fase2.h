@@ -7,7 +7,7 @@ namespace Fases {
 		Fase2();
 		~Fase2();
 		void executar();
-		void criarEntidades();
+		void criarPersonagens();
 		void criarObstaculos();
 	};
 }

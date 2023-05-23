@@ -3,9 +3,8 @@ using namespace Fases;
 
 Fase1::Fase1() {
 	pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
-	criarEntidades();
-	criarObstaculos();
-  
+	//criarPersonagens();
+	//criarObstaculos();
 }
 
 Fase1::~Fase1() {
@@ -13,65 +12,32 @@ Fase1::~Fase1() {
 }
 
 void Fase1::executar() {
-    listaObstaculos.executar();
-    listaPersonagens.executar();
+	//listaObstaculos.executar();
+	//listaPersonagens.executar();
+	pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
 
-    listaObstaculos.seDesenhe();
-    listaPersonagens.seDesenhe();
+	//gerenciarColisoes();
+	//criarPersonagens();
+	//criarObstaculos();
+
+	//listaObstaculos.seDesenhe();
+	//listaPersonagens.seDesenhe();
 }
 
-void Fase1::criarEntidades() {
-    /*
-	Entidades::Personagens::Cachorro inimigo(sf::Vector2f(60.0f, 60.0f), sf::Vector2f(180.0f, 180.0f));
+void Fase1::criarPersonagens() {
+	Entidades::Personagens::Cachorro cachorro(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(80.0f, 80.0f));
 	Entidades::Personagens::Jogador jogador(sf::Vector2f(80.0f, 80.0f));
-	inimigo.setJogador(&jogador);
+	cachorro.setJogador(&jogador);
 
-	Entidade* pEntidade = NULL;
-	Entidades::Personagens::Jogador* pJogador = &jogador;
-	Entidades::Personagens::Inimigo* pInimigo = &inimigo;
-
-	//pGerencia_Colisoes->incluiInimigo(pInimigo);
-	pEntidade = static_cast<Entidade*> (pJogador);
-	listaPersonagens.inserir(pEntidade);
-	pEntidade = static_cast<Entidade*> (pInimigo);
-	listaPersonagens.inserir(pEntidade);*/
+	listaPersonagens.inserir(&cachorro);
+	listaPersonagens.inserir(&jogador);
 }
 
-void Fase1::criarObstaculos() {/*
-    Entidade* pEntidade = NULL;
-    Entidades::Obstaculos::Obstaculo* pObstaculo = NULL;
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
-    //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
 
-    pObstaculo = new Entidades::Obstaculos::Espinhos(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
-    //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
+void Fase1::criarObstaculos() {
 
-    pObstaculo = new Entidades::Obstaculos::Caixa(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(900.0f, 450.0f));
-    //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
+	Entidades::Obstaculos::Plataforma* plat = new Entidades::Obstaculos::Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
+	//pGerencia_Colisoes->incluiObstaculo(pObstaculo);
+	listaObstaculos.inserir(static_cast<Entidade*> (plat));
 
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 600.0f));
-    //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(500.0f, 500.0f));
-    //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 350.0f));
-    //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(800.0f, 600.0f));
-    //->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);*/
 }

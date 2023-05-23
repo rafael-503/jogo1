@@ -10,7 +10,7 @@ Entidade::Entidade(sf::Vector2f tam_corpo) :
 
 Entidade::~Entidade() {}
 
-sf::RectangleShape Entidade::getCorpo() {
+const sf::RectangleShape& Entidade::getCorpo() const {
     return corpo;
 }
 
