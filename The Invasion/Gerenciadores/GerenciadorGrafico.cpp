@@ -5,11 +5,12 @@ using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;
 GerenciadorGrafico::GerenciadorGrafico() : window(new sf::RenderWindow(sf::VideoMode(TAM_X, TAM_Y), "The Invasion")),
-    view(sf::FloatRect(0.0f, 0.0f, TAM_X, TAM_Y)), flag(true)
+    view(sf::FloatRect(0.0f, 0.0f, TAM_X, TAM_Y)), pTextFundo(NULL)
 {
 	if (window == NULL)
 		std::cout << "Erro ao criar a janela" << std::endl;
-    window->setView(view);
+   // window->setView(view);
+
 }
 
 GerenciadorGrafico::~GerenciadorGrafico(){
@@ -17,6 +18,8 @@ GerenciadorGrafico::~GerenciadorGrafico(){
 		delete window;
 		window = NULL;
 	}
+	if(pTextFundo)
+        delete pTextFundo;
 }
 
 GerenciadorGrafico* GerenciadorGrafico::getGerenciadorGrafico(){
@@ -39,13 +42,15 @@ void GerenciadorGrafico::desenharElemento(sf::RectangleShape corpo) {
 void GerenciadorGrafico::desenharElemento(sf::Text texto){
     window->draw(texto);
 }
+void GerenciadorGrafico::desenharElemento(sf::Sprite sprite){
+    window->draw(sprite);
+}
 void GerenciadorGrafico::setView(sf::View view){
     window->setView(view);
 }
 
 
 void GerenciadorGrafico::mostrarElementos() {
-	//getWindow()->draw(sprite);
 	window->display();
 }
 
@@ -65,25 +70,18 @@ sf::Texture GerenciadorGrafico::carregarTextura(const char* caminho){
 	return textura;
 }
 
-void GerenciadorGrafico::carregarFundo(const char* caminho) {
-	flag = true;
-	if (!tex.loadFromFile(caminho)) {
-		std::cout << "Erro ao carregar a textura" << std::endl;
-		flag = false;
-	}
+sf::Sprite GerenciadorGrafico::carregarFundo(const char* caminho) {
+	//sprite.setTexture(pGrafico->carregarTextura(caminho.c_str()));
+    pTextFundo = new sf::Texture(carregarTextura(caminho));
 
-	sprite.setTexture(tex);
-	sprite.setPosition(0, 0);
+	sf::Sprite sprite(*pTextFundo);
+   // pSprite->setTexture(textura);
+	sprite.setPosition(0.0f, 0.0f);
 
 	sf::Vector2u windowSize = pGrafico->getWindow()->getSize();
 	sprite.setScale(
 		static_cast<float>(windowSize.x) / sprite.getTexture()->getSize().x,
 		static_cast<float>(windowSize.y) / sprite.getTexture()->getSize().y
 	);
-	getWindow()->draw(sprite);
-}
-
-void GerenciadorGrafico::atalizaFundo() {
-	if (flag)
-		getWindow()->draw(sprite);
+	return sprite;
 }

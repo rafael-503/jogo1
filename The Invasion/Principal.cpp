@@ -4,6 +4,7 @@
 #include "Fases/Fase1.h"
 #include "Fases/Fase2.h"
 
+#define FUNDO "assets/fundo/fundo1.png"
 #define FONTE "assets/fontes/Black Future.OTF"
 
 
@@ -43,14 +44,32 @@ void Principal::executar(){
 
     Fases::Fase1 fase;
 
+ /*
+   // sf::Sprite sprite = pGrafico->carregarFundo(FUNDO); // fundo
+    sf::Texture textura = pGrafico->carregarTextura(FUNDO);
+   	sf::Sprite sprite;
+	//sprite.setTexture(pGrafico->carregarTextura(caminho.c_str()));
+    sprite.setTexture(textura);
+	sprite.setPosition(0, 0);
+
+	sf::Vector2u windowSize = pGrafico->getWindow()->getSize();
+	sprite.setScale(
+		static_cast<float>(windowSize.x) / sprite.getTexture()->getSize().x,
+		static_cast<float>(windowSize.y) / sprite.getTexture()->getSize().y
+	);
+
+*/
+    sf::Sprite sprite(pGrafico->carregarFundo(FUNDO));
+
     while (pGrafico->verificarJanelaAberta())
     {
         pGerenciaEventos->verificarEventos();
+
         pGrafico->limparJanela();
-        pGrafico->atalizaFundo();
+        pGrafico->desenharElemento(sprite);
+
 
         fase.executar();
-
         sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
         sf::sleep(tempo_por_frame);
         pGrafico->mostrarElementos();

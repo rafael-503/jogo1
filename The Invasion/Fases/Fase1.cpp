@@ -2,7 +2,7 @@
 using namespace Fases;
 
 Fase1::Fase1() {
-	pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
+	pGrafico->carregarFundo("assets/fundo/fundo1.png");
 	criarPersonagens();
 	criarObstaculos();
 }
@@ -51,36 +51,6 @@ void Fase1::criarObstaculos() {
     Entidades::Obstaculos::Obstaculo* pObstaculo = NULL;
 
     pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Espinhos(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Caixa(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(900.0f, 450.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 600.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(500.0f, 500.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 350.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(800.0f, 600.0f));
     pColisao->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaObstaculos.inserir(pEntidade);
