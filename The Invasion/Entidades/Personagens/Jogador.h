@@ -2,6 +2,7 @@
 #include "../../stdafx.h"
 #include <SFML/Graphics.hpp>
 #include "Personagem.h"
+#define JOGADOR "The invasion/assets/personagem/jogador/personagem.png"
 
 namespace Entidades {
 

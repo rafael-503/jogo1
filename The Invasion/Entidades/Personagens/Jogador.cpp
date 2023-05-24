@@ -16,7 +16,7 @@ Jogador::Jogador(sf::Vector2f tam_corpo) :
     setMassa(60.0f);
     setVelocidade(sf::Vector2f(10.0f, 0.0f));
 
-    textura = pGrafico->carregarTextura("assets/personagem/jogador/personagem.png");
+    textura = pGrafico->carregarTextura(JOGADOR);
     corpo.setTexture(&textura);
 }
 Jogador::~Jogador() {}

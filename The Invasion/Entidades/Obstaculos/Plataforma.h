@@ -1,5 +1,5 @@
 #pragma once
-#define PLATAFORMA "assets/obstaculos/plataforma1.png"
+#define PLATAFORMA "The invasion/assets/obstaculos/plataforma1.png"
 #include "Obstaculo.h"
 
 namespace Entidades {

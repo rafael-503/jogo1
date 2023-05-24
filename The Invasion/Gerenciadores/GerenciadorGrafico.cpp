@@ -45,6 +45,7 @@ void GerenciadorGrafico::setView(sf::View view){
 
 
 void GerenciadorGrafico::mostrarElementos() {
+	//getWindow()->draw(sprite);
 	window->display();
 }
 
@@ -64,9 +65,14 @@ sf::Texture GerenciadorGrafico::carregarTextura(const char* caminho){
 	return textura;
 }
 
-void GerenciadorGrafico::carregarFundo(const std::string& caminho) {
-	sf::Sprite sprite;
-	sprite.setTexture(pGrafico->carregarTextura(caminho.c_str()));
+void GerenciadorGrafico::carregarFundo(const char* caminho) {
+	flag = true;
+	if (!tex.loadFromFile(caminho)) {
+		std::cout << "Erro ao carregar a textura" << std::endl;
+		flag = false;
+	}
+
+	sprite.setTexture(tex);
 	sprite.setPosition(0, 0);
 
 	sf::Vector2u windowSize = pGrafico->getWindow()->getSize();
@@ -74,5 +80,10 @@ void GerenciadorGrafico::carregarFundo(const std::string& caminho) {
 		static_cast<float>(windowSize.x) / sprite.getTexture()->getSize().x,
 		static_cast<float>(windowSize.y) / sprite.getTexture()->getSize().y
 	);
-	pGrafico->getWindow()->draw(sprite);
+	getWindow()->draw(sprite);
+}
+
+void GerenciadorGrafico::atalizaFundo() {
+	if (flag)
+		getWindow()->draw(sprite);
 }

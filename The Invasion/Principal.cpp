@@ -43,12 +43,11 @@ void Principal::executar(){
 
     Fases::Fase1 fase;
 
-
     while (pGrafico->verificarJanelaAberta())
     {
         pGerenciaEventos->verificarEventos();
         pGrafico->limparJanela();
-        //pGrafico->getWindow()->draw(sprite); // fundo
+        pGrafico->atalizaFundo();
 
         fase.executar();
 
