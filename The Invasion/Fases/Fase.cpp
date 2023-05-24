@@ -7,7 +7,6 @@ Fase::Fase(): pColisao(pColisao->getGerenciador_Colisoes()), pEventos(pEventos->
 
 Fase::~Fase() {
 	if (pColisao) {
-	delete pColisao;
 		delete pColisao;
 		pColisao = NULL;
 	}

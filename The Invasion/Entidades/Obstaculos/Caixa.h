@@ -1,6 +1,6 @@
 #pragma once
 #include "Obstaculo.h"
-#define CAIXA "The Invasion/assets/obstaculos/caixa.png"
+#define CAIXA "assets/obstaculos/caixa.png"
 
 namespace Entidades {
 	namespace Obstaculos {
