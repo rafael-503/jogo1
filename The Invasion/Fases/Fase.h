@@ -2,6 +2,15 @@
 #include "../Ente.h"
 #include "../Listas/ListaEntidades.h"
 #include "../Gerenciadores/Gerenciador_Colisoes.h"
+#include "../Entidades/Personagens/Jogador.h"
+// Inimigos
+#include "../Entidades/Personagens/Cachorro.h"
+#include "../Entidades/Personagens/Soldado.h"
+#include "../Entidades/Personagens/Lenhador.h"
+// Obstaculos
+#include "../Entidades/Obstaculos/Caixa.h"
+#include "../Entidades/Obstaculos/Plataforma.h"
+#include "../Entidades/Obstaculos/Espinhos.h"
 
 namespace Fases {
 	class Fase : public Ente {
