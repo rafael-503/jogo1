@@ -5,7 +5,7 @@ using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;
 GerenciadorGrafico::GerenciadorGrafico() : window(new sf::RenderWindow(sf::VideoMode(TAM_X, TAM_Y), "The Invasion")),
-    view(sf::FloatRect(0.0f, 0.0f, TAM_X, TAM_Y))
+    view(sf::FloatRect(0.0f, 0.0f, TAM_X, TAM_Y)), flag(true)
 {
 	if (window == NULL)
 		std::cout << "Erro ao criar a janela" << std::endl;
