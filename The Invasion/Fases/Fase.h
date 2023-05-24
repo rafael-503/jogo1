@@ -14,8 +14,9 @@ namespace Fases {
 			Fase();
 			~Fase();
 			void gerenciarColisoes();
-			virtual void executar();
-			virtual void criarInimigos() = 0;
+			virtual void atualizar() = 0;
+			virtual void esvaziar() = 0;
+			virtual void criarPersonagens() = 0;
 			virtual void criarObstaculos() = 0;
 	};
 }
