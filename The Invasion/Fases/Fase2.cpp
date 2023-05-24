@@ -11,7 +11,7 @@ Fase2::~Fase2() {
 
 }
 
-void Fase2::atualizar() {
+void Fase2::executar() {
 	listaPersonagens.executar();
 	listaObstaculos.executar();
 

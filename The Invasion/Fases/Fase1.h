@@ -6,7 +6,7 @@ namespace Fases {
 	public:
 		Fase1();
 		~Fase1();
-		void atualizar();
+		void executar();
 		void esvaziar();
 		void criarPersonagens();
 		void criarObstaculos();

@@ -11,7 +11,7 @@ Fase1::~Fase1() {
  
 }
 
-void Fase1::atualizar() {
+void Fase1::executar() {
 	listaPersonagens.executar();
 	listaObstaculos.executar();
     //pColisao->testa_colisoes(&jogador);
