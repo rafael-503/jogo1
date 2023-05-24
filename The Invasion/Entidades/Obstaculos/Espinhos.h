@@ -1,6 +1,6 @@
 #pragma once
 #include "Obstaculo.h"
-#define ESPINHOS "assets/obstaculos/espinhos.png"
+#define ESPINHOS "The invasion/assets/obstaculos/espinhos.png"
 
 namespace Entidades {
 	namespace Obstaculos {
