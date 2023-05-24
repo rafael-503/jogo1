@@ -2,7 +2,6 @@
 #include "../Entidades/Personagens/Jogador.h"
 
 
-
 namespace Gerenciadores {
 
     class GerenciadorEvento {

@@ -2,7 +2,7 @@
 
 
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
-Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes() {
+Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogador(NULL) {
 
 }
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
@@ -26,7 +26,7 @@ void Gerenciadores::Gerenciador_Colisoes::incluiObstaculo(Obstaculos::Obstaculo*
     else
         cout << "erro: incluindo ponteiro nulo no vetor_obstaculos do Gerenciador de colisoes" << endl;
 }
-void Gerenciadores::Gerenciador_Colisoes::testa_colisoes(Personagens::Jogador* pJogador) {
+void Gerenciadores::Gerenciador_Colisoes::testa_colisoes() {
     if (pJogador) {
 
         Entidade* pEntiJogador = static_cast<Entidade*> (pJogador);
@@ -180,5 +180,8 @@ sf::Vector2f Gerenciadores::Gerenciador_Colisoes::Calcula_colisao(Entidade* pEnt
 
 }
 
+void Gerenciadores::Gerenciador_Colisoes::setJogador(Personagens::Jogador* pJogaAux){
+    pJogador = pJogaAux;
+}
 
 

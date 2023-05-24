@@ -1,13 +1,10 @@
 #include "stdafx.h"
 #include "Principal.h"
 #include <iostream>
-#include "Listas/Lista.h"
-#include "Entidades/Obstaculos/Plataforma.h"
-#include "Entidades/Obstaculos/Espinhos.h"
-#include "Entidades/Obstaculos/Caixa.h"
-#include "Entidades/Personagens/Cachorro.h"
-#include "Entidades/Personagens/Lenhador.h"
-#include "Entidades/Personagens/Soldado.h"
+#include "Fases/Fase1.h"
+#include "Fases/Fase2.h"
+
+#define FONTE "assets/fontes/Black Future.OTF"
 
 
 using namespace Entidades;
@@ -30,88 +27,33 @@ Principal::~Principal(){}
 
 void Principal::executar(){
 
-    Soldado inimigo(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(80.0f, 80.0f));
-    Jogador jogador(sf::Vector2f(80.0f, 80.0f));
-    inimigo.setJogador(&jogador);
+/*
 
-    Entidade* pEntidade = NULL;
-    Listas::ListaEntidades listaEntidades;
+    TESTE DE TEXTOS
+    sf::Font blackFuture;
+    blackFuture.loadFromFile(FONTE);
 
-    Obstaculo* pObstaculo = NULL;
-
-    Jogador* pJogador = &jogador;
-    Inimigo* pInimigo = &inimigo;
-
-
-    pGerencia_Colisoes->incluiInimigo(pInimigo);
-    pEntidade = static_cast<Entidade*> (pJogador);
-    listaEntidades.inserir(pEntidade);
-    pEntidade = static_cast<Entidade*> (pInimigo);
-    listaEntidades.inserir(pEntidade);
+    sf::Text teste("TESTE", blackFuture, 10);
+    teste.setOrigin(0.0f, 0.0f);
+    teste.scale(sf::Vector2f(20.0f, 20.0f));
+    teste.setFillColor(sf::Color::White);
 
 
-    pObstaculo = new Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
-    pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaEntidades.inserir(pEntidade);
+*/
 
-    pObstaculo = new Espinhos(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
-    pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaEntidades.inserir(pEntidade);
+    Fases::Fase1 fase;
 
-    pObstaculo = new Caixa(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(900.0f, 450.0f));
-    pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaEntidades.inserir(pEntidade);
-
-    pObstaculo = new Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 600.0f));
-    pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaEntidades.inserir(pEntidade);
-
-    pObstaculo = new Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(500.0f, 500.0f));
-    pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaEntidades.inserir(pEntidade);
-    //
-    //pObstaculo = new Plataforma(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(700.0f, 400.0f));
-    //pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    //pEntidade = static_cast<Entidade*> (pObstaculo);
-    //listaEntidades.inserir(pEntidade);
-    //
-    pObstaculo = new Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 350.0f));
-    pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaEntidades.inserir(pEntidade);
-
-    pObstaculo = new Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(800.0f, 600.0f));
-    pGerencia_Colisoes->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaEntidades.inserir(pEntidade);
-    pGerenciaEventos->setJogador(pJogador);
 
     while (pGrafico->verificarJanelaAberta())
     {
-        /*
-        sf::Event event;
-
-        if(pGrafico->getWindow()->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                pGrafico->fecharJanela();
-        }
-        */
         pGerenciaEventos->verificarEventos();
         pGrafico->limparJanela();
         //pGrafico->getWindow()->draw(sprite); // fundo
 
-        listaEntidades.executar();
-        pGerencia_Colisoes->testa_colisoes(&jogador);
-        listaEntidades.seDesenhe();
+        fase.executar();
 
         sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
         sf::sleep(tempo_por_frame);
         pGrafico->mostrarElementos();
     }
-    listaEntidades.esvaziar();
 }

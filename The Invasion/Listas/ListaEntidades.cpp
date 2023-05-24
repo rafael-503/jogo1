@@ -11,13 +11,8 @@ void ListaEntidades::inserir(Entidade* pE){
     LEs.inserir(pE);
 }
 void ListaEntidades::percorrer(){
-
-
    for(int i = 0; i < LEs.getSize(); i++)
         cout << LEs[i]->getTipo() << endl;
-
-
-
 }
 void ListaEntidades::executar(){
 

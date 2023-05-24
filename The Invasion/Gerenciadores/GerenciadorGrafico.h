@@ -9,6 +9,7 @@ namespace Gerenciadores {
 		sf::RenderWindow* window;
 		static GerenciadorGrafico* pGrafico;
 		GerenciadorGrafico();
+		sf::View view;
 
 	public:
 		~GerenciadorGrafico();
@@ -16,8 +17,10 @@ namespace Gerenciadores {
 		sf::RenderWindow* getWindow();
 		void limparJanela();
 		void desenharElemento(sf::RectangleShape corpo);
+		void desenharElemento(sf::Text texto);
 		void mostrarElementos();
 		void fecharJanela();
+		void setView(sf::View view);
 		const bool verificarJanelaAberta();
 		sf::Texture carregarTextura(const char* caminho);
 		void carregarFundo(const std::string& caminho);

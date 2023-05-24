@@ -4,9 +4,12 @@
 using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;
-GerenciadorGrafico::GerenciadorGrafico() : window(new sf::RenderWindow(sf::VideoMode(TAM_X, TAM_Y), "The Invasion")) {
+GerenciadorGrafico::GerenciadorGrafico() : window(new sf::RenderWindow(sf::VideoMode(TAM_X, TAM_Y), "The Invasion")),
+    view(sf::FloatRect(0.0f, 0.0f, TAM_X, TAM_Y))
+{
 	if (window == NULL)
 		std::cout << "Erro ao criar a janela" << std::endl;
+    window->setView(view);
 }
 
 GerenciadorGrafico::~GerenciadorGrafico(){
@@ -33,10 +36,18 @@ void GerenciadorGrafico::limparJanela() {
 void GerenciadorGrafico::desenharElemento(sf::RectangleShape corpo) {
 	window->draw(corpo);
 }
+void GerenciadorGrafico::desenharElemento(sf::Text texto){
+    window->draw(texto);
+}
+void GerenciadorGrafico::setView(sf::View view){
+    window->setView(view);
+}
+
 
 void GerenciadorGrafico::mostrarElementos() {
 	window->display();
 }
+
 
 void GerenciadorGrafico::fecharJanela() {
 	window->close();
@@ -48,8 +59,8 @@ const bool GerenciadorGrafico::verificarJanelaAberta() {
 
 sf::Texture GerenciadorGrafico::carregarTextura(const char* caminho){
 	sf::Texture textura;
-//    if (!textura.loadFromFile(caminho))
-//		std::cout << "Erro ao carregar a textura" << std::endl;
+	if (!textura.loadFromFile(caminho))
+        std::cout << "Erro ao carregar a textura" << std::endl;
 	return textura;
 }
 

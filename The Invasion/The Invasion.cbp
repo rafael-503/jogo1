@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="The Invasion" />
+		<Option title="TESTE_SFML2" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/The Invasion" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/TESTE_SFML2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -21,7 +21,7 @@
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/The Invasion" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/TESTE_SFML2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -38,11 +38,10 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-			<Add directory="C:/Users/ariel/OneDrive/Documentos/SFML-2.4.2/include" />
+			<Add directory="../../SFML-2.5.1/include" />
 		</Compiler>
 		<Linker>
-			<Add directory="C:/Users/ariel/OneDrive/Documentos/SFML-2.4.2/lib" />
+			<Add directory="../../SFML-2.5.1/lib" />
 		</Linker>
 		<Unit filename="Ente.cpp" />
 		<Unit filename="Ente.h" />
@@ -74,6 +73,8 @@
 		<Unit filename="Fases/Fase1.h" />
 		<Unit filename="Fases/Fase2.cpp" />
 		<Unit filename="Fases/Fase2.h" />
+		<Unit filename="Gerenciadores/GerenciadorEvento.cpp" />
+		<Unit filename="Gerenciadores/GerenciadorEvento.h" />
 		<Unit filename="Gerenciadores/GerenciadorGrafico.cpp" />
 		<Unit filename="Gerenciadores/GerenciadorGrafico.h" />
 		<Unit filename="Gerenciadores/Gerenciador_Colisoes.cpp" />
@@ -89,6 +90,7 @@
 			<code_completion />
 			<envvars />
 			<debugger />
+			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
