@@ -2,6 +2,7 @@
 #include "../Ente.h"
 #include "../Listas/ListaEntidades.h"
 #include "../Gerenciadores/Gerenciador_Colisoes.h"
+#include "../Gerenciadores/GerenciadorEvento.h"
 #include "../Entidades/Personagens/Jogador.h"
 // Inimigos
 #include "../Entidades/Personagens/Cachorro.h"
@@ -16,6 +17,7 @@ namespace Fases {
 	class Fase : public Ente {
 		protected:
 			Gerenciadores::Gerenciador_Colisoes* pColisao;
+			Gerenciadores::GerenciadorEvento* pEventos;
 			Listas::ListaEntidades listaObstaculos;
 			Listas::ListaEntidades listaPersonagens;
 

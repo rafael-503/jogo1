@@ -1,7 +1,8 @@
 #include "Fase.h"
 using namespace Fases;
 
-Fase::Fase(): pColisao((pColisao->getGerenciador_Colisoes())) {
+Fase::Fase(): pColisao(pColisao->getGerenciador_Colisoes()), pEventos(pEventos->getGerenciadorEvento()) {
+
 }
 
 Fase::~Fase() {
