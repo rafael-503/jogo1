@@ -1,6 +1,7 @@
 #include "../Gerenciadores/GerenciadorGrafico.h"
 #define TAM_X 1200.0f
 #define TAM_Y 800.0f
+#include <stdlib.h>
 using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;
@@ -50,7 +51,7 @@ sf::View GerenciadorGrafico::getView() {
 }
 
 void GerenciadorGrafico::atualizarView(const sf::Vector2f& jogadorPos) {
-	sf::Vector2f cameraPos = view.getCenter(); // ObtÈm a posiÁ„o atual da c‚mera
+	sf::Vector2f cameraPos = view.getCenter(); // Obt√©m a posi√ß√£o atual da c√¢mera
 	cameraPos.x = jogadorPos.x; // Mantem apenas a coordenada x do jogador
 
 	view.setCenter(cameraPos);
@@ -100,9 +101,9 @@ void GerenciadorGrafico::carregarFundo(const char* caminho) {
 
 void GerenciadorGrafico::atalizaFundo() {
 	sf::Vector2f cameraPos = view.getCenter(); // posicao atual da camera
-	sf::Vector2f cameraSize = view.getSize(); // tamanho da ·rea visÌvel da c‚mera
+	sf::Vector2f cameraSize = view.getSize(); // tamanho da √°rea vis√≠vel da c√¢mera
 
-	// Define a posiÁ„o do sprite do fundo com base na posicao da camera
+	// Define a posi√ß√£o do sprite do fundo com base na posicao da camera
 	sprite.setPosition(cameraPos.x - cameraSize.x / 2, cameraPos.y - cameraSize.y / 2);
 
 	// Redimensiona o sprite do fundo para cobrir toda a area visivel da camera
@@ -124,7 +125,7 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida) {
 	texto.setString("Vida: " + std::to_string(vida));
 	texto.setCharacterSize(20);
 	texto.setFillColor(sf::Color::White);
-	texto.setPosition(10, 10); // PosiÁ„o do texto no canto superior esquerdo
+	texto.setPosition(10, 10); // Posi√ß√£o do texto no canto superior esquerdo
 	desenharElemento(texto);
 	//mostrarElementos();
 */
@@ -134,16 +135,17 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida) {
 	if (!font.loadFromFile("The invasion/assets/fonts/PlayfairDisplay-Regular.ttf"))
 		return;
 
-	sf::Vector2f cameraPos = view.getCenter(); // PosiÁ„o central da c‚mera
+	sf::Vector2f cameraPos = view.getCenter(); // Posi√ß√£o central da c√¢mera
 	sf::Vector2f telaPos = cameraPos - sf::Vector2f(TAM_X / 2, TAM_Y / 2); // Canto superior esquerdo da tela
 
 	sf::Text texto;
 	texto.setFont(font);
-	texto.setString("Vida: " + std::to_string(vida));
+	texto.setString("Vida: " + std::to_string(vida) );
+
 	texto.setCharacterSize(20);
 	texto.setFillColor(sf::Color::White);
 
-	sf::Vector2f posicaoTexto = telaPos + sf::Vector2f(10.0f, 10.0f); // PosiÁ„o do texto no canto superior esquerdo da tela
+	sf::Vector2f posicaoTexto = telaPos + sf::Vector2f(10.0f, 10.0f); // Posi√ß√£o do texto no canto superior esquerdo da tela
 	texto.setPosition(posicaoTexto);
 
 	desenharElemento(texto);
