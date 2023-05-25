@@ -43,7 +43,6 @@ void Jogador::move(bool Direita, bool pulo){
 
 void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
 
-        
     //ID_aux recebe id da entidade com qual esta colidindo
     int ID_aux = pOutra->getID();
     if (ID_aux == 2)

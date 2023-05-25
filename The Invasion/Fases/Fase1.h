@@ -3,6 +3,8 @@
 
 namespace Fases {
 	class Fase1 : public Fase {
+	private:
+		Entidades::Personagens::Jogador* pJogador;
 	public:
 		Fase1();
 		~Fase1();

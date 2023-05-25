@@ -113,3 +113,38 @@ void GerenciadorGrafico::atalizaFundo() {
 	);
 	getWindow()->draw(sprite);
 }
+/*
+void GerenciadorGrafico::mostrarVidaJogador(int vida) {
+	sf::Font font;
+	if (!font.loadFromFile("The invasion/assets/fonts/PlayfairDisplay-Regular.ttf"))
+		return;
+
+	sf::Text texto;
+	texto.setFont(font);
+	texto.setString("Vida: " + std::to_string(vida));
+	texto.setCharacterSize(20);
+	texto.setFillColor(sf::Color::White);
+	texto.setPosition(10, 10); // Posição do texto no canto superior esquerdo
+	desenharElemento(texto);
+	//mostrarElementos();
+*/
+
+void GerenciadorGrafico::mostrarVidaJogador(int vida) {
+	sf::Font font;
+	if (!font.loadFromFile("The invasion/assets/fonts/PlayfairDisplay-Regular.ttf"))
+		return;
+
+	sf::Vector2f cameraPos = view.getCenter(); // Posição central da câmera
+	sf::Vector2f telaPos = cameraPos - sf::Vector2f(TAM_X / 2, TAM_Y / 2); // Canto superior esquerdo da tela
+
+	sf::Text texto;
+	texto.setFont(font);
+	texto.setString("Vida: " + std::to_string(vida));
+	texto.setCharacterSize(20);
+	texto.setFillColor(sf::Color::White);
+
+	sf::Vector2f posicaoTexto = telaPos + sf::Vector2f(10.0f, 10.0f); // Posição do texto no canto superior esquerdo da tela
+	texto.setPosition(posicaoTexto);
+
+	desenharElemento(texto);
+}

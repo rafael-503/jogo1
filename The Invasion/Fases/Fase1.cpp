@@ -17,6 +17,9 @@ void Fase1::executar() {
     pColisao->testa_colisoes();
 	listaPersonagens.seDesenhe();
     listaObstaculos.seDesenhe();
+    if(pJogador)
+        pGrafico->mostrarVidaJogador(pJogador->getVida());
+    //pGrafico->mostrarElementos();
 }
 
 void Fase1::esvaziar() {
@@ -25,12 +28,11 @@ void Fase1::esvaziar() {
 }
 
 void Fase1::criarPersonagens() {
-
     Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f));
     Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
 
     Entidades::Personagens::Inimigo* pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
-
+    this->pJogador = pJogador;
     pInimigo->setJogador(pJogador);
 
     Entidades::Entidade* pEntidade = NULL;
