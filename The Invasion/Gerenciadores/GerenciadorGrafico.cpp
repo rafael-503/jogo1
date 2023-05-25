@@ -49,8 +49,11 @@ sf::View GerenciadorGrafico::getView() {
 	return view;
 }
 
-void GerenciadorGrafico::atualizarView(sf::Vector2f pos) {
-	view.setCenter(pos);
+void GerenciadorGrafico::atualizarView(const sf::Vector2f& jogadorPos) {
+	sf::Vector2f cameraPos = view.getCenter(); // Obtém a posição atual da câmera
+	cameraPos.x = jogadorPos.x; // Mantém apenas a coordenada x do jogador
+
+	view.setCenter(cameraPos);
 	window->setView(view);
 }
 
@@ -96,5 +99,5 @@ void GerenciadorGrafico::carregarFundo(const char* caminho) {
 }
 
 void GerenciadorGrafico::atalizaFundo() {
-		getWindow()->draw(sprite);
+	getWindow()->draw(sprite);
 }

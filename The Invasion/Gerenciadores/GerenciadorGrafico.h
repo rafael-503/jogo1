@@ -24,7 +24,7 @@ namespace Gerenciadores {
 		void fecharJanela();
 		void setView(sf::View view);
 		sf::View getView();
-		void atualizarView(sf::Vector2f pos);
+		void atualizarView(const sf::Vector2f& jogadorPos);
 		void reiniciarView();
 		const bool verificarJanelaAberta();
 		sf::Texture carregarTextura(const char* caminho);

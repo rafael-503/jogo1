@@ -18,6 +18,7 @@ namespace Gerenciadores {
             void executar();
             void verificarEventos();
             void setJogador(Entidades::Personagens::Jogador* pJogadorAux);
+            void setPosicaoJogador(const sf::Vector2f& jogadorPos);
     };
 
 }

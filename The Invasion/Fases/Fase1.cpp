@@ -27,7 +27,7 @@ void Fase1::esvaziar() {
 void Fase1::criarPersonagens() {
 
     Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f));
-    Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(80.0f, 80.0f));
+    Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
 
     Entidades::Personagens::Inimigo* pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
 
@@ -50,7 +50,7 @@ void Fase1::criarObstaculos() {
     Entidade* pEntidade = NULL;
     Entidades::Obstaculos::Obstaculo* pObstaculo = NULL;
 
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(200.0f, 50.0f), sf::Vector2f(100.0f, 700.0f));
+    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(250.0f, 50.0f), sf::Vector2f(0.0f, 750.0f));
     pColisao->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaObstaculos.inserir(pEntidade);
@@ -79,8 +79,8 @@ void Fase1::criarObstaculos() {
     pColisao->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(800.0f, 600.0f));
+    
+    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(230.0f, 50.0f), sf::Vector2f(800.0f, 600.0f));
     pColisao->incluiObstaculo(pObstaculo);
     pEntidade = static_cast<Entidade*> (pObstaculo);
     listaObstaculos.inserir(pEntidade);

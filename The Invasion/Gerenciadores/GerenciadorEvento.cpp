@@ -33,12 +33,19 @@ void GerenciadorEvento::verificarEventos(){
             if (evento.type == sf::Event::Closed)
                 pGrafico->fecharJanela();
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+            setPosicaoJogador(pJogador->getPosition());
             pJogador->move(false, false);
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+            setPosicaoJogador(pJogador->getPosition());
             pJogador->move(true, false);
+        }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             pJogador->move(false, true);
-
     }
+}
+
+void GerenciadorEvento::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
+    pGrafico->atualizarView(jogadorPos);
 }
