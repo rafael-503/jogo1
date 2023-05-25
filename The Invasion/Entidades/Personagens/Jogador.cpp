@@ -6,12 +6,12 @@ using namespace Personagens;
 void Jogador::inicializa() {
 }
 
-Jogador::Jogador(sf::Vector2f tam_corpo) :
+Jogador::Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos) :
     Personagem(tam_corpo)
 {
     ID = 1;
     //corpo.setFillColor(sf::Color::Blue);
-    corpo.setPosition(10.0f, 0.0f);
+    corpo.setPosition(pos);
     setMassa(60.0f);
     setVelocidade(sf::Vector2f(10.0f, 0.0f));
 

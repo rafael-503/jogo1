@@ -41,7 +41,6 @@ void Fase1::construtorObstaculos(const std::string& tipo, const sf::Vector2f& ta
         return;
     }
         
-
     if (pObstaculo) {
         pColisao->incluiObstaculo(pObstaculo);
         pEntidade = static_cast<Entidade*>(pObstaculo);
@@ -49,9 +48,31 @@ void Fase1::construtorObstaculos(const std::string& tipo, const sf::Vector2f& ta
     }
 }
 
+void Fase1::construtorPersonagens(const std::string& tipo, const sf::Vector2f& tam, const sf::Vector2f& pos) {
+    Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
+    Entidades::Entidade* pEntidade = NULL;
+	Entidades::Personagens::Inimigo* pInimigo = NULL;
+
+	if (tipo == "Cachorro")
+        pInimigo = new Entidades::Personagens::Cachorro(tam, pos);
+	else if (tipo == "Soldado")
+        pInimigo = new Entidades::Personagens::Soldado(tam, pos);
+    else if (tipo == "Lenhador")
+        pInimigo = new Entidades::Personagens::Lenhador(tam, pos);
+    else {
+		cout << "Erro: Tipo de personagem invalido" << endl;
+		return;
+	}
+
+    if (pInimigo) {
+		pColisao->incluiInimigo(pInimigo);
+		pEntidade = static_cast<Entidade*>(pInimigo);
+		listaPersonagens.inserir(pEntidade);
+	}
+}
 
 void Fase1::criarPersonagens() {
-    Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f));
+    Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
     Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
 
     Entidades::Personagens::Inimigo* pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
@@ -68,6 +89,8 @@ void Fase1::criarPersonagens() {
 
     pEventos->setJogador(pJogador);
     pColisao->setJogador(pJogador);
+    
+    //construtorPersonagens("Cachorro", sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
 }
 
 void Fase1::criarObstaculos() {
@@ -82,4 +105,3 @@ void Fase1::criarObstaculos() {
     construtorObstaculos("Plataforma", sf::Vector2f(230.0f, 50.0f), sf::Vector2f(780.0f, 600.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(230.0f, 50.0f), sf::Vector2f(1000.0f, 600.0f));
 }
-
