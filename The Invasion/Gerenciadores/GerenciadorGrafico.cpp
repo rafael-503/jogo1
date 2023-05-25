@@ -5,7 +5,7 @@ using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;
 GerenciadorGrafico::GerenciadorGrafico() : window(new sf::RenderWindow(sf::VideoMode(TAM_X, TAM_Y), "The Invasion")),
-    view(sf::FloatRect(0.0f, 0.0f, TAM_X, TAM_Y)), flag(true)
+    view(sf::Vector2f(TAM_X/2.0f, TAM_Y/2.0f), sf::Vector2f(TAM_X / 2.0f, TAM_Y / 2.0f))
 {
 	if (window == NULL)
 		std::cout << "Erro ao criar a janela" << std::endl;
@@ -78,10 +78,10 @@ sf::Texture GerenciadorGrafico::carregarTextura(const char* caminho){
 }
 
 void GerenciadorGrafico::carregarFundo(const char* caminho) {
-	flag = true;
+
 	if (!tex.loadFromFile(caminho)) {
 		std::cout << "Erro ao carregar a textura" << std::endl;
-		flag = false;
+		return;
 	}
 
 	sprite.setTexture(tex);
@@ -96,6 +96,5 @@ void GerenciadorGrafico::carregarFundo(const char* caminho) {
 }
 
 void GerenciadorGrafico::atalizaFundo() {
-	if (flag)
 		getWindow()->draw(sprite);
 }

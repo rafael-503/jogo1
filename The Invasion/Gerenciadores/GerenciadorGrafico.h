@@ -14,7 +14,6 @@ namespace Gerenciadores {
 		sf::Texture tex;
 
 	public:
-		bool flag;
 		~GerenciadorGrafico();
 		static GerenciadorGrafico* getGerenciadorGrafico();
 		sf::RenderWindow* getWindow();
