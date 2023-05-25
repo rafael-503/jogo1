@@ -5,7 +5,7 @@ using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;
 GerenciadorGrafico::GerenciadorGrafico() : window(new sf::RenderWindow(sf::VideoMode(TAM_X, TAM_Y), "The Invasion")),
-    view(sf::Vector2f(TAM_X/2.0f, TAM_Y/2.0f), sf::Vector2f(TAM_X / 2.0f, TAM_Y / 2.0f))
+    view(sf::Vector2f(TAM_X/2.0f, TAM_Y/2.0f), sf::Vector2f(TAM_X, TAM_Y))
 {
 	if (window == NULL)
 		std::cout << "Erro ao criar a janela" << std::endl;
@@ -55,7 +55,7 @@ void GerenciadorGrafico::atualizarView(sf::Vector2f pos) {
 }
 
 void GerenciadorGrafico::reiniciarView() {
-	view.setCenter(TAM_X/2, TAM_Y/2);
+	view.setCenter(TAM_X/2.0f, TAM_Y/2.0f);
 	window->setView(view);
 }
 void GerenciadorGrafico::mostrarElementos() {
