@@ -11,10 +11,12 @@ using namespace Entidades;
 using namespace Personagens;
 using namespace Obstaculos;
 
+#include "Estados/MenuPrincipal.h"
+
 //Gerenciadores::GerenciadorGrafico* Principal::pGrafico = NULL;
 Principal::Principal():
     pGrafico(pGrafico->getGerenciadorGrafico()), pGerencia_Colisoes(pGerencia_Colisoes->getGerenciador_Colisoes()),
-    pGerenciaEventos(pGerenciaEventos->getGerenciadorEvento())
+    pGerenciaEventos(pGerenciaEventos->getGerenciadorEvento()), pEstados(pEstados->getGerenciadorEstado())
 {
     if (pGrafico == NULL) {
         std::cout << "Erro ao criar o gerenciador gráfico" << std::endl;
@@ -41,7 +43,6 @@ void Principal::executar(){
 
 */
 
-    Fases::Fase1 fase;
 
     while (pGrafico->verificarJanelaAberta())
     {
@@ -49,7 +50,8 @@ void Principal::executar(){
         pGrafico->limparJanela();
         pGrafico->atalizaFundo();
 
-        fase.executar();
+        pEstados->executarEstadoAtual();
+        //fase.executar();
 
         sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
         sf::sleep(tempo_por_frame);
