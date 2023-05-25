@@ -19,13 +19,31 @@ void Fase1::executar() {
     listaObstaculos.seDesenhe();
     if(pJogador)
         pGrafico->mostrarVidaJogador(pJogador->getVida());
-    //pGrafico->mostrarElementos();
 }
 
 void Fase1::esvaziar() {
 	listaPersonagens.esvaziar();
 	listaObstaculos.esvaziar();
 }
+
+void Fase1::construtorObstaculos(const std::string& tipo, const sf::Vector2f& tam, const sf::Vector2f& pos) {
+    Entidades::Obstaculos::Obstaculo* pObstaculo = NULL;
+    Entidade* pEntidade = NULL;
+
+    if (tipo == "Caixa")
+        pObstaculo = new Entidades::Obstaculos::Caixa(tam, pos);
+    else if (tipo == "Espinhos")
+        pObstaculo = new Entidades::Obstaculos::Espinhos(tam, pos);
+    else if (tipo == "Plataforma")
+        pObstaculo = new Entidades::Obstaculos::Plataforma(tam, pos);
+
+    if (pObstaculo) {
+        pColisao->incluiObstaculo(pObstaculo);
+        pEntidade = static_cast<Entidade*>(pObstaculo);
+        listaObstaculos.inserir(pEntidade);
+    }
+}
+
 
 void Fase1::criarPersonagens() {
     Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f));
@@ -45,51 +63,18 @@ void Fase1::criarPersonagens() {
 
     pEventos->setJogador(pJogador);
     pColisao->setJogador(pJogador);
-    //pColisao->testa_colisoes(&jogador);
 }
 
 void Fase1::criarObstaculos() {
-    Entidade* pEntidade = NULL;
-    Entidades::Obstaculos::Obstaculo* pObstaculo = NULL;
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(250.0f, 50.0f), sf::Vector2f(0.0f, 750.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Caixa(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(900.0f, 450.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 600.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(500.0f, 500.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 350.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-    
-    pObstaculo = new Entidades::Obstaculos::Plataforma(sf::Vector2f(230.0f, 50.0f), sf::Vector2f(780.0f, 200.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Espinhos(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(780.0f, 165.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
-
-    pObstaculo = new Entidades::Obstaculos::Espinhos(sf::Vector2f(50.0f, 50.0f), sf::Vector2f(810.0f, 165.0f));
-    pColisao->incluiObstaculo(pObstaculo);
-    pEntidade = static_cast<Entidade*> (pObstaculo);
-    listaObstaculos.inserir(pEntidade);
+    construtorObstaculos("Plataforma", sf::Vector2f(250.0f, 50.0f), sf::Vector2f(0.0f, 750.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 600.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(180.0f, 50.0f), sf::Vector2f(500.0f, 500.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(180.0f, 50.0f), sf::Vector2f(300.0f, 350.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(230.0f, 50.0f), sf::Vector2f(780.0f, 200.0f));
+    construtorObstaculos("Espinhos", sf::Vector2f(50.0f, 50.0f), sf::Vector2f(780.0f, 165.0f));
+    construtorObstaculos("Espinhos", sf::Vector2f(50.0f, 50.0f), sf::Vector2f(810.0f, 165.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(230.0f, 50.0f), sf::Vector2f(780.0f, 600.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(230.0f, 50.0f), sf::Vector2f(1000.0f, 600.0f));
+    construtorObstaculos("Caixa", sf::Vector2f(50.0f, 50.0f), sf::Vector2f(900.0f, 450.0f));
 }
 
