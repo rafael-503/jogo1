@@ -48,23 +48,29 @@ void Fase1::construtorObstaculos(const std::string& tipo, const sf::Vector2f& ta
     }
 }
 
-void Fase1::construtorPersonagens(const std::string& tipo, const sf::Vector2f& tam, const sf::Vector2f& pos) {
-    Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
+void Fase1::construtorPersonagens(const std::string& tipo, Entidades::Personagens::Jogador* pJogador, const sf::Vector2f& tam, const sf::Vector2f& pos) {
     Entidades::Entidade* pEntidade = NULL;
 	Entidades::Personagens::Inimigo* pInimigo = NULL;
 
-	if (tipo == "Cachorro")
-        pInimigo = new Entidades::Personagens::Cachorro(tam, pos);
-	else if (tipo == "Soldado")
-        pInimigo = new Entidades::Personagens::Soldado(tam, pos);
-    else if (tipo == "Lenhador")
-        pInimigo = new Entidades::Personagens::Lenhador(tam, pos);
+    if (tipo == "Cachorro") {
+    	Entidades::Personagens::Cachorro* pCachorro = new Entidades::Personagens::Cachorro(tam, pos);
+		pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pCachorro);
+    }
+    else if (tipo == "Soldado") {
+        Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(tam, pos);
+        pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
+    }
+    else if (tipo == "Lenhador") {
+        Entidades::Personagens::Lenhador* pLenhador = new Entidades::Personagens::Lenhador(tam, pos);
+		pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pLenhador);
+    }
     else {
 		cout << "Erro: Tipo de personagem invalido" << endl;
 		return;
 	}
 
     if (pInimigo) {
+        pInimigo->setJogador(pJogador);
 		pColisao->incluiInimigo(pInimigo);
 		pEntidade = static_cast<Entidade*>(pInimigo);
 		listaPersonagens.inserir(pEntidade);
@@ -72,25 +78,27 @@ void Fase1::construtorPersonagens(const std::string& tipo, const sf::Vector2f& t
 }
 
 void Fase1::criarPersonagens() {
-    Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
-    Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
-
-    Entidades::Personagens::Inimigo* pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
-    this->pJogador = pJogador;
-    pInimigo->setJogador(pJogador);
-
     Entidades::Entidade* pEntidade = NULL;
+    Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
+    this->pJogador = pJogador;
 
-    pColisao->incluiInimigo(pInimigo);
+    //Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
+
+    //Entidades::Personagens::Inimigo* pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
+    //pInimigo->setJogador(pJogador);
+
+
+    //pColisao->incluiInimigo(pInimigo);
     pEntidade = static_cast<Entidade*> (pJogador);
+
     listaPersonagens.inserir(pEntidade);
-    pEntidade = static_cast<Entidade*> (pInimigo);
-    listaPersonagens.inserir(pEntidade);
+    //pEntidade = static_cast<Entidade*> (pInimigo);
+    //listaPersonagens.inserir(pEntidade);
 
     pEventos->setJogador(pJogador);
     pColisao->setJogador(pJogador);
     
-    //construtorPersonagens("Cachorro", sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
+    construtorPersonagens("Soldado", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
 }
 
 void Fase1::criarObstaculos() {
