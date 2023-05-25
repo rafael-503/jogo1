@@ -1,6 +1,7 @@
 #include "../Gerenciadores/GerenciadorGrafico.h"
 #define TAM_X 1200.0f
 #define TAM_Y 800.0f
+#include <stdlib.h>
 using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;
@@ -139,7 +140,8 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida) {
 
 	sf::Text texto;
 	texto.setFont(font);
-	texto.setString("Vida: " + std::to_string(vida));
+//	texto.setString("Vida: " + std::to_string(vida) );
+
 	texto.setCharacterSize(20);
 	texto.setFillColor(sf::Color::White);
 
