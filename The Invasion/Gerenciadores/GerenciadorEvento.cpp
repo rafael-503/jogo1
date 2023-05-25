@@ -4,8 +4,7 @@ using namespace Gerenciadores;
 GerenciadorEvento* GerenciadorEvento::pEvento = NULL;
 GerenciadorGrafico* GerenciadorEvento::pGrafico = GerenciadorGrafico::getGerenciadorGrafico();
 
-GerenciadorEvento::GerenciadorEvento(){
-
+GerenciadorEvento::GerenciadorEvento(): pJogador(NULL){
 
 }
 

@@ -51,7 +51,7 @@ sf::View GerenciadorGrafico::getView() {
 
 void GerenciadorGrafico::atualizarView(const sf::Vector2f& jogadorPos) {
 	sf::Vector2f cameraPos = view.getCenter(); // Obtém a posição atual da câmera
-	cameraPos.x = jogadorPos.x; // Mantém apenas a coordenada x do jogador
+	cameraPos.x = jogadorPos.x; // Mantem apenas a coordenada x do jogador
 
 	view.setCenter(cameraPos);
 	window->setView(view);
@@ -97,7 +97,25 @@ void GerenciadorGrafico::carregarFundo(const char* caminho) {
 	);
 	getWindow()->draw(sprite);
 }
+/*
+void GerenciadorGrafico::atalizaFundo() {
+	getWindow()->draw(sprite);
+}*/
 
 void GerenciadorGrafico::atalizaFundo() {
+	sf::Vector2f cameraPos = view.getCenter(); // Posição atual da câmera
+	sf::Vector2f cameraSize = view.getSize(); // Tamanho da área visível da câmera
+
+	// Defina a posição do sprite do fundo com base na posição da câmera
+	sprite.setPosition(cameraPos.x - cameraSize.x / 2, cameraPos.y - cameraSize.y / 2);
+
+	// Redimensione o sprite do fundo para cobrir toda a área visível da câmera
+	sf::Vector2u textureSize = sprite.getTexture()->getSize();
+	sprite.setScale(
+		cameraSize.x / textureSize.x,
+		cameraSize.y / textureSize.y
+	);
+
+	// Desenhe o sprite do fundo
 	getWindow()->draw(sprite);
 }
