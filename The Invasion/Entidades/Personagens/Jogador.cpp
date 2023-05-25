@@ -6,7 +6,6 @@ using namespace Personagens;
 void Jogador::inicializa() {
 }
 
-
 Jogador::Jogador(sf::Vector2f tam_corpo) :
     Personagem(tam_corpo)
 {
@@ -19,27 +18,13 @@ Jogador::Jogador(sf::Vector2f tam_corpo) :
     textura = pGrafico->carregarTextura(JOGADOR);
     corpo.setTexture(&textura);
 }
+
 Jogador::~Jogador() {}
 
 void Jogador::executar() {
-
-    /*
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        corpo.move(-vel.x, 0.0f);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        corpo.move(vel.x, 0.0f);
-    }
-    if (!SuspensoNoAR && (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))) {
-        vel.y = -10.0f;
-        corpo.move(0.0f, vel.y);
-    }
-    */
     efeitoGravidade();
-
-
 }
+
 void Jogador::move(bool Direita, bool pulo){
     if(pulo){
         if (!SuspensoNoAR) {
@@ -58,6 +43,7 @@ void Jogador::move(bool Direita, bool pulo){
 
 void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
 
+        
     //ID_aux recebe id da entidade com qual esta colidindo
     int ID_aux = pOutra->getID();
     if (ID_aux == 2)
@@ -89,11 +75,20 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
         }
 
         if(ID_aux == 5)
-            cout << "PLATAFORMA" << endl;
+            //cout << "PLATAFORMA" << endl;
         if(ID_aux == 6)
             cout << "CAIXA" << endl;
-        if(ID_aux == 7)
-            cout << "ESPINHOS" << endl;
+        if (ID_aux == 7) {
+            float tempo = relogio.getElapsedTime().asSeconds();
+            if (tempo > 0.1f) {
+                setVida(getVida() - 10);
+                cout << getVida() << endl;
+            }
+            relogio.restart();
+            
+        }
+
+            //cout << "ESPINHOS" << endl;
     }
 
 }

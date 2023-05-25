@@ -5,12 +5,14 @@
 
 namespace Entidades {
     namespace Personagens {
-
         class Personagem : public Entidade {
-        protected:
+        private:
+            int vida;
         public:
             Personagem(sf::Vector2f tam_corpo);
             ~Personagem();
+            int getVida() const;
+            void setVida(int vida);
             virtual void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) = 0;
             virtual void executar() = 0;
         };
