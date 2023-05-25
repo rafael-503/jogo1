@@ -36,19 +36,31 @@ void GerenciadorGrafico::limparJanela() {
 void GerenciadorGrafico::desenharElemento(sf::RectangleShape corpo) {
 	window->draw(corpo);
 }
+
 void GerenciadorGrafico::desenharElemento(sf::Text texto){
     window->draw(texto);
 }
+
 void GerenciadorGrafico::setView(sf::View view){
     window->setView(view);
 }
 
-
-void GerenciadorGrafico::mostrarElementos() {
-	//getWindow()->draw(sprite);
-	window->display();
+sf::View GerenciadorGrafico::getView() {
+	return view;
 }
 
+void GerenciadorGrafico::atualizarView(sf::Vector2f pos) {
+	view.setCenter(pos);
+	window->setView(view);
+}
+
+void GerenciadorGrafico::reiniciarView() {
+	view.setCenter(TAM_X/2, TAM_Y/2);
+	window->setView(view);
+}
+void GerenciadorGrafico::mostrarElementos() {
+	window->display();
+}
 
 void GerenciadorGrafico::fecharJanela() {
 	window->close();

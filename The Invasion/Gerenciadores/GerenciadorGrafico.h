@@ -24,6 +24,9 @@ namespace Gerenciadores {
 		void mostrarElementos();
 		void fecharJanela();
 		void setView(sf::View view);
+		sf::View getView();
+		void atualizarView(sf::Vector2f pos);
+		void reiniciarView();
 		const bool verificarJanelaAberta();
 		sf::Texture carregarTextura(const char* caminho);
 		void carregarFundo(const char* caminho);
