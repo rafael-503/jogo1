@@ -2,10 +2,11 @@
 using namespace Gerenciadores;
 
 GerenciadorEstado* GerenciadorEstado::pEstados = NULL;
-GerenciadorEstado::GerenciadorEstado(): EstadoAtual("EstadoJogar"){
+GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
     //mapEstados["Fase"] = new Fases::Fase1();
-    //mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
     mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
+    mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
+    mapEstados[EstadoAtual]->PrimeiroExecutar();
 }
 GerenciadorEstado::~GerenciadorEstado(){
 
@@ -20,6 +21,11 @@ void GerenciadorEstado::executarEstadoAtual(){
         mapEstados[EstadoAtual]->executar();
 
 }
-void GerenciadorEstado::setEstadoAtual(string& estadoAux){
+void GerenciadorEstado::setEstadoAtual(string estadoAux){
     EstadoAtual = estadoAux;
+    mapEstados[EstadoAtual]->PrimeiroExecutar();
+
+}
+void GerenciadorEstado::TeclaPressionada(const sf::Keyboard::Key tecla){
+    mapEstados[EstadoAtual]->TeclaPressionada(tecla);
 }
