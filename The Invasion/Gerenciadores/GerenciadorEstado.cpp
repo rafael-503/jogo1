@@ -4,7 +4,7 @@ using namespace Gerenciadores;
 GerenciadorEstado* GerenciadorEstado::pEstados = NULL;
 GerenciadorEstado::GerenciadorEstado(): EstadoAtual("EstadoJogar"){
     //mapEstados["Fase"] = new Fases::Fase1();
-    mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
+    //mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
     mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
 }
 GerenciadorEstado::~GerenciadorEstado(){
