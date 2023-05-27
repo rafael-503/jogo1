@@ -1,5 +1,5 @@
 #pragma once
-#define CACHORRO "assets/inimigo/cachorro/cachorro.png"
+#define CACHORRO "The invasion/assets/inimigo/cachorro/cachorro.png"
 #include "Inimigo.h"
 
 namespace Entidades {
