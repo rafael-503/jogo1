@@ -90,6 +90,21 @@ void Fase1::criarPersonagens() {
     pColisao->setJogador(pJogador);
     
     construtorPersonagens("Soldado", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
+
+    // Criacao de inimigos aleatorios
+    srand(time(0));
+
+    for (int i = 0; i < 4; i++) {
+        int num = rand() % 3;
+        int x = 1000 + (rand() % (2500 - 1000 + 1));
+        //int y = 0 + (rand() % (500 - 0 + 1));
+        if (num == 1) 
+			construtorPersonagens("Cachorro", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
+		else if (num == 2)
+			construtorPersonagens("Soldado", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
+		else if (num == 3)
+			construtorPersonagens("Lenhador", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
+    }
 }
 
 void Fase1::criarObstaculos() {
@@ -104,4 +119,16 @@ void Fase1::criarObstaculos() {
     construtorObstaculos("Plataforma", sf::Vector2f(230.0f, 50.0f), sf::Vector2f(780.0f, 600.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(230.0f, 50.0f), sf::Vector2f(1000.0f, 600.0f));
 
+    // Criacao de obstaculos aleatorios
+    srand(time(0));
+
+    for (int i = 0; i < 15; i++) {
+        int num = rand() % 2;
+        int x = 1000 + (rand() % (2500 - 1000 + 1));
+        int y = 0 + (rand() % (750 - 0 + 1));
+        if (num == 1)
+            construtorObstaculos("Plataforma", sf::Vector2f(230.0f, 50.0f), sf::Vector2f(x, y));
+        else if (num == 2)
+            construtorObstaculos("Caixa", sf::Vector2f(50.0f, 50.0f), sf::Vector2f(x, 0.0f));
+    }
 }
