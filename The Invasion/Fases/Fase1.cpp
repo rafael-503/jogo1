@@ -18,7 +18,7 @@ void Fase1::executar() {
 	listaPersonagens.seDesenhe();
     listaObstaculos.seDesenhe();
     if(pJogador)
-        pGrafico->mostrarVidaJogador(pJogador->getVida());
+      pGrafico->mostrarVidaJogador(pJogador->getVida());
 }
 
 void Fase1::esvaziar() {
@@ -40,7 +40,7 @@ void Fase1::construtorObstaculos(const std::string& tipo, const sf::Vector2f& ta
         cout << "Erro: Tipo de obstaculo invalido" << endl;
         return;
     }
-        
+
     if (pObstaculo) {
         pColisao->incluiObstaculo(pObstaculo);
         pEntidade = static_cast<Entidade*>(pObstaculo);
@@ -86,9 +86,9 @@ void Fase1::criarPersonagens() {
 
     listaPersonagens.inserir(pEntidade);
 
-    pEventos->setJogador(pJogador);
+    //pEventos->setJogador(pJogador);
     pColisao->setJogador(pJogador);
-    
+
     construtorPersonagens("Soldado", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
 
     // Criacao de inimigos aleatorios

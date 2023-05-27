@@ -13,15 +13,16 @@ namespace Gerenciadores{
     class GerenciadorEstado{
         private:
             MapaStringEstado mapEstados;
-            static GerenciadorEstado* pEstados;
             string EstadoAtual;
             //singleton
             GerenciadorEstado();
         public:
+            static GerenciadorEstado* pEstados;
             ~GerenciadorEstado();
             static GerenciadorEstado* getGerenciadorEstado();
             void executarEstadoAtual();
-            void setEstadoAtual(string& estadoAux);
+            void setEstadoAtual(string estadoAux);
+			void TeclaPressionada(const sf::Keyboard::Key tecla);
     };
 
 }
