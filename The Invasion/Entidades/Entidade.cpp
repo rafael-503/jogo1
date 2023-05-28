@@ -56,6 +56,8 @@ void Entidade::efeitoGravidade(){
 
 void Entidade::setVida(int vida) {
 	this->vida = vida;
+    if(getVida() < 0)
+		setVida(0);
 }
 
 int Entidade::getVida() const {
