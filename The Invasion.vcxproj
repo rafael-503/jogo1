@@ -130,6 +130,7 @@
     <ClCompile Include="The Invasion\Entidades\Personagens\Soldado.cpp" />
     <ClCompile Include="The Invasion\Estados\Estado.cpp" />
     <ClCompile Include="The Invasion\Estados\EstadoJogar.cpp" />
+    <ClCompile Include="The Invasion\Estados\MenuPause.cpp" />
     <ClCompile Include="The Invasion\Estados\MenuPrincipal.cpp" />
     <ClCompile Include="The Invasion\Fases\Fase.cpp" />
     <ClCompile Include="The Invasion\Fases\Fase1.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="The Invasion\Entidades\Personagens\Soldado.h" />
     <ClInclude Include="The Invasion\Estados\Estado.h" />
     <ClInclude Include="The Invasion\Estados\EstadoJogar.h" />
+    <ClInclude Include="The Invasion\Estados\MenuPause.h" />
     <ClInclude Include="The Invasion\Estados\MenuPrincipal.h" />
     <ClInclude Include="The Invasion\Fases\Fase.h" />
     <ClInclude Include="The Invasion\Fases\Fase1.h" />
