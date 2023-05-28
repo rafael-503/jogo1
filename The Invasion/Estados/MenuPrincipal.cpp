@@ -33,12 +33,10 @@ void MenuPrincipal::executar(){
     if(rect.intersects(corpoMouse)){
         TextoJogar.setFillColor(sf::Color::Red);
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-            if(Gerenciadores::GerenciadorEstado::pEstados)
-                Gerenciadores::GerenciadorEstado::pEstados->setEstadoAtual("EstadoJogar");
-
-
+            if(Gerenciadores::GerenciadorEstado::pGEstados)
+                Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("EstadoJogar");
             else
-                cout << "pEstados NULO" << endl;
+                cout << "pGEstados NULO" << endl;
         }
     }
     else
@@ -47,7 +45,9 @@ void MenuPrincipal::executar(){
 
 }
 void MenuPrincipal::PrimeiroExecutar(){
-    //pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
+    pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
+    pGrafico->atualizarView(sf::Vector2f(600.0f, 400.0f));
+
 }
 void MenuPrincipal::TeclaPressionada(const sf::Keyboard::Key tecla){
 

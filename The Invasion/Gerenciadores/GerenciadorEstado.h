@@ -3,6 +3,7 @@
 #include "../Estados/Estado.h"
 #include "../Estados/MenuPrincipal.h"
 #include "../Estados/EstadoJogar.h"
+#include "../Estados/MenuPause.h"
 #include "../Fases/Fase1.h"
 #include <map>
 
@@ -17,7 +18,7 @@ namespace Gerenciadores{
             //singleton
             GerenciadorEstado();
         public:
-            static GerenciadorEstado* pEstados;
+            static GerenciadorEstado* pGEstados;
             ~GerenciadorEstado();
             static GerenciadorEstado* getGerenciadorEstado();
             void executarEstadoAtual();

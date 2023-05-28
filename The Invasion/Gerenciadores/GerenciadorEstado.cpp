@@ -1,20 +1,20 @@
 #include "GerenciadorEstado.h"
 using namespace Gerenciadores;
 
-GerenciadorEstado* GerenciadorEstado::pEstados = NULL;
+GerenciadorEstado* GerenciadorEstado::pGEstados = NULL;
 GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
-    //mapEstados["Fase"] = new Fases::Fase1();
     mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
     mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
+    mapEstados["MenuPause"] = new Estados::MenuPause();
     mapEstados[EstadoAtual]->PrimeiroExecutar();
 }
 GerenciadorEstado::~GerenciadorEstado(){
 
 }
 GerenciadorEstado* GerenciadorEstado::getGerenciadorEstado(){
-    if (pEstados == NULL)
-        pEstados = new GerenciadorEstado();
-    return pEstados;
+    if (pGEstados == NULL)
+        pGEstados = new GerenciadorEstado();
+    return pGEstados;
 }
 void GerenciadorEstado::executarEstadoAtual(){
 //    if(mapEstados.contains(EstadoAtual))
