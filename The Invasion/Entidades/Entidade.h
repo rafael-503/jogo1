@@ -8,6 +8,7 @@ namespace Entidades{
 
     class Entidade: public Ente{
     protected:
+        sf::Texture textura;
         sf::RectangleShape corpo;
         string Tipo;
         sf::Clock relogio;

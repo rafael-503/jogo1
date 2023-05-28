@@ -46,6 +46,11 @@ void ListaEntidades::verificarVida() {
             LEs.remover(pE);
             i--;
         }
+        if (pE->getPosition().y > 2000) { 
+            pE->setVida(0);
+            LEs.remover(pE);
+        	i--;
+        }
     }
 }
 
