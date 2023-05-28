@@ -6,6 +6,7 @@ GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
 
     mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
     mapEstados["MenuPause"] = new Estados::MenuPause();
+    mapEstados["GameOver"] = new Estados::GameOver();
     mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
     mapEstados[EstadoAtual]->PrimeiroExecutar();
 }

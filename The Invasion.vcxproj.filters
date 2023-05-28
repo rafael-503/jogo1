@@ -93,6 +93,9 @@
     <ClCompile Include="The Invasion\Estados\MenuPause.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="The Invasion\Estados\GameOver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="the invasion\Ente.h">
@@ -174,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="The Invasion\Estados\MenuPause.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Estados\GameOver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

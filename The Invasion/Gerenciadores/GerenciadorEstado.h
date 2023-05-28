@@ -4,6 +4,7 @@
 #include "../Estados/MenuPrincipal.h"
 #include "../Estados/EstadoJogar.h"
 #include "../Estados/MenuPause.h"
+#include "../Estados/GameOver.h"
 #include "../Fases/Fase1.h"
 #include <map>
 

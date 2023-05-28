@@ -1,6 +1,10 @@
 #include "ListaEntidades.h"
+#include "../Entidades/Personagens/Jogador.h"
+#include "../Gerenciadores/GerenciadorEstado.h"
 #include "../stdafx.h"
+
 using namespace Listas;
+Gerenciadores::GerenciadorEstado* pEstado = Gerenciadores::GerenciadorEstado::getGerenciadorEstado();
 
 ListaEntidades::ListaEntidades(){
 }
@@ -42,18 +46,25 @@ void ListaEntidades::esvaziar(){
 void ListaEntidades::verificarVida() {
     for (int i = 0; i < LEs.getSize(); i++) {
         Entidade* pE = LEs[i];
-        if (pE->getVida() <= 0) {
-            LEs.remover(pE);
-            i--;
-        }
-        if (pE->getPosition().y > 2000) { 
-            pE->setVida(0);
-            LEs.remover(pE);
-        	i--;
+        if (pE) {
+            if (pE->getVida() <= 0) {
+                if (dynamic_cast<Entidades::Personagens::Jogador*>(pE) != NULL) {
+                    pEstado->setEstadoAtual("GameOver");
+                    cout << "GAME OVER" << endl;
+                }
+                LEs.remover(pE);
+                i--;
+            }
+
+            if (pE->getPosition().y > 2000) {
+                if (dynamic_cast<Entidades::Personagens::Jogador*>(pE) != NULL) {
+                    pEstado->setEstadoAtual("GameOver");
+                    cout << "GAME OVER" << endl;
+                }
+                pE->setVida(0);
+                LEs.remover(pE);
+                i--;
+            }
         }
     }
 }
-
-
-
-
