@@ -2,15 +2,13 @@
 using namespace Estados;
 #include "../Gerenciadores/GerenciadorEstado.h"
 
-MenuPause::MenuPause():fonte(), Botaovoltar(), pGrafico(pGrafico->getGerenciadorGrafico())
+MenuPause::MenuPause(): Estado(), Botaovoltar()
 {
 
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
-	if (!fonte.loadFromFile("The invasion/assets/fonts/PlayfairDisplay-Regular.ttf"))
-        cout << "ERRO AO CARREGAR FONTE" << endl;
     Botaovoltar.setString("VOLTAR");
     Botaovoltar.setPosition(600.0f, 400.0f);
-    Botaovoltar.setFont(fonte);
+    Botaovoltar.setFont(font);
     Botaovoltar.setFillColor(sf::Color::White);
     Botaovoltar.setScale(1.5f, 1.5f);
 

@@ -150,3 +150,6 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida) {
 	desenharElemento(texto);
 }
 
+sf::Vector2u GerenciadorGrafico::getSize(){
+    return window->getSize();
+}

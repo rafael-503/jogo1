@@ -6,6 +6,9 @@ namespace Estados{
 
     class Estado: public Ente{
         protected:
+            sf::Font font;
+            Gerenciadores::GerenciadorGrafico* pGrafico;
+
         public:
             Estado();
             virtual ~Estado();

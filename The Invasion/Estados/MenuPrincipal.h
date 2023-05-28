@@ -7,9 +7,9 @@ namespace Estados{
 
     class MenuPrincipal: public Estado{
         private:
-            sf::Text TextoJogar;
-            sf::Font font;
-            Gerenciadores::GerenciadorGrafico* pGrafico;
+            sf::Text BotaoJogar;
+            sf::Text BotaoRanking;
+            sf::Text BotaoSair;
         public:
             MenuPrincipal();
             ~MenuPrincipal();

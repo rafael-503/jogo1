@@ -3,9 +3,10 @@ using namespace Gerenciadores;
 
 GerenciadorEstado* GerenciadorEstado::pGEstados = NULL;
 GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
+
     mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
-    mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
     mapEstados["MenuPause"] = new Estados::MenuPause();
+    mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
     mapEstados[EstadoAtual]->PrimeiroExecutar();
 }
 GerenciadorEstado::~GerenciadorEstado(){
