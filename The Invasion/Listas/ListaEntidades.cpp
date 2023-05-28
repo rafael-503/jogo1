@@ -44,7 +44,7 @@ void ListaEntidades::verificarVida() {
         Entidade* pE = LEs[i];
         if (pE->getVida() <= 0) {
             LEs.remover(pE);
-            i--;  // Atualiza o índice para percorrer corretamente após a remoção
+            i--;
         }
     }
 }
