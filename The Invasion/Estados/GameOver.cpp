@@ -1,18 +1,16 @@
 #include "GameOver.h"
 using namespace Estados;
 
-GameOver::GameOver() {
-	BotaoTentarNovamente.setString("Tentar Novamente");
-	BotaoTentarNovamente.setFont(font);
-	BotaoTentarNovamente.setCharacterSize(30);
-	BotaoTentarNovamente.setFillColor(sf::Color::White);
-	BotaoTentarNovamente.setPosition(0, 0);
+GameOver::GameOver() :BotaoTentarNovamente("Tentar novamente", font), BotaoMenuPrincipal("Menu Principal", font) {
+    sf::Vector2u tamJanela(600.f, 400.f);
+    BotaoTentarNovamente.setScale(1.5f, 1.5f);
+    BotaoMenuPrincipal.setScale(1.5f, 1.5f);
 
-	BotaoMenuPrincipal.setString("Menu Principal");
-	BotaoMenuPrincipal.setFont(font);
-	BotaoMenuPrincipal.setCharacterSize(30);
-	BotaoMenuPrincipal.setFillColor(sf::Color::White);
-	BotaoMenuPrincipal.setPosition(100, 200);
+    sf::FloatRect tamBotaoTentarNovamente = BotaoTentarNovamente.getLocalBounds();
+    BotaoTentarNovamente.setPosition(-(tamJanela.x / 2 - tamBotaoTentarNovamente.width + 600), 550);
+
+    sf::FloatRect tamBotaoMenuPrincipal = BotaoMenuPrincipal.getLocalBounds();
+    BotaoMenuPrincipal.setPosition(tamJanela.x / 2 - 250, 550);
 }
 
 GameOver::~GameOver() {
