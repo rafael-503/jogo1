@@ -8,8 +8,8 @@ namespace Entidades {
 
     namespace Personagens {
 
+        class Inimigo;
         class Jogador : public Personagem {
-
         private:
             void inicializa();
             sf::Clock relogioColisao;
@@ -20,6 +20,7 @@ namespace Entidades {
             void executar();
             void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
             void move(bool Direita, bool pulo);
+            void atacar(Inimigo* pInimigo);
         };
     }
 }

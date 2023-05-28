@@ -1,5 +1,6 @@
 #include "../../stdafx.h"
 #include "Jogador.h"
+#include "Inimigo.h"
 using namespace Entidades;
 using namespace Personagens;
 
@@ -52,6 +53,8 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
         if (tempo > 1.5f) {
             setVida(getVida() - 10);
             cout << getVida() << endl;
+            Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
+            atacar(inimigo);
         }
         relogio.restart();
     }
@@ -96,4 +99,14 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
         }
     }
 
+}
+
+void Jogador::atacar(Inimigo* pInimigo) {
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        if (pInimigo) {
+        pInimigo->setVida(pInimigo->getVida() - 100);
+        cout << pInimigo->getVida() << endl;
+        cout << "Ataque" << endl;
+        }
+    }
 }

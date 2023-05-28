@@ -16,3 +16,9 @@ int Entidades::Personagens::Personagem::getVida() const {
 void Entidades::Personagens::Personagem::setVida(int vida) {
 	this->vida = vida;
 }
+
+void Entidades::Personagens::Personagem::atacar() {
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+
+	}
+}
