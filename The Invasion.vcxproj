@@ -128,6 +128,7 @@
     <ClCompile Include="The Invasion\Entidades\Personagens\Lenhador.cpp" />
     <ClCompile Include="the invasion\entidades\personagens\Personagem.cpp" />
     <ClCompile Include="The Invasion\Entidades\Personagens\Soldado.cpp" />
+    <ClCompile Include="The Invasion\Entidades\Projetil.cpp" />
     <ClCompile Include="The Invasion\Estados\Estado.cpp" />
     <ClCompile Include="The Invasion\Estados\EstadoJogar.cpp" />
     <ClCompile Include="The Invasion\Estados\GameOver.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="The Invasion\Entidades\Personagens\Lenhador.h" />
     <ClInclude Include="the invasion\entidades\personagens\Personagem.h" />
     <ClInclude Include="The Invasion\Entidades\Personagens\Soldado.h" />
+    <ClInclude Include="The Invasion\Entidades\Projetil.h" />
     <ClInclude Include="The Invasion\Estados\Estado.h" />
     <ClInclude Include="The Invasion\Estados\EstadoJogar.h" />
     <ClInclude Include="The Invasion\Estados\GameOver.h" />
