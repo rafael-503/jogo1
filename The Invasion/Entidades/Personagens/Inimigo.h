@@ -17,6 +17,7 @@ namespace Entidades {
         private:
             Jogador* jogador;
             short move_aleatorio;
+            sf::Clock relogioColisao;
 
         public:
             Inimigo(sf::Vector2f tam_corpo);

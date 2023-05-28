@@ -1,5 +1,5 @@
 #pragma once
-#define LENHADOR "assets/inimigo/lenhador/lenhador.png"
+#define LENHADOR "The invasion/assets/inimigo/lenhador/lenhador.png"
 #include "Inimigo.h"
 #include "Jogador.h"
 

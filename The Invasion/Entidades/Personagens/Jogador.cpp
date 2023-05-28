@@ -17,6 +17,7 @@ Jogador::Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos) :
 
     textura = pGrafico->carregarTextura(JOGADOR);
     corpo.setTexture(&textura);
+    relogioColisao.restart();
 }
 
 Jogador::~Jogador() {}
@@ -42,11 +43,18 @@ void Jogador::move(bool Direita, bool pulo){
 
 
 void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
+    float tempo = relogioColisao.getElapsedTime().asSeconds();
 
     //ID_aux recebe id da entidade com qual esta colidindo
     int ID_aux = pOutra->getID();
-    if (ID_aux == 2)
+    if (ID_aux == 2) { // INIMIGO
         cout << "Jogador Colidiu com Inimigo" << endl;
+        if (tempo > 1.5f) {
+            setVida(getVida() - 10);
+            cout << getVida() << endl;
+        }
+        relogio.restart();
+    }
     if (ID_aux >= 5 && ID_aux <=7) {
         sf::Vector2f posJogador = getPosition(), posOutro = pOutra->getPosition();
 
@@ -77,20 +85,15 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
             //cout << "PLATAFORMA" << endl;
         if(ID_aux == 6)
             cout << "CAIXA" << endl;
-        if (ID_aux == 7) {
-            float tempo = relogio.getElapsedTime().asSeconds();
-            if (tempo > 0.1f) {
+        if (ID_aux == 7) { // ESPINHOS
+            //float tempo = relogio.getElapsedTime().asSeconds();
+            if (tempo > 1.8f) {
                 setVida(getVida() - 10);
                 cout << getVida() << endl;
+                relogioColisao.restart();
             }
-            relogio.restart();
-            
+            //relogio.restart();
         }
-
-            //cout << "ESPINHOS" << endl;
     }
 
 }
-
-
-

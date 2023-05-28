@@ -16,6 +16,7 @@ Inimigo::Inimigo(sf::Vector2f tam_corpo) :
     move_aleatorio = rand() % 4;
     setMassa(60.0f);
     setVelocidade(sf::Vector2f(3.0f, 10.0f));
+    relogioColisao.restart();
 }
 
 Inimigo::~Inimigo() {}
@@ -64,15 +65,24 @@ void Inimigo::executar() {
         else
             moveAleatorio();
         efeitoGravidade();
-
     }
 }
 
 void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
-
+    
     int ID_aux = pOutra->getID();
-    if (ID_aux == 1)
-        cout << "Inimigo Colidiu com Jogador" << endl;
+
+    if (ID_aux == 1) {
+        Personagem* jogador = dynamic_cast<Personagem*>(pOutra);
+        if (jogador) {
+            float tempo = relogioColisao.getElapsedTime().asSeconds();
+            if (tempo >= 1.8f) {
+                jogador->setVida(jogador->getVida() - 10);
+                relogioColisao.restart(); 
+            }
+        }
+    }
+
     if (ID_aux >= 5 && ID_aux <=7) {
         sf::Vector2f posInimigo = getPosition(), posOutro = pOutra->getPosition();
         if (!Colidiu_em_x) {

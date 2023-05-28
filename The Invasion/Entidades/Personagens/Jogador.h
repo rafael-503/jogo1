@@ -12,6 +12,7 @@ namespace Entidades {
 
         private:
             void inicializa();
+            sf::Clock relogioColisao;
 
         public:
             Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos);
