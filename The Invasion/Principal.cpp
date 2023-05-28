@@ -44,6 +44,7 @@ void Principal::executar(){
 */
 
 
+
     while (pGrafico->verificarJanelaAberta())
     {
         pGerenciaEventos->verificarEventos();
@@ -52,6 +53,7 @@ void Principal::executar(){
 
         pEstados->executarEstadoAtual();
         //fase.executar();
+
 
         sf::Time tempo_por_frame = sf::seconds(1.0f / 60.0f); // limita a atualização a 60 fps
         sf::sleep(tempo_por_frame);

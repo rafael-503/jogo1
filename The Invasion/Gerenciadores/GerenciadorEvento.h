@@ -1,13 +1,14 @@
 #pragma once
-#include "../Entidades/Personagens/Jogador.h"
-
+#include "GerenciadorGrafico.h"
 
 namespace Gerenciadores {
+
+    class GerenciadorEstado;
 
     class GerenciadorEvento {
         private:
             static GerenciadorGrafico* pGrafico;
-            Entidades::Personagens::Jogador* pJogador;
+            GerenciadorEstado* pGEstado;
 
             //padrão de projeto singleton
             static GerenciadorEvento* pEvento;
@@ -17,8 +18,6 @@ namespace Gerenciadores {
             static GerenciadorEvento* getGerenciadorEvento();
             void executar();
             void verificarEventos();
-            void setJogador(Entidades::Personagens::Jogador* pJogadorAux);
-            void setPosicaoJogador(const sf::Vector2f& jogadorPos);
     };
 
 }

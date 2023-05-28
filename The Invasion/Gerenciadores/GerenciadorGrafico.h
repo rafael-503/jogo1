@@ -31,5 +31,7 @@ namespace Gerenciadores {
 		void carregarFundo(const char* caminho);
 		void atalizaFundo();
 		void mostrarVidaJogador(int vida);
+        sf::Vector2f getSize();
+
 	};
 }

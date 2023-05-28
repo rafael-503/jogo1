@@ -10,8 +10,9 @@ namespace Estados{
         public:
             EstadoJogar();
             ~EstadoJogar();
+            void PrimeiroExecutar();
             void executar();
-
+            void TeclaPressionada(const sf::Keyboard::Key tecla);
     };
 
 }

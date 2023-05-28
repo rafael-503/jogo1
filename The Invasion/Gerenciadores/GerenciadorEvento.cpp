@@ -1,10 +1,12 @@
 #include "GerenciadorEvento.h"
+#include "GerenciadorEstado.h"
 using namespace Gerenciadores;
+
 
 GerenciadorEvento* GerenciadorEvento::pEvento = NULL;
 GerenciadorGrafico* GerenciadorEvento::pGrafico = GerenciadorGrafico::getGerenciadorGrafico();
 
-GerenciadorEvento::GerenciadorEvento(): pJogador(NULL){
+GerenciadorEvento::GerenciadorEvento(): pGEstado(pGEstado->getGerenciadorEstado()){
 
 }
 
@@ -22,11 +24,16 @@ GerenciadorEvento* GerenciadorEvento::getGerenciadorEvento(){
 void GerenciadorEvento::executar(){
 
 }
-void GerenciadorEvento::setJogador(Entidades::Personagens::Jogador* pJogadorAux){
-    pJogador = pJogadorAux;
-}
+
 void GerenciadorEvento::verificarEventos(){
     sf::Event evento;
+    if(pGrafico->getWindow()->pollEvent(evento)) {
+        if (evento.type == sf::Event::Closed)
+            pGrafico->fecharJanela();
+    }
+    //if(evento.type == sf::Event::KeyPressed)
+        pGEstado->TeclaPressionada(evento.key.code);
+    /*
     if(pJogador){
         if(pGrafico->getWindow()->pollEvent(evento)) {
             if (evento.type == sf::Event::Closed)
@@ -43,8 +50,6 @@ void GerenciadorEvento::verificarEventos(){
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             pJogador->move(false, true);
     }
+    */
 }
 
-void GerenciadorEvento::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
-    pGrafico->atualizarView(jogadorPos);
-}

@@ -134,7 +134,6 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida) {
 	sf::Font font;
 	if (!font.loadFromFile("The invasion/assets/fonts/PlayfairDisplay-Regular.ttf"))
 		return;
-
 	sf::Vector2f cameraPos = view.getCenter(); // Posição central da câmera
 	sf::Vector2f telaPos = cameraPos - sf::Vector2f(TAM_X / 2, TAM_Y / 2); // Canto superior esquerdo da tela
 
@@ -150,3 +149,4 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida) {
 
 	desenharElemento(texto);
 }
+

@@ -2,15 +2,20 @@
 #include "Estado.h"
 #include "../Fases/Fase1.h"
 
+
 namespace Estados{
 
     class MenuPrincipal: public Estado{
         private:
-        Fases::Fase1 fase1;
+            sf::Text TextoJogar;
+            sf::Font font;
+            Gerenciadores::GerenciadorGrafico* pGrafico;
         public:
             MenuPrincipal();
             ~MenuPrincipal();
+            void PrimeiroExecutar();
             void executar();
+            void TeclaPressionada(const sf::Keyboard::Key tecla);
 
     };
 
