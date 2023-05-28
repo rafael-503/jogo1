@@ -19,7 +19,8 @@ Inimigo::Inimigo(sf::Vector2f tam_corpo) :
     relogioColisao.restart();
 }
 
-Inimigo::~Inimigo() {}
+Inimigo::~Inimigo() {
+}
 
 void Inimigo::setJogador(Jogador* aux_jogador) {
     jogador = aux_jogador;
@@ -72,17 +73,14 @@ void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
     
     int ID_aux = pOutra->getID();
 
-    if (ID_aux == 1) {
+    if (ID_aux == 1) { // colisao dos inimigos com o jogador
         Jogador* jogador = dynamic_cast<Jogador*>(pOutra);
         if (jogador) {
             float tempo = relogioColisao.getElapsedTime().asSeconds();
-            if (tempo >= 1.8f) {
-                if (getVida() > 0) {
-                    jogador->setVida(jogador->getVida() - 10);
-                    relogioColisao.restart(); 
-                    setVida(getVida() - 50);
-                    cout << "Vida do inimigo: " << getVida() << endl;
-                }
+            if (tempo >= 2.0f && getVida() > 0) {
+                jogador->setVida(jogador->getVida() - 10);
+                cout << "Vida do inimigo: " << getVida() << endl;
+                relogioColisao.restart(); 
             }
         }
     }

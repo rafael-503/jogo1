@@ -90,7 +90,7 @@ void Fase1::criarPersonagens() {
     //pEventos->setJogador(pJogador);
     pColisao->setJogador(pJogador);
 
-    construtorPersonagens("Soldado", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
+    construtorPersonagens("Cachorro", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
 
     // Criacao de inimigos aleatorios
     srand(time(0));
