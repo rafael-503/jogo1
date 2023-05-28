@@ -42,7 +42,7 @@ void ListaEntidades::esvaziar(){
 void ListaEntidades::verificarVida() {
     for (int i = 0; i < LEs.getSize(); i++) {
         Entidade* pE = LEs[i];
-        if (pE->getVida() < 0) {
+        if (pE->getVida() <= 0) {
             LEs.remover(pE);
             i--;  // Atualiza o índice para percorrer corretamente após a remoção
         }
