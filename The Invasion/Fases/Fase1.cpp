@@ -19,6 +19,7 @@ void Fase1::executar() {
     listaObstaculos.seDesenhe();
     if(pJogador)
       pGrafico->mostrarVidaJogador(pJogador->getVida());
+    listaPersonagens.verificarVida();
 }
 
 void Fase1::esvaziar() {

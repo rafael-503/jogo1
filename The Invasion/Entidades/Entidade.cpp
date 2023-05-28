@@ -4,8 +4,7 @@ using namespace Entidades;
 
 
 Entidade::Entidade(sf::Vector2f tam_corpo) :
-    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true)
-{
+    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true), vida(100){
 }
 
 Entidade::~Entidade() {}
@@ -53,4 +52,12 @@ void Entidade::efeitoGravidade(){
 
     SuspensoNoAR = true;
 
+}
+
+void Entidade::setVida(int vida) {
+	this->vida = vida;
+}
+
+int Entidade::getVida() const {
+	return vida;
 }

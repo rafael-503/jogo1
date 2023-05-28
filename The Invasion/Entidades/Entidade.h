@@ -15,6 +15,7 @@ namespace Entidades{
         sf::Vector2f vel;
         bool SuspensoNoAR;
         float massa;
+        int vida;
 
     public:
         Entidade(sf::Vector2f tam_corpo);
@@ -29,5 +30,7 @@ namespace Entidades{
         virtual string getTipo();
         void setVelocidade(sf::Vector2f v);
         virtual void executar() = 0;
+        void setVida(int vida);
+        int getVida() const;
     };
 }

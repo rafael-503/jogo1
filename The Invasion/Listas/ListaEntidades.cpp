@@ -10,6 +10,11 @@ ListaEntidades::~ListaEntidades(){
 void ListaEntidades::inserir(Entidade* pE){
     LEs.inserir(pE);
 }
+
+void ListaEntidades::remover(Entidade* pE) {
+	LEs.remover(pE);
+}
+
 void ListaEntidades::percorrer(){
    for(int i = 0; i < LEs.getSize(); i++)
         cout << LEs[i]->getTipo() << endl;
@@ -34,7 +39,15 @@ void ListaEntidades::esvaziar(){
     LEs.esvaziar();
 }
 
-
+void ListaEntidades::verificarVida() {
+    for (int i = 0; i < LEs.getSize(); i++) {
+        Entidade* pE = LEs[i];
+        if (pE->getVida() < 0) {
+            LEs.remover(pE);
+            i--;  // Atualiza o índice para percorrer corretamente após a remoção
+        }
+    }
+}
 
 
 

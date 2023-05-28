@@ -52,6 +52,38 @@ namespace Listas {
 				}
 			}
 		}
+
+		void remover(TL* pTipo) {
+			Elemento<TL>* pAux = pPrimeiro;
+			while (pAux) {
+				if (pAux->getInfo() == pTipo) {
+					if (pAux == pPrimeiro) {
+						pPrimeiro = pAux->getProx();
+						if (pPrimeiro)
+							pPrimeiro->setAnt(NULL);
+						else
+							pUltimo = NULL;
+					}
+					else if (pAux == pUltimo) {
+						pUltimo = pAux->getAnt();
+						if (pUltimo)
+							pUltimo->setProx(NULL);
+						else
+							pPrimeiro = NULL;
+					}
+					else {
+						Elemento<TL>* pAnterior = pAux->getAnt();
+						Elemento<TL>* pProximo = pAux->getProx();
+						pAnterior->setProx(pProximo);
+						pProximo->setAnt(pAnterior);
+					}
+					delete pAux;
+					break;
+				}
+				pAux = pAux->getProx();
+			}
+		}
+
 		void esvaziar() {
 			Elemento<TL>* pAux = pPrimeiro;
 			pAtual = pPrimeiro;

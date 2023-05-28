@@ -13,11 +13,12 @@ namespace Listas{
             ~ListaEntidades();
             int getSize() const;
             void inserir(Entidade* pE);
+            void remover(Entidade* pE);
             void percorrer();
             void executar();
 			void seDesenhe();
             void esvaziar();
-
+            void verificarVida();
     };
 }
 

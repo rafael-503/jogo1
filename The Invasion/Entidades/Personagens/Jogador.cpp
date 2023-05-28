@@ -50,11 +50,13 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
     int ID_aux = pOutra->getID();
     if (ID_aux == 2) { // INIMIGO
         cout << "Jogador Colidiu com Inimigo" << endl;
-        if (tempo > 1.5f) {
-            setVida(getVida() - 10);
-            cout << getVida() << endl;
+        if (tempo > 1.0f) {
+            //setVida(getVida() - 10);
+            //cout << getVida() << endl;
             Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
-            atacar(inimigo);
+            inimigo->setVida(inimigo->getVida() - 100);
+            cout << inimigo->getVida() << endl;
+            //atacar(inimigo);
         }
         relogio.restart();
     }
