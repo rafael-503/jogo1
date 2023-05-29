@@ -17,6 +17,7 @@ namespace Entidades{
         bool SuspensoNoAR;
         float massa;
         int vida;
+        int pontuacao;
 
     public:
         Entidade(sf::Vector2f tam_corpo);
@@ -33,5 +34,7 @@ namespace Entidades{
         virtual void executar() = 0;
         void setVida(int vida);
         int getVida() const;
+        void setPontuacao(int pontuacao);
+        int getPontuacao() const;
     };
 }

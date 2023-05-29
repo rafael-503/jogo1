@@ -4,7 +4,7 @@ using namespace Entidades;
 
 
 Entidade::Entidade(sf::Vector2f tam_corpo) :
-    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true), vida(100){
+    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true), vida(100), pontuacao(0){
 }
 
 Entidade::~Entidade() {}
@@ -39,7 +39,7 @@ void Entidade::setMassa(float Massa){
     massa = Massa;
 }
 void Entidade::efeitoGravidade(){
-
+    
     if(SuspensoNoAR){
         //cout << "GRAVIDADE" << endl;
         float G = 1.0f;
@@ -62,4 +62,12 @@ void Entidade::setVida(int vida) {
 
 int Entidade::getVida() const {
 	return vida;
+}
+
+void Entidade::setPontuacao(int pontuacao) {
+	this->pontuacao = pontuacao;
+}
+
+int Entidade::getPontuacao() const {
+	return pontuacao;
 }

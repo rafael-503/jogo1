@@ -62,10 +62,12 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
         relogio.restart();
     }*/
 
-    if (ID_aux == 3) { // colisao com o cachorro e o soldado
+    if (ID_aux == 3) { // colisao com o cachorro e o lenhador
         Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
         if (tempo > 1.5f && inimigo->getVida() > 0) {
             inimigo->setVida(inimigo->getVida() - 50);
+            setPontuacao(getPontuacao()+5); 
+            cout << getPontuacao() << endl;
             relogioColisao.restart();
         }
     }
@@ -74,6 +76,7 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
 	    Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
         if (tempo > 1.5f && inimigo->getVida() > 0) {
             inimigo->setVida(inimigo->getVida() - 30);
+            setPontuacao(getPontuacao() + 30);
             relogioColisao.restart();
         }
     }
