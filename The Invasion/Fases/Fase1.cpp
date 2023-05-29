@@ -52,7 +52,6 @@ void Fase1::construtorObstaculos(const std::string& tipo, const sf::Vector2f& ta
         pColisao->incluiObstaculo(pObstaculo);
         pEntidade = static_cast<Entidade*>(pObstaculo);
         listaObstaculos.inserir(pEntidade);
-        cout << "Incluido" << endl;
     }
 }
 
@@ -93,19 +92,18 @@ void Fase1::criarPersonagens() {
     listaPersonagens.inserir(pEntidade);
     pColisao->setJogador(pJogador1);
 
-
-    construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(20.0f, 200.0f));
     construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
+ 
     // Criacao de inimigos aleatorios
     std::srand(time(0));
     int x = POS_MIN + (rand() % (POS_MAX - POS_MIN + 1)); // Gera numeros entre 500 e 2000
-    /*
+    
 	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
-	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x + 20, 0.0f));
-	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x + 40, 0.0f));
-	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x + 60, 0.0f));
-	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x + 80, 0.0f));
-	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x + 100, 0.0f));*/
+	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(x + 100, 0.0f));
+	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x + 150, 0.0f));
+	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(x + 200, 0.0f));
+	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x + 250, 0.0f));
+	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(100.0f, 100.0f), sf::Vector2f(x + 300, 0.0f));
 }
 
 void Fase1::criarObstaculos() {
