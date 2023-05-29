@@ -124,7 +124,7 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida) {
 
 	sf::Text texto;
 	texto.setFont(font);
-//	texto.setString("Vida: " + std::to_string(vida) );
+	texto.setString("Vida: " + std::to_string(vida) );
 
 	texto.setCharacterSize(20);
 	texto.setFillColor(sf::Color::White);
