@@ -93,7 +93,7 @@ void Gerenciadores::Gerenciador_Colisoes::testa_colisoes() {
         for(i = 0; i < (int) vetor_inimigos.size(); i++){
             if(vetor_inimigos[i]){
                 pEnti_1 = static_cast<Entidade*> (vetor_inimigos[i]);
-
+                it_obs = lista_obstaculos.begin();
                 while(it_obs != lista_obstaculos.end()){
                     pObs = *it_obs;
                     if (pObs) {
