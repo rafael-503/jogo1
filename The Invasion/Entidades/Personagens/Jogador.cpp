@@ -3,6 +3,8 @@
 #include "Inimigo.h"
 using namespace Entidades;
 using namespace Personagens;
+#include "../../Gerenciadores/GerenciadorEstado.h"
+
 
 void Jogador::inicializa() {
 }
@@ -30,7 +32,7 @@ void Jogador::executar() {
 void Jogador::move(bool Direita, bool pulo){
     if(pulo){
         if (!SuspensoNoAR) {
-            vel.y = -10.0f;
+            vel.y = -13.0f;
             corpo.move(0.0f, vel.y);
         }
     }
@@ -66,7 +68,7 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
         Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
         if (tempo > 1.5f && inimigo->getVida() > 0) {
             inimigo->setVida(inimigo->getVida() - 50);
-            setPontuacao(getPontuacao()+5); 
+            setPontuacao(getPontuacao()+5);
             cout << getPontuacao() << endl;
             relogioColisao.restart();
         }

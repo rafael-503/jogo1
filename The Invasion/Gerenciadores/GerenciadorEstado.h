@@ -28,6 +28,7 @@ namespace Gerenciadores{
 			void TeclaPressionada(const sf::Keyboard::Key tecla);
             void guardarPontuacao(int num);
             void resetarEstadoJogar();
+            string getStringEstadoAtual() const;
     };
 
 }

@@ -54,3 +54,6 @@ void GerenciadorEstado::resetarEstadoJogar(){
     mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
 
 }
+string GerenciadorEstado::getStringEstadoAtual() const{
+    return EstadoAtual;
+}
