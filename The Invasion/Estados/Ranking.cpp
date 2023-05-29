@@ -2,7 +2,7 @@
 #include "../Gerenciadores/GerenciadorEstado.h"
 using namespace Estados;
 
-Ranking::Ranking() :Estado(), BotaoMenuPrincipal("Menu Principal", font) {
+Ranking::Ranking() :Estado(), BotaoMenuPrincipal("Menu Principal", font), vectorPontuacoes() {
     sf::Vector2u tamJanela(600.f, 400.f);
     BotaoMenuPrincipal.setScale(1.5f, 1.5f);
 
@@ -37,8 +37,20 @@ void Ranking::executar() {
     }
 
     pGrafico->desenharElemento(BotaoMenuPrincipal);
+    imprimirPontuacao();
 }
 
 void Ranking::TeclaPressionada(const sf::Keyboard::Key tecla) {
 
+}
+
+void Ranking::guardarPontuacao(int num) {
+    sf::Text* pAux = new sf::Text(std::to_string(num), font);
+    vectorPontuacoes.push_back(pAux);
+}
+
+void Ranking::imprimirPontuacao() {
+    for (int i = 0; i < vectorPontuacoes.size(); i++) {
+		cout << vectorPontuacoes[i]->getString().toAnsiString() << endl;
+	}
 }

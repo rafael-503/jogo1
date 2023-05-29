@@ -37,5 +37,5 @@ void GerenciadorEstado::TeclaPressionada(const sf::Keyboard::Key tecla){
 }
 
 void GerenciadorEstado::guardarPontuacao(int num) {
-    //mapEstados["Ranking"]->guardarPontuacao(num);
+    mapEstados["Ranking"]->guardarPontuacao(num);
 }

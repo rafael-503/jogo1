@@ -51,6 +51,7 @@ void ListaEntidades::verificarVida() {
                 if (dynamic_cast<Entidades::Personagens::Jogador*>(pE) != NULL) {
                     
                     cout << pE->getPontuacao() << endl;
+                    pEstado->guardarPontuacao(pE->getPontuacao());
                     pEstado->setEstadoAtual("GameOver");
                     cout << "GAME OVER" << endl;
                 }
@@ -61,7 +62,7 @@ void ListaEntidades::verificarVida() {
             if (pE->getPosition().y > 2000) {
                 if (dynamic_cast<Entidades::Personagens::Jogador*>(pE) != NULL) {
                     cout << pE->getPontuacao() << endl;
-
+                    pEstado->guardarPontuacao(pE->getPontuacao());
                     pEstado->setEstadoAtual("GameOver");
                     cout << "GAME OVER" << endl;
                 }
