@@ -9,6 +9,7 @@ GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
     mapEstados["GameOver"] = new Estados::GameOver();
     mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
     mapEstados[EstadoAtual]->PrimeiroExecutar();
+    mapEstados[EstadoAtual]->setExecutando(true);
 }
 GerenciadorEstado::~GerenciadorEstado(){
 
@@ -24,8 +25,10 @@ void GerenciadorEstado::executarEstadoAtual(){
 
 }
 void GerenciadorEstado::setEstadoAtual(string estadoAux){
+    mapEstados[EstadoAtual]->setExecutando(false);
     EstadoAtual = estadoAux;
     mapEstados[EstadoAtual]->PrimeiroExecutar();
+    mapEstados[EstadoAtual]->setExecutando(true);
 
 }
 void GerenciadorEstado::TeclaPressionada(const sf::Keyboard::Key tecla){
