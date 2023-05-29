@@ -184,4 +184,8 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador(Personagens::Jogador* pJoga
     pJogador = pJogaAux;
 }
 
-
+void Gerenciadores::Gerenciador_Colisoes::limpar(){
+    vetor_inimigos.clear();
+    lista_obstaculos.clear();
+    pJogador = NULL;
+}

@@ -2,13 +2,16 @@
 using namespace Fases;
 
 Fase1::Fase1() {
-	pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
+	if(pGrafico)
+        pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
+    else
+        cout << "pGrafico Nulo na construtora da fase 1" << endl;
 	criarPersonagens();
 	criarObstaculos();
 }
 
 Fase1::~Fase1() {
-
+    pColisao->limpar();
 }
 
 void Fase1::executar() {

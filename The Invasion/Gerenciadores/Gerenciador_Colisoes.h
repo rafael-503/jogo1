@@ -23,6 +23,7 @@ namespace Gerenciadores {
         void incluiObstaculo(Obstaculos::Obstaculo* pObs);
         void testa_colisoes();
         void setJogador(Personagens::Jogador* pJogaAux);
+        void limpar();
         sf::Vector2f Calcula_colisao(Entidade* pEnti1, Entidade* pEnti2);
         Gerenciador_Colisoes* getGerenciador_Colisoes();
     };

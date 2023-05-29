@@ -6,7 +6,7 @@ EstadoJogar::EstadoJogar(): fase1(){
 
 }
 EstadoJogar::~EstadoJogar(){
-
+    cout << "TESTE" << endl;
 }
 void EstadoJogar::executar(){
     fase1.executar();

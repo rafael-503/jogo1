@@ -17,3 +17,4 @@ void Estado::setExecutando(bool ativo){
 void Estado::guardarPontuacao(int num) {
 
 }
+

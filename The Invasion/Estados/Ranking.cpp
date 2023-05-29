@@ -50,7 +50,7 @@ void Ranking::guardarPontuacao(int num) {
 }
 
 void Ranking::imprimirPontuacao() {
-    for (int i = 0; i < vectorPontuacoes.size(); i++) {
+    for (int i = 0; i < (int) vectorPontuacoes.size(); i++) {
 		cout << vectorPontuacoes[i]->getString().toAnsiString() << endl;
 	}
 }

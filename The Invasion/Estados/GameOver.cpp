@@ -2,7 +2,7 @@
 #include "../Gerenciadores/GerenciadorEstado.h"
 using namespace Estados;
 
-GameOver::GameOver() :Estado(), BotaoTentarNovamente("Tentar novamente", font), BotaoMenuPrincipal("Menu Principal", font), 
+GameOver::GameOver() :Estado(), BotaoTentarNovamente("Tentar novamente", font), BotaoMenuPrincipal("Menu Principal", font),
 BotaoRanking("Ranking", font) {
     sf::Vector2u tamJanela(600.f, 400.f);
     BotaoTentarNovamente.setScale(1.5f, 1.5f);
@@ -38,8 +38,7 @@ void GameOver::executar() {
     if (rectTentarNovamente.intersects(corpoMouse)) {
         BotaoTentarNovamente.setFillColor(sf::Color::Red);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            //Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("NovoJogo");
-            cout << "TENTAR NOVAMENTE" << endl;
+            Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("EstadoJogar");
         }
     }
     else {
