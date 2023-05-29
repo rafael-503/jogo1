@@ -6,23 +6,25 @@
 #include <SFML/Graphics.hpp>
 #include <list>
 using namespace Entidades;
+using namespace Personagens;
 
 namespace Gerenciadores {
 
     class Gerenciador_Colisoes {
     private:
         static Gerenciador_Colisoes* pGerenciador_Colisoes;
-        vector<Personagens::Inimigo*> vetor_inimigos;
+        vector<Personagem*> vetor_personagens;
         list<Obstaculos::Obstaculo*> lista_obstaculos;
-        Personagens::Jogador* pJogador;
+
 
     public:
         Gerenciador_Colisoes();
         ~Gerenciador_Colisoes();
-        void incluiInimigo(Personagens::Inimigo* pInimigo);
+        void incluiPersonagem(Personagem* pPerso);
+        void incluiInimigo(Inimigo* pInimigo);
         void incluiObstaculo(Obstaculos::Obstaculo* pObs);
         void testa_colisoes();
-        void setJogador(Personagens::Jogador* pJogaAux);
+        void setJogador(Jogador* pJogaAux);
         void limpar();
         sf::Vector2f Calcula_colisao(Entidade* pEnti1, Entidade* pEnti2);
         Gerenciador_Colisoes* getGerenciador_Colisoes();

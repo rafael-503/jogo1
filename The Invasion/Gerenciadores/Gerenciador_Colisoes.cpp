@@ -2,7 +2,7 @@
 
 
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
-Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogador(NULL) {
+Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(){
 
 }
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
@@ -14,11 +14,21 @@ Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::getGer
         pGerenciador_Colisoes = new Gerenciador_Colisoes();
     return pGerenciador_Colisoes;
 }
-void Gerenciadores::Gerenciador_Colisoes::incluiInimigo(Personagens::Inimigo* pInimigo) {
-    if (pInimigo)
-        vetor_inimigos.push_back(pInimigo);
+
+void Gerenciadores::Gerenciador_Colisoes::incluiPersonagem(Personagem* pPerso){
+    if (pPerso)
+        vetor_personagens.push_back(pPerso);
     else
-        cout << "erro: incluindo ponteiro nulo no vetor_inimigos do Gerenciador de colisoes" << endl;
+        cout << "erro: incluindo Personagem nulo no vetor_Personagens do Gerenciador de colisoes" << endl;
+}
+
+void Gerenciadores::Gerenciador_Colisoes::incluiInimigo(Personagens::Inimigo* pInimigo) {
+    if (pInimigo){
+        Personagem* pPerso = static_cast<Personagem*> (pInimigo);
+        vetor_personagens.push_back(pPerso);
+    }
+    else
+        cout << "erro: incluindo inimigo nulo no vetor_Personagens do Gerenciador de colisoes" << endl;
 }
 void Gerenciadores::Gerenciador_Colisoes::incluiObstaculo(Obstaculos::Obstaculo* pObs) {
     if (pObs)
@@ -27,140 +37,116 @@ void Gerenciadores::Gerenciador_Colisoes::incluiObstaculo(Obstaculos::Obstaculo*
         cout << "erro: incluindo ponteiro nulo no vetor_obstaculos do Gerenciador de colisoes" << endl;
 }
 void Gerenciadores::Gerenciador_Colisoes::testa_colisoes() {
-    if (pJogador) {
 
-        Entidade* pEntiJogador = static_cast<Entidade*> (pJogador);
-        Entidade* pEnti_1 = NULL;
-        sf::Vector2f DistanciaExtremidades;
-        bool Colidiu_em_x = false;
-        int i = 0;
+    //colisão entre Personagens
 
-
-        //testa coli�o com os inimigos
-        for (i = 0; i < (int)vetor_inimigos.size(); i++) {
-            if (vetor_inimigos[i]) {
-                pEnti_1 = static_cast<Entidade*> (vetor_inimigos[i]);
-
-                //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
-                DistanciaExtremidades = Calcula_colisao(pEntiJogador, pEnti_1);
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
-                    if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
-                        Colidiu_em_x = true;
-                    else
-                        Colidiu_em_x = false;
-                    pEntiJogador->colisao(pEnti_1, DistanciaExtremidades, Colidiu_em_x);
-                    pEnti_1->colisao(pEntiJogador, DistanciaExtremidades, Colidiu_em_x);
-                }
-
-            }
-            else
-                cout << "ponteiro nulo no vetor do gereniador de colisões" << endl;
-
-        }
-
-        list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
-        Obstaculos::Obstaculo* pObs = NULL;
-
-        //testa coli�o com os Obstaculos
-        while (it_obs != lista_obstaculos.end()) {
-            pObs = *it_obs;
-            if (pObs) {
-                pEnti_1 = static_cast<Entidade*> (pObs);
-
-                //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
-                DistanciaExtremidades = Calcula_colisao(pEntiJogador, pEnti_1);
-                if (DistanciaExtremidades.x <= 0.0f && DistanciaExtremidades.y <= 0.0f){
-                    if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
-                        Colidiu_em_x = false;
-                    else
-                        Colidiu_em_x = true;
-                    pEntiJogador->colisao(pEnti_1, DistanciaExtremidades, Colidiu_em_x);
-                    pEnti_1->colisao(pEntiJogador, DistanciaExtremidades, Colidiu_em_x);
-
-                }
-            }
-            else
-                cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
-            it_obs++;
-        }
+    Entidade* pEnti_1 = NULL;
+    Entidade* pEnti_2 = NULL;
+    sf::Vector2f DistanciaExtremidades;
+    bool Colidiu_em_x = false;
+    int i = 0, j = 0;
 
 
-
-        it_obs = lista_obstaculos.begin();
-        Entidade* pEnti_2 = NULL;
-
-        //testa colisoes entre inimigos com obstaculos
-        for(i = 0; i < (int) vetor_inimigos.size(); i++){
-            if(vetor_inimigos[i]){
-                pEnti_1 = static_cast<Entidade*> (vetor_inimigos[i]);
-                it_obs = lista_obstaculos.begin();
-                while(it_obs != lista_obstaculos.end()){
-                    pObs = *it_obs;
-                    if (pObs) {
-                        pEnti_2 = static_cast<Entidade*> (pObs);
-
-                        //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
-                        DistanciaExtremidades = Calcula_colisao(pEnti_1, pEnti_2);
-                        if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
-                            if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
-                                Colidiu_em_x = false;
-                            else
-                                Colidiu_em_x = true;
-                            pEnti_1->colisao(pEnti_2, DistanciaExtremidades, Colidiu_em_x);
-
-                        }
+    //testa colisões entre Personagens
+    for (i = 0; i < (int)vetor_personagens.size(); i++){
+        if(vetor_personagens[i]){
+            pEnti_1 = static_cast<Entidade*> (vetor_personagens[i]);
+            for(j = i + 1; j < (int)vetor_personagens.size(); j++){
+                if(vetor_personagens[j]){
+                    pEnti_2 = static_cast<Entidade*> (vetor_personagens[j]);
+                    DistanciaExtremidades = Calcula_colisao(pEnti_1, pEnti_2);
+                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
+                        if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
+                            Colidiu_em_x = false;
+                        else
+                            Colidiu_em_x = true;
+                        pEnti_1->colisao(pEnti_2, DistanciaExtremidades, Colidiu_em_x);
+                        pEnti_2->colisao(pEnti_1, DistanciaExtremidades, Colidiu_em_x);
                     }
-                    else
-                        cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
-                    it_obs++;
                 }
-
+                else
+                    cout << "ponteiro nulo no vetor do gereniador de colisões" << endl;
             }
-            else
-                cout << "ponteiro nulo no vetor do gereniador de colisões" << endl;
         }
-
-
-        it_obs = lista_obstaculos.begin();
-        list<Obstaculos::Obstaculo*>::iterator it_obs2 = lista_obstaculos.begin();
-        Obstaculos::Obstaculo* pObs2;
-
-        //testa colisoes entre obstaculos
-
-        while(it_obs != lista_obstaculos.end()){
-            pObs = *it_obs;
-            if(pObs){
-                it_obs2 = it_obs;
-                it_obs2++;
-                pEnti_1 = static_cast<Entidade*> (pObs);
-                while(it_obs2 != lista_obstaculos.end()){
-                    pObs2 = *it_obs2;
-                    if(pObs2){
-                        pEnti_2 = static_cast<Entidade*> (pObs2);
-
-                        //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
-                        DistanciaExtremidades = Calcula_colisao(pEnti_1, pEnti_2);
-                        if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
-                            if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
-                                Colidiu_em_x = false;
-                            else
-                                Colidiu_em_x = true;
-                            pEnti_1->colisao(pEnti_2, DistanciaExtremidades, Colidiu_em_x);
-
-                        }
-                    }
-                    else
-                        cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
-                    it_obs2++;
-                }
-            }
-            else
-                cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
-            it_obs++;
-        }
-
-
+        else
+            cout << "ponteiro nulo no vetor do gereniador de colisões" << endl;
     }
+
+
+   //Colisão entre Personagens e Obstaculos
+    list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
+    Obstaculos::Obstaculo* pObs;
+
+    for (i = 0; i < (int)vetor_personagens.size(); i++){
+        if(vetor_personagens[i]){
+            pEnti_1 = static_cast<Entidade*> (vetor_personagens[i]);
+            it_obs = lista_obstaculos.begin();
+            while(it_obs != lista_obstaculos.end()){
+                pObs = *it_obs;
+                if(pObs){
+                    pEnti_2 = static_cast<Entidade*> (pObs);
+                    DistanciaExtremidades = Calcula_colisao(pEnti_1, pEnti_2);
+                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
+                        if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
+                            Colidiu_em_x = false;
+                        else
+                            Colidiu_em_x = true;
+                        pEnti_1->colisao(pEnti_2, DistanciaExtremidades, Colidiu_em_x);
+                        pEnti_2->colisao(pEnti_1, DistanciaExtremidades, Colidiu_em_x);
+                    }
+                }
+                else
+                    cout << "ponteiro nulo na Lista do gereniador de colisões" << endl;
+                it_obs++;
+            }
+        }
+        else
+            cout << "ponteiro nulo no vetor do gereniador de colisões" << endl;
+    }
+
+
+
+
+    it_obs = lista_obstaculos.begin();
+    list<Obstaculos::Obstaculo*>::iterator it_obs2 = lista_obstaculos.begin();
+    Obstaculos::Obstaculo* pObs2;
+
+    //testa colisoes entre obstaculos
+    while(it_obs != lista_obstaculos.end()){
+        pObs = *it_obs;
+        if(pObs){
+            it_obs2 = it_obs;
+            it_obs2++;
+            pEnti_1 = static_cast<Entidade*> (pObs);
+            while(it_obs2 != lista_obstaculos.end()){
+                pObs2 = *it_obs2;
+                if(pObs2){
+                    pEnti_2 = static_cast<Entidade*> (pObs2);
+                    //Calcula_colisao retorna a distancia entre as duas extremidades mais proximas em cada eixp
+                    DistanciaExtremidades = Calcula_colisao(pEnti_1, pEnti_2);
+                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
+                        if(fabs(DistanciaExtremidades.x) > fabs(DistanciaExtremidades.y))
+                            Colidiu_em_x = false;
+                        else
+                            Colidiu_em_x = true;
+                        pEnti_1->colisao(pEnti_2, DistanciaExtremidades, Colidiu_em_x);
+                    }
+                }
+                else
+                    cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
+                it_obs2++;
+            }
+        }
+        else
+            cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
+        it_obs++;
+    }
+
+
+
+
+
+
 }
 
 sf::Vector2f Gerenciadores::Gerenciador_Colisoes::Calcula_colisao(Entidade* pEnti1, Entidade* pEnti2) {
@@ -181,11 +167,15 @@ sf::Vector2f Gerenciadores::Gerenciador_Colisoes::Calcula_colisao(Entidade* pEnt
 }
 
 void Gerenciadores::Gerenciador_Colisoes::setJogador(Personagens::Jogador* pJogaAux){
-    pJogador = pJogaAux;
+    if (pJogaAux){
+        Personagem* pPerso = static_cast<Personagem*> (pJogaAux);
+        vetor_personagens.push_back(pPerso);
+    }
+    else
+        cout << "erro: incluindo jogador nulo no vetor_Personagens do Gerenciador de colisoes" << endl;
 }
 
 void Gerenciadores::Gerenciador_Colisoes::limpar(){
-    vetor_inimigos.clear();
+    vetor_personagens.clear();
     lista_obstaculos.clear();
-    pJogador = NULL;
 }
