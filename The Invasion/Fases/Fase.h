@@ -22,7 +22,7 @@ namespace Fases {
 
 		public:
 			Fase();
-			~Fase();
+			virtual ~Fase();
 			void gerenciarColisoes();
 			void TeclaPressionada(const sf::Keyboard::Key tecla);
 			void setPosicaoJogador(const sf::Vector2f& jogadorPos);

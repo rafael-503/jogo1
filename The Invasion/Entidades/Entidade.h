@@ -20,7 +20,7 @@ namespace Entidades{
 
     public:
         Entidade(sf::Vector2f tam_corpo);
-        ~Entidade();
+        virtual ~Entidade();
         sf::RectangleShape getCorpo();
         float getMassa() const;
         void setMassa(float Massa);
