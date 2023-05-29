@@ -1,7 +1,7 @@
 #include "../stdafx.h"
 #include "Entidade.h"
 using namespace Entidades;
-
+#include "../Gerenciadores/GerenciadorEstado.h"
 
 Entidade::Entidade(sf::Vector2f tam_corpo) :
     Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true), vida(100), pontuacao(0){
@@ -39,16 +39,16 @@ void Entidade::setMassa(float Massa){
     massa = Massa;
 }
 void Entidade::efeitoGravidade(){
-    
-    if(SuspensoNoAR){
+
+    if(SuspensoNoAR && Gerenciadores::GerenciadorEstado::pGEstados->getStringEstadoAtual() == "EstadoJogar"){
         //cout << "GRAVIDADE" << endl;
-        float G = 1.0f;
-        float dt = relogio.getElapsedTime().asSeconds();
-        vel.y = vel.y + dt*G;
+        float G = 0.5f;
+        //float dt = relogio.getElapsedTime().asSeconds();
+        vel.y = vel.y + G;
         corpo.move(0.0f, vel.y);
     }
-    else
-        relogio.restart();
+    else if (vel.y > 0)
+        vel.y = 0;
 
     SuspensoNoAR = true;
 
