@@ -12,10 +12,6 @@ namespace Estados {
         sf::Text BotaoMenuPrincipal;
         sf::Text BotaoRanking;
 
-        sf::Text textoNome;
-        std::string nomeJogador;
-        bool inserindoNome;
-
     public:
         GameOver();
         ~GameOver();

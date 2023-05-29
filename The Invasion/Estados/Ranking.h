@@ -8,6 +8,10 @@ namespace Estados {
         sf::Text BotaoMenuPrincipal;
         vector<sf::Text*> vectorPontuacoes;
 
+        sf::Text textoNome;
+        std::string nomeJogador;
+        bool inserindoNome;
+
     public:
         Ranking();
         ~Ranking();

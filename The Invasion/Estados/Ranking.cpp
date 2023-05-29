@@ -9,6 +9,12 @@ Ranking::Ranking() :Estado(), BotaoMenuPrincipal("Menu Principal", font), vector
 
     sf::FloatRect tamBotaoMenuPrincipal = BotaoMenuPrincipal.getLocalBounds();
     BotaoMenuPrincipal.setPosition(tamJanela.x / 2 + 500, 700);
+
+    textoNome.setFont(font);
+    textoNome.setCharacterSize(24);
+    textoNome.setFillColor(sf::Color::Black);
+    textoNome.setPosition(10, 10);
+    inserindoNome = false;
 }
 
 Ranking::~Ranking() {

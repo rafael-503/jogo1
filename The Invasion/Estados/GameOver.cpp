@@ -18,11 +18,7 @@ BotaoRanking("Ranking", font) {
     sf::FloatRect tamBotaoRanking = BotaoRanking.getLocalBounds();
     BotaoRanking.setPosition(-(tamJanela.x / 2 - tamBotaoRanking.width -700), 650);
 
-    textoNome.setFont(font);
-    textoNome.setCharacterSize(24);
-    textoNome.setFillColor(sf::Color::Black);
-    textoNome.setPosition(10, 10);
-    inserindoNome = false;
+
 }
 
 GameOver::~GameOver() {
@@ -74,7 +70,8 @@ void GameOver::executar() {
     if (rectRanking.intersects(corpoMouse)) {
         BotaoRanking.setFillColor(sf::Color::Red);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            inserindoNome = true;
+            Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("Ranking");
+
         }
     }
     else {
