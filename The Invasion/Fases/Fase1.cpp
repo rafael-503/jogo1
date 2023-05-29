@@ -12,6 +12,8 @@ Fase1::Fase1() {
 
 Fase1::~Fase1() {
     pColisao->limpar();
+    pColisao = NULL;
+    pJogador1 = NULL;
 }
 
 void Fase1::executar() {

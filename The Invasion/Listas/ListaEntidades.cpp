@@ -9,6 +9,7 @@ Gerenciadores::GerenciadorEstado* pGEstado = Gerenciadores::GerenciadorEstado::g
 ListaEntidades::ListaEntidades(){
 }
 ListaEntidades::~ListaEntidades(){
+    // cout << "Destrutora ListaEntidades???" << endl;
 
 }
 void ListaEntidades::inserir(Entidade* pE){
