@@ -52,6 +52,7 @@ void ListaEntidades::verificarVida() {
                     
                     cout << pE->getPontuacao() << endl;
                     pEstado->guardarPontuacao(pE->getPontuacao());
+                    pEstado->resetarEstadoJogar();
                     pEstado->setEstadoAtual("GameOver");
                     cout << "GAME OVER" << endl;
                 }
@@ -63,6 +64,7 @@ void ListaEntidades::verificarVida() {
                 if (dynamic_cast<Entidades::Personagens::Jogador*>(pE) != NULL) {
                     cout << pE->getPontuacao() << endl;
                     pEstado->guardarPontuacao(pE->getPontuacao());
+                    pEstado->resetarEstadoJogar();
                     pEstado->setEstadoAtual("GameOver");
                     cout << "GAME OVER" << endl;
                 }

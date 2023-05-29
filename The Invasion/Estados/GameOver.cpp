@@ -17,6 +17,12 @@ BotaoRanking("Ranking", font) {
 
     sf::FloatRect tamBotaoRanking = BotaoRanking.getLocalBounds();
     BotaoRanking.setPosition(-(tamJanela.x / 2 - tamBotaoRanking.width -700), 650);
+
+    textoNome.setFont(font);
+    textoNome.setCharacterSize(24);
+    textoNome.setFillColor(sf::Color::Black);
+    textoNome.setPosition(10, 10);
+    inserindoNome = false;
 }
 
 GameOver::~GameOver() {
@@ -54,7 +60,7 @@ void GameOver::executar() {
     else {
         BotaoMenuPrincipal.setFillColor(sf::Color::White);
     }
-
+    /*
     if (rectRanking.intersects(corpoMouse)) {
         BotaoRanking.setFillColor(sf::Color::Red);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -63,6 +69,44 @@ void GameOver::executar() {
     }
     else {
         BotaoRanking.setFillColor(sf::Color::White);
+    }*/
+
+    if (rectRanking.intersects(corpoMouse)) {
+        BotaoRanking.setFillColor(sf::Color::Red);
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            inserindoNome = true;
+        }
+    }
+    else {
+        BotaoRanking.setFillColor(sf::Color::White);
+    }
+
+    if (inserindoNome) {
+        sf::Event event;
+        while (pGrafico->getWindow()->pollEvent(event)) {
+            if (event.type == sf::Event::TextEntered) {
+                if (event.text.unicode < 128 && event.text.unicode != '\b') {
+                    nomeJogador += static_cast<char>(event.text.unicode);
+                }
+                else if (event.text.unicode == '\b' && !nomeJogador.empty()) {
+                    nomeJogador.pop_back();
+                }
+            }
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
+                inserindoNome = false;
+                // Aqui você pode fazer algo com o nome do jogador, como salvá-lo no ranking
+                std::cout << "Nome do jogador: " << nomeJogador << std::endl;
+            }
+        }
+    }
+
+    pGrafico->desenharElemento(BotaoTentarNovamente);
+    pGrafico->desenharElemento(BotaoMenuPrincipal);
+    pGrafico->desenharElemento(BotaoRanking);
+
+    if (inserindoNome) {
+        textoNome.setString("Digite seu nome: " + nomeJogador);
+        pGrafico->desenharElemento(textoNome);
     }
 
 	pGrafico->desenharElemento(BotaoTentarNovamente);

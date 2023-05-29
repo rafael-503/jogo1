@@ -39,3 +39,12 @@ void GerenciadorEstado::TeclaPressionada(const sf::Keyboard::Key tecla){
 void GerenciadorEstado::guardarPontuacao(int num) {
     mapEstados["Ranking"]->guardarPontuacao(num);
 }
+
+void GerenciadorEstado::resetarEstadoJogar() {
+    mapEstados.erase("EstadoJogar");
+    delete mapEstados["EstadoJogar"];
+    mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
+    mapEstados["EstadoJogar"]->PrimeiroExecutar();
+    mapEstados["EstadoJogar"]->setExecutando(true);
+
+}
