@@ -99,6 +99,9 @@
     <ClCompile Include="The Invasion\Entidades\Projetil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="The Invasion\Estados\Ranking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="the invasion\Ente.h">
@@ -186,6 +189,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="The Invasion\Entidades\Projetil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="The Invasion\Estados\Ranking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

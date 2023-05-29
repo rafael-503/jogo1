@@ -48,7 +48,7 @@ void MenuPrincipal::executar(){
     if(rectRanking.intersects(corpoMouse)){
         BotaoRanking.setFillColor(sf::Color::Red);
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
-            cout << "RANKING" << endl;
+            Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("Ranking");
     }
     else
         BotaoRanking.setFillColor(sf::Color::White);

@@ -119,13 +119,3 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
         }
     }
 }
-
-void Jogador::atacar(Inimigo* pInimigo) {
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        if (pInimigo) {
-        pInimigo->setVida(pInimigo->getVida() - 100);
-        cout << pInimigo->getVida() << endl;
-        cout << "Ataque" << endl;
-        }
-    }
-}

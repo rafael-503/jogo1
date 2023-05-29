@@ -3,15 +3,13 @@
 
 namespace Estados {
 
-    class GameOver : public Estado {
+    class Ranking : public Estado {
     private:
-        sf::Text BotaoTentarNovamente;
         sf::Text BotaoMenuPrincipal;
-        sf::Text BotaoRanking;
 
     public:
-        GameOver();
-        ~GameOver();
+        Ranking();
+        ~Ranking();
         void PrimeiroExecutar();
         void executar();
         void TeclaPressionada(const sf::Keyboard::Key tecla);

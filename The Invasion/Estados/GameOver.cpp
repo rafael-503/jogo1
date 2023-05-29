@@ -2,16 +2,21 @@
 #include "../Gerenciadores/GerenciadorEstado.h"
 using namespace Estados;
 
-GameOver::GameOver() :Estado(), BotaoTentarNovamente("Tentar novamente", font), BotaoMenuPrincipal("Menu Principal", font) {
+GameOver::GameOver() :Estado(), BotaoTentarNovamente("Tentar novamente", font), BotaoMenuPrincipal("Menu Principal", font), 
+BotaoRanking("Ranking", font) {
     sf::Vector2u tamJanela(600.f, 400.f);
     BotaoTentarNovamente.setScale(1.5f, 1.5f);
     BotaoMenuPrincipal.setScale(1.5f, 1.5f);
+    BotaoRanking.setScale(1.5f, 1.5f);
 
     sf::FloatRect tamBotaoTentarNovamente = BotaoTentarNovamente.getLocalBounds();
     BotaoTentarNovamente.setPosition(-(tamJanela.x / 2 - tamBotaoTentarNovamente.width - 120), 550);
 
     sf::FloatRect tamBotaoMenuPrincipal = BotaoMenuPrincipal.getLocalBounds();
     BotaoMenuPrincipal.setPosition(tamJanela.x / 2 + 500, 550);
+
+    sf::FloatRect tamBotaoRanking = BotaoRanking.getLocalBounds();
+    BotaoRanking.setPosition(-(tamJanela.x / 2 - tamBotaoRanking.width -700), 650);
 }
 
 GameOver::~GameOver() {
@@ -28,7 +33,7 @@ void GameOver::executar() {
     sf::Vector2f fPosMouse((float)posMouse.x, (float)posMouse.y);
 
     sf::FloatRect rectTentarNovamente(BotaoTentarNovamente.getGlobalBounds()), rectMenuPrincipal(BotaoMenuPrincipal.getGlobalBounds()),
-        corpoMouse(fPosMouse, sf::Vector2f(5.0f, 5.0f));
+        rectRanking(BotaoRanking.getGlobalBounds()), corpoMouse(fPosMouse, sf::Vector2f(5.0f, 5.0f));
 
     if (rectTentarNovamente.intersects(corpoMouse)) {
         BotaoTentarNovamente.setFillColor(sf::Color::Red);
@@ -50,8 +55,19 @@ void GameOver::executar() {
         BotaoMenuPrincipal.setFillColor(sf::Color::White);
     }
 
+    if (rectRanking.intersects(corpoMouse)) {
+        BotaoRanking.setFillColor(sf::Color::Red);
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("Ranking");
+        }
+    }
+    else {
+        BotaoRanking.setFillColor(sf::Color::White);
+    }
+
 	pGrafico->desenharElemento(BotaoTentarNovamente);
 	pGrafico->desenharElemento(BotaoMenuPrincipal);
+    pGrafico->desenharElemento(BotaoRanking);
 }
 
 void GameOver::TeclaPressionada(const sf::Keyboard::Key tecla) {

@@ -134,6 +134,7 @@
     <ClCompile Include="The Invasion\Estados\GameOver.cpp" />
     <ClCompile Include="The Invasion\Estados\MenuPause.cpp" />
     <ClCompile Include="The Invasion\Estados\MenuPrincipal.cpp" />
+    <ClCompile Include="The Invasion\Estados\Ranking.cpp" />
     <ClCompile Include="The Invasion\Fases\Fase.cpp" />
     <ClCompile Include="The Invasion\Fases\Fase1.cpp" />
     <ClCompile Include="The Invasion\Fases\Fase2.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="The Invasion\Estados\GameOver.h" />
     <ClInclude Include="The Invasion\Estados\MenuPause.h" />
     <ClInclude Include="The Invasion\Estados\MenuPrincipal.h" />
+    <ClInclude Include="The Invasion\Estados\Ranking.h" />
     <ClInclude Include="The Invasion\Fases\Fase.h" />
     <ClInclude Include="The Invasion\Fases\Fase1.h" />
     <ClInclude Include="The Invasion\Fases\Fase2.h" />

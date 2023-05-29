@@ -114,21 +114,6 @@ void GerenciadorGrafico::atalizaFundo() {
 	);
 	getWindow()->draw(sprite);
 }
-/*
-void GerenciadorGrafico::mostrarVidaJogador(int vida) {
-	sf::Font font;
-	if (!font.loadFromFile("The invasion/assets/fonts/PlayfairDisplay-Regular.ttf"))
-		return;
-
-	sf::Text texto;
-	texto.setFont(font);
-	texto.setString("Vida: " + std::to_string(vida));
-	texto.setCharacterSize(20);
-	texto.setFillColor(sf::Color::White);
-	texto.setPosition(10, 10); // Posição do texto no canto superior esquerdo
-	desenharElemento(texto);
-	//mostrarElementos();
-*/
 
 void GerenciadorGrafico::mostrarVidaJogador(int vida) {
 	sf::Font font;

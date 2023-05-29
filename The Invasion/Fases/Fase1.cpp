@@ -17,8 +17,8 @@ void Fase1::executar() {
     pColisao->testa_colisoes();
 	listaPersonagens.seDesenhe();
     listaObstaculos.seDesenhe();
-    if(pJogador)
-      pGrafico->mostrarVidaJogador(pJogador->getVida());
+    if(pJogador1)
+      pGrafico->mostrarVidaJogador(pJogador1->getVida());
     listaPersonagens.verificarVida();
 }
 
@@ -80,17 +80,18 @@ void Fase1::construtorPersonagens(const std::string& tipo, Entidades::Personagen
 
 void Fase1::criarPersonagens() {
     Entidades::Entidade* pEntidade = NULL;
-    Entidades::Personagens::Jogador* pJogador = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
-    this->pJogador = pJogador;
+    pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
+    //pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
 
-    pEntidade = static_cast<Entidade*> (pJogador);
-
+    pEntidade = static_cast<Entidade*> (pJogador1);
     listaPersonagens.inserir(pEntidade);
+    //pEntidade = static_cast<Entidade*> (pJogador2);
+    //listaPersonagens.inserir(pEntidade);
 
-    //pEventos->setJogador(pJogador);
-    pColisao->setJogador(pJogador);
+    pColisao->setJogador(pJogador1);
+    //pColisao->setJogador(pJogador2);
 
-    construtorPersonagens("Cachorro", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
+    construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
 
     // Criacao de inimigos aleatorios
     srand(time(0));
@@ -99,9 +100,9 @@ void Fase1::criarPersonagens() {
         int num = rand() % 3;
         int x = 1000 + (rand() % (2500 - 1000 + 1));
 
-	    construtorPersonagens("Cachorro", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
-        construtorPersonagens("Soldado", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
-	    construtorPersonagens("Lenhador", pJogador, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
+	    construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
+        construtorPersonagens("Soldado", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
+	    construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(x, 0.0f));
     }
 }
 

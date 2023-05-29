@@ -18,7 +18,8 @@ namespace Fases {
 			Gerenciadores::Gerenciador_Colisoes* pColisao;
 			Listas::ListaEntidades listaObstaculos;
 			Listas::ListaEntidades listaPersonagens;
-            Entidades::Personagens::Jogador* pJogador;
+            Entidades::Personagens::Jogador* pJogador1;
+			//Entidades::Personagens::Jogador* pJogador2;
 
 		public:
 			Fase();

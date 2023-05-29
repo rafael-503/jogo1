@@ -20,7 +20,6 @@ namespace Entidades {
             void executar();
             void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
             void move(bool Direita, bool pulo);
-            void atacar(Inimigo* pInimigo);
         };
     }
 }

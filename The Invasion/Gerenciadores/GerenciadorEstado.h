@@ -5,6 +5,7 @@
 #include "../Estados/EstadoJogar.h"
 #include "../Estados/MenuPause.h"
 #include "../Estados/GameOver.h"
+#include "../Estados/Ranking.h"
 #include "../Fases/Fase1.h"
 #include <map>
 
@@ -25,6 +26,7 @@ namespace Gerenciadores{
             void executarEstadoAtual();
             void setEstadoAtual(string estadoAux);
 			void TeclaPressionada(const sf::Keyboard::Key tecla);
+            void guardarPontuacao(int num);
     };
 
 }
