@@ -4,6 +4,8 @@
 namespace Fases {
 	class Fase1 : public Fase {
 	private:
+		const int POS_MIN;
+		const int POS_MAX;
 	public:
 		Fase1();
 		~Fase1();
