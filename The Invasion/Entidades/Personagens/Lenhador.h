@@ -9,7 +9,7 @@ namespace Entidades {
 
         class Lenhador : public Inimigo {
         public:
-            Lenhador(sf::Vector2f tam_corpo, sf::Vector2f pos);
+            Lenhador(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(100.0f, 100.0f));
             ~Lenhador();
         };
     }

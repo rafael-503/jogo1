@@ -24230,6 +24230,19 @@
 											"$ref": "AAAAAAGIRZ35EP0bKrc="
 										}
 									}
+								},
+								{
+									"_type": "UMLGeneralization",
+									"_id": "AAAAAAGIbQvssrZTg7w=",
+									"_parent": {
+										"$ref": "EIPygiAPBka8vuqR9VvCnQAA"
+									},
+									"source": {
+										"$ref": "EIPygiAPBka8vuqR9VvCnQAA"
+									},
+									"target": {
+										"$ref": "7RZbabPTJkC76dTXvSL/PQAA"
+									}
 								}
 							],
 							"stereotype": "Personagem",

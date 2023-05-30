@@ -11,7 +11,7 @@ Gerenciadores::GerenciadorEstado* pEstado = Gerenciadores::GerenciadorEstado::ge
 void Jogador::inicializa() {
 }
 
-Jogador::Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos, const char* text) : Personagem(tam_corpo)
+Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Personagem(tam_corpo)
 {
     ID = 1;
     corpo.setPosition(pos);

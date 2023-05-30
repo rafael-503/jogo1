@@ -16,7 +16,7 @@ namespace Entidades {
             sf::Clock relogioColisao;
 
         public:
-            Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos, const char* text= JOGADOR);
+            Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(80.0f, 80.0f), const char* text= JOGADOR);
             ~Jogador();
             void executar();
             void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);

@@ -3,7 +3,7 @@ using namespace Entidades;
 using namespace Personagens;
 
 
-Soldado::Soldado(sf::Vector2f tam_corpo, sf::Vector2f pos) : Inimigo(tam_corpo) {
+Soldado::Soldado(sf::Vector2f pos, sf::Vector2f tam_corpo) : Inimigo(tam_corpo) {
     ID = 4;
     corpo.setPosition(pos);
     textura = pGrafico->carregarTextura(SOLDADO);

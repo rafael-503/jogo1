@@ -8,7 +8,7 @@ namespace Entidades {
 
         class Cachorro : public Inimigo {
         public:
-            Cachorro(sf::Vector2f tam_corpo, sf::Vector2f pos);
+            Cachorro(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(70.0f, 70.0f));
             ~Cachorro();
         };
     }
