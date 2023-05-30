@@ -1,6 +1,6 @@
 #include "Fase1.h"
 using namespace Fases;
-#define JOGADOR2 "The invasion/assets/inimigo/cachorro/cachorro.png"
+#define JOGADOR2 "The invasion/assets/personagem/jogador/personagem2.png"
 
 Fase1::Fase1(): POS_MIN(1000), POS_MAX(2500) {
 	if(pGrafico)
@@ -100,7 +100,7 @@ void Fase1::criarPersonagens() {
     pColisao->setJogador(pJogador1);
     pColisao->setJogador(pJogador2);
     
-    construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(800.0f, 200.0f));
+    construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(70.0f, 70.0f), sf::Vector2f(800.0f, 200.0f));
     construtorPersonagens("Soldado", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(3300.0f, 0.0f));
     //construtorPersonagens("Soldado", pJogador1, sf::Vector2f(80.0f, 80.0f), sf::Vector2f(0.0f, 0.0f));
  
