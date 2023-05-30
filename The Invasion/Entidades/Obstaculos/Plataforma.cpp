@@ -2,7 +2,7 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Plataforma::Plataforma(sf::Vector2f tam_corpo, sf::Vector2f pos) : Obstaculo(tam_corpo, pos){
+Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo) : Obstaculo(pos, tam_corpo){
     ID = 5;
     corpo.setPosition(pos);
     textura = pGrafico->carregarTextura(PLATAFORMA);

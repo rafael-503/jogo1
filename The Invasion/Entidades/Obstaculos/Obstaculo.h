@@ -9,7 +9,7 @@ namespace Entidades {
         protected:
 
         public:
-            Obstaculo(sf::Vector2f tam_corpo, sf::Vector2f pos);
+            Obstaculo(sf::Vector2f pos, sf::Vector2f tam_corpo);
             ~Obstaculo();
             virtual void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
             virtual void executar();

@@ -3,7 +3,7 @@ using namespace Entidades;
 using namespace Obstaculos;
 
 
-Caixa::Caixa(sf::Vector2f tam_corpo, sf::Vector2f pos): Obstaculo(tam_corpo, pos) {
+Caixa::Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo) {
   ID = 6;
   corpo.setPosition(pos);
 	textura = pGrafico->carregarTextura(CAIXA);

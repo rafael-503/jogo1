@@ -7,7 +7,7 @@ namespace Entidades {
 		class Espinhos : public Obstaculo {
         private:
 		public:
-			Espinhos(sf::Vector2f tam_corpo, sf::Vector2f pos);
+			Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(50.0f, 50.0f));
 			~Espinhos();
 			void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
 			void executar();

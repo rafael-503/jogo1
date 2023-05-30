@@ -4,7 +4,7 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Espinhos::Espinhos(sf::Vector2f tam_corpo, sf::Vector2f pos): Obstaculo(tam_corpo, pos) {
+Espinhos::Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo) {
     ID = 7;
     corpo.setPosition(pos);
     textura = pGrafico->carregarTextura(ESPINHOS);
