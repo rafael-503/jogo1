@@ -18,3 +18,6 @@ void Estado::guardarPontuacao(int num) {
 
 }
 
+void Estado::carregarFase2() {
+
+}

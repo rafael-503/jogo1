@@ -80,9 +80,10 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
             inimigo->setVida(inimigo->getVida() - 30);
             setPontuacao(getPontuacao() + 30);
             relogioColisao.restart();
-            if (inimigo->getVida() <= 0)
+            if (inimigo->getVida() <= 0) {
                 cout << "Proxima fase" << endl;
-                //pEstado->setProximaFase();
+                pEstado->setProximaFase();
+            }
         }
     }
 

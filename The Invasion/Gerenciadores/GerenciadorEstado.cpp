@@ -59,5 +59,6 @@ string GerenciadorEstado::getStringEstadoAtual() const{
 }
 
 void GerenciadorEstado::setProximaFase() {
-
+    resetarEstadoJogar();
+    mapEstados["EstadoJogar"]->carregarFase2();
 }

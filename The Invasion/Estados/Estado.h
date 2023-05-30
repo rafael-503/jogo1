@@ -18,7 +18,7 @@ namespace Estados{
             virtual void PrimeiroExecutar() = 0;
             virtual void executar() = 0;
             virtual void guardarPontuacao(int num);
-
+            void carregarFase2();
     };
 
 

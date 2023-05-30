@@ -22,3 +22,7 @@ void EstadoJogar::TeclaPressionada(const sf::Keyboard::Key tecla){
     else
         fase1.TeclaPressionada(tecla);
 }
+
+void EstadoJogar::carregarFase2() {
+	fase2.executar();
+}
