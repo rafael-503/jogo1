@@ -8,15 +8,22 @@ Fase2::Fase2(): POS_MIN(1000), POS_MAX(2500){
 }
 
 Fase2::~Fase2() {
-
+    pColisao->limpar();
+    pColisao = NULL;
+    pJogador1 = NULL;
+    esvaziar();
+    cout << "Fase 2 destruida" << endl;
 }
 
 void Fase2::executar() {
-	listaPersonagens.executar();
-	listaObstaculos.executar();
-
-	listaPersonagens.seDesenhe();
-	listaObstaculos.seDesenhe();
+    listaObstaculos.executar();
+    pColisao->testa_colisoes();
+    listaPersonagens.seDesenhe();
+    listaObstaculos.seDesenhe();
+    if (pJogador1)
+        pGrafico->mostrarVidaJogador(pJogador1->getVida());
+    listaPersonagens.verificarVida();
+    //cout << pJogador1->getPosition().x << ", " <<  pJogador1->getPosition().y << endl;
 }
 
 void Fase2::esvaziar() {

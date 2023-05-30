@@ -9134,7 +9134,7 @@
 											"font": "Arial;11;0",
 											"left": 2365,
 											"top": 905,
-											"width": 381.412109375,
+											"width": 390.5859375,
 											"height": 11,
 											"text": "«Entidade»"
 										},
@@ -9149,7 +9149,7 @@
 											"font": "Arial;11;3",
 											"left": 2365,
 											"top": 918,
-											"width": 381.412109375,
+											"width": 390.5859375,
 											"height": 11,
 											"text": "Personagem"
 										},
@@ -9189,7 +9189,7 @@
 									"font": "Arial;11;0",
 									"left": 2360,
 									"top": 900,
-									"width": 391.412109375,
+									"width": 400.5859375,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "1uymcqx1k0et1/n+OD7JwgAA"
@@ -9218,7 +9218,7 @@
 									"font": "Arial;11;0",
 									"left": 2360,
 									"top": 934,
-									"width": 391.412109375,
+									"width": 400.5859375,
 									"height": 10
 								},
 								{
@@ -9245,7 +9245,7 @@
 											"font": "Arial;11;0",
 											"left": 2365,
 											"top": 949,
-											"width": 381.412109375,
+											"width": 390.5859375,
 											"height": 11,
 											"text": "«create»+Personagem(tam_corpo: Vector2f)",
 											"horizontalAlignment": 0
@@ -9264,7 +9264,7 @@
 											"font": "Arial;11;0",
 											"left": 2365,
 											"top": 962,
-											"width": 381.412109375,
+											"width": 390.5859375,
 											"height": 11,
 											"text": "«destroy»+Personagem()",
 											"horizontalAlignment": 0
@@ -9283,9 +9283,9 @@
 											"font": "Arial;11;2",
 											"left": 2365,
 											"top": 975,
-											"width": 381.412109375,
+											"width": 390.5859375,
 											"height": 11,
-											"text": "+colisao(pOutra: Entidade*, DistExt: Vector2f, Colidiu_em_x: bool): virtual void",
+											"text": "+colisao(pOutra: Entidade*, DistExt: Vector2f, Colidiu_em_x: bool): virtual void 0",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9302,7 +9302,7 @@
 											"font": "Arial;11;2",
 											"left": 2365,
 											"top": 988,
-											"width": 381.412109375,
+											"width": 390.5859375,
 											"height": 11,
 											"text": "+executar(): virtual void = 0",
 											"horizontalAlignment": 0
@@ -9333,7 +9333,7 @@
 									"font": "Arial;11;0",
 									"left": 2360,
 									"top": 944,
-									"width": 391.412109375,
+									"width": 400.5859375,
 									"height": 60
 								},
 								{
@@ -9360,7 +9360,7 @@
 							"font": "Arial;11;0",
 							"left": 2360,
 							"top": 900,
-							"width": 391.412109375,
+							"width": 400.5859375,
 							"height": 104,
 							"autoResize": true,
 							"showProperty": false,
@@ -24148,7 +24148,7 @@
 											"_parent": {
 												"$ref": "AAAAAAGIIVRFE3SpD30="
 											},
-											"type": "virtual void",
+											"type": "virtual void 0",
 											"direction": "return"
 										}
 									],
@@ -24654,7 +24654,8 @@
 									"_parent": {
 										"$ref": "gRgiwEFeFEazvJffkqImVAAA"
 									},
-									"name": "pEstados"
+									"name": "pEstados",
+									"type": ""
 								}
 							],
 							"operations": [

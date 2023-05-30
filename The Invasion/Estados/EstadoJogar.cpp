@@ -12,8 +12,8 @@ EstadoJogar::EstadoJogar(bool fase1): pFase(NULL){
 	PrimeiroExecutar();
 }
 EstadoJogar::~EstadoJogar(){
-    //if (pFase)
-	//    delete pFase;
+   // if (pFase)
+	 //   delete pFase;
     pFase = NULL;
 }
 void EstadoJogar::executar(){

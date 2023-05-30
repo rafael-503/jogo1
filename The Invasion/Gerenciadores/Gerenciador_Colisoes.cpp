@@ -6,6 +6,7 @@ Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(){
 
 }
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes() {
+    cout << "destrutor do Gerenciador de colisoes" << endl;
     delete pGerenciador_Colisoes;
 }
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::getGerenciador_Colisoes() {
@@ -179,4 +180,7 @@ void Gerenciadores::Gerenciador_Colisoes::limpar(){
     vetor_personagens.clear();
     lista_obstaculos.clear();
     cout << "Gerenciador de colisoes limpo" << endl;
+   
+    cout << lista_obstaculos.size() << endl;
+    cout << vetor_personagens.size() << endl;
 }

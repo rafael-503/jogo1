@@ -51,7 +51,7 @@ void GerenciadorEstado::resetarEstadoJogar(bool fase1){
     }
     else
         cout << "Não achado EstadoJogar em resetarEstadoJogar" << endl;
-    mapEstados["EstadoJogar"] = new Estados::EstadoJogar(fase1);
+    mapEstados["EstadoJogar"] = new Estados::EstadoJogar(false);
 
 }
 string GerenciadorEstado::getStringEstadoAtual() const{
