@@ -11,14 +11,14 @@ Gerenciadores::GerenciadorEstado* pEstado = Gerenciadores::GerenciadorEstado::ge
 void Jogador::inicializa() {
 }
 
-Jogador::Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos) : Personagem(tam_corpo)
+Jogador::Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos, const char* text) : Personagem(tam_corpo)
 {
     ID = 1;
     corpo.setPosition(pos);
     setMassa(60.0f);
     setVelocidade(sf::Vector2f(10.0f, 0.0f));
 
-    textura = pGrafico->carregarTextura(JOGADOR);
+    textura = pGrafico->carregarTextura(text);
     corpo.setTexture(&textura);
     relogioColisao.restart();
 }

@@ -30,7 +30,7 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
     else
         cout << "pJogador1 Nulo" << endl;
 
-    /*
+    
     if (pJogador2) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             pJogador2->move(false, false);
@@ -41,7 +41,7 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
         setPosicaoJogador(pJogador2->getPosition());
     }
     else
-        cout << "pJogador2 Nulo" << endl;*/
+        cout << "pJogador2 Nulo" << endl;
 
 }
 void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {

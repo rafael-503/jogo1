@@ -19,7 +19,7 @@ namespace Fases {
 			Listas::ListaEntidades listaObstaculos;
 			Listas::ListaEntidades listaPersonagens;
             Entidades::Personagens::Jogador* pJogador1;
-			//Entidades::Personagens::Jogador* pJogador2;
+			Entidades::Personagens::Jogador* pJogador2;
 
 		public:
 			Fase();

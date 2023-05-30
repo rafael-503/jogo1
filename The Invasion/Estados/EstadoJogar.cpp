@@ -6,7 +6,12 @@ EstadoJogar::EstadoJogar(bool fase1): pFase(NULL){
     if(fase1)
 		pFase = new Fases::Fase1();
     else{
-       // pFase->
+        if (pFase) {
+           delete pFase;
+           pFase = NULL;
+           cout << "deletado fase1" << endl;
+        }
+       cout << "criado Fase 2" << endl;
 		pFase = new Fases::Fase2();
     }
 	PrimeiroExecutar();
