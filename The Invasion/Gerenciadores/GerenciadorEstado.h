@@ -29,6 +29,7 @@ namespace Gerenciadores{
             void guardarPontuacao(int num);
             void resetarEstadoJogar();
             string getStringEstadoAtual() const;
+            void setProximaFase();
     };
 
 }

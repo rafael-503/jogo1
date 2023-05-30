@@ -57,3 +57,7 @@ void GerenciadorEstado::resetarEstadoJogar(){
 string GerenciadorEstado::getStringEstadoAtual() const{
     return EstadoAtual;
 }
+
+void GerenciadorEstado::setProximaFase() {
+
+}
