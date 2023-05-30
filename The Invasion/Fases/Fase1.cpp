@@ -117,17 +117,17 @@ void Fase1::criarPersonagens() {
 
 void Fase1::criarObstaculos() {
     construtorObstaculos("Caixa", sf::Vector2f(330.0f, 0.0f));
-    construtorObstaculos("Plataforma", sf::Vector2f(25000.0f, 50.0f), sf::Vector2f(0.0f, 800.0f)); // remover
+    construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 800.0f), sf::Vector2f(25000.0f, 50.0f)); // remover
 
-    construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 750.0f));
-    construtorObstaculos("Plataforma", sf::Vector2f(300.0f, 600.0f));
-    construtorObstaculos("Plataforma", sf::Vector2f(500.0f, 500.0f));
-    construtorObstaculos("Plataforma", sf::Vector2f(300.0f, 350.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 750.0f), sf::Vector2f(180.0f, 50.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(300.0f, 600.0f), sf::Vector2f(180.0f, 50.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(500.0f, 500.0f), sf::Vector2f(180.0f, 50.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(300.0f, 350.0f), sf::Vector2f(230.0f, 50.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(780.0f, 200.0f));
     construtorObstaculos("Espinhos", sf::Vector2f(780.0f, 165.0f));
     construtorObstaculos("Espinhos", sf::Vector2f(810.0f, 165.0f));
-    construtorObstaculos("Plataforma", sf::Vector2f(780.0f, 600.0f));
-    construtorObstaculos("Plataforma", sf::Vector2f(1000.0f, 600.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(780.0f, 600.0f), sf::Vector2f(230.0f, 50.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(1000.0f, 600.0f), sf::Vector2f(230.0f, 50.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(1300.0f, 150.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(1500.0f, 150.0f));
 
@@ -138,7 +138,6 @@ void Fase1::criarObstaculos() {
     construtorObstaculos("Plataforma", sf::Vector2f(2260.0f, 500.0f));
 
     construtorObstaculos("Plataforma", sf::Vector2f(3000.0f, 600.0f), sf::Vector2f(700.0f, 50.0f)); // soldado
-   // construtorObstaculos("Plataforma", sf::Vector2f(3000.0f, 600.0f)); // soldado
     construtorObstaculos("Plataforma", sf::Vector2f(2805.0f, 560.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(3695.0f, 560.0f));
 
