@@ -1,19 +1,19 @@
 #include "../../stdafx.h"
 #include "Jogador.h"
 #include "Inimigo.h"
-using namespace Entidades;
-using namespace Personagens;
 #include "../../Gerenciadores/GerenciadorEstado.h"
 
+using namespace Entidades;
+using namespace Personagens;
+
+Gerenciadores::GerenciadorEstado* pEstado = Gerenciadores::GerenciadorEstado::getGerenciadorEstado();
 
 void Jogador::inicializa() {
 }
 
-Jogador::Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos) :
-    Personagem(tam_corpo)
+Jogador::Jogador(sf::Vector2f tam_corpo, sf::Vector2f pos) : Personagem(tam_corpo)
 {
     ID = 1;
-    //corpo.setFillColor(sf::Color::Blue);
     corpo.setPosition(pos);
     setMassa(60.0f);
     setVelocidade(sf::Vector2f(10.0f, 0.0f));
@@ -80,6 +80,9 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
             inimigo->setVida(inimigo->getVida() - 30);
             setPontuacao(getPontuacao() + 30);
             relogioColisao.restart();
+            if (inimigo->getVida() <= 0)
+                cout << "Proxima fase" << endl;
+                //pEstado->setProximaFase();
         }
     }
 
