@@ -15,6 +15,7 @@ Fase1::~Fase1() {
     pColisao = NULL;
     pJogador1 = NULL;
     esvaziar();
+    cout << "Fase 1 destruida" << endl;
 }
 
 void Fase1::executar() {

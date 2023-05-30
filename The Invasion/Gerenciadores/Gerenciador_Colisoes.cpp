@@ -178,4 +178,5 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador(Personagens::Jogador* pJoga
 void Gerenciadores::Gerenciador_Colisoes::limpar(){
     vetor_personagens.clear();
     lista_obstaculos.clear();
+    cout << "Gerenciador de colisoes limpo" << endl;
 }

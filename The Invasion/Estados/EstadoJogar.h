@@ -7,10 +7,12 @@ namespace Estados{
 
     class EstadoJogar: public Estado{
         private:
-            Fases::Fase1 fase1;
-            Fases::Fase2 fase2;
+            Fases::Fase* pFase;
+            //Fases::Fase1 fase1;
+            //Fases::Fase2 fase2;
+
         public:
-            EstadoJogar();
+            EstadoJogar(bool fase1 = true);
             ~EstadoJogar();
             void PrimeiroExecutar();
             void executar();

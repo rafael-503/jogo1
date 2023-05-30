@@ -39,7 +39,7 @@ void GerenciadorEstado::TeclaPressionada(const sf::Keyboard::Key tecla){
 void GerenciadorEstado::guardarPontuacao(int num) {
     mapEstados["Ranking"]->guardarPontuacao(num);
 }
-void GerenciadorEstado::resetarEstadoJogar(){
+void GerenciadorEstado::resetarEstadoJogar(bool fase1){
 
     //deletando EstadoJogar
     MapaStringEstado::iterator iterador = mapEstados.find("EstadoJogar");
@@ -51,7 +51,7 @@ void GerenciadorEstado::resetarEstadoJogar(){
     }
     else
         cout << "Não achado EstadoJogar em resetarEstadoJogar" << endl;
-    mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
+    mapEstados["EstadoJogar"] = new Estados::EstadoJogar(fase1);
 
 }
 string GerenciadorEstado::getStringEstadoAtual() const{
@@ -61,4 +61,8 @@ string GerenciadorEstado::getStringEstadoAtual() const{
 void GerenciadorEstado::setProximaFase() {
     resetarEstadoJogar();
     mapEstados["EstadoJogar"]->carregarFase2();
+}
+
+void GerenciadorEstado::trocarFase(bool fase1) {
+	resetarEstadoJogar(fase1);
 }

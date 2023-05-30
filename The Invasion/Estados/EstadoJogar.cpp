@@ -2,17 +2,31 @@
 #include "EstadoJogar.h"
 using namespace Estados;
 
-EstadoJogar::EstadoJogar(): fase1(){
-
+EstadoJogar::EstadoJogar(bool fase1): pFase(NULL){
+    if(fase1)
+		pFase = new Fases::Fase1();
+    else{
+       // pFase->
+		pFase = new Fases::Fase2();
+    }
+	PrimeiroExecutar();
 }
 EstadoJogar::~EstadoJogar(){
-    cout << "TESTE" << endl;
+    //if (pFase)
+	//    delete pFase;
+    pFase = NULL;
 }
 void EstadoJogar::executar(){
-    fase1.executar();
+    if(pFase)
+        pFase->executar();
+    else 
+        cout << "Erro: pFase nulo" << endl;
 }
 void EstadoJogar::PrimeiroExecutar(){
-	pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
+    if (dynamic_cast<Fases::Fase1*>(pFase) != NULL)
+	    pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
+   else
+        pGrafico->carregarFundo("The invasion/assets/fundo/fundoRanking.png");
 }
 void EstadoJogar::TeclaPressionada(const sf::Keyboard::Key tecla){
     if(tecla == sf::Keyboard::Escape)
@@ -20,9 +34,9 @@ void EstadoJogar::TeclaPressionada(const sf::Keyboard::Key tecla){
     else if(tecla == sf::Keyboard::P)
         Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("MenuPause");
     else
-        fase1.TeclaPressionada(tecla);
+        pFase->TeclaPressionada(tecla);
 }
 
 void EstadoJogar::carregarFase2() {
-	fase2.executar();
+	pFase->executar();
 }
