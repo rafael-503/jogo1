@@ -2,29 +2,24 @@
 #include "EstadoJogar.h"
 using namespace Estados;
 
-EstadoJogar::EstadoJogar(bool fase1): pFase(NULL){
-    if(fase1)
-		pFase = new Fases::Fase1();
-    else{
-        if (pFase) {
-           delete pFase;
-           pFase = NULL;
-           cout << "deletado fase1" << endl;
-        }
-       cout << "criado Fase 2" << endl;
-		pFase = new Fases::Fase2();
-    }
+EstadoJogar::EstadoJogar(bool eh_fase1, bool eh_1_jogador): pFase(NULL) {
+
+    if(eh_fase1)
+		pFase = static_cast<Fases::Fase*> (new Fases::Fase1(eh_1_jogador));
+    else
+        pFase = static_cast<Fases::Fase*> (new Fases::Fase2(eh_1_jogador));
+
 	PrimeiroExecutar();
 }
 EstadoJogar::~EstadoJogar(){
-   // if (pFase)
-	 //   delete pFase;
+    //if (pFase)
+	  //  delete pFase;
     pFase = NULL;
 }
 void EstadoJogar::executar(){
     if(pFase)
         pFase->executar();
-    else 
+    else
         cout << "Erro: pFase nulo" << endl;
 }
 void EstadoJogar::PrimeiroExecutar(){

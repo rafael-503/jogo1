@@ -15,6 +15,7 @@
 namespace Fases {
 	class Fase : public Ente {
 		protected:
+		    bool eh_1_jogador;
 			Gerenciadores::Gerenciador_Colisoes* pColisao;
 			Listas::ListaEntidades listaObstaculos;
 			Listas::ListaEntidades listaPersonagens;

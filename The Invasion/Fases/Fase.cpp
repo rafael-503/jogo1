@@ -1,7 +1,7 @@
 #include "Fase.h"
 using namespace Fases;
 
-Fase::Fase(): pColisao(pColisao->getGerenciador_Colisoes()), pJogador1(NULL){
+Fase::Fase(): eh_1_jogador(true), pColisao(pColisao->getGerenciador_Colisoes()), pJogador1(NULL){
 
 }
 
@@ -30,7 +30,7 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
     else
         cout << "pJogador1 Nulo" << endl;
 
-    
+
     if (pJogador2) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             pJogador2->move(false, false);
@@ -40,9 +40,6 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
             pJogador2->move(false, true);
         setPosicaoJogador(pJogador2->getPosition());
     }
-    else
-        cout << "pJogador2 Nulo" << endl;
-
 }
 void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
     pGrafico->atualizarView(jogadorPos);

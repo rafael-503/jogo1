@@ -2,7 +2,8 @@
 using namespace Fases;
 #define JOGADOR2 "The invasion/assets/personagem/jogador/personagem2.png"
 
-Fase1::Fase1(): POS_MIN(1000), POS_MAX(2500) {
+Fase1::Fase1(bool AuxEh_1_jogador): POS_MIN(1000), POS_MAX(2500) {
+    eh_1_jogador = AuxEh_1_jogador;
 	if(pGrafico)
         pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
     else
@@ -90,23 +91,25 @@ void Fase1::construtorPersonagens(const std::string& tipo, Entidades::Personagen
 void Fase1::criarPersonagens() {
     Entidades::Entidade* pEntidade = NULL;
     pJogador1= new Entidades::Personagens::Jogador(sf::Vector2f(10.0f, 0.0f));
-    pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(10.0f, 0.0f), sf::Vector2f(60.0f, 80.0f), JOGADOR2);
-
+    if(!eh_1_jogador){
+        pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(10.0f, 0.0f), sf::Vector2f(60.0f, 80.0f), JOGADOR2);
+        pEntidade = static_cast<Entidade*> (pJogador2);
+        listaPersonagens.inserir(pEntidade);
+        pColisao->setJogador(pJogador2);
+    }
     pEntidade = static_cast<Entidade*> (pJogador1);
     listaPersonagens.inserir(pEntidade);
 
-    pEntidade = static_cast<Entidade*> (pJogador2);
-    listaPersonagens.inserir(pEntidade);
+
     pColisao->setJogador(pJogador1);
-    pColisao->setJogador(pJogador2);
-    
+
     construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(800.0f, 200.0f));
     construtorPersonagens("Soldado", pJogador1, sf::Vector2f(3300.0f, 0.0f));
- 
+
     // Criacao de inimigos aleatorios
     std::srand(time(0));
     int x = POS_MIN + (rand() % (POS_MAX - POS_MIN + 1)); // Gera numeros entre 500 e 2000
-    
+
 	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(x, 0.0f));
 	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(x + 100, 0.0f));
 	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(x + 150, 0.0f));
@@ -144,7 +147,7 @@ void Fase1::criarObstaculos() {
 
     // Criacao de obstaculos aleatorios
     srand(time(0));
-    
+
     for (int i = 0; i < 3; i++) {
         int x = 1000 + (rand() % (2500 - 1000 + 1));
         int y = 0 + (rand() % (750 - 0 + 1));

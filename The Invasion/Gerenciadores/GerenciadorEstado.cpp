@@ -23,6 +23,8 @@ GerenciadorEstado* GerenciadorEstado::getGerenciadorEstado(){
 void GerenciadorEstado::executarEstadoAtual(){
 //    if(mapEstados.contains(EstadoAtual))
         mapEstados[EstadoAtual]->executar();
+ //   else
+   //     cout << "mapEstados[EstadoAtual] nulo em executarEstadoAtual" << endl;
 
 }
 void GerenciadorEstado::setEstadoAtual(string estadoAux){
@@ -39,25 +41,29 @@ void GerenciadorEstado::TeclaPressionada(const sf::Keyboard::Key tecla){
 void GerenciadorEstado::guardarPontuacao(int num) {
     mapEstados["Ranking"]->guardarPontuacao(num);
 }
-void GerenciadorEstado::resetarEstadoJogar(bool fase1){
 
+string GerenciadorEstado::getStringEstadoAtual() const{
+    return EstadoAtual;
+}
+
+void GerenciadorEstado::crieEexecuteEstadoJogar(bool eh_fase1, bool eh_1_jogador){
+    apagueEstadoJogar();
+    mapEstados["EstadoJogar"] = new Estados::EstadoJogar(eh_fase1, eh_1_jogador);
+    setEstadoAtual("EstadoJogar");
+
+}
+void GerenciadorEstado::apagueEstadoJogar(){
     //deletando EstadoJogar
     MapaStringEstado::iterator iterador = mapEstados.find("EstadoJogar");
     if (iterador != mapEstados.end()) {
         Estados::Estado* pAux = iterador->second;
         delete pAux;
-        cout << "Teste" << endl;
-
     }
-    else
-        cout << "Não achado EstadoJogar em resetarEstadoJogar" << endl;
-    mapEstados["EstadoJogar"] = new Estados::EstadoJogar(false);
-
-}
-string GerenciadorEstado::getStringEstadoAtual() const{
-    return EstadoAtual;
+    mapEstados.erase("EstadoJogar");
 }
 
+
+/*
 void GerenciadorEstado::setProximaFase() {
     resetarEstadoJogar();
     mapEstados["EstadoJogar"]->carregarFase2();
@@ -66,3 +72,18 @@ void GerenciadorEstado::setProximaFase() {
 void GerenciadorEstado::trocarFase(bool fase1) {
 	resetarEstadoJogar(fase1);
 }
+void GerenciadorEstado::resetarEstadoJogar(bool fase1){
+
+    //deletando EstadoJogar
+    MapaStringEstado::iterator iterador = mapEstados.find("EstadoJogar");
+    if (iterador != mapEstados.end()) {
+        Estados::Estado* pAux = iterador->second;
+        delete pAux;
+    }
+    else
+        cout << "Não achado EstadoJogar em resetarEstadoJogar" << endl;
+    mapEstados["EstadoJogar"] = new Estados::EstadoJogar(true);
+
+}
+
+*/
