@@ -26,7 +26,7 @@ void EstadoJogar::PrimeiroExecutar(){
     if (dynamic_cast<Fases::Fase1*>(pFase) != NULL)
 	    pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
    else
-        pGrafico->carregarFundo("The invasion/assets/fundo/fundoRanking.png");
+        pGrafico->carregarFundo("The invasion/assets/fundo/fundo2.png");
 }
 void EstadoJogar::TeclaPressionada(const sf::Keyboard::Key tecla){
     if(tecla == sf::Keyboard::Escape)

@@ -5,7 +5,7 @@ using namespace Fases;
 Fase2::Fase2(bool AuxEh_1_jogador) : POS_MIN(1000), POS_MAX(2500) {
     eh_1_jogador = AuxEh_1_jogador;
     if (pGrafico)
-        pGrafico->carregarFundo("The invasion/assets/fundo/fundo1.png");
+        pGrafico->carregarFundo("The invasion/assets/fundo/fundo2.png");
     else
         cout << "pGrafico Nulo na construtora da fase 1" << endl;
     criarPersonagens();
