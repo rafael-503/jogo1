@@ -16,6 +16,8 @@ Fase1::~Fase1() {
     pColisao->limpar();
     pColisao = NULL;
     pJogador1 = NULL;
+    if (!eh_1_jogador)
+        pJogador2 = NULL;
     esvaziar();
     cout << "Fase 1 destruida" << endl;
 }
@@ -27,7 +29,7 @@ void Fase1::executar() {
 	listaPersonagens.seDesenhe();
     listaObstaculos.seDesenhe();
     if(pJogador1)
-      pGrafico->mostrarVidaJogador(pJogador1->getVida());
+        pGrafico->mostrarVidaJogador(pJogador1->getVida(), pJogador2->getVida(), eh_1_jogador);
     listaPersonagens.verificarVida();
     //cout << pJogador1->getPosition().x << ", " <<  pJogador1->getPosition().y << endl;
 }

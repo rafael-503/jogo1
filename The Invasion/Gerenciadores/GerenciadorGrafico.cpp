@@ -115,24 +115,35 @@ void GerenciadorGrafico::atalizaFundo() {
 	getWindow()->draw(sprite);
 }
 
-void GerenciadorGrafico::mostrarVidaJogador(int vida) {
+void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_jogador) {
 	sf::Font font;
 	if (!font.loadFromFile("The invasion/assets/fonts/PlayfairDisplay-Regular.ttf"))
 		return;
 	sf::Vector2f cameraPos = view.getCenter(); // Posição central da câmera
 	sf::Vector2f telaPos = cameraPos - sf::Vector2f(TAM_X / 2, TAM_Y / 2); // Canto superior esquerdo da tela
 
-	sf::Text texto;
-	texto.setFont(font);
-//	texto.setString("Vida: " + std::to_string(vida) );
+	sf::Text texto1;
+	sf::Text texto2; // Movido para fora do bloco 'if'
 
-	texto.setCharacterSize(20);
-	texto.setFillColor(sf::Color::White);
+	texto1.setFont(font);
+	if (!eh_1_jogador) {
+		texto2.setFont(font);
+		texto2.setString("Vida 2: " + std::to_string(vida2));
+		texto2.setCharacterSize(20);
+		texto2.setFillColor(sf::Color::White);
+		sf::Vector2f posicaoTexto2 = telaPos + sf::Vector2f(10.0f, 35.0f); // Posição do texto no canto superior esquerdo da tela
+		texto2.setPosition(posicaoTexto2);
+		desenharElemento(texto2);
+	}
+
+	texto1.setString("Vida 1: " + std::to_string(vida1));
+	texto1.setCharacterSize(20);
+	texto1.setFillColor(sf::Color::White);
 
 	sf::Vector2f posicaoTexto = telaPos + sf::Vector2f(10.0f, 10.0f); // Posição do texto no canto superior esquerdo da tela
-	texto.setPosition(posicaoTexto);
+	texto1.setPosition(posicaoTexto);
 
-	desenharElemento(texto);
+	desenharElemento(texto1);
 }
 
 sf::Vector2u GerenciadorGrafico::getSize(){
