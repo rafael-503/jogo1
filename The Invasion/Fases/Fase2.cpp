@@ -1,6 +1,7 @@
 #include "Fase2.h"
 using namespace Fases;
 #define JOGADOR2 "The invasion/assets/personagem/jogador/personagem2.png"
+#define PLATAFORMA2 "The invasion/assets/obstaculos/plataforma2.png"
 
 Fase2::Fase2(bool AuxEh_1_jogador) : POS_MIN(1000), POS_MAX(2500) {
     eh_1_jogador = AuxEh_1_jogador;
@@ -46,7 +47,7 @@ void Fase2::construtorObstaculos(const std::string& tipo, const sf::Vector2f& po
     else if (tipo == "Espinhos")
         pObstaculo = new Entidades::Obstaculos::Espinhos(pos);
     else if (tipo == "Plataforma")
-        pObstaculo = new Entidades::Obstaculos::Plataforma(pos, tam);
+        pObstaculo = new Entidades::Obstaculos::Plataforma(pos, tam, PLATAFORMA2);
     else {
         cout << "Erro: Tipo de obstaculo invalido" << endl;
         return;

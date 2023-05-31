@@ -2,10 +2,11 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo) : Obstaculo(pos, tam_corpo){
+Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Obstaculo(pos, tam_corpo){
     ID = 5;
     corpo.setPosition(pos);
-    textura = pGrafico->carregarTextura(PLATAFORMA);
+    //setTextura(PLATAFORMA);
+    textura = pGrafico->carregarTextura(text);
     corpo.setTexture(&textura);
 }
 
