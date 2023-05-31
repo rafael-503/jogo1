@@ -1,7 +1,7 @@
 #include "Fase2.h"
 using namespace Fases;
 #define JOGADOR2 "The invasion/assets/personagem/jogador/personagem2.png"
-#define PLATAFORMA2 "The invasion/assets/obstaculos/plataforma2.png"
+#define PLATAFORMA2 "The invasion/assets/obstaculos/plataforma3.png"
 
 Fase2::Fase2(bool AuxEh_1_jogador) : POS_MIN(1000), POS_MAX(2500) {
     eh_1_jogador = AuxEh_1_jogador;
