@@ -2,7 +2,7 @@
 using namespace Fases;
 
 Fase::Fase(): eh_1_jogador(true), pColisao(pColisao->getGerenciador_Colisoes()), pJogador1(NULL), pJogador2(NULL), relogioAtirar(){
-
+	pColisao->limpar();
 }
 
 Fase::~Fase() {
