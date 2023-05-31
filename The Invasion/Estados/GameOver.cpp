@@ -26,6 +26,7 @@ GameOver::~GameOver() {
 void GameOver::PrimeiroExecutar() {
 	pGrafico->carregarFundo("The invasion/assets/fundo/fundo3.png");
     pGrafico->atualizarView(sf::Vector2f(600.0f, 400.0f));
+
 }
 
 void GameOver::executar() {

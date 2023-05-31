@@ -8,7 +8,7 @@ namespace Fases {
 		const int POS_MAX;
 
 	public:
-		Fase2();
+		Fase2(bool AuxEh_1_jogador = true);
 		~Fase2();
 		void executar();
 		void esvaziar();

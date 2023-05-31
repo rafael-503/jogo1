@@ -1,7 +1,11 @@
 #include "Fase2.h"
 using namespace Fases;
+#define JOGADOR2FASE2 "The invasion/assets/personagem/jogador/personagem2.png"
 
-Fase2::Fase2(): POS_MIN(1000), POS_MAX(2500){
+
+
+Fase2::Fase2(bool AuxEh_1_jogador): POS_MIN(1000), POS_MAX(2500){
+    eh_1_jogador = AuxEh_1_jogador;
 	pGrafico->carregarFundo("The invasion/assets/fundo/fundoRanking.png");
 	criarPersonagens();
 	criarObstaculos();
@@ -86,7 +90,12 @@ void Fase2::construtorPersonagens(const std::string& tipo, Entidades::Personagen
 void Fase2::criarPersonagens() {
     Entidades::Entidade* pEntidade = NULL;
     pJogador1 = new Entidades::Personagens::Jogador(sf::Vector2f(80.0f, 80.0f), sf::Vector2f(10.0f, 0.0f));
-
+    if(!eh_1_jogador){
+        pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(10.0f, 0.0f), sf::Vector2f(60.0f, 80.0f), JOGADOR2FASE2);
+        pEntidade = static_cast<Entidade*> (pJogador2);
+        listaPersonagens.inserir(pEntidade);
+        pColisao->setJogador(pJogador2);
+    }
     pEntidade = static_cast<Entidade*> (pJogador1);
     listaPersonagens.inserir(pEntidade);
     pColisao->setJogador(pJogador1);

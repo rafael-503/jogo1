@@ -12,7 +12,7 @@ namespace Estados{
             //Fases::Fase2 fase2;
 
         public:
-            EstadoJogar(bool fase1 = true);
+            EstadoJogar(bool eh_fase1 = true, bool eh_1_jogador = true);
             ~EstadoJogar();
             void PrimeiroExecutar();
             void executar();
