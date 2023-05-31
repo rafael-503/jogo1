@@ -122,8 +122,7 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_joga
 	sf::Vector2f cameraPos = view.getCenter(); // Posição central da câmera
 	sf::Vector2f telaPos = cameraPos - sf::Vector2f(TAM_X / 2, TAM_Y / 2); // Canto superior esquerdo da tela
 
-	sf::Text texto1;
-	sf::Text texto2; // Movido para fora do bloco 'if'
+	sf::Text texto1, texto2;
 
 	texto1.setFont(font);
 	if (!eh_1_jogador) {
@@ -131,18 +130,16 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_joga
 		texto2.setString("Vida 2: " + std::to_string(vida2));
 		texto2.setCharacterSize(20);
 		texto2.setFillColor(sf::Color::White);
-		sf::Vector2f posicaoTexto2 = telaPos + sf::Vector2f(10.0f, 35.0f); // Posição do texto no canto superior esquerdo da tela
+		sf::Vector2f posicaoTexto2 = telaPos + sf::Vector2f(10.0f, 35.0f);
 		texto2.setPosition(posicaoTexto2);
 		desenharElemento(texto2);
 	}
-
 	texto1.setString("Vida 1: " + std::to_string(vida1));
 	texto1.setCharacterSize(20);
 	texto1.setFillColor(sf::Color::White);
 
-	sf::Vector2f posicaoTexto = telaPos + sf::Vector2f(10.0f, 10.0f); // Posição do texto no canto superior esquerdo da tela
+	sf::Vector2f posicaoTexto = telaPos + sf::Vector2f(10.0f, 10.0f);
 	texto1.setPosition(posicaoTexto);
-
 	desenharElemento(texto1);
 }
 
