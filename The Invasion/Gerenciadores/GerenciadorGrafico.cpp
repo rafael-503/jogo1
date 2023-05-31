@@ -115,7 +115,7 @@ void GerenciadorGrafico::atalizaFundo() {
 	getWindow()->draw(sprite);
 }
 
-void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_jogador) {
+void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_jogador, sf::Color color) {
 	sf::Font font;
 	if (!font.loadFromFile("The invasion/assets/fonts/PlayfairDisplay-Regular.ttf"))
 		return;
@@ -128,15 +128,15 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_joga
 	if (!eh_1_jogador) {
 		texto2.setFont(font);
 		texto2.setString("Vida 2: " + std::to_string(vida2));
-		texto2.setCharacterSize(20);
-		texto2.setFillColor(sf::Color::White);
+		texto2.setCharacterSize(22);
+		texto2.setFillColor(color);
 		sf::Vector2f posicaoTexto2 = telaPos + sf::Vector2f(10.0f, 35.0f);
 		texto2.setPosition(posicaoTexto2);
 		desenharElemento(texto2);
 	}
 	texto1.setString("Vida 1: " + std::to_string(vida1));
-	texto1.setCharacterSize(20);
-	texto1.setFillColor(sf::Color::White);
+	texto1.setCharacterSize(22);
+	texto1.setFillColor(color);
 
 	sf::Vector2f posicaoTexto = telaPos + sf::Vector2f(10.0f, 10.0f);
 	texto1.setPosition(posicaoTexto);

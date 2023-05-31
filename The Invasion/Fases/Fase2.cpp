@@ -27,7 +27,7 @@ void Fase2::executar() {
     listaPersonagens.seDesenhe();
     listaObstaculos.seDesenhe();
     if (pJogador1)
-        pGrafico->mostrarVidaJogador(pJogador1->getVida());
+        pGrafico->mostrarVidaJogador(pJogador1->getVida(), pJogador2->getVida(), eh_1_jogador, sf::Color::Black);
     listaPersonagens.verificarVida();
     //cout << pJogador1->getPosition().x << ", " <<  pJogador1->getPosition().y << endl;
 }

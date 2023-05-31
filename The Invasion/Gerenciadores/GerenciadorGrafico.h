@@ -30,7 +30,7 @@ namespace Gerenciadores {
 		sf::Texture carregarTextura(const char* caminho);
 		void carregarFundo(const char* caminho);
 		void atalizaFundo();
-		void mostrarVidaJogador(int vida1, int vida2 = 0, bool eh_1_jogador= false);
+		void mostrarVidaJogador(int vida1, int vida2 = 0, bool eh_1_jogador = false, sf::Color color = sf::Color::White);
         sf::Vector2u getSize();
 	};
 }
