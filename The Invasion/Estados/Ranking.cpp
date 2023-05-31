@@ -45,8 +45,8 @@ void Ranking::TeclaPressionada(const sf::Keyboard::Key tecla) {
 }
 
 void Ranking::guardarPontuacao(int num) {
-//   sf::Text* pAux = new sf::Text(std::to_string(num), font);
- //   vectorPontuacoes.push_back(pAux);
+    sf::Text* pAux = new sf::Text(std::to_string(num), font);
+    vectorPontuacoes.push_back(pAux);
 }
 
 void Ranking::imprimirPontuacao() {

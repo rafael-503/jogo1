@@ -12,6 +12,9 @@
 #include "../Entidades/Obstaculos/Plataforma.h"
 #include "../Entidades/Obstaculos/Espinhos.h"
 
+//Projetil
+#include "../Entidades/Projetil.h"
+
 namespace Fases {
 	class Fase : public Ente {
 		protected:
@@ -21,6 +24,8 @@ namespace Fases {
 			Listas::ListaEntidades listaPersonagens;
             Entidades::Personagens::Jogador* pJogador1;
 			Entidades::Personagens::Jogador* pJogador2;
+            sf::Clock relogioAtirar;
+
 
 		public:
 			Fase();
@@ -28,6 +33,7 @@ namespace Fases {
 			void gerenciarColisoes();
 			void TeclaPressionada(const sf::Keyboard::Key tecla);
 			void setPosicaoJogador(const sf::Vector2f& jogadorPos);
+			void inimigosAtirar();
 			virtual void executar() = 0;
 			virtual void esvaziar() = 0;
 			virtual void criarPersonagens() = 0;

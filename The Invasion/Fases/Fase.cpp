@@ -1,15 +1,13 @@
 #include "Fase.h"
 using namespace Fases;
 
-Fase::Fase(): eh_1_jogador(true), pColisao(pColisao->getGerenciador_Colisoes()), pJogador1(NULL){
+Fase::Fase(): eh_1_jogador(true), pColisao(pColisao->getGerenciador_Colisoes()), pJogador1(NULL), pJogador2(NULL), relogioAtirar(){
 
 }
 
 Fase::~Fase() {
-	if (pColisao) {
-		delete pColisao;
-		pColisao = NULL;
-	}
+
+	pColisao = NULL;
 	listaObstaculos.esvaziar();
 	listaPersonagens.esvaziar();
 }
@@ -44,3 +42,18 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
 void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
     pGrafico->atualizarView(jogadorPos);
 }
+void Fase::inimigosAtirar(){
+
+    if(relogioAtirar.getElapsedTime().asSeconds() > 10.0f){
+        Entidades::Projetil* pProjetil = NULL;
+        pProjetil = new Entidades::Projetil(sf::Vector2f(100.0f , 100.0f), pJogador1, pJogador2);
+        Entidade* pEntidade = NULL;
+        if(pProjetil)
+            pEntidade = static_cast<Entidades::Entidade*> (pProjetil);
+        else
+            cout << "erro ao criar Projetil" << endl;
+        listaPersonagens.inserir(pEntidade);
+        relogioAtirar.restart();
+    }
+}
+

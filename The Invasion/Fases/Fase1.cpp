@@ -10,14 +10,13 @@ Fase1::Fase1(bool AuxEh_1_jogador): POS_MIN(1000), POS_MAX(2500) {
         cout << "pGrafico Nulo na construtora da fase 1" << endl;
 	criarPersonagens();
 	criarObstaculos();
+
 }
 
 Fase1::~Fase1() {
     pColisao->limpar();
     pColisao = NULL;
     pJogador1 = NULL;
-    if (!eh_1_jogador)
-        pJogador2 = NULL;
     esvaziar();
     cout << "Fase 1 destruida" << endl;
 }
@@ -29,9 +28,10 @@ void Fase1::executar() {
 	listaPersonagens.seDesenhe();
     listaObstaculos.seDesenhe();
     if(pJogador1)
-        pGrafico->mostrarVidaJogador(pJogador1->getVida(), pJogador2->getVida(), eh_1_jogador);
+      pGrafico->mostrarVidaJogador(pJogador1->getVida());
     listaPersonagens.verificarVida();
     //cout << pJogador1->getPosition().x << ", " <<  pJogador1->getPosition().y << endl;
+    inimigosAtirar();
 }
 
 void Fase1::esvaziar() {
