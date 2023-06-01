@@ -4,14 +4,13 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Espinhos::Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo) {
+Espinhos::Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo), dano(5) {
     ID = 7;
     corpo.setPosition(pos);
     textura = pGrafico->carregarTextura(ESPINHOS);
     corpo.setTexture(&textura);
     relogio.restart();
 }
-
 
 Espinhos::~Espinhos() {}
 
@@ -30,3 +29,8 @@ void Espinhos::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x
 }
 
 void Espinhos::executar() {}
+
+void Espinhos::obstar(Entidades::Personagens::Jogador* pJog) {
+    if (pJog)
+        pJog->setVida(pJog->getVida() - dano);
+}

@@ -3,7 +3,7 @@ using namespace Entidades;
 using namespace Obstaculos;
 
 
-Caixa::Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo) {
+Caixa::Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo), velX(7.0f) {
   ID = 6;
   corpo.setPosition(pos);
 	textura = pGrafico->carregarTextura(CAIXA);
@@ -47,4 +47,11 @@ void Caixa::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
 void Caixa::executar() {
     efeitoGravidade();
 
+}
+
+void Caixa::obstar(Entidades::Personagens::Jogador* pJog) {
+    if (pJog) {
+		pJog->move(true, false); // velocidade x diminui ao colidir com a caixa
+        pJog->setVelocidade(sf::Vector2f(velX, pJog->getVelocidade().y));
+    }
 }

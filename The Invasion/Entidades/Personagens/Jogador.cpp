@@ -29,11 +29,10 @@ void Jogador::executar() {
     efeitoGravidade();
 }
 
-void Jogador::move(bool Direita, bool pulo){
+void Jogador::move(bool Direita, bool pulo, float velY){
     if(pulo){
         if (!SuspensoNoAR) {
-            vel.y = -13.0f;
-            corpo.move(0.0f, vel.y);
+            corpo.move(0.0f, velY);
         }
     }
     else{

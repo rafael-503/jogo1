@@ -31,6 +31,7 @@ namespace Entidades{
         virtual void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
         virtual string getTipo();
         void setVelocidade(sf::Vector2f v);
+        sf::Vector2f getVelocidade() const;
         virtual void executar() = 0;
         void setVida(int vida);
         int getVida() const;

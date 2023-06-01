@@ -1,5 +1,6 @@
 #pragma once
 #include "../Entidade.h"
+#include "../Personagens/Jogador.h"
 
 namespace Entidades {
 
@@ -13,6 +14,7 @@ namespace Entidades {
             ~Obstaculo();
             virtual void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
             virtual void executar();
+            virtual void obstar(Entidades::Personagens::Jogador* pJog) = 0;
         };
     }
 }

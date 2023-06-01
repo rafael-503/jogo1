@@ -31,6 +31,11 @@ string Entidade::getTipo() {
 void Entidade::setVelocidade(sf::Vector2f v) {
     vel = v;
 }
+
+sf::Vector2f Entidades::Entidade::getVelocidade() const {
+    return vel;
+}
+
 float Entidade::getMassa() const{
     return massa;
 }
