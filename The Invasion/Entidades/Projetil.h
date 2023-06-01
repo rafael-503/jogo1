@@ -14,7 +14,8 @@ namespace Entidades{
         public:
             Projetil(sf::Vector2f posInimigo, Personagens::Jogador* pJogador1 = NULL, Personagens::Jogador* pJogador2 = NULL);
             ~Projetil();
+            void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
+            void danar(Personagens::Jogador* jogador);
             void executar();
     };
-
 }

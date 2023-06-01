@@ -17,7 +17,7 @@ void Plataforma::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em
     float tempo = relogio.getElapsedTime().asSeconds();
 
 	if (ID_aux == 1) { // colisao da plataforma com o jogador
-        if (tempo > 5.0f) {
+        if (tempo > 3.0f) {
         Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(pOutra);
     	obstar(jogador);
         relogio.restart();        
@@ -30,4 +30,5 @@ void Plataforma::executar() {}
 void Plataforma::obstar(Entidades::Personagens::Jogador* pJog) {
     if (pJog)
         pJog->move(false, true, velY); // verificar a velocidade se e muito alta
+    cout << "empurrou o jogador para cima" << endl;
 }

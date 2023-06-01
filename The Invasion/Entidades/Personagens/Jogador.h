@@ -20,7 +20,8 @@ namespace Entidades {
             ~Jogador();
             void executar();
             void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
-            void move(bool Direita, bool pulo, float velY= -13.0f);
+            void move(bool Direita, bool pulo, float velY = -13.0f);
+            void atacar(int dano, Inimigo* pInimigo);
         };
     }
 }
