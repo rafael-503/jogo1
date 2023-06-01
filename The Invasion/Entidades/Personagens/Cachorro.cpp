@@ -5,11 +5,21 @@ using namespace Personagens;
 Cachorro::Cachorro(sf::Vector2f pos, sf::Vector2f tam_corpo) : Inimigo(tam_corpo), manso(true){
     ID = 3;
     corpo.setPosition(pos);
-    textura = pGrafico->carregarTextura(CACHORRO);
-    corpo.setTexture(&textura);
-    int num = rand() % 2;
-    if (num == 0)
-        manso = true;
+
+    srand(time(0));
+    int num = rand() % 100;
+    cout << num << endl;
+    if (num %2 == 0)
+        manso = false;
+
+    if (manso) {
+        textura = pGrafico->carregarTextura(CACHORRO2);
+        corpo.setTexture(&textura);
+    }
+    else {
+        textura = pGrafico->carregarTextura(CACHORRO);
+        corpo.setTexture(&textura);
+    }
 }
 
 Cachorro::~Cachorro() {

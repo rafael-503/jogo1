@@ -78,7 +78,8 @@ void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
         if (jogador) {
             float tempo = relogioColisao.getElapsedTime().asSeconds();
             if (tempo >= 2.0f && getVida() > 0) {
-                jogador->setVida(jogador->getVida() - 10);
+                danar(jogador);
+                //jogador->setVida(jogador->getVida() - 10);
                 cout << "Vida do inimigo: " << getVida() << endl;
                 relogioColisao.restart(); 
             }
