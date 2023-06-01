@@ -22,7 +22,7 @@ void Espinhos::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x
         Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(pOutra);
 
         if (tempo > 1.8f && jogador->getVida() > 0) {
-            jogador->setVida(jogador->getVida() - 5);
+            obstar(jogador);
             relogio.restart();
         }
     }

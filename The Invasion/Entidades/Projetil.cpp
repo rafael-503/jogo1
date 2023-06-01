@@ -23,6 +23,28 @@ Projetil::Projetil(sf::Vector2f posInimigo, Personagens::Jogador* pJogador1, Per
 Projetil::~Projetil(){
 
 }
+
+void Projetil::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
+    int ID_aux = pOutra->getID();
+    //float tempo = relogio.getElapsedTime().asSeconds();
+
+    if (ID_aux == 1) { // colisao do projetil com o jogador
+        Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(pOutra);
+        if (jogador) {
+            //if (tempo > 1.8f && jogador->getVida() > 0) {
+            if (jogador->getVida() > 0) {
+                danar(jogador);
+                relogio.restart();
+            }
+        }
+    }
+}
+
+void Projetil::danar(Personagens::Jogador* jogador) {
+    if(jogador)
+	    jogador->setVida(jogador->getVida() - 5);
+}
+
 void Projetil::executar(){
     if(pPerseguido){
         sf::Vector2f Direcao(pPerseguido->getPosition().x - corpo.getPosition().x, pPerseguido->getPosition().y - corpo.getPosition().y);

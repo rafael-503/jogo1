@@ -20,11 +20,12 @@ void Caixa::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
     //colisão com jogador
     if(ID_aux == 1 && Colidiu_em_x){
         sf::Vector2f posCaixa = getPosition(), posOutra = pOutra->getPosition();
+        Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(pOutra);
+        obstar(jogador);
         if(posCaixa.x > posOutra.x)
             corpo.move(-DistExt.x, 0.0f);
         else
             corpo.move(DistExt.x, 0.0f);
-
     }
 
     else if(ID_aux >= 5 && ID_aux <=7){
