@@ -85,6 +85,7 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
 
                 cout << "Proxima fase" << endl;
                 //pEstado->trocarFase(false);
+                pEstado->setEstadoAtual("MenuPrincipal");
             }
         }
     }
@@ -124,6 +125,9 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
                 cout << getVida() << endl;
                 relogioColisao.restart();
             }*/
+        }
+        if (ID_aux == 8) { // PROJETIL
+            setVida(getVida() - 5);
         }
     }
 }
