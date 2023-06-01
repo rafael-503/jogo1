@@ -44,6 +44,13 @@ void Jogador::move(bool Direita, bool pulo, float velY){
     }
 }
 
+void Jogador::atacar(int dano, Inimigo* pInimigo) {
+	if(pInimigo){
+        pInimigo->setVida(pInimigo->getVida() - dano);
+        cout << "Inimigo com vida: " << pInimigo->getVida() << endl;
+        setPontuacao(getPontuacao() + 5);
+	}
+}
 
 void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
     float tempo = relogioColisao.getElapsedTime().asSeconds();
@@ -67,9 +74,9 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
     if (ID_aux == 3) { // colisao com o cachorro e o lenhador
         Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
         if (tempo > 1.5f && inimigo->getVida() > 0) {
-            inimigo->setVida(inimigo->getVida() - 50);
-            setPontuacao(getPontuacao()+5);
-            cout << getPontuacao() << endl;
+            atacar(50, inimigo);
+            //inimigo->setVida(inimigo->getVida() - 50);
+            //setPontuacao(getPontuacao()+5);
             relogioColisao.restart();
         }
     }
@@ -77,8 +84,9 @@ void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x)
     if (ID_aux == 4) { // colisao com o soldado
 	    Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
         if (tempo > 1.5f && inimigo->getVida() > 0) {
-            inimigo->setVida(inimigo->getVida() - 30);
-            setPontuacao(getPontuacao() + 30);
+            atacar(30, inimigo);
+            //inimigo->setVida(inimigo->getVida() - 30);
+            //setPontuacao(getPontuacao() + 30);
             relogioColisao.restart();
             if (inimigo->getVida() <= 0) {
                 cout << "fase vencida" << endl;
