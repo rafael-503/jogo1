@@ -17,8 +17,10 @@ Cachorro::~Cachorro() {
 }
 
 void Cachorro::danar(Jogador* pJog) {
-    if (manso)
-		pJog->setVida(pJog->getVida() - 4);
-    else
-		pJog->setVida(pJog->getVida() - 8);
+    if (pJog) {
+        if (manso)
+            pJog->setVida(pJog->getVida() - 4);
+        else
+            pJog->setVida(pJog->getVida() - 8);
+    }
 }

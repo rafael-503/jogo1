@@ -15,5 +15,6 @@ Soldado::~Soldado() {
 }
 
 void Soldado::danar(Jogador* pJog) {
-	pJog->setVida(pJog->getVida() - dano);
+    if(pJog)
+	    pJog->setVida(pJog->getVida() - dano);
 }

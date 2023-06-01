@@ -14,5 +14,6 @@ Lenhador::~Lenhador() {
 }
 
 void Lenhador::danar(Jogador* pJog) {
-	pJog->setVida(pJog->getVida() - forca);
+    if(pJog)
+	    pJog->setVida(pJog->getVida() - forca);
 }
