@@ -32,7 +32,8 @@ void Jogador::executar() {
 void Jogador::move(bool Direita, bool pulo, float velY){
     if(pulo){
         if (!SuspensoNoAR) {
-            corpo.move(0.0f, velY);
+            vel.y = -13.0f;
+            corpo.move(0.0f, vel.y);
         }
     }
     else{
