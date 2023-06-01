@@ -1,6 +1,5 @@
 #pragma once
 #define PLATAFORMA "The invasion/assets/obstaculos/plataforma1.png"
-#define PLATAFORMA2 "The invasion/assets/obstaculos/plataforma2.png"
 
 #include "Obstaculo.h"
 
