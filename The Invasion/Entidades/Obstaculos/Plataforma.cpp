@@ -17,7 +17,7 @@ void Plataforma::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em
     float tempo = relogio.getElapsedTime().asSeconds();
 
 	if (ID_aux == 1) { // colisao da plataforma com o jogador
-        if (tempo > 2.0f) {
+        if (tempo > 3.0f) {
         Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(pOutra);
     	obstar(jogador);
         relogio.restart();        
