@@ -14,10 +14,11 @@ namespace Entidades {
         class Jogador;
         class Inimigo : public Personagem {
 
-        private:
+        protected:
             Jogador* jogador;
             short move_aleatorio;
             sf::Clock relogioColisao;
+            sf::Clock relogioAtaque;
 
         public:
             Inimigo(sf::Vector2f tam_corpo);
@@ -26,8 +27,7 @@ namespace Entidades {
             void persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim);
             void moveAleatorio();
             void executar();
-            void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
-            virtual void danar(Jogador* pJog) = 0; 
+            virtual void danar(Jogador* pJog) = 0;
         };
     }
 }

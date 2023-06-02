@@ -13,7 +13,8 @@ namespace Gerenciadores {
     class Gerenciador_Colisoes {
     private:
         static Gerenciador_Colisoes* pGerenciador_Colisoes;
-        vector<Personagem*> vetor_personagens;
+        std::pair<Personagens::Jogador*, Personagens::Jogador*> pJogadores;
+        vector<Personagens::Inimigo*> vetor_inimigos;
         list<Obstaculos::Obstaculo*> lista_obstaculos;
 
 
@@ -24,6 +25,11 @@ namespace Gerenciadores {
         void incluiInimigo(Inimigo* pInimigo);
         void incluiObstaculo(Obstaculos::Obstaculo* pObs);
         void testa_colisoes();
+        void ColisaoInimigoObstaculo();
+        void ColisaoJogadorObstaculo();
+        void ColisaoJogadorInimigo();
+        void ColisaoEntreObstaculos();
+        void ColisaoProjetilEntidade();
         void setJogador(Jogador* pJogaAux);
         void limpar();
         sf::Vector2f Calcula_colisao(Entidade* pEnti1, Entidade* pEnti2);

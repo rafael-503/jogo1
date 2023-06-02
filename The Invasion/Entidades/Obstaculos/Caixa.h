@@ -10,9 +10,10 @@ namespace Entidades {
 			public:
 				Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(50.0f, 50.0f));
 				~Caixa();
-				void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
 				void executar();
-				void obstar(Entidades::Personagens::Jogador* pJog);
-		};
+                void obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f DistExtremidades, bool colidiu_X);
+                void obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistExtremidades, bool colidiu_X);
+                void obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X);
+        };
 	}
 }

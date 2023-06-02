@@ -127,7 +127,7 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_joga
 	texto1.setFont(font);
 	if (!eh_1_jogador) {
 		texto2.setFont(font);
-		texto2.setString("Vida 2: " + std::to_string(vida2));
+        texto2.setString("Vida 2: " + std::to_string(vida2));
 		texto2.setCharacterSize(22);
 		texto2.setFillColor(color);
 		sf::Vector2f posicaoTexto2 = telaPos + sf::Vector2f(10.0f, 35.0f);

@@ -14,13 +14,14 @@ namespace Entidades {
         private:
             void inicializa();
             sf::Clock relogioColisao;
+            sf::Vector2f vel_padrao;
 
         public:
             Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(80.0f, 80.0f), const char* text= JOGADOR);
             ~Jogador();
             void executar();
-            void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
-            void move(bool Direita, bool pulo, float velY = -13.0f);
+            void Mover_Se(bool Direita, bool pulo, float velY = -13.0f);
+            void move(float moveX, float moveY);
             void atacar(int dano, Inimigo* pInimigo);
         };
     }

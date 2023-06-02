@@ -6,9 +6,9 @@ Cachorro::Cachorro(sf::Vector2f pos, sf::Vector2f tam_corpo) : Inimigo(tam_corpo
     ID = 3;
     corpo.setPosition(pos);
 
-    srand(time(0));
+    srand(std::time(0));
     int num = rand() % 100;
-    cout << num << endl;
+    //cout << num << endl;
     if (num %2 == 0)
         manso = false;
 
@@ -28,9 +28,12 @@ Cachorro::~Cachorro() {
 
 void Cachorro::danar(Jogador* pJog) {
     if (pJog) {
-        if (manso)
-            pJog->setVida(pJog->getVida() - 4);
-        else
-            pJog->setVida(pJog->getVida() - 8);
+        if(relogioAtaque.getElapsedTime().asSeconds() > 5.0f){
+            if (manso)
+                pJog->setVida(pJog->getVida() - 3);
+            else
+                pJog->setVida(pJog->getVida() - 15);
+            relogioAtaque.restart();
+        }
     }
 }

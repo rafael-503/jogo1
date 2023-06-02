@@ -18,11 +18,11 @@ void Fase::gerenciarColisoes() {
 void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
     if(pJogador1){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            pJogador1->move(false, false);
+            pJogador1->Mover_Se(false, false);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            pJogador1->move(true, false);
+            pJogador1->Mover_Se(true, false);
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            pJogador1->move(false, true);
+            pJogador1->Mover_Se(false, true);
         setPosicaoJogador(pJogador1->getPosition());
     }
     else
@@ -31,11 +31,11 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
 
     if (pJogador2) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            pJogador2->move(false, false);
+            pJogador2->Mover_Se(false, false);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            pJogador2->move(true, false);
+            pJogador2->Mover_Se(true, false);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            pJogador2->move(false, true);
+            pJogador2->Mover_Se(false, true);
         setPosicaoJogador(pJogador2->getPosition());
     }
 }

@@ -8,7 +8,7 @@ using namespace Personagens;
 
 
 Inimigo::Inimigo(sf::Vector2f tam_corpo) :
-    Personagem(tam_corpo), jogador(NULL)
+    Personagem(tam_corpo), jogador(NULL), relogioAtaque()
 {
     ID = 2;
     corpo.setPosition(300.0f, 100.0f);
@@ -66,41 +66,5 @@ void Inimigo::executar() {
         else
             moveAleatorio();
         efeitoGravidade();
-    }
-}
-
-void Inimigo::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
-    
-    int ID_aux = pOutra->getID();
-
-    if (ID_aux == 1) { // colisao dos inimigos com o jogador
-        Jogador* jogador = dynamic_cast<Jogador*>(pOutra);
-        if (jogador) {
-            float tempo = relogioColisao.getElapsedTime().asSeconds();
-            if (tempo >= 2.0f && getVida() > 0) {
-                danar(jogador);
-                //jogador->setVida(jogador->getVida() - 10);
-                cout << "Vida do inimigo: " << getVida() << endl;
-                relogioColisao.restart(); 
-            }
-        }
-    }
-
-    if (ID_aux >= 5 && ID_aux <=7) {
-        sf::Vector2f posInimigo = getPosition(), posOutro = pOutra->getPosition();
-        if (!Colidiu_em_x) {
-            if (posInimigo.y < posOutro.y){
-                corpo.move(0.0f, DistExt.y);
-                SuspensoNoAR = false;
-            }
-            else
-                corpo.move(0.0f, -DistExt.y);
-        }
-        else    {
-            if (posInimigo.x < posOutro.x)
-                corpo.move(DistExt.x, 0.0f);
-            else
-                corpo.move(-DistExt.x, 0.0f);
-        }
     }
 }
