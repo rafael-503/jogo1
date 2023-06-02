@@ -2,7 +2,7 @@
 #include "EstadoJogar.h"
 using namespace Estados;
 
-EstadoJogar::EstadoJogar(bool eh_fase1, bool eh_1_jogador): pFase(NULL) {
+EstadoJogar::EstadoJogar(bool eh_fase1, bool eh_1_jogador): Menu(), pFase(NULL) {
 
     if(eh_fase1)
 		pFase = static_cast<Fases::Fase*> (new Fases::Fase1(eh_1_jogador));

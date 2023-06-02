@@ -2,7 +2,7 @@
 #include "../Gerenciadores/GerenciadorEstado.h"
 using namespace Estados;
 
-GameOver::GameOver() :Estado(), BotaoTentarNovamente("Tentar novamente", font), BotaoMenuPrincipal("Menu Principal", font),
+GameOver::GameOver() :Menu(), BotaoTentarNovamente("Tentar novamente", font), BotaoMenuPrincipal("Menu Principal", font),
 BotaoRanking("Ranking", font) {
     sf::Vector2u tamJanela(600.f, 400.f);
     BotaoTentarNovamente.setScale(1.5f, 1.5f);

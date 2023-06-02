@@ -1,9 +1,9 @@
 #pragma once
-#include "Estado.h"
+#include "Menu.h"
 
 namespace Estados {
 
-    class Ranking : public Estado {
+    class Ranking : public Menu {
     private:
         sf::Text BotaoMenuPrincipal;
         vector<sf::Text*> vectorPontuacoes;

@@ -56,7 +56,7 @@ void GerenciadorEstado::apagueEstadoJogar(){
     //deletando EstadoJogar
     MapaStringEstado::iterator iterador = mapEstados.find("EstadoJogar");
     if (iterador != mapEstados.end()) {
-        Estados::Estado* pAux = iterador->second;
+        Estados::Menu* pAux = iterador->second;
         delete pAux;
     }
     mapEstados.erase("EstadoJogar");

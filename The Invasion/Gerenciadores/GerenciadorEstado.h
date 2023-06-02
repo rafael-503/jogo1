@@ -1,6 +1,6 @@
 #pragma once
 #include "../stdafx.h"
-#include "../Estados/Estado.h"
+#include "../Estados/Menu.h"
 #include "../Estados/MenuPrincipal.h"
 #include "../Estados/EstadoJogar.h"
 #include "../Estados/MenuPause.h"
@@ -9,7 +9,7 @@
 #include "../Fases/Fase1.h"
 #include <map>
 
-typedef map< string, Estados::Estado*> MapaStringEstado;
+typedef map< string, Estados::Menu*> MapaStringEstado;
 
 namespace Gerenciadores{
 

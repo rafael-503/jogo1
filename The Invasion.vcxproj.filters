@@ -81,7 +81,7 @@
     <ClCompile Include="The Invasion\Gerenciadores\GerenciadorEstado.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="The Invasion\Estados\Estado.cpp">
+    <ClCompile Include="The Invasion\Estados\Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="The Invasion\Estados\EstadoJogar.cpp">
@@ -173,7 +173,7 @@
     <ClInclude Include="The Invasion\Gerenciadores\GerenciadorEstado.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="The Invasion\Estados\Estado.h">
+    <ClInclude Include="The Invasion\Estados\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="The Invasion\Estados\EstadoJogar.h">

@@ -4,7 +4,7 @@ using namespace Estados;
 
 
 
-MenuPrincipal::MenuPrincipal(): Estado(), Tela_inicial(true), BotaoJogar("JOGAR", font),  BotaoRanking("RANKING", font), BotaoSair("SAIR", font),
+MenuPrincipal::MenuPrincipal(): Menu(), Tela_inicial(true), BotaoJogar("JOGAR", font),  BotaoRanking("RANKING", font), BotaoSair("SAIR", font),
  BotaoFase1_Jogador1("Fase 1: 1 Jogador", font), BotaoFase1_Jogador2("Fase 1: 2 Jogadores", font), BotaoFase2_Jogador1("Fase 2: 1 Jogador", font),
  BotaoFase2_Jogador2("Fase 1: 2 Jogadores", font)
 {

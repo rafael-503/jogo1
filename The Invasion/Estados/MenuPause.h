@@ -1,10 +1,9 @@
 #pragma once
-#include "Estado.h"
-
+#include "Menu.h"
 
 namespace Estados{
 
-    class MenuPause: public Estado{
+    class MenuPause: public Menu {
         private:
             sf::Text Botaovoltar;
 
@@ -15,5 +14,4 @@ namespace Estados{
             void PrimeiroExecutar();
             void executar();
     };
-
 }

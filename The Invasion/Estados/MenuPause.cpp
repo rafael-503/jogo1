@@ -2,7 +2,7 @@
 using namespace Estados;
 #include "../Gerenciadores/GerenciadorEstado.h"
 
-MenuPause::MenuPause(): Estado(), Botaovoltar()
+MenuPause::MenuPause(): Menu(), Botaovoltar()
 {
 
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
@@ -47,6 +47,4 @@ void MenuPause::executar(){
     }
     else
         Botaovoltar.setFillColor(sf::Color::White);
-
-
 }

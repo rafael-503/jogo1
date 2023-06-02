@@ -1,9 +1,9 @@
 #pragma once
-#include "Estado.h"
+#include "Menu.h"
 
 namespace Estados {
 
-    class GameOver : public Estado {
+    class GameOver : public Menu {
     private:
         sf::Text BotaoTentarNovamente;
         sf::Text BotaoMenuPrincipal;

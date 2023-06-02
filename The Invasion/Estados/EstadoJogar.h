@@ -1,11 +1,11 @@
 #pragma once
-#include "Estado.h"
+#include "Menu.h"
 #include "../Fases/Fase1.h"
 #include "../Fases/Fase2.h"
 
 namespace Estados{
 
-    class EstadoJogar: public Estado{
+    class EstadoJogar: public Menu {
         private:
             Fases::Fase* pFase;
             //Fases::Fase1 fase1;

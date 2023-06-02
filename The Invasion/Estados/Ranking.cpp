@@ -2,7 +2,7 @@
 #include "../Gerenciadores/GerenciadorEstado.h"
 using namespace Estados;
 
-Ranking::Ranking() :Estado(), BotaoMenuPrincipal("Menu Principal", font), vectorPontuacoes() {
+Ranking::Ranking() :Menu(), BotaoMenuPrincipal("Menu Principal", font), vectorPontuacoes() {
     sf::Vector2u tamJanela(600.f, 400.f);
     BotaoMenuPrincipal.setScale(1.5f, 1.5f);
 
