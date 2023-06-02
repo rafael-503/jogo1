@@ -7,11 +7,10 @@ namespace Entidades {
     namespace Personagens {
         class Personagem : public Entidade {
         private:
-            
+
         public:
             Personagem(sf::Vector2f tam_corpo);
             ~Personagem();
-            virtual void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) = 0;
             virtual void executar() = 0;
         };
     }

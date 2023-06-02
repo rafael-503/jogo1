@@ -1,7 +1,7 @@
 #include "Caixa.h"
 using namespace Entidades;
 using namespace Obstaculos;
-
+#include "../Personagens/Inimigo.h"
 
 Caixa::Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo), velX(7.0f) {
   ID = 6;
@@ -12,47 +12,66 @@ Caixa::Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo
 
 Caixa::~Caixa() {}
 
-void Caixa::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
-
-
-    int ID_aux = pOutra->getID();
-    //colidiu com obstaculo
-    //colisão com jogador
-    if(ID_aux == 1 && Colidiu_em_x){
-        sf::Vector2f posCaixa = getPosition(), posOutra = pOutra->getPosition();
-        Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(pOutra);
-        obstar(jogador);
-        if(posCaixa.x > posOutra.x)
-            corpo.move(-DistExt.x, 0.0f);
-        else
-            corpo.move(DistExt.x, 0.0f);
-    }
-
-    else if(ID_aux >= 5 && ID_aux <=7){
-        sf::Vector2f posCaixa = getPosition(), posOutra = pOutra->getPosition();
-        if(!Colidiu_em_x){
-            corpo.move(0.0f, DistExt.y);
-            SuspensoNoAR = false;
-        }
-        else{
-           if(posCaixa.x > posOutra.x)
-                corpo.move(-DistExt.x, 0.0f);
-            else
-                corpo.move(DistExt.x, 0.0f);
-        }
-
-    }
-
-}
 
 void Caixa::executar() {
     efeitoGravidade();
 
 }
 
-void Caixa::obstar(Entidades::Personagens::Jogador* pJog) {
+void Caixa::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f DistExtremidades, bool colidiu_X){
     if (pJog) {
-		pJog->move(true, false); // velocidade x diminui ao colidir com a caixa
-        pJog->setVelocidade(sf::Vector2f(velX, pJog->getVelocidade().y));
+
+        /// Jogador empurra caixa em x e fica em cima dela em Y
+        sf::Vector2f posCaixa = getPosition(), posJogador = pJog->getPosition();
+        if(colidiu_X){
+            if(posCaixa.x > posJogador.x)
+                mover(-DistExtremidades.x, 0.0f);
+            else
+                mover(DistExtremidades.x, 0.0f);
+        }
+        else{
+            if (pJog->getPosition().y < getPosition().y){
+                pJog->mover(0.0f, DistExtremidades.y);
+                pJog->setSuspensoNoAR(false);
+            }
+            else{
+                pJog->mover(0.0f, -DistExtremidades.y);
+                // Bateu a cabeça
+                if(pJog->getVelocidade().y < 0.0f)
+                    pJog->setVelocidade_y(0.0f);
+            }
+        }
     }
+
 }
+void Caixa::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistExtremidades, bool colidiu_X){
+    ///inimigo não consegue mover a caixa
+    if(pInimigo){
+        if (!colidiu_X) {
+            if (pInimigo->getPosition().y < getPosition().y){
+                pInimigo->mover(0.0f, DistExtremidades.y);
+                pInimigo->setSuspensoNoAR(false);
+            }
+            else{
+                pInimigo->mover(0.0f, -DistExtremidades.y);
+                if(pInimigo->getVelocidade().y < 0.0f)
+                    pInimigo->setVelocidade_y(0.0f);
+            }
+
+        }
+        else {
+            if (pInimigo->getPosition().x < getPosition().x)
+                pInimigo->mover(DistExtremidades.x, 0.0f);
+            else
+                pInimigo->mover(-DistExtremidades.x, 0.0f);
+        }
+    }
+
+    else
+        cout << "pInimigo nulo em Obstar da caixa" << endl;
+
+}
+void Caixa::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X){
+
+}
+

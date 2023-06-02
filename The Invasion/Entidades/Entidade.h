@@ -28,7 +28,6 @@ namespace Entidades{
         void efeitoGravidade();
         const sf::Vector2f getPosition() const;
         const sf::Vector2f getSize() const;
-        virtual void colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x);
         virtual string getTipo();
         void setVelocidade(sf::Vector2f v);
         sf::Vector2f getVelocidade() const;
@@ -37,5 +36,9 @@ namespace Entidades{
         int getVida() const;
         void setPontuacao(int pontuacao);
         int getPontuacao() const;
+        void setSuspensoNoAR(bool aux);
+        void mover(float moveX, float moveY);
+        void setVelocidade_y(float aux);
+
     };
 }

@@ -20,10 +20,7 @@ const sf::Vector2f Entidade::getSize() const {
     return corpo.getSize();
 
 }
-void Entidade::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
 
-
-}
 string Entidade::getTipo() {
     return Tipo;
 }
@@ -75,4 +72,14 @@ void Entidade::setPontuacao(int pontuacao) {
 
 int Entidade::getPontuacao() const {
 	return pontuacao;
+}
+void Entidade::setSuspensoNoAR(bool aux){
+    SuspensoNoAR = aux;
+
+}
+void Entidade::mover(float moveX, float moveY){
+    corpo.move(moveX, moveY);
+}
+void Entidade::setVelocidade_y(float aux){
+    vel.y = aux;
 }

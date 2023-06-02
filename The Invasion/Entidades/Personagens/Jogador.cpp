@@ -11,12 +11,12 @@ Gerenciadores::GerenciadorEstado* pEstado = Gerenciadores::GerenciadorEstado::ge
 void Jogador::inicializa() {
 }
 
-Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Personagem(tam_corpo)
+Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Personagem(tam_corpo), vel_padrao(10.0f, 0.0f)
 {
     ID = 1;
     corpo.setPosition(pos);
     setMassa(60.0f);
-    setVelocidade(sf::Vector2f(10.0f, 0.0f));
+    setVelocidade(vel_padrao);
 
     textura = pGrafico->carregarTextura(text);
     corpo.setTexture(&textura);
@@ -27,22 +27,24 @@ Jogador::~Jogador() {}
 
 void Jogador::executar() {
     efeitoGravidade();
+    cout << getVida() << endl;
 }
 
-void Jogador::move(bool Direita, bool pulo, float velY){
+void Jogador::Mover_Se(bool Direita, bool pulo, float velY){
     if(pulo){
         if (!SuspensoNoAR) {
             vel.y = -13.0f;
-            corpo.move(0.0f, vel.y);
+            mover(0.0f, vel.y);
         }
     }
     else{
         if (Direita)
-            corpo.move(vel.x, 0.0f);
+            mover(vel.x, 0.0f);
         else
-            corpo.move(-vel.x, 0.0f);
+            mover(-vel.x, 0.0f);
     }
 }
+
 
 void Jogador::atacar(int dano, Inimigo* pInimigo) {
 	if(pInimigo){
@@ -50,92 +52,4 @@ void Jogador::atacar(int dano, Inimigo* pInimigo) {
         cout << "Inimigo com vida: " << pInimigo->getVida() << endl;
         setPontuacao(getPontuacao() + 5);
 	}
-}
-
-void Jogador::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
-    float tempo = relogioColisao.getElapsedTime().asSeconds();
-
-    //ID_aux recebe id da entidade com qual esta colidindo
-    int ID_aux = pOutra->getID();
-    /*
-    if (ID_aux == 2) { // colisao generia do inimigo
-        cout << "Jogador Colidiu com Inimigo" << endl;
-        if (tempo > 1.0f) {
-            //setVida(getVida() - 10);
-            //cout << getVida() << endl;
-            Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
-            inimigo->setVida(inimigo->getVida() - 100);
-            cout << inimigo->getVida() << endl;
-            //atacar(inimigo);
-        }
-        relogio.restart();
-    }*/
-
-    if (ID_aux == 3) { // colisao com o cachorro e o lenhador
-        Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
-        if (tempo > 1.5f && inimigo->getVida() > 0) {
-            atacar(50, inimigo);
-            //inimigo->setVida(inimigo->getVida() - 50);
-            //setPontuacao(getPontuacao()+5);
-            relogioColisao.restart();
-        }
-    }
-
-    if (ID_aux == 4) { // colisao com o soldado
-	    Inimigo* inimigo = dynamic_cast<Inimigo*>(pOutra);
-        if (tempo > 1.5f && inimigo->getVida() > 0) {
-            atacar(30, inimigo);
-            //inimigo->setVida(inimigo->getVida() - 30);
-            //setPontuacao(getPontuacao() + 30);
-            relogioColisao.restart();
-            if (inimigo->getVida() <= 0) {
-                cout << "fase vencida" << endl;
-
-                cout << "Proxima fase" << endl;
-                //pEstado->trocarFase(false);
-                pEstado->setEstadoAtual("MenuPrincipal");
-            }
-        }
-    }
-
-    if (ID_aux >= 5 && ID_aux <=7) {
-        sf::Vector2f posJogador = getPosition(), posOutro = pOutra->getPosition();
-
-        //colisão
-        if (!Colidiu_em_x) {
-            if (posJogador.y < posOutro.y){
-                corpo.move(0.0f, DistExt.y);
-                SuspensoNoAR = false;
-            }
-            else{
-                corpo.move(0.0f, -DistExt.y);
-                //bateu a cabeça
-                if (vel.y < 0.0f)
-                    vel.y = 0.0f;
-            }
-        }
-        else {
-            if(ID_aux != 6){
-                if (posJogador.x < posOutro.x)
-                    corpo.move(DistExt.x, 0.0f);
-                else
-                    corpo.move(-DistExt.x, 0.0f);
-            }
-        }
-
-        if(ID_aux == 5) // PLATAFORMA
-        if(ID_aux == 6) // CAIXA
-
-        if (ID_aux == 7) { // ESPINHOS
-            /*
-            if (tempo > 1.8f) {
-                setVida(getVida() - 10);
-                cout << getVida() << endl;
-                relogioColisao.restart();
-            }*/
-        }
-        if (ID_aux == 8) { // PROJETIL
-            setVida(getVida() - 5);
-        }
-    }
 }
