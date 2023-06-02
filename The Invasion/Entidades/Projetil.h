@@ -3,6 +3,7 @@
 #include "Entidade.h"
 #include "SFML/Graphics.hpp"
 #include "Personagens/Jogador.h"
+#define PROJETIL "The invasion/assets/inimigo/soldado/projetil.png"
 
 namespace Entidades{
 

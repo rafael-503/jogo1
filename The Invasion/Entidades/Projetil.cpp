@@ -3,9 +3,11 @@
 using namespace Entidades;
 
 Projetil::Projetil(sf::Vector2f posInimigo, Personagens::Jogador* pJogador1, Personagens::Jogador* pJogador2):
-     Entidade(sf::Vector2f(10.0f, 5.0f)), vel_projetil(10.0f), pPerseguido(NULL)
-{
+     Entidade(sf::Vector2f(15.0f, 7.5f)), vel_projetil(10.0f), pPerseguido(NULL){
     corpo.setPosition(posInimigo);
+    textura = pGrafico->carregarTextura(PROJETIL);
+    corpo.setTexture(&textura);
+
     if(pJogador1 && pJogador2){
         if(fabs(corpo.getPosition().x - pJogador1->getPosition().x) < fabs(corpo.getPosition().x - pJogador2->getPosition().x))
             pPerseguido = pJogador1;
