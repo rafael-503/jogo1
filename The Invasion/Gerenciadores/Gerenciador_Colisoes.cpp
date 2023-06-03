@@ -286,12 +286,16 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
         }
 
         /// se Projetil colide com Jogador ele o da Dano
-        DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(vetor_Projeteis[i]));
-        if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-            vetor_Projeteis[i]->AcertouJogador(pJogadores.first);
-        DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(vetor_Projeteis[i]));
+        if(pJogadores.first){
+            DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(vetor_Projeteis[i]));
+            if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                vetor_Projeteis[i]->AcertouJogador(pJogadores.first);
+        }
+        if(pJogadores.second){
+        DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(vetor_Projeteis[i]));
         if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
             vetor_Projeteis[i]->AcertouJogador(pJogadores.second);
+        }
     }
 
 
