@@ -39,6 +39,7 @@ void GameOver::executar() {
     if (rectTentarNovamente.intersects(corpoMouse)) {
         BotaoTentarNovamente.setFillColor(sf::Color::Red);
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            Gerenciadores::GerenciadorEstado::pGEstados->ReiniciarEstadoJogar();
             Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("EstadoJogar");
         }
     }

@@ -1,10 +1,11 @@
 #include "GerenciadorEstado.h"
 using namespace Gerenciadores;
+#include "../Estados/EstadoJogar.h"
 
 GerenciadorEstado* GerenciadorEstado::pGEstados = NULL;
 GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
 
-    mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
+    //mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
     mapEstados["MenuPause"] = new Estados::MenuPause();
     mapEstados["GameOver"] = new Estados::GameOver();
     mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
@@ -60,6 +61,10 @@ void GerenciadorEstado::apagueEstadoJogar(){
         delete pAux;
     }
     mapEstados.erase("EstadoJogar");
+}
+void GerenciadorEstado::ReiniciarEstadoJogar(){
+    Estados::EstadoJogar* pAux = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
+    crieEexecuteEstadoJogar(pAux->getEh_fase1(), pAux->getEh_1_Jogador());
 }
 
 

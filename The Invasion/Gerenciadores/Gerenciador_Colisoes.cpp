@@ -109,7 +109,7 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoJogadorInimigo(){
                 DistanciaExtremidades = Calcula_colisao(pJogadores.first, vetor_inimigos[i]);
                 if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
                     vetor_inimigos[i]->danar(pJogadores.first);
-                    //pAux->Atacar(vetor_inimigos[i]);
+                    pJogadores.first->Atacar(vetor_inimigos[i]);
                 }
             }
         }
@@ -121,7 +121,7 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoJogadorInimigo(){
                 DistanciaExtremidades = Calcula_colisao(pJogadores.second, vetor_inimigos[i]);
                 if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
                     vetor_inimigos[i]->danar(pJogadores.second);
-                    //pJogadores.second->Atacar(vetor_inimigos[i]);
+                    pJogadores.second->Atacar(vetor_inimigos[i]);
                 }
             }
         }
@@ -172,7 +172,7 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoJogadorObstaculo(){
                         else
                             Colidiu_em_x = true;
                         pObs->obstar(pJogadores.second, DistanciaExtremidades, Colidiu_em_x);
-                        //pJogadores.second->colisao(pEnti_1, DistanciaExtremidades, Colidiu_em_x);
+                        //pJogadores.second->atacar();
 
                 }
             }
@@ -271,31 +271,35 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
 
     /// testa colisão entre Projetil e Obstaculo/Jogadores (Projetil não atinge Inimigos)
     for(int i = 0; i < (int) vetor_Projeteis.size(); i++){
-        it_obs = lista_obstaculos.begin();
-        while(it_obs != lista_obstaculos.end()){
-            pObs = *it_obs;
-            if(pObs){
-                DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pObs), static_cast<Entidade*>(vetor_Projeteis[i]));
-                /// se Projetil colide com obstculo ele é destruido
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                    vetor_Projeteis[i]->ApagarProjetil();
+        if(vetor_Projeteis[i]){
+            it_obs = lista_obstaculos.begin();
+            while(it_obs != lista_obstaculos.end()){
+                pObs = *it_obs;
+                if(pObs){
+                    DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pObs), static_cast<Entidade*>(vetor_Projeteis[i]));
+                    /// se Projetil colide com obstculo ele é destruido
+                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                        vetor_Projeteis[i]->ApagarProjetil();
+                }
+                else
+                    cout << "ponteiro nulo na Lista do gereniador de colisões" << endl;
+                it_obs++;
             }
-            else
-                cout << "ponteiro nulo na Lista do gereniador de colisões" << endl;
-            it_obs++;
-        }
 
-        /// se Projetil colide com Jogador ele o da Dano
-        if(pJogadores.first){
-            DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(vetor_Projeteis[i]));
+            /// se Projetil colide com Jogador ele o da Dano
+            if(pJogadores.first){
+                DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(vetor_Projeteis[i]));
+                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                    vetor_Projeteis[i]->AcertouJogador(pJogadores.first);
+            }
+            if(pJogadores.second){
+            DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(vetor_Projeteis[i]));
             if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                vetor_Projeteis[i]->AcertouJogador(pJogadores.first);
+                vetor_Projeteis[i]->AcertouJogador(pJogadores.second);
+            }
         }
-        if(pJogadores.second){
-        DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(vetor_Projeteis[i]));
-        if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-            vetor_Projeteis[i]->AcertouJogador(pJogadores.second);
-        }
+        else
+            cout << "Projetl Nulo na Lista" << endl;
     }
 
 

@@ -11,7 +11,7 @@ Gerenciadores::GerenciadorEstado* pEstado = Gerenciadores::GerenciadorEstado::ge
 void Jogador::inicializa() {
 }
 
-Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Personagem(tam_corpo), vel_padrao(10.0f, 0.0f)
+Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Personagem(tam_corpo), vel_padrao(10.0f, 0.0f), forca(2)
 {
     ID = 1;
     corpo.setPosition(pos);
@@ -27,7 +27,6 @@ Jogador::~Jogador() {}
 
 void Jogador::executar() {
     efeitoGravidade();
-    cout << getVida() << endl;
 }
 
 void Jogador::Mover_Se(bool Direita, bool pulo, float velY){
@@ -46,10 +45,9 @@ void Jogador::Mover_Se(bool Direita, bool pulo, float velY){
 }
 
 
-void Jogador::atacar(int dano, Inimigo* pInimigo) {
+void Jogador::Atacar(Inimigo* pInimigo) {
 	if(pInimigo){
-        pInimigo->setVida(pInimigo->getVida() - dano);
-        cout << "Inimigo com vida: " << pInimigo->getVida() << endl;
+        pInimigo->setVida(pInimigo->getVida() - forca);
         setPontuacao(getPontuacao() + 5);
 	}
 }

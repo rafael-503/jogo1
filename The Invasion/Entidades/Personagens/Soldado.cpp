@@ -61,8 +61,10 @@ void Soldado::Atirar(){
 }
 void Soldado::danar(Jogador* pJog) {
     if (pJog) {
-        if(relogioAtaque.getElapsedTime().asSeconds() > 5.0f)
+        if(relogioAtaque.getElapsedTime().asSeconds() > 5.0f){
             pJog->setVida(pJog->getVida() - dano);
+            relogioAtaque.restart();
+        }
     }
 }
 

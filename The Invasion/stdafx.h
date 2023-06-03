@@ -10,6 +10,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iostream>
+#include <sstream>
+#include <string>
 #include <time.h>
 #include <math.h>
 

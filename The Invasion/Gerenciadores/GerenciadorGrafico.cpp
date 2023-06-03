@@ -1,7 +1,7 @@
 #include "../Gerenciadores/GerenciadorGrafico.h"
+#include "../stdafx.h"
 #define TAM_X 1200.0f
 #define TAM_Y 800.0f
-#include <stdlib.h>
 using namespace Gerenciadores;
 
 GerenciadorGrafico* GerenciadorGrafico::pGrafico = NULL;
@@ -127,14 +127,23 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_joga
 	texto1.setFont(font);
 	if (!eh_1_jogador) {
 		texto2.setFont(font);
-//        texto2.setString("Vida 2: " + std::to_string(vida2));
+        std::ostringstream oss2;
+        string aux2(texto2.getString());
+        oss2 << aux2 << vida2;
+        texto2.setString(oss2.str());
+        //texto2.setString("Vida 2: " + std::to_string(vida2));
 		texto2.setCharacterSize(22);
 		texto2.setFillColor(color);
 		sf::Vector2f posicaoTexto2 = telaPos + sf::Vector2f(10.0f, 35.0f);
 		texto2.setPosition(posicaoTexto2);
 		desenharElemento(texto2);
 	}
-	//texto1.setString("Vida 1: " + std::to_string(vida1));
+    //alternativa ao to_string em c++ de 2003
+    texto1.setFont(font);
+    std::ostringstream oss;
+    string aux(texto1.getString());
+    oss << aux << vida1;
+    texto1.setString(oss.str());
 	texto1.setCharacterSize(22);
 	texto1.setFillColor(color);
 

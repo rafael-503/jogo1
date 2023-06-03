@@ -8,12 +8,13 @@ namespace Estados{
     class EstadoJogar: public Menu {
         private:
             Fases::Fase* pFase;
-            //Fases::Fase1 fase1;
-            //Fases::Fase2 fase2;
-
+            bool Eh_fase1;
+            bool Eh_1_Jogador;
         public:
             EstadoJogar(bool eh_fase1 = true, bool eh_1_jogador = true);
             ~EstadoJogar();
+            bool getEh_fase1() const;
+            bool getEh_1_Jogador() const;
             void PrimeiroExecutar();
             void executar();
             void TeclaPressionada(const sf::Keyboard::Key tecla);
