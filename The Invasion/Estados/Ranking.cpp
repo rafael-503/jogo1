@@ -45,12 +45,11 @@ void Ranking::TeclaPressionada(const sf::Keyboard::Key tecla) {
 }
 
 void Ranking::guardarPontuacao(int num) {
-   sf::Text* pAux = new sf::Text(std::to_string(num), font);
-   vectorPontuacoes.push_back(pAux);
+//   sf::Text* pAux = new sf::Text(std::to_string(num), font);
+//vectorPontuacoes.push_back(pAux);
 }
 
 void Ranking::imprimirPontuacao() {
-    for (int i = 0; i < (int) vectorPontuacoes.size(); i++) {
+    for (int i = 0; i < (int) vectorPontuacoes.size(); i++)
 		cout << vectorPontuacoes[i]->getString().toAnsiString() << endl;
-	}
 }
