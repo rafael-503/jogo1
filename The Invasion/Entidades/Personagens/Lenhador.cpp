@@ -11,6 +11,7 @@ Lenhador::Lenhador(sf::Vector2f pos, sf::Vector2f tam_corpo) : Inimigo(tam_corpo
 
 Lenhador::~Lenhador() {
 
+
 }
 
 void Lenhador::danar(Jogador* pJog) {

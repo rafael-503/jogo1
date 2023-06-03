@@ -8,7 +8,7 @@ using namespace Personagens;
 
 
 Inimigo::Inimigo(sf::Vector2f tam_corpo) :
-    Personagem(tam_corpo), jogador(NULL), relogioAtaque()
+    Personagem(tam_corpo), pJogador(NULL), relogioAtaque()
 {
     ID = 2;
     corpo.setPosition(300.0f, 100.0f);
@@ -23,7 +23,7 @@ Inimigo::~Inimigo() {
 }
 
 void Inimigo::setJogador(Jogador* aux_jogador) {
-    jogador = aux_jogador;
+    pJogador = aux_jogador;
 }
 
 void Inimigo::persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim) {
@@ -55,9 +55,9 @@ void Inimigo::moveAleatorio() {
 }
 
 void Inimigo::executar() {
-    if (jogador) {
+    if (pJogador) {
         sf::Vector2f pos_jogador, pos_inimigo;
-        pos_jogador = jogador->getPosition();
+        pos_jogador = pJogador->getPosition();
         pos_inimigo = getPosition();
 
         if (fabs(pos_jogador.x - pos_inimigo.x) <= RAIO_PERSEG_X && fabs(pos_jogador.y - pos_inimigo.y) <= RAIO_PERSEG_Y) {

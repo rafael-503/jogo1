@@ -3,6 +3,7 @@
 #include "../Entidades/Obstaculos/Obstaculo.h"
 #include "../Entidades/Personagens/Inimigo.h"
 #include "../Entidades/Personagens/Jogador.h"
+#include "../Entidades/Projetil.h"
 #include <SFML/Graphics.hpp>
 #include <list>
 using namespace Entidades;
@@ -16,7 +17,7 @@ namespace Gerenciadores {
         std::pair<Personagens::Jogador*, Personagens::Jogador*> pJogadores;
         vector<Personagens::Inimigo*> vetor_inimigos;
         list<Obstaculos::Obstaculo*> lista_obstaculos;
-
+        vector<Projetil*> vetor_Projeteis;
 
     public:
         Gerenciador_Colisoes();
@@ -24,6 +25,8 @@ namespace Gerenciadores {
         void incluiPersonagem(Personagem* pPerso);
         void incluiInimigo(Inimigo* pInimigo);
         void incluiObstaculo(Obstaculos::Obstaculo* pObs);
+        void incluiProjetil(Projetil* pProj);
+        void removerProjetil(Projetil* pProj);
         void testa_colisoes();
         void ColisaoInimigoObstaculo();
         void ColisaoJogadorObstaculo();
@@ -43,6 +46,6 @@ namespace Gerenciadores {
 
 
 
-}
+    }
 
 

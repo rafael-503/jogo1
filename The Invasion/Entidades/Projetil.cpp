@@ -1,10 +1,13 @@
 #include "Projetil.h"
 #define VEL_INICIAL 10.0f
 using namespace Entidades;
+#include "../Fases/Fase.h"
 
 Projetil::Projetil(sf::Vector2f posInimigo, Personagens::Jogador* pJogador1, Personagens::Jogador* pJogador2):
-     Entidade(sf::Vector2f(15.0f, 7.5f)), vel_projetil(10.0f), pPerseguido(NULL){
-    corpo.setPosition(posInimigo);
+     Entidade(sf::Vector2f(15.0f, 7.5f)), vel_projetil(5.0f), pPerseguido(NULL), pFase(NULL), dano(20)
+{
+
+     corpo.setPosition(posInimigo);
     textura = pGrafico->carregarTextura(PROJETIL);
     corpo.setTexture(&textura);
 
@@ -26,27 +29,6 @@ Projetil::~Projetil(){
 
 }
 
-void Projetil::colisao(Entidade* pOutra, sf::Vector2f DistExt, bool Colidiu_em_x) {
-    int ID_aux = pOutra->getID();
-    //float tempo = relogio.getElapsedTime().asSeconds();
-
-    if (ID_aux == 1) { // colisao do projetil com o jogador
-        Entidades::Personagens::Jogador* jogador = dynamic_cast<Entidades::Personagens::Jogador*>(pOutra);
-        if (jogador) {
-            //if (tempo > 1.8f && jogador->getVida() > 0) {
-            if (jogador->getVida() > 0) {
-                danar(jogador);
-                relogio.restart();
-            }
-        }
-    }
-}
-
-void Projetil::danar(Personagens::Jogador* jogador) {
-    if(jogador)
-	    jogador->setVida(jogador->getVida() - 5);
-}
-
 void Projetil::executar(){
     if(pPerseguido){
         sf::Vector2f Direcao(pPerseguido->getPosition().x - corpo.getPosition().x, pPerseguido->getPosition().y - corpo.getPosition().y);
@@ -57,5 +39,22 @@ void Projetil::executar(){
     }
     else
         cout << "pPerseguido Nulo em Projetil" << endl;
+
+}
+
+void Projetil::setFase(Fases::Fase* pFaseAux){
+    pFase = pFaseAux;
+}
+void Projetil::AcertouJogador(Entidades::Personagens::Jogador* pJog){
+    if(pJog)
+        pJog->setVida(pJog->getVida() - dano);
+    ApagarProjetil();
+
+}
+void Projetil::ApagarProjetil(){
+    if(pFase)
+        pFase->removerProjetil(static_cast<Entidade*>(this));
+    else
+        cout << "pFase Nulo em ApagarProjetil do Projetil" << endl;
 
 }

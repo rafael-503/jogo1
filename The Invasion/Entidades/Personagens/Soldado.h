@@ -2,6 +2,10 @@
 #define SOLDADO "The invasion/assets/inimigo/soldado/soldado.png"
 #include "Inimigo.h"
 
+namespace Fases{
+    class Fase;
+}
+
 namespace Entidades {
 
     namespace Personagens {
@@ -9,9 +13,16 @@ namespace Entidades {
         class Soldado : public Inimigo {
         private:
             int dano;
+            Fases::Fase* pFase;
+            float raioTiroMAX;
+            float raioTiroMIN;
         public:
-            Soldado(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(80.0f, 80.0f));
+            Soldado(sf::Vector2f pos, Fases::Fase* pFaseAux = NULL, sf::Vector2f tam_corpo = sf::Vector2f(80.0f, 80.0f));
             ~Soldado();
+            void Afastar_se();
+            void Atirar();
+            void executar();
+            void setFase(Fases::Fase* pFaseAux);
             void danar(Jogador* pJog);
         };
     }

@@ -33,7 +33,6 @@ void Fase1::executar() {
         pGrafico->mostrarVidaJogador(pJogador1->getVida(), pJogador2->getVida(), eh_1_jogador);
     listaPersonagens.verificarVida();
     //cout << pJogador1->getPosition().x << ", " <<  pJogador1->getPosition().y << endl;
-    inimigosAtirar();
 }
 
 void Fase1::esvaziar() {
@@ -72,7 +71,7 @@ void Fase1::construtorPersonagens(const std::string& tipo, Entidades::Personagen
 		pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pCachorro);
     }
     else if (tipo == "Soldado") {
-        Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(pos);
+        Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(pos, static_cast<Fase*>(this));
         pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
     }
     else if (tipo == "Lenhador") {

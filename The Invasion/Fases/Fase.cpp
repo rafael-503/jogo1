@@ -42,18 +42,27 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
 void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
     pGrafico->atualizarView(jogadorPos);
 }
-void Fase::inimigosAtirar(){
-
-    if(relogioAtirar.getElapsedTime().asSeconds() > 10.0f){
-        Entidades::Projetil* pProjetil = NULL;
-        pProjetil = new Entidades::Projetil(sf::Vector2f(100.0f , 100.0f), pJogador1, pJogador2);
-        Entidade* pEntidade = NULL;
-        if(pProjetil)
-            pEntidade = static_cast<Entidades::Entidade*> (pProjetil);
-        else
-            cout << "erro ao criar Projetil" << endl;
-        listaPersonagens.inserir(pEntidade);
-        relogioAtirar.restart();
-    }
+void Fase::removerProjetil(Entidade* pEnti){
+    listaPersonagens.remover(pEnti);
+    pColisao->removerProjetil(static_cast<Projetil*>(pEnti));
 }
+
+
+
+
+void Fase::AdicionarProjetil(sf::Vector2f pos){
+
+    Entidades::Projetil* pProjetil = NULL;
+    pProjetil = new Entidades::Projetil(pos, pJogador1, pJogador2);
+    Entidade* pEntidade = NULL;
+    if(pProjetil)
+        pEntidade = static_cast<Entidades::Entidade*> (pProjetil);
+    else
+        cout << "erro ao criar Projetil" << endl;
+    listaPersonagens.inserir(pEntidade);
+    pColisao->incluiProjetil(pProjetil);
+    pProjetil->setFase(this);
+
+}
+
 
