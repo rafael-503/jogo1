@@ -110,6 +110,7 @@ void Fase1::criarPersonagens() {
     construtorPersonagens("Soldado", pJogador1, sf::Vector2f(3300.0f, 0.0f));
 
     // Criacao de inimigos aleatorios
+    /*
     std::srand(time(0));
     int x = POS_MIN + (rand() % (POS_MAX - POS_MIN + 1)); // Gera numeros entre 500 e 2000
 
@@ -118,7 +119,17 @@ void Fase1::criarPersonagens() {
 	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(x + 150, 0.0f));
 	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(x + 200, 0.0f));
 	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(x + 250, 0.0f));
-	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(x + 300, 0.0f));
+	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(x + 300, 0.0f));*/
+
+    // Criacao de inimigos aleatorios
+    srand(time(0));
+    int numInimigos = rand() % 8 + 3; // Gera numeros entre 3 e 10
+    int x = POS_MIN + (rand() % (POS_MAX - POS_MIN + 1)); // Gera numeros entre 500 e 2000
+
+    for (int i = 0; i < numInimigos; i++) {
+        construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(x + i * 50, 0.0f));
+        construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(x + i * 50, 0.0f));
+    }
 }
 
 void Fase1::criarObstaculos() {
