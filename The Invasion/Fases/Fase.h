@@ -35,6 +35,8 @@ namespace Fases {
 			void setPosicaoJogador(const sf::Vector2f& jogadorPos);
 			void removerProjetil(Entidade* pEnti);
 			void AdicionarProjetil(sf::Vector2f pos);
+			void SalvarFase();
+			void CarregarSe();
 			virtual void executar() = 0;
 			virtual void esvaziar() = 0;
 			virtual void criarPersonagens() = 0;

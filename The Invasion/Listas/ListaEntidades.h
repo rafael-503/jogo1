@@ -19,6 +19,8 @@ namespace Listas{
 			void seDesenhe();
             void esvaziar();
             void verificarVida();
+            void GravarSe(ofstream* pArquivo);
+            void CarregarSe(ifstream* pArquivo);
     };
 }
 

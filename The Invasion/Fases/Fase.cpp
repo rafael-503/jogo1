@@ -64,5 +64,36 @@ void Fase::AdicionarProjetil(sf::Vector2f pos){
     pProjetil->setFase(this);
 
 }
+void Fase::SalvarFase(){
+    std::ofstream GravadorFase("Fase.txt", ios::out);
+
+    if (!GravadorFase){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush (stdin);
+        getchar ();
+        return;
+    }
+    listaPersonagens.GravarSe(&GravadorFase);
+    listaObstaculos.GravarSe(&GravadorFase);
+
+    GravadorFase.close();
+
+}
+void Fase::CarregarSe(){
+    ifstream RecuperadorFase("Fase.txt", ios::in);
+
+    if(!RecuperadorFase){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+    listaPersonagens.CarregarSe(&RecuperadorFase);
+    listaObstaculos.CarregarSe(&RecuperadorFase);
+    RecuperadorFase.close();
+    getchar();
+}
+
+
 
 
