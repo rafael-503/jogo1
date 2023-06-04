@@ -1,6 +1,8 @@
 #include "../Gerenciadores/GerenciadorEstado.h"
 #include "EstadoJogar.h"
 using namespace Estados;
+#include "../stdafx.h"
+
 
 EstadoJogar::EstadoJogar(bool eh_fase1, bool eh_1_jogador): Menu(), pFase(NULL), Eh_fase1(eh_fase1), Eh_1_Jogador(eh_1_jogador) {
 
@@ -45,4 +47,7 @@ bool EstadoJogar::getEh_fase1() const{
 }
 bool EstadoJogar::getEh_1_Jogador() const{
     return Eh_1_Jogador;
+}
+void EstadoJogar::gravarEstadoJogar(){
+    pFase->SalvarFase();
 }

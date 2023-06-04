@@ -2,16 +2,15 @@
 using namespace Estados;
 #include "../Gerenciadores/GerenciadorEstado.h"
 
-MenuPause::MenuPause(): Menu(), Botaovoltar()
+MenuPause::MenuPause(): Menu(), Botaovoltar("VOLTAR", font), BotaoSalvar("SALVAR", font)
 {
 
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
-    Botaovoltar.setString("VOLTAR");
-    Botaovoltar.setPosition(600.0f, 400.0f);
-    Botaovoltar.setFont(font);
-    Botaovoltar.setFillColor(sf::Color::White);
-    Botaovoltar.setScale(1.5f, 1.5f);
 
+    Botaovoltar.setPosition(495.0f, 390.0f);
+    Botaovoltar.setScale(1.5f, 1.5f);
+    BotaoSalvar.setPosition(500.0f, 300.0f);
+    BotaoSalvar.setScale(1.5f, 1.5f);
 }
 MenuPause::~MenuPause(){
 
@@ -28,15 +27,12 @@ void MenuPause::PrimeiroExecutar(){
 void MenuPause::executar(){
 
 
-    pGrafico->desenharElemento(Botaovoltar);
-
     sf::Vector2i posMouse = sf::Mouse::getPosition(*pGrafico->getWindow());
-    //cout << "X: " << posMouse.x << "   Y: " << posMouse.y << endl;
     sf::Vector2f fPosMouse((float) posMouse.x, (float) posMouse.y);
-
-    sf::FloatRect rect(Botaovoltar.getGlobalBounds());
     sf::FloatRect corpoMouse(fPosMouse, sf::Vector2f(5.0f, 5.0f));
-    if(rect.intersects(corpoMouse)){
+
+    sf::FloatRect rectVoltar(Botaovoltar.getGlobalBounds());
+    if(rectVoltar.intersects(corpoMouse)){
         Botaovoltar.setFillColor(sf::Color::Red);
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
             if(Gerenciadores::GerenciadorEstado::pGEstados)
@@ -47,4 +43,21 @@ void MenuPause::executar(){
     }
     else
         Botaovoltar.setFillColor(sf::Color::White);
+
+    sf::FloatRect rectSalvar(BotaoSalvar.getGlobalBounds());
+    if(rectSalvar.intersects(corpoMouse)){
+        BotaoSalvar.setFillColor(sf::Color::Red);
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+            if(Gerenciadores::GerenciadorEstado::pGEstados)
+                Gerenciadores::GerenciadorEstado::pGEstados->gravarEstadoJogar();
+            else
+                cout << "pGEstados NULO" << endl;
+        }
+    }
+    else
+        BotaoSalvar.setFillColor(sf::Color::White);
+
+    pGrafico->desenharElemento(Botaovoltar);
+    pGrafico->desenharElemento(BotaoSalvar);
+
 }

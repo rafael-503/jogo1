@@ -6,9 +6,9 @@
 using namespace Entidades;
 using namespace Personagens;
 
-
+std::pair<Jogador*, Jogador*> Inimigo::pJogadores(NULL, NULL);
 Inimigo::Inimigo(sf::Vector2f tam_corpo) :
-    Personagem(tam_corpo), pJogador(NULL), relogioAtaque()
+    Personagem(tam_corpo), relogioAtaque()
 {
     ID = 2;
     corpo.setPosition(300.0f, 100.0f);
@@ -22,8 +22,9 @@ Inimigo::Inimigo(sf::Vector2f tam_corpo) :
 Inimigo::~Inimigo() {
 }
 
-void Inimigo::setJogador(Jogador* aux_jogador) {
-    pJogador = aux_jogador;
+void Inimigo::setPairpJogadores(Jogador* pJog_1, Jogador* pJog_2){
+    pJogadores.first = pJog_1;
+    pJogadores.second = pJog_2;
 }
 
 void Inimigo::persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim) {
@@ -55,9 +56,21 @@ void Inimigo::moveAleatorio() {
 }
 
 void Inimigo::executar() {
-    if (pJogador) {
+    if (pJogadores.first || pJogadores.second) {
         sf::Vector2f pos_jogador, pos_inimigo;
-        pos_jogador = pJogador->getPosition();
+        if(pJogadores.first && pJogadores.second){
+            if(pJogadores.first->getPosition().x - getPosition().x < pJogadores.second->getPosition().x - getPosition().x)
+                pos_jogador = pJogadores.first->getPosition();
+            else
+                pos_jogador = pJogadores.second->getPosition();
+        }
+        else if(pJogadores.first){
+            pos_jogador = pJogadores.first->getPosition();
+        }
+        else
+            pos_jogador = pJogadores.second->getPosition();
+
+
         pos_inimigo = getPosition();
 
         if (fabs(pos_jogador.x - pos_inimigo.x) <= RAIO_PERSEG_X && fabs(pos_jogador.y - pos_inimigo.y) <= RAIO_PERSEG_Y) {
@@ -67,4 +80,6 @@ void Inimigo::executar() {
             moveAleatorio();
         efeitoGravidade();
     }
+    else
+        cout << "pJogadores NULOS em Inimigo::executar" << endl;
 }

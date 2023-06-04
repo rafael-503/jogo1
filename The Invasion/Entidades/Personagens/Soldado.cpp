@@ -18,8 +18,19 @@ Soldado::~Soldado() {
 }
 
 void Soldado::executar(){
-    if (pJogador) {
-        sf::Vector2f posJog = pJogador->getPosition(), posSold = getPosition();
+    if (pJogadores.first || pJogadores.second) {
+        sf::Vector2f posJog, posSold = getPosition();
+        if(pJogadores.first && pJogadores.second){
+            if(pJogadores.first->getPosition().x - getPosition().x < pJogadores.second->getPosition().x - getPosition().x)
+                posJog = pJogadores.first->getPosition();
+            else
+                posJog = pJogadores.second->getPosition();
+        }
+        else if(pJogadores.first)
+            posJog = pJogadores.first->getPosition();
+        else
+            posJog = pJogadores.second->getPosition();
+
         float Dist(sqrt((posJog.x - posSold.x) * (posJog.x - posSold.x) + (posJog.y - posSold.y) * (posJog.y - posSold.y)));
         if(Dist > 700.0f)
             moveAleatorio();
@@ -30,12 +41,23 @@ void Soldado::executar(){
             Atirar();
     }
     else
-        cout << "pJogador NULO em soldado" << endl;
+        cout << "pair_pJogadores NULOS em soldado" << endl;
 
     efeitoGravidade();
 }
 void Soldado::Afastar_se(){
-    if(pJogador){
+    if(pJogadores.first || pJogadores.second){
+        Jogador* pJogador;
+        if(pJogadores.first && pJogadores.second){
+            if(pJogadores.first->getPosition().x - getPosition().x < pJogadores.second->getPosition().x - getPosition().x)
+                pJogador = pJogadores.first;
+            else
+                pJogador = pJogadores.second;
+        }
+        else if(pJogadores.first)
+            pJogador = pJogadores.first;
+        else
+            pJogador = pJogadores.second;
         float DistX(pJogador->getPosition().x - getPosition().x);
         if(DistX > 0.0f)
             mover(-vel.x, 0.0f);
@@ -43,20 +65,21 @@ void Soldado::Afastar_se(){
             mover(vel.x, 0.0f);
     }
     else
-        cout << "pJogador NULO em soldado" << endl;
+        cout << "pJogadors NULOS em soldado" << endl;
 }
 
 void Soldado::Atirar(){
-    if(pJogador){
+    if(pJogadores.first || pJogadores.second){
         if(pFase){
             if(relogioAtaque.getElapsedTime().asSeconds() > 8.0f){
                 pFase->AdicionarProjetil(sf::Vector2f(getPosition().x + corpo.getSize().x, getPosition().y + corpo.getSize().y/2));
-                //pFase->AdicionarProjetil(getPosition());
                 relogioAtaque.restart();
             }
         }
 
     }
+    else
+        cout << "pJogadors NULOS em Atirar do soldado" << endl;
 
 }
 void Soldado::danar(Jogador* pJog) {

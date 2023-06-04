@@ -5,7 +5,7 @@ using namespace Gerenciadores;
 GerenciadorEstado* GerenciadorEstado::pGEstados = NULL;
 GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
 
-    //mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
+    mapEstados["EstadoJogar"] = new Estados::EstadoJogar();
     mapEstados["MenuPause"] = new Estados::MenuPause();
     mapEstados["GameOver"] = new Estados::GameOver();
     mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
@@ -66,29 +66,10 @@ void GerenciadorEstado::ReiniciarEstadoJogar(){
     Estados::EstadoJogar* pAux = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
     crieEexecuteEstadoJogar(pAux->getEh_fase1(), pAux->getEh_1_Jogador());
 }
-
-
-/*
-void GerenciadorEstado::setProximaFase() {
-    resetarEstadoJogar();
-    mapEstados["EstadoJogar"]->carregarFase2();
+void GerenciadorEstado::gravarEstadoJogar(){
+    Estados::EstadoJogar* pAux = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
+    pAux->gravarEstadoJogar();
 }
 
-void GerenciadorEstado::trocarFase(bool fase1) {
-	resetarEstadoJogar(fase1);
-}
-void GerenciadorEstado::resetarEstadoJogar(bool fase1){
 
-    //deletando EstadoJogar
-    MapaStringEstado::iterator iterador = mapEstados.find("EstadoJogar");
-    if (iterador != mapEstados.end()) {
-        Estados::Estado* pAux = iterador->second;
-        delete pAux;
-    }
-    else
-        cout << "Não achado EstadoJogar em resetarEstadoJogar" << endl;
-    mapEstados["EstadoJogar"] = new Estados::EstadoJogar(true);
 
-}
-
-*/

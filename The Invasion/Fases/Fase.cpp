@@ -64,5 +64,54 @@ void Fase::AdicionarProjetil(sf::Vector2f pos){
     pProjetil->setFase(this);
 
 }
+void Fase::SalvarFase(){
+    std::ofstream GravadorFase("Fase.txt", ios::out);
+    if (!GravadorFase){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush (stdin);
+        getchar ();
+        return;
+    }
+    listaPersonagens.GravarSe(&GravadorFase);
+    listaObstaculos.GravarSe(&GravadorFase);
+
+    GravadorFase.close();
+
+}
+void Fase::CarregarSe(){
+    ifstream RecuperadorFase("Fase.txt", ios::in);
+
+    if(!RecuperadorFase){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+    listaPersonagens.CarregarSe(&RecuperadorFase, this);
+    listaObstaculos.CarregarSe(&RecuperadorFase, this);
+    RecuperadorFase.close();
+    getchar();
+}
+void Fase::CarregarEntidades(int id, sf::Vector2f pos){
+    //if(id == 1)
+    //    construtorPersonagens("", NULL, pos);
+    if(id == 2)
+        construtorPersonagens("Lenhador", NULL, pos);
+    else if(id == 3)
+        construtorPersonagens("Cachorro", NULL, pos);
+    else if(id == 4)
+        construtorPersonagens("Soldado", NULL, pos);
+    else if(id == 5)
+        construtorObstaculos("Plataforma", pos);
+    else if(id == 6)
+        construtorObstaculos("Caixa", pos);
+    else if(id == 7)
+        construtorObstaculos("Espinhos", pos);
+  //  else if(id == 7)
+       // Projetil
+
+}
+
+
 
 
