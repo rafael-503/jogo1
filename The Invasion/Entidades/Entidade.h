@@ -15,16 +15,12 @@ namespace Entidades{
         sf::Vector2f pos;
         sf::Vector2f vel;
         bool SuspensoNoAR;
-        float massa;
-        int vida;
-        int pontuacao;
+
 
     public:
         Entidade(sf::Vector2f tam_corpo);
         virtual ~Entidade();
         sf::RectangleShape getCorpo();
-        float getMassa() const;
-        void setMassa(float Massa);
         void efeitoGravidade();
         const sf::Vector2f getPosition() const;
         const sf::Vector2f getSize() const;
@@ -32,10 +28,6 @@ namespace Entidades{
         void setVelocidade(sf::Vector2f v);
         sf::Vector2f getVelocidade() const;
         virtual void executar() = 0;
-        void setVida(int vida);
-        int getVida() const;
-        void setPontuacao(int pontuacao);
-        int getPontuacao() const;
         void setSuspensoNoAR(bool aux);
         void mover(float moveX, float moveY);
         void setVelocidade_y(float aux);

@@ -16,6 +16,7 @@ namespace Entidades {
             sf::Clock relogioColisao;
             sf::Vector2f vel_padrao;
             int forca;
+            int pontuacao;
 
         public:
             Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(80.0f, 80.0f), const char* text= JOGADOR);
@@ -23,6 +24,8 @@ namespace Entidades {
             void executar();
             void Mover_Se(bool Direita, bool pulo, float velY = -13.0f);
             void Atacar(Inimigo* pInimigo);
+            void setPontuacao(int AuxPontuacao);
+            int getPontuacao() const;
         };
     }
 }

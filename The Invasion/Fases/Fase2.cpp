@@ -31,7 +31,7 @@ void Fase2::executar() {
         pGrafico->mostrarVidaJogador(pJogador1->getVida(), 0, eh_1_jogador);
     else
         pGrafico->mostrarVidaJogador(pJogador1->getVida(), pJogador2->getVida(), eh_1_jogador, sf::Color::Black);
-    listaPersonagens.verificarVida();
+    listaPersonagens.verificarVida(pColisao);
     //cout << pJogador1->getPosition().x << ", " <<  pJogador1->getPosition().y << endl;
 }
 

@@ -4,7 +4,7 @@ using namespace Entidades;
 #include "../Gerenciadores/GerenciadorEstado.h"
 
 Entidade::Entidade(sf::Vector2f tam_corpo) :
-    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true), vida(100), pontuacao(0){
+    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true){
 }
 
 Entidade::~Entidade() {}
@@ -33,13 +33,6 @@ sf::Vector2f Entidades::Entidade::getVelocidade() const {
     return vel;
 }
 
-float Entidade::getMassa() const{
-    return massa;
-}
-
-void Entidade::setMassa(float Massa){
-    massa = Massa;
-}
 void Entidade::efeitoGravidade(){
 
     if(SuspensoNoAR && Gerenciadores::GerenciadorEstado::pGEstados->getStringEstadoAtual() == "EstadoJogar"){
@@ -56,23 +49,6 @@ void Entidade::efeitoGravidade(){
 
 }
 
-void Entidade::setVida(int vida) {
-	this->vida = vida;
-    if(getVida() < 0)
-		setVida(0);
-}
-
-int Entidade::getVida() const {
-	return vida;
-}
-
-void Entidade::setPontuacao(int pontuacao) {
-	this->pontuacao = pontuacao;
-}
-
-int Entidade::getPontuacao() const {
-	return pontuacao;
-}
 void Entidade::setSuspensoNoAR(bool aux){
     SuspensoNoAR = aux;
 

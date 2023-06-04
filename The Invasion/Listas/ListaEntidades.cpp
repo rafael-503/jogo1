@@ -1,8 +1,10 @@
 #include "ListaEntidades.h"
 #include "../Entidades/Personagens/Jogador.h"
 #include "../Gerenciadores/GerenciadorEstado.h"
+#include "../Gerenciadores/Gerenciador_Colisoes.h"
 #include "../stdafx.h"
 #include "../Fases/Fase.h"
+#include "../Entidades/Personagens/Personagem.h"
 
 using namespace Listas;
 Gerenciadores::GerenciadorEstado* pGEstado = Gerenciadores::GerenciadorEstado::getGerenciadorEstado();
@@ -45,36 +47,31 @@ void ListaEntidades::esvaziar(){
     LEs.esvaziar();
 }
 
-void ListaEntidades::verificarVida() {
-    for (int i = 0; i < LEs.getSize(); i++) {
-        Entidade* pE = LEs[i];
-        if (pE) {
-            if (pE->getVida() <= 0) {
-                if (dynamic_cast<Entidades::Personagens::Jogador*>(pE) != NULL) {
+void ListaEntidades::verificarVida(Gerenciadores::Gerenciador_Colisoes* pColisao) {
 
-                    cout << pE->getPontuacao() << endl;
-                    pGEstado->guardarPontuacao(pE->getPontuacao());
+    Entidades::Personagens::Personagem* pPerso = NULL;
+    for (int i = 0; i < LEs.getSize(); i++){
+        pPerso = dynamic_cast<Entidades::Personagens::Personagem*>(LEs[i]);
+        if(pPerso){
+            if(!pPerso->getVivo() || pPerso->getPosition().y > 2000){
+                if(pPerso->getID() == 1){
+                    Entidades::Personagens::Jogador* pJog = dynamic_cast<Entidades::Personagens::Jogador*>(pPerso);
                     pGEstado->setEstadoAtual("GameOver");
-                    cout << "GAME OVER" << endl;
-                }
-                LEs.remover(pE);
-                i--;
-            }
-
-            if (pE->getPosition().y > 2000) {
-                if (dynamic_cast<Entidades::Personagens::Jogador*>(pE) != NULL) {
-                    cout << pE->getPontuacao() << endl;
-                    pGEstado->guardarPontuacao(pE->getPontuacao());
+                    cout << pJog->getPontuacao() << endl;
+                    pGEstado->guardarPontuacao(pJog->getPontuacao());
                     pGEstado->setEstadoAtual("GameOver");
                     cout << "GAME OVER" << endl;
 
                 }
-                pE->setVida(0);
-                LEs.remover(pE);
-                i--;
+                apagarElemento(static_cast<Entidades::Entidade*>(pPerso), pColisao);
             }
         }
+    //    else
+      //      cout << "pPerso nulo em verificarVida" << endl;
+
     }
+
+
 }
 void ListaEntidades::GravarSe(ofstream* pArquivo){
     for (int i = 0; i < LEs.getSize(); i++){
@@ -82,20 +79,8 @@ void ListaEntidades::GravarSe(ofstream* pArquivo){
             << ' ' <<  LEs[i]->getSize().x << ' ' << LEs[i]->getSize().y << endl;
     }
 }
-/*
-void ListaEntidades::CarregarSe(ifstream* pArquivo, Fases::Fase* pFase){
-    if(pFase){
-        while (!pArquivo->eof()){
-            int id;
-            float posX, posY;
-            *pArquivo >> id >> posX >> posY;
-            pFase->CarregarEntidades(id, sf::Vector2f(posX, posY));
-
-        }
-    }
-    else
-        cerr << "Erro: pFase nulo em CarregarSe de listaEntidades" << endl;
-
-
+void ListaEntidades::apagarElemento(Entidades::Entidade* pEnti, Gerenciadores::Gerenciador_Colisoes* pColisao){
+    remover(pEnti);
+    pColisao->RetirarElemento(pEnti);
+    delete pEnti;
 }
-*/

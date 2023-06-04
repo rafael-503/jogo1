@@ -11,11 +11,10 @@ Gerenciadores::GerenciadorEstado* pEstado = Gerenciadores::GerenciadorEstado::ge
 void Jogador::inicializa() {
 }
 
-Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Personagem(tam_corpo), vel_padrao(10.0f, 0.0f), forca(2)
+Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Personagem(tam_corpo), vel_padrao(10.0f, 0.0f), forca(2),  pontuacao(0)
 {
     ID = 1;
     corpo.setPosition(pos);
-    setMassa(60.0f);
     setVelocidade(vel_padrao);
 
     textura = pGrafico->carregarTextura(text);
@@ -50,4 +49,12 @@ void Jogador::Atacar(Inimigo* pInimigo) {
         pInimigo->setVida(pInimigo->getVida() - forca);
         setPontuacao(getPontuacao() + 5);
 	}
+}
+
+void Jogador::setPontuacao(int AuxPontuacao) {
+	pontuacao = pontuacao;
+}
+
+int Jogador::getPontuacao() const {
+	return pontuacao;
 }

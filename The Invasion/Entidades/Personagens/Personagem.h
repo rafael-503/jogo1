@@ -6,11 +6,15 @@
 namespace Entidades {
     namespace Personagens {
         class Personagem : public Entidade {
-        private:
-
+        protected:
+            int vida;
+            bool vivo;
         public:
             Personagem(sf::Vector2f tam_corpo);
             ~Personagem();
+            void setVida(int AuxVida);
+            int getVida() const;
+            bool getVivo() const;
             virtual void executar() = 0;
         };
     }
