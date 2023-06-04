@@ -5,7 +5,7 @@ using namespace Estados;
 
 
 MenuPrincipal::MenuPrincipal(): Menu(), Tela_inicial(true), BotaoJogar("JOGAR", font),  BotaoRanking("RANKING", font), BotaoSair("SAIR", font),
- BotaoFase1_Jogador1("Fase 1: 1 Jogador", font), BotaoFase1_Jogador2("Fase 1: 2 Jogadores", font), BotaoFase2_Jogador1("Fase 2: 1 Jogador", font),
+ BotaoNovoJogo("NOVO JOGO", font), BotaoFase1_Jogador1("Fase 1: 1 Jogador", font), BotaoFase1_Jogador2("Fase 1: 2 Jogadores", font), BotaoFase2_Jogador1("Fase 2: 1 Jogador", font),
  BotaoFase2_Jogador2("Fase 1: 2 Jogadores", font)
 {
 
@@ -15,17 +15,18 @@ MenuPrincipal::MenuPrincipal(): Menu(), Tela_inicial(true), BotaoJogar("JOGAR", 
     BotaoJogar.setScale(1.5f, 1.5f);
     BotaoRanking.setScale(1.5f, 1.5f);
     BotaoSair.setScale(1.5f, 1.5f);
+    BotaoNovoJogo.setScale(1.5f, 1.5f);
     BotaoFase1_Jogador1.setScale(1.5f, 1.5f);
     BotaoFase1_Jogador2.setScale(1.5f, 1.5f);
     BotaoFase2_Jogador1.setScale(1.5f, 1.5f);
     BotaoFase2_Jogador2.setScale(1.5f, 1.5f);
 
     //MUDAR EM BREVE
-    sf::Vector2f tamBotao (BotaoJogar.getLocalBounds().width - BotaoJogar.getLocalBounds().top,
-                            BotaoJogar.getLocalBounds().height - BotaoJogar.getLocalBounds().left);
-    BotaoJogar.setPosition(tamJanela.x - tamBotao.x, tamJanela.y - tamBotao.y*6);
-    BotaoRanking.setPosition(tamJanela.x - tamBotao.x - 40, tamJanela.y - tamBotao.y * 2);
-    BotaoSair.setPosition(tamJanela.x - tamBotao.x + 12, tamJanela.y - tamBotao.y * -2);
+    sf::Vector2f tam(pGrafico->getSize());
+    BotaoNovoJogo.setPosition(tam.x / 2  -150, 200);
+    BotaoJogar.setPosition(tam.x / 2 -100, 325);
+    BotaoRanking.setPosition(tam.x / 2 -125, 450);
+    BotaoSair.setPosition(tam.x / 2 -80, 575);
     BotaoFase1_Jogador1.setPosition(350, 200);
     BotaoFase1_Jogador2.setPosition(350, 325);
     BotaoFase2_Jogador1.setPosition(350, 450);
@@ -45,13 +46,12 @@ void MenuPrincipal::executar(){
     if(Tela_inicial){
 
         sf::FloatRect rectJogar(BotaoJogar.getGlobalBounds()), rectRanking(BotaoRanking.getGlobalBounds()),
-                      rectSair(BotaoSair.getGlobalBounds()), corpoMouse(fPosMouse, sf::Vector2f(5.0f, 5.0f));
+                      rectSair(BotaoSair.getGlobalBounds()), corpoMouse(fPosMouse, sf::Vector2f(5.0f, 5.0f)), rectNovoJogo(BotaoNovoJogo.getGlobalBounds());
 
         if(rectJogar.intersects(corpoMouse)){
             BotaoJogar.setFillColor(sf::Color::Red);
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-                Tela_inicial = false;
-                sf::sleep(sf::seconds(1.0f / 8.0f));
+                Gerenciadores::GerenciadorEstado::pGEstados->RecuperareExecutarFase();
             }
         }
         else
@@ -73,9 +73,20 @@ void MenuPrincipal::executar(){
         else
             BotaoSair.setFillColor(sf::Color::White);
 
+        if(rectNovoJogo.intersects(corpoMouse)){
+            BotaoNovoJogo.setFillColor(sf::Color::Red);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+                Tela_inicial = false;
+                sf::sleep(sf::seconds(1.0f / 8.0f));
+            }
+        }
+        else
+            BotaoNovoJogo.setFillColor(sf::Color::White);
+
         pGrafico->desenharElemento(BotaoJogar);
         pGrafico->desenharElemento(BotaoRanking);
         pGrafico->desenharElemento(BotaoSair);
+        pGrafico->desenharElemento(BotaoNovoJogo);
 
     }
     else{

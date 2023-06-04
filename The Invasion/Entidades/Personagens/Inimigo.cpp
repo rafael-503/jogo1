@@ -25,7 +25,14 @@ Inimigo::~Inimigo() {
 void Inimigo::setPairpJogadores(Jogador* pJog_1, Jogador* pJog_2){
     pJogadores.first = pJog_1;
     pJogadores.second = pJog_2;
+
 }
+void Inimigo::limparPairpJogadores(){
+    pJogadores.first = NULL;
+    pJogadores.second = NULL;
+
+}
+
 
 void Inimigo::persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim) {
     if (posJog.x - posInim.x > 0.0f)

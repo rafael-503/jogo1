@@ -49,7 +49,7 @@ void MenuPause::executar(){
         BotaoSalvar.setFillColor(sf::Color::Red);
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
             if(Gerenciadores::GerenciadorEstado::pGEstados)
-                Gerenciadores::GerenciadorEstado::pGEstados->gravarEstadoJogar();
+                Gerenciadores::GerenciadorEstado::pGEstados->salvarFase();
             else
                 cout << "pGEstados NULO" << endl;
         }

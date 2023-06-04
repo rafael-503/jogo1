@@ -1,5 +1,7 @@
 #include "Fase.h"
 using namespace Fases;
+#define JOGADOR2 "The invasion/assets/personagem/jogador/personagem2.png"
+
 
 Fase::Fase(): eh_1_jogador(true), pColisao(pColisao->getGerenciador_Colisoes()), pJogador1(NULL), pJogador2(NULL), relogioAtirar(){
 	pColisao->limpar();
@@ -64,54 +66,67 @@ void Fase::AdicionarProjetil(sf::Vector2f pos){
     pProjetil->setFase(this);
 
 }
-void Fase::SalvarFase(){
-    std::ofstream GravadorFase("Fase.txt", ios::out);
-    if (!GravadorFase){
-        cerr << "Arquivo não pode ser aberto" << endl;
-        fflush (stdin);
-        getchar ();
-        return;
-    }
-    listaPersonagens.GravarSe(&GravadorFase);
-    listaObstaculos.GravarSe(&GravadorFase);
+void Fase::SalvarFase(std::ofstream* pGravadorFase){
 
-    GravadorFase.close();
+    listaPersonagens.GravarSe(pGravadorFase);
+    listaObstaculos.GravarSe(pGravadorFase);
+}
+void Fase::RecuperarFase(std::ifstream* pRecuperarFase){
+
+    pColisao->limpar();
+    pJogador1 = NULL;
+    pJogador2 = NULL;
+    listaPersonagens.esvaziar();
+    listaObstaculos.esvaziar();
+
+    while (!pRecuperarFase->eof()){
+        int id;
+        float posX, posY, tamX, tamY;
+        *pRecuperarFase >> id >> posX >> posY >> tamX >> tamY;
+        CarregarEntidades(id, sf::Vector2f(posX, posY), sf::Vector2f(tamX, tamY));
+    }
+    Inimigo::setPairpJogadores(pJogador1, pJogador2);
 
 }
-void Fase::CarregarSe(){
-    ifstream RecuperadorFase("Fase.txt", ios::in);
+void Fase::CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam){
 
-    if(!RecuperadorFase){
-        cerr << "Arquivo não pode ser aberto" << endl;
-        fflush(stdin);
-        getchar();
-        return;
-    }
-    listaPersonagens.CarregarSe(&RecuperadorFase, this);
-    listaObstaculos.CarregarSe(&RecuperadorFase, this);
-    RecuperadorFase.close();
-    getchar();
-}
-void Fase::CarregarEntidades(int id, sf::Vector2f pos){
-    //if(id == 1)
-    //    construtorPersonagens("", NULL, pos);
-    if(id == 2)
+    if(id == 1)
+        ConstrutorJogador(pos);
+    else if(id == 2)
         construtorPersonagens("Lenhador", NULL, pos);
     else if(id == 3)
         construtorPersonagens("Cachorro", NULL, pos);
     else if(id == 4)
         construtorPersonagens("Soldado", NULL, pos);
     else if(id == 5)
-        construtorObstaculos("Plataforma", pos);
+        construtorObstaculos("Plataforma", pos, tam);
     else if(id == 6)
         construtorObstaculos("Caixa", pos);
     else if(id == 7)
         construtorObstaculos("Espinhos", pos);
-  //  else if(id == 7)
-       // Projetil
+    else if(id == 8)
+        AdicionarProjetil(pos);
+    else
+        cout << "Carregando algo incalido em CarregarEntidades" << endl;
+
+
 
 }
+void Fase::ConstrutorJogador(sf::Vector2f pos){
+    if(pJogador1 == NULL){
+        pJogador1 = new Jogador(pos);
+        pColisao->setJogador(pJogador1);
+        listaPersonagens.inserir(static_cast<Entidade*>(pJogador1));
+    }
+    else if (pJogador2 == NULL){
+        pJogador2 = new Jogador(pos, sf::Vector2f(60.0f, 80.0f), JOGADOR2);
+        listaPersonagens.inserir(static_cast<Entidade*>(pJogador2));
+        pColisao->setJogador(pJogador2);
+    }
+    else
+        cout << "tentando criar mais de 2 Jogadores" << endl;
 
+}
 
 
 

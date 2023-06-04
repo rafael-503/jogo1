@@ -24,6 +24,7 @@ namespace Entidades {
             Inimigo(sf::Vector2f tam_corpo);
             ~Inimigo();
             static void setPairpJogadores(Jogador* pJog_1 = NULL, Jogador* pJog_2 = NULL);
+            static void limparPairpJogadores();
             void persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim);
             void moveAleatorio();
             virtual void executar();

@@ -66,10 +66,25 @@ void GerenciadorEstado::ReiniciarEstadoJogar(){
     Estados::EstadoJogar* pAux = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
     crieEexecuteEstadoJogar(pAux->getEh_fase1(), pAux->getEh_1_Jogador());
 }
-void GerenciadorEstado::gravarEstadoJogar(){
+void GerenciadorEstado::salvarFase(){
     Estados::EstadoJogar* pAux = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
-    pAux->gravarEstadoJogar();
+    pAux->salvarFase();
 }
+void GerenciadorEstado::RecuperareExecutarFase(){
 
+    apagueEstadoJogar();
+
+    ifstream RecuperadorFase("Fase.txt", ios::in);
+    if (!RecuperadorFase){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush ( stdin ); getchar ( );
+        return;
+    }
+
+    mapEstados["EstadoJogar"] = new Estados::EstadoJogar(&RecuperadorFase);
+    setEstadoAtual("EstadoJogar");
+
+    RecuperadorFase.close ();
+}
 
 

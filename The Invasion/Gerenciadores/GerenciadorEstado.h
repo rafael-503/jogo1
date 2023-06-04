@@ -34,7 +34,8 @@ namespace Gerenciadores{
             void trocarFase(bool fase1);
             void crieEexecuteEstadoJogar(bool eh_fase1 = true, bool eh_1_jogador = true);
             void apagueEstadoJogar();
-            void gravarEstadoJogar();
+            void salvarFase();
+            void RecuperareExecutarFase();
     };
 
 }

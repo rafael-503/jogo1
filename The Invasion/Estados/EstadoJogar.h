@@ -12,11 +12,12 @@ namespace Estados{
             bool Eh_1_Jogador;
         public:
             EstadoJogar(bool eh_fase1 = true, bool eh_1_jogador = true);
+            EstadoJogar(ifstream* pRecuperadorFase);
             ~EstadoJogar();
             bool getEh_fase1() const;
             bool getEh_1_Jogador() const;
             void PrimeiroExecutar();
-            void gravarEstadoJogar();
+            void salvarFase();
             void executar();
             void TeclaPressionada(const sf::Keyboard::Key tecla);
             void carregarFase2();

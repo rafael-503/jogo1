@@ -3,6 +3,9 @@
 using namespace Estados;
 #include "../stdafx.h"
 
+//temporario
+#include "../Entidades/Personagens/Inimigo.h"
+
 
 EstadoJogar::EstadoJogar(bool eh_fase1, bool eh_1_jogador): Menu(), pFase(NULL), Eh_fase1(eh_fase1), Eh_1_Jogador(eh_1_jogador) {
 
@@ -13,10 +16,28 @@ EstadoJogar::EstadoJogar(bool eh_fase1, bool eh_1_jogador): Menu(), pFase(NULL),
 
 	PrimeiroExecutar();
 }
+EstadoJogar::EstadoJogar(ifstream* pRecuperadorFase){
+    *pRecuperadorFase >> Eh_fase1 >> Eh_1_Jogador;
+    if(Eh_fase1)
+		pFase = static_cast<Fases::Fase*> (new Fases::Fase1(Eh_1_Jogador));
+    else
+        pFase = static_cast<Fases::Fase*> (new Fases::Fase2(Eh_1_Jogador));
+
+    pFase->RecuperarFase(pRecuperadorFase);
+	PrimeiroExecutar();
+}
+
+
+
+
 EstadoJogar::~EstadoJogar(){
     //if (pFase)
 	  //  delete pFase;
     pFase = NULL;
+
+
+    //temporario por causa do delete de cima bugado
+    Inimigo::limparPairpJogadores();
 }
 void EstadoJogar::executar(){
     if(pFase)
@@ -48,6 +69,16 @@ bool EstadoJogar::getEh_fase1() const{
 bool EstadoJogar::getEh_1_Jogador() const{
     return Eh_1_Jogador;
 }
-void EstadoJogar::gravarEstadoJogar(){
-    pFase->SalvarFase();
+void EstadoJogar::salvarFase(){
+    std::ofstream GravadorFase("Fase.txt", ios::out);
+    if (!GravadorFase){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush (stdin);
+        getchar ();
+        return;
+    }
+    /// Primeira linha tem o se é fase1 ou fase2 e se é 1 ou dois jogadores
+    GravadorFase << Eh_fase1 << ' ' << Eh_1_Jogador << endl;
+    pFase->SalvarFase(&GravadorFase);
+    GravadorFase.close();
 }
