@@ -16,6 +16,7 @@ namespace Estados{
             bool getEh_fase1() const;
             bool getEh_1_Jogador() const;
             void PrimeiroExecutar();
+            void gravarEstadoJogar();
             void executar();
             void TeclaPressionada(const sf::Keyboard::Key tecla);
             void carregarFase2();

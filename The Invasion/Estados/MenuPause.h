@@ -6,7 +6,7 @@ namespace Estados{
     class MenuPause: public Menu {
         private:
             sf::Text Botaovoltar;
-
+            sf::Text BotaoSalvar;
         public:
             MenuPause();
             ~MenuPause();

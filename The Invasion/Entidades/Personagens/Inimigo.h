@@ -15,7 +15,7 @@ namespace Entidades {
         class Inimigo : public Personagem {
 
         protected:
-            Jogador* pJogador;
+            static std::pair<Jogador*, Jogador*> pJogadores;
             short move_aleatorio;
             sf::Clock relogioColisao;
             sf::Clock relogioAtaque;
@@ -23,7 +23,7 @@ namespace Entidades {
         public:
             Inimigo(sf::Vector2f tam_corpo);
             ~Inimigo();
-            void setJogador(Jogador* aux_jogador);
+            static void setPairpJogadores(Jogador* pJog_1 = NULL, Jogador* pJog_2 = NULL);
             void persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim);
             void moveAleatorio();
             virtual void executar();

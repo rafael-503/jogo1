@@ -2,6 +2,7 @@
 #include "../Entidades/Personagens/Jogador.h"
 #include "../Gerenciadores/GerenciadorEstado.h"
 #include "../stdafx.h"
+#include "../Fases/Fase.h"
 
 using namespace Listas;
 Gerenciadores::GerenciadorEstado* pGEstado = Gerenciadores::GerenciadorEstado::getGerenciadorEstado();
@@ -75,3 +76,27 @@ void ListaEntidades::verificarVida() {
         }
     }
 }
+void ListaEntidades::GravarSe(ofstream* pArquivo){
+    for (int i = 0; i < LEs.getSize(); i++){
+        cout << LEs[i]->getID() << endl;
+        *pArquivo << LEs[i]->getID() << ' '
+                << LEs[i]->getPosition().x << ' '
+                << LEs[i]->getPosition().y << endl;
+    }
+}
+void ListaEntidades::CarregarSe(ifstream* pArquivo, Fases::Fase* pFase){
+    if(pFase){
+        while (!pArquivo->eof()){
+            int id;
+            float posX, posY;
+            *pArquivo >> id >> posX >> posY;
+            pFase->CarregarEntidades(id, sf::Vector2f(posX, posY));
+
+        }
+    }
+    else
+        cerr << "Erro: pFase nulo em CarregarSe de listaEntidades" << endl;
+
+
+}
+

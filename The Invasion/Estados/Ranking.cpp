@@ -36,8 +36,20 @@ void Ranking::executar() {
         BotaoMenuPrincipal.setFillColor(sf::Color::White);
     }
 
+    std::ostringstream oss;
+    string aux1("Jogada: ");
+
+    /// Mostra as Pontuações
+    for(int i = 0; i < (int) vectorPontuacoes.size(); i++){
+        vectorPontuacoes[i]->setPosition(100.0f, 60.0f + i*50.0f);
+        pGrafico->desenharElemento(*vectorPontuacoes[i]);
+
+    }
+
+
+
     pGrafico->desenharElemento(BotaoMenuPrincipal);
-    imprimirPontuacao();
+    //imprimirPontuacao();
 }
 
 void Ranking::TeclaPressionada(const sf::Keyboard::Key tecla) {
@@ -46,9 +58,12 @@ void Ranking::TeclaPressionada(const sf::Keyboard::Key tecla) {
 
 void Ranking::guardarPontuacao(int num) {
     std::ostringstream oss;
-    oss << num;
+    string aux("Jogador X: ");
+    oss << aux << num;
     sf::Text* pAux = new sf::Text(oss.str(), font);
+    pAux->setScale(1.0f, 1.0f);
     vectorPontuacoes.push_back(pAux);
+    cout << "Pontuação guardada" << endl;
 }
 
 void Ranking::imprimirPontuacao() {

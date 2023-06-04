@@ -84,7 +84,6 @@ void Fase2::construtorPersonagens(const std::string& tipo, Entidades::Personagen
     }
 
     if (pInimigo) {
-        pInimigo->setJogador(pJogador);
         pColisao->incluiInimigo(pInimigo);
         pEntidade = static_cast<Entidade*>(pInimigo);
         listaPersonagens.inserir(pEntidade);
@@ -100,6 +99,7 @@ void Fase2::criarPersonagens() {
         listaPersonagens.inserir(pEntidade);
         pColisao->setJogador(pJogador2);
     }
+    Inimigo::setPairpJogadores(pJogador1, pJogador2);
     pEntidade = static_cast<Entidade*> (pJogador1);
     listaPersonagens.inserir(pEntidade);
 

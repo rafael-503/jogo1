@@ -3,6 +3,11 @@
 #include "../Entidades/Entidade.h"
 using namespace Entidades;
 
+namespace Fases{
+    class Fase;
+
+}
+
 namespace Listas{
 
     class ListaEntidades{
@@ -19,6 +24,8 @@ namespace Listas{
 			void seDesenhe();
             void esvaziar();
             void verificarVida();
+            void GravarSe(ofstream* pArquivo);
+            void CarregarSe(ifstream* pArquivo, Fases::Fase* pFase);
     };
 }
 
