@@ -1,13 +1,13 @@
 #pragma once
 #include "Obstaculo.h"
 #define ESPINHOS "The invasion/assets/obstaculos/espinhos.png"
+#define ESPINHOS2 "The invasion/assets/obstaculos/espinhoQuebrado.png"
 
 namespace Entidades {
 	namespace Obstaculos {
 		class Espinhos : public Obstaculo {
         private:
 			int dano;
-			sf::Clock RelogioEspinho;
 		public:
 			Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(50.0f, 50.0f));
 			~Espinhos();

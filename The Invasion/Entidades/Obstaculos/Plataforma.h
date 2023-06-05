@@ -1,6 +1,7 @@
 #pragma once
 #define PLATAFORMA "The invasion/assets/obstaculos/plataforma1.png"
 #define PLATAFORMA4 "The invasion/assets/obstaculos/plataforma4.png"
+#define PLATAFORMA5 "The invasion/assets/obstaculos/plataforma5.png"
 
 #include "Obstaculo.h"
 
@@ -10,7 +11,6 @@ namespace Entidades {
         class Plataforma: public Obstaculo{
         private:
             int danoso;
-            float velY;
             sf::Clock relogioDanoso;
 
         public:

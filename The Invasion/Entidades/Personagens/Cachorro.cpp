@@ -25,12 +25,12 @@ Cachorro::~Cachorro() {
 
 void Cachorro::danar(Jogador* pJog) {
     if (pJog) {
-        if(relogioAtaque.getElapsedTime().asSeconds() > 5.0f){
+        if(clockInteracao.getElapsedTime().asSeconds() > 5.0f){
             if (manso)
-                pJog->setVida(pJog->getVida() - 3);
+                pJog->setVida(pJog->getVida() - 2);
             else
-                pJog->setVida(pJog->getVida() - 15);
-            relogioAtaque.restart();
+                pJog->setVida(pJog->getVida() - 7);
+            clockInteracao.restart();
         }
     }
 }

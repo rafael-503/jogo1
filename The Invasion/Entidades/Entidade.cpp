@@ -4,9 +4,10 @@ using namespace Entidades;
 #include "../Gerenciadores/GerenciadorEstado.h"
 
 Entidade::Entidade(sf::Vector2f tam_corpo) :
-    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true)
+    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true), clockInteracao()
 {
     num = rand() % 100;
+    clockInteracao.restart();
 }
 
 Entidade::~Entidade() {}

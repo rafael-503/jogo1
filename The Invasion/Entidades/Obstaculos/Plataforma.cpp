@@ -4,18 +4,20 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Obstaculo(pos, tam_corpo), velY(-1.0f), danoso(false){
+Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Obstaculo(pos, tam_corpo), danoso(false){
     ID = 5;
     corpo.setPosition(pos);
 
-    if (num <=15) {
+    if (num <=15 && !curador) {
         danoso = true;
     }
     relogioDanoso.restart();
 
-    if(danoso)
+    if(curador)
+        textura = pGrafico->carregarTextura(PLATAFORMA5);
+    else if(danoso)
         textura = pGrafico->carregarTextura(PLATAFORMA4);
-    else 
+    else
         textura = pGrafico->carregarTextura(text);
 
     corpo.setTexture(&textura);
@@ -34,10 +36,14 @@ void Plataforma::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f Dist
             pJog->setVida(pJog->getVida() - 4);
         	relogioDanoso.restart();
         }
+        if(curador && clockInteracao.getElapsedTime().asSeconds() > 5){
+            pJog->setVida(pJog->getVida() + 10);
+            clockInteracao.restart();
+        }
         ColidirPlataforma(static_cast<Entidade*> (pJog), DistExtremidades, colidiu_X);
     }
-    
-    
+
+
     else
         cout << "pJog nulo em Obstar do Plataforma" << endl;
 
