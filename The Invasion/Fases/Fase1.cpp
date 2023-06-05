@@ -112,15 +112,16 @@ void Fase1::criarPersonagens() {
     construtorPersonagens("Soldado", pJogador1, sf::Vector2f(3300.0f, 0.0f));
 
     // Criacao de inimigos aleatorios
-    std::srand(time(0));
+    srand(time(0));
+    int numInimigos = rand() % 4 + 3; // Gera numeros entre 3 e 6
     int x = POS_MIN + (rand() % (POS_MAX - POS_MIN + 1)); // Gera numeros entre 500 e 2000
+    int diferenca = (POS_MAX - POS_MIN) / (numInimigos - 1); // Diferenca entre as posicoes dos inimigos
 
-	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(x, 0.0f));
-	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(x + 100, 0.0f));
-	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(x + 150, 0.0f));
-	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(x + 200, 0.0f));
-	construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(x + 250, 0.0f));
-	construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(x + 300, 0.0f));
+    for (int i = 0; i < numInimigos; i++) {
+        int posicaoX = x + (diferenca * i);
+        construtorPersonagens("Cachorro", pJogador1, sf::Vector2f(posicaoX, 0.0f));
+        construtorPersonagens("Lenhador", pJogador1, sf::Vector2f(posicaoX, 0.0f));
+    }
 }
 
 void Fase1::criarObstaculos() {
@@ -153,13 +154,13 @@ void Fase1::criarObstaculos() {
     // Criacao de obstaculos aleatorios
     srand(time(0));
 
-    for (int i = 0; i < 3; i++) {
+    int numObstaculos = rand() % 5 + 3; // Gera numeros entre 3 e 7
+    for (int i = 1; i < +numObstaculos; i++) {
         int x = 1000 + (rand() % (2500 - 1000 + 1));
         int y = 0 + (rand() % (750 - 0 + 1));
 
-        construtorObstaculos("Caixa", sf::Vector2f(x+100, 0.0f));
-        construtorObstaculos("Plataforma", sf::Vector2f(x-20, y));
-        construtorObstaculos("Espinhos", sf::Vector2f(x, y-40));
-
+        construtorObstaculos("Caixa", sf::Vector2f(x + 100 * i, 0.0f));
+        construtorObstaculos("Plataforma", sf::Vector2f(x - 20 * i, y * i));
+        construtorObstaculos("Espinhos", sf::Vector2f(x * i, y - 40 * i));
     }
 }
