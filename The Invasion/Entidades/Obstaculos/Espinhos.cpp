@@ -4,12 +4,16 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Espinhos::Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo), dano(10), RelogioEspinho() {
+Espinhos::Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo), dano(10) {
     ID = 7;
     corpo.setPosition(pos);
-    textura = pGrafico->carregarTextura(ESPINHOS);
+    if(curador){
+        dano = 0;
+        textura = pGrafico->carregarTextura(ESPINHOS2);
+    }
+    else
+        textura = pGrafico->carregarTextura(ESPINHOS);
     corpo.setTexture(&textura);
-    relogio.restart();
 }
 
 Espinhos::~Espinhos() {
@@ -22,11 +26,11 @@ void Espinhos::executar() {
 
 void Espinhos::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f DistExtremidades, bool colidiu_X){
 
-    /// empurra o Jogador para fora de si devagar e o da dano a cada 5 seguundos após entrar
+    /// empurra o Jogador para fora de si devagar e o da dano a cada 5 seguundos após entrar e se espinho for curadpr ele não faz nada
     if(pJog){
-        if(RelogioEspinho.getElapsedTime().asSeconds() > 5.0f){
+        if(clockInteracao.getElapsedTime().asSeconds() > 5.0f){
             pJog->setVida(pJog->getVida() - dano);
-            RelogioEspinho.restart();
+            clockInteracao.restart();
         }
         if (!colidiu_X) {
             if (pJog->getPosition().y < getPosition().y){

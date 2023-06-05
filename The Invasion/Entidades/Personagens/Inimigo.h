@@ -18,7 +18,7 @@ namespace Entidades {
             static std::pair<Jogador*, Jogador*> pJogadores;
             short move_aleatorio;
             sf::Clock relogioColisao;
-            sf::Clock relogioAtaque;
+            sf::Clock relogioMoveAleatorio;
 
         public:
             Inimigo(sf::Vector2f tam_corpo);

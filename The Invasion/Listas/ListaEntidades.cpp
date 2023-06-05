@@ -56,7 +56,6 @@ void ListaEntidades::verificarVida(Gerenciadores::Gerenciador_Colisoes* pColisao
             if(!pPerso->getVivo() || pPerso->getPosition().y > 2000){
                 /// se for o Jogador a fase acaba (perdeu)
                 if(pPerso->getID() == 1){
-                    Entidades::Personagens::Jogador* pJog = dynamic_cast<Entidades::Personagens::Jogador*>(pPerso);
                     pGEstado->setEstadoAtual("GameOver");
                     cout << "GAME OVER" << endl;
 

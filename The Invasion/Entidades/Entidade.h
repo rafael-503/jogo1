@@ -11,7 +11,7 @@ namespace Entidades{
         sf::Texture textura;
         sf::RectangleShape corpo;
         string Tipo;
-        sf::Clock relogio;
+        sf::Clock clockInteracao;
         sf::Vector2f pos;
         sf::Vector2f vel;
         bool SuspensoNoAR;

@@ -71,9 +71,9 @@ void Soldado::Afastar_se(){
 void Soldado::Atirar(){
     if(pJogadores.first || pJogadores.second){
         if(pFase){
-            if(relogioAtaque.getElapsedTime().asSeconds() > 8.0f){
+            if(clockInteracao.getElapsedTime().asSeconds() > 8.0f){
                 pFase->AdicionarProjetil(sf::Vector2f(getPosition().x + corpo.getSize().x, getPosition().y + corpo.getSize().y/2));
-                relogioAtaque.restart();
+                clockInteracao.restart();
             }
         }
 
@@ -84,9 +84,9 @@ void Soldado::Atirar(){
 }
 void Soldado::danar(Jogador* pJog) {
     if (pJog) {
-        if(relogioAtaque.getElapsedTime().asSeconds() > 5.0f){
+        if(clockInteracao.getElapsedTime().asSeconds() > 5.0f){
             pJog->setVida(pJog->getVida() - dano);
-            relogioAtaque.restart();
+            clockInteracao.restart();
         }
     }
 }

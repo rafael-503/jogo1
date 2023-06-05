@@ -8,13 +8,14 @@ using namespace Personagens;
 
 std::pair<Jogador*, Jogador*> Inimigo::pJogadores(NULL, NULL);
 Inimigo::Inimigo(sf::Vector2f tam_corpo) :
-    Personagem(tam_corpo), relogioAtaque()
+    Personagem(tam_corpo)
 {
     ID = 2;
     corpo.setPosition(300.0f, 100.0f);
     srand(time(NULL));
     move_aleatorio = rand() % 4;
     setVelocidade(sf::Vector2f(3.0f, 10.0f));
+    relogioMoveAleatorio.restart();
     relogioColisao.restart();
 }
 
@@ -54,10 +55,10 @@ void Inimigo::moveAleatorio() {
     else if(move_aleatorio == 2 || move_aleatorio == 4) //parado
         corpo.move(0.0f, 0.0f);
 
-    float dt = relogio.getElapsedTime().asSeconds();
+    float dt = relogioMoveAleatorio.getElapsedTime().asSeconds();
     if (dt > 1.0f) {
         move_aleatorio = rand() % 4;
-        relogio.restart();
+        relogioMoveAleatorio.restart();
     }
 }
 
