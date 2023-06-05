@@ -49,9 +49,9 @@ void Inimigo::persegueJogador(sf::Vector2f posJog, sf::Vector2f posInim) {
 void Inimigo::moveAleatorio() {
     if (move_aleatorio == 0) // direita
         corpo.move(vel.x/2, 0.0f);
-    else if (move_aleatorio == 1 || move_aleatorio == 4) //esquerda
+    else if (move_aleatorio == 1) //esquerda
         corpo.move(-vel.x/2, 0.0f);
-    else if(move_aleatorio == 2) //parado
+    else if(move_aleatorio == 2 || move_aleatorio == 4) //parado
         corpo.move(0.0f, 0.0f);
 
     float dt = relogio.getElapsedTime().asSeconds();

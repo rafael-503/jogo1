@@ -19,6 +19,7 @@ Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* tex
         textura = pGrafico->carregarTextura(text);
 
     corpo.setTexture(&textura);
+    relogioDanoso.restart();
 }
 
 Plataforma::~Plataforma() {}

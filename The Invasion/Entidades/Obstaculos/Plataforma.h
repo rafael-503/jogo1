@@ -11,6 +11,8 @@ namespace Entidades {
         private:
             int danoso;
             float velY;
+            sf::Clock relogioDanoso;
+
         public:
 			Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(200.0f, 50.0f), const char* text= PLATAFORMA);
 			~Plataforma();
