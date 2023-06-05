@@ -37,6 +37,7 @@ namespace Fases {
 			void AdicionarProjetil(sf::Vector2f pos);
 			void SalvarFase(std::ofstream* pGravadorFase);
 			void RecuperarFase(std::ifstream* pRecuperarFase);
+			int getPontuacao() const;
 			void CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam);
             void ConstrutorJogador(sf::Vector2f pos);
             virtual void construtorObstaculos(const std::string& tipo, const sf::Vector2f& pos, sf::Vector2f tam = sf::Vector2f(200.0f, 50.0f)) = 0;

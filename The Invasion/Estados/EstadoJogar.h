@@ -14,6 +14,7 @@ namespace Estados{
             EstadoJogar(bool eh_fase1 = true, bool eh_1_jogador = true);
             EstadoJogar(ifstream* pRecuperadorFase);
             ~EstadoJogar();
+            int getPontuacao() const;
             bool getEh_fase1() const;
             bool getEh_1_Jogador() const;
             void PrimeiroExecutar();

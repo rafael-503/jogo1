@@ -6,6 +6,7 @@
 #include "../Estados/MenuPause.h"
 #include "../Estados/GameOver.h"
 #include "../Estados/Ranking.h"
+#include "../Estados/MenuSalvarPontuacao.h"
 #include "../Fases/Fase1.h"
 #include <map>
 
@@ -27,7 +28,7 @@ namespace Gerenciadores{
             void setEstadoAtual(string estadoAux);
 			void TeclaPressionada(const sf::Keyboard::Key tecla);
 			void ReiniciarEstadoJogar();
-            void guardarPontuacao(int num);
+            void guardarPontuacao();
             void resetarEstadoJogar(bool fase1=true);
             string getStringEstadoAtual() const;
             void setProximaFase();

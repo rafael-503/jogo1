@@ -127,6 +127,14 @@ void Fase::ConstrutorJogador(sf::Vector2f pos){
         cout << "tentando criar mais de 2 Jogadores" << endl;
 
 }
+int Fase::getPontuacao() const{
+    if(pJogador1 && pJogador2)
+        return pJogador1->getPontuacao() + pJogador2->getPontuacao();
+    else if(pJogador1)
+        return pJogador1->getPontuacao();
+    else
+        cout << "pJogador1 nulo em Fase::getPontuacao" << endl;
 
+}
 
 

@@ -47,7 +47,16 @@ void Jogador::Mover_Se(bool Direita, bool pulo, float velY){
 void Jogador::Atacar(Inimigo* pInimigo) {
 	if(pInimigo){
         pInimigo->setVida(pInimigo->getVida() - forca);
-        setPontuacao(getPontuacao() + 5);
+        if(!pInimigo->getVivo()){
+            if(pInimigo->getID() == 2)
+                pontuacao += 50;
+            else if(pInimigo->getID() == 3)
+                pontuacao += 20;
+            else if (pInimigo->getID() == 4)
+                pontuacao += 500;
+            else
+                cout << "ID invalido em Atacar do Jogador" << endl;
+        }
 	}
 }
 

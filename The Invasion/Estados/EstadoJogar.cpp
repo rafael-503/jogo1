@@ -82,3 +82,6 @@ void EstadoJogar::salvarFase(){
     pFase->SalvarFase(&GravadorFase);
     GravadorFase.close();
 }
+int EstadoJogar::getPontuacao() const{
+    return pFase->getPontuacao();
+}

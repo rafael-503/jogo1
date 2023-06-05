@@ -9,6 +9,7 @@ Ranking::Ranking() :Menu(), BotaoMenuPrincipal("Menu Principal", font), vectorPo
 
     sf::FloatRect tamBotaoMenuPrincipal = BotaoMenuPrincipal.getLocalBounds();
     BotaoMenuPrincipal.setPosition(tamJanela.x / 2 + 500, 700);
+    carregarRanking();
 }
 
 Ranking::~Ranking() {
@@ -32,18 +33,20 @@ void Ranking::executar() {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("MenuPrincipal");
     }
-    else {
+    else
         BotaoMenuPrincipal.setFillColor(sf::Color::White);
-    }
 
-    std::ostringstream oss;
-    string aux1("Jogada: ");
+
+
 
     /// Mostra as Pontuações
-    for(int i = 0; i < (int) vectorPontuacoes.size(); i++){
-        vectorPontuacoes[i]->setPosition(100.0f, 60.0f + i*50.0f);
-        pGrafico->desenharElemento(*vectorPontuacoes[i]);
+    MultiMapaIntText::const_iterator iterador;
+    int i = 0;
+    for(iterador = MapPontuacoes.begin(); iterador != MapPontuacoes.end(); ++iterador){
 
+        (iterador->second)->setPosition(100.0f, 60.0f + i*50.0f);
+        pGrafico->desenharElemento(*iterador->second);
+        i++;
     }
 
 
@@ -69,4 +72,49 @@ void Ranking::guardarPontuacao(int num) {
 void Ranking::imprimirPontuacao() {
     for (int i = 0; i < (int) vectorPontuacoes.size(); i++)
 		cout << vectorPontuacoes[i]->getString().toAnsiString() << endl;
+}
+void Ranking::SalvarTextoPontuacao(sf::Text* pTexto, int pontuacao){
+    MapPontuacoes.insert(std::make_pair(pontuacao, pTexto));
+    salvarRanking();
+}
+void Ranking::salvarRanking(){
+
+    std::ofstream GravadorRanking("Ranking.txt", ios::out);
+    if (!GravadorRanking){
+        cerr << "Ranking.txt não pode ser aberto" << endl;
+        fflush (stdin);
+        getchar ();
+        return;
+    }
+
+    MultiMapaIntText::const_iterator iterador;
+    string texto;
+    for(iterador = MapPontuacoes.begin(); iterador != MapPontuacoes.end(); ++iterador){
+        texto = (iterador->second)->getString();
+        /// a propria string contem a chave separada por um espaço
+        GravadorRanking << texto << endl;
+    }
+    GravadorRanking.close();
+}
+void Ranking::carregarRanking(){
+    ifstream RecuperadorRanking("Ranking.txt", ios::in);
+    if (!RecuperadorRanking){
+        cerr << "Ranking.txt não pode ser aberto" << endl;
+        fflush (stdin);
+        getchar();
+        return;
+    }
+    int pontuacao;
+    string texto;
+    while (!RecuperadorRanking.eof()){
+        RecuperadorRanking >> texto >> pontuacao;
+        /// recolocando pois o espaçamento da string o perde
+        cout << pontuacao << ' ' << texto << endl;
+        std::ostringstream oss;
+        oss << texto << ' ' << pontuacao;
+        sf::Text* pTexto = new sf::Text(oss.str(), font);
+        MapPontuacoes.insert(std::make_pair(pontuacao, pTexto));
+    }
+
+    RecuperadorRanking.close();
 }

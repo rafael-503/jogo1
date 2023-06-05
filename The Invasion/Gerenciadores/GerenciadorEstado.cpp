@@ -10,6 +10,7 @@ GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
     mapEstados["GameOver"] = new Estados::GameOver();
     mapEstados["MenuPrincipal"] = new Estados::MenuPrincipal();
     mapEstados["Ranking"] = new Estados::Ranking();
+    mapEstados["MenuSalvarPontuacao"] = new Estados::MenuSalvarPontuacao(dynamic_cast<Estados::Ranking*>(mapEstados["Ranking"]));
     mapEstados[EstadoAtual]->PrimeiroExecutar();
     mapEstados[EstadoAtual]->setExecutando(true);
 }
@@ -39,8 +40,12 @@ void GerenciadorEstado::TeclaPressionada(const sf::Keyboard::Key tecla){
     mapEstados[EstadoAtual]->TeclaPressionada(tecla);
 }
 
-void GerenciadorEstado::guardarPontuacao(int num) {
-    mapEstados["Ranking"]->guardarPontuacao(num);
+void GerenciadorEstado::guardarPontuacao() {
+
+    Estados::EstadoJogar* pJogar = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
+    Estados::MenuSalvarPontuacao* pMenuSalvar = dynamic_cast<Estados::MenuSalvarPontuacao*>(mapEstados["MenuSalvarPontuacao"]);
+    pMenuSalvar->AdicionarPontuacao(pJogar->getPontuacao());
+
 }
 
 string GerenciadorEstado::getStringEstadoAtual() const{

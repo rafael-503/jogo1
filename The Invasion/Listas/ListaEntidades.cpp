@@ -54,20 +54,28 @@ void ListaEntidades::verificarVida(Gerenciadores::Gerenciador_Colisoes* pColisao
         pPerso = dynamic_cast<Entidades::Personagens::Personagem*>(LEs[i]);
         if(pPerso){
             if(!pPerso->getVivo() || pPerso->getPosition().y > 2000){
+                /// se for o Jogador a fase acaba (perdeu)
                 if(pPerso->getID() == 1){
                     Entidades::Personagens::Jogador* pJog = dynamic_cast<Entidades::Personagens::Jogador*>(pPerso);
                     pGEstado->setEstadoAtual("GameOver");
                     cout << pJog->getPontuacao() << endl;
-                    pGEstado->guardarPontuacao(pJog->getPontuacao());
                     pGEstado->setEstadoAtual("GameOver");
                     cout << "GAME OVER" << endl;
 
                 }
+                /// se for o Soldado (chefão) a fase termina
+                else if(pPerso->getID() == 4){
+                    pGEstado->guardarPontuacao();
+                    pGEstado->setEstadoAtual("MenuSalvarPontuacao");
+                }
+
                 apagarElemento(static_cast<Entidades::Entidade*>(pPerso), pColisao);
             }
         }
-    //    else
-      //      cout << "pPerso nulo em verificarVida" << endl;
+        //ainda a projeteis nessa lista TEMPORARIO
+        else if(LEs[i]->getID() == 8);
+        else
+            cout << "pPerso nulo em verificarVida" << endl;
 
     }
 
