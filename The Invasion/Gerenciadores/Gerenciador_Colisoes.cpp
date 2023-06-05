@@ -80,7 +80,6 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador(Personagens::Jogador* pJoga
             pJogadores.first = pJogaAux;
         else{
             pJogadores.second = pJogaAux;
-            cout << "teste" << endl;
         }
     }
     else
@@ -93,11 +92,6 @@ void Gerenciadores::Gerenciador_Colisoes::limpar(){
     lista_obstaculos.clear();
     pJogadores.first = NULL;
     pJogadores.second = NULL;
-
-    cout << "Gerenciador de colisoes limpo" << endl;
-
-    cout << lista_obstaculos.size() << endl;
-    cout << vetor_inimigos.size() << endl;
 }
 
 void Gerenciadores::Gerenciador_Colisoes::ColisaoJogadorInimigo(){

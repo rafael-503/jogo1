@@ -58,8 +58,6 @@ void ListaEntidades::verificarVida(Gerenciadores::Gerenciador_Colisoes* pColisao
                 if(pPerso->getID() == 1){
                     Entidades::Personagens::Jogador* pJog = dynamic_cast<Entidades::Personagens::Jogador*>(pPerso);
                     pGEstado->setEstadoAtual("GameOver");
-                    cout << pJog->getPontuacao() << endl;
-                    pGEstado->setEstadoAtual("GameOver");
                     cout << "GAME OVER" << endl;
 
                 }

@@ -15,7 +15,7 @@ namespace Entidades{
         sf::Vector2f pos;
         sf::Vector2f vel;
         bool SuspensoNoAR;
-
+        int num;
 
     public:
         Entidade(sf::Vector2f tam_corpo);

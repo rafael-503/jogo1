@@ -6,9 +6,6 @@ Cachorro::Cachorro(sf::Vector2f pos, sf::Vector2f tam_corpo) : Inimigo(tam_corpo
     ID = 3;
     corpo.setPosition(pos);
 
-    srand(std::time(0));
-    int num = rand() % 100;
-    //cout << num << endl;
     if (num %2 == 0)
         manso = false;
 

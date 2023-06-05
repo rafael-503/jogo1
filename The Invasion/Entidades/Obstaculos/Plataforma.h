@@ -1,5 +1,6 @@
 #pragma once
 #define PLATAFORMA "The invasion/assets/obstaculos/plataforma1.png"
+#define PLATAFORMA4 "The invasion/assets/obstaculos/plataforma4.png"
 
 #include "Obstaculo.h"
 
@@ -8,6 +9,7 @@ namespace Entidades {
 
         class Plataforma: public Obstaculo{
         private:
+            int danoso;
             float velY;
         public:
 			Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(200.0f, 50.0f), const char* text= PLATAFORMA);

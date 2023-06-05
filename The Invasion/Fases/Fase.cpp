@@ -107,7 +107,7 @@ void Fase::CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam){
     else if(id == 8)
         AdicionarProjetil(pos);
     else
-        cout << "Carregando algo incalido em CarregarEntidades" << endl;
+        cout << "Carregando algo invalido em CarregarEntidades" << endl;
 
 
 

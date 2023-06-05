@@ -128,6 +128,7 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_joga
 	if (!eh_1_jogador) {
 		texto2.setFont(font);
         std::ostringstream oss2;
+		texto2.setString("Vida 2: ");
         string aux2(texto2.getString());
         oss2 << aux2 << vida2;
         texto2.setString(oss2.str());
@@ -141,6 +142,7 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_joga
     //alternativa ao to_string em c++ de 2003
     texto1.setFont(font);
     std::ostringstream oss;
+	texto1.setString("Vida 1: ");
     string aux(texto1.getString());
     oss << aux << vida1;
     texto1.setString(oss.str());

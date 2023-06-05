@@ -83,7 +83,7 @@ void Ranking::salvarRanking(){
     if (!GravadorRanking){
         cerr << "Ranking.txt não pode ser aberto" << endl;
         fflush (stdin);
-        getchar ();
+        getchar();
         return;
     }
 
@@ -97,6 +97,7 @@ void Ranking::salvarRanking(){
     GravadorRanking.close();
 }
 void Ranking::carregarRanking(){
+    
     ifstream RecuperadorRanking("Ranking.txt", ios::in);
     if (!RecuperadorRanking){
         cerr << "Ranking.txt não pode ser aberto" << endl;

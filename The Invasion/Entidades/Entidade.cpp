@@ -6,6 +6,7 @@ using namespace Entidades;
 Entidade::Entidade(sf::Vector2f tam_corpo) :
     Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true)
 {
+    num = rand() % 100;
 }
 
 Entidade::~Entidade() {}
