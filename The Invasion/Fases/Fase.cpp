@@ -45,8 +45,17 @@ void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
     pGrafico->atualizarView(jogadorPos);
 }
 void Fase::removerProjetil(Entidade* pEnti){
-    listaPersonagens.remover(pEnti);
-    pColisao->removerProjetil(static_cast<Projetil*>(pEnti));
+    if(pEnti){
+        listaPersonagens.remover(pEnti);
+        Projetil* pProj = dynamic_cast<Projetil*>(pEnti);
+        if(pProj)
+            pColisao->removerProjetil(dynamic_cast<Projetil*>(pEnti));
+        else
+            cout << "Erro ao converter de Entidade para projetil" << endl;
+    }
+    else
+        cout << "Erro ao converter de Entidade para projetil" << endl;
+
 }
 
 
@@ -107,7 +116,7 @@ void Fase::CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam){
     else if(id == 8)
         AdicionarProjetil(pos);
     else
-        cout << "Carregando algo invalido em CarregarEntidades" << endl;
+        cout << "Carregando algo incalido em CarregarEntidades" << endl;
 
 
 
