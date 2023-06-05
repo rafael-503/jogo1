@@ -136,4 +136,8 @@ void Fase2::criarCaixas(){
 }
 void Fase2::criarEspinhos(){
 
+    construtorObstaculos("Espinhos", sf::Vector2f(10.0f, 705.0f));
+    construtorObstaculos("Espinhos", sf::Vector2f(370.0f, 555.0f));
+    construtorObstaculos("Espinhos", sf::Vector2f(520.0f, 455.0f));
+    construtorObstaculos("Espinhos", sf::Vector2f(380.0f, 305.0f));
 }
