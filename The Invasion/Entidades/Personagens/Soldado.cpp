@@ -72,7 +72,7 @@ void Soldado::Atirar(){
     if(pJogadores.first || pJogadores.second){
         if(pFase){
             if(relogioAtaque.getElapsedTime().asSeconds() > 8.0f){
-                //pFase->AdicionarProjetil(sf::Vector2f(getPosition().x + corpo.getSize().x, getPosition().y + corpo.getSize().y/2));
+                pFase->AdicionarProjetil(sf::Vector2f(getPosition().x + corpo.getSize().x, getPosition().y + corpo.getSize().y/2));
                 relogioAtaque.restart();
             }
         }
