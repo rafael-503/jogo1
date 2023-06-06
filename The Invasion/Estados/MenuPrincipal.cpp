@@ -6,7 +6,7 @@ using namespace Estados;
 
 MenuPrincipal::MenuPrincipal(): Menu(), Tela_inicial(true), BotaoJogar("JOGAR", font),  BotaoRanking("RANKING", font), BotaoSair("SAIR", font),
  BotaoNovoJogo("NOVO JOGO", font), BotaoFase1_Jogador1("Fase 1: 1 Jogador", font), BotaoFase1_Jogador2("Fase 1: 2 Jogadores", font), BotaoFase2_Jogador1("Fase 2: 1 Jogador", font),
- BotaoFase2_Jogador2("Fase 1: 2 Jogadores", font)
+ BotaoFase2_Jogador2("Fase 2: 2 Jogadores", font)
 {
 
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
