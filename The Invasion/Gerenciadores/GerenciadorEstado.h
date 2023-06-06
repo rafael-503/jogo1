@@ -29,10 +29,7 @@ namespace Gerenciadores{
 			void TeclaPressionada(const sf::Keyboard::Key tecla);
 			void ReiniciarEstadoJogar();
             void guardarPontuacao();
-            void resetarEstadoJogar(bool fase1=true);
             string getStringEstadoAtual() const;
-            void setProximaFase();
-            void trocarFase(bool fase1);
             void crieEexecuteEstadoJogar(bool eh_fase1 = true, bool eh_1_jogador = true);
             void apagueEstadoJogar();
             void salvarFase();
