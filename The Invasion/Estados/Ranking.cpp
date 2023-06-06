@@ -107,8 +107,7 @@ void Ranking::carregarRanking(){
     }
     int pontuacao;
     string texto;
-    while (!RecuperadorRanking.eof()){
-        RecuperadorRanking >> texto >> pontuacao;
+    while (RecuperadorRanking >> texto >> pontuacao){
         /// recolocando pois o espaçamento da string o perde
         cout << pontuacao << ' ' << texto << endl;
         std::ostringstream oss;
