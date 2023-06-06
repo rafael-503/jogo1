@@ -11,6 +11,7 @@ Soldado::Soldado(sf::Vector2f pos, Fases::Fase* pFaseAux, sf::Vector2f tam_corpo
     corpo.setPosition(pos);
     textura = pGrafico->carregarTextura(SOLDADO);
     corpo.setTexture(&textura);
+    relogioAtirar.restart();
 }
 
 Soldado::~Soldado() {
@@ -37,8 +38,9 @@ void Soldado::executar(){
         else
             Afastar_se();
 
-        if(Dist > raioTiroMIN && Dist < raioTiroMAX)
+        if (Dist > raioTiroMIN && Dist < raioTiroMAX)
             Atirar();
+    
     }
     else
         cout << "pair_pJogadores NULOS em soldado" << endl;
@@ -69,13 +71,17 @@ void Soldado::Afastar_se(){
 }
 
 void Soldado::Atirar(){
+
     if(pJogadores.first || pJogadores.second){
         if(pFase){
-            if(clockInteracao.getElapsedTime().asSeconds() > 8.0f){
+            if(relogioAtirar.getElapsedTime().asSeconds() > 8.0f){
+                cout << "Atirou" << endl;
                 pFase->AdicionarProjetil(sf::Vector2f(getPosition().x + corpo.getSize().x, getPosition().y + corpo.getSize().y/2));
-                clockInteracao.restart();
+                relogioAtirar.restart();
             }
         }
+		else
+			cout << "pFase NULO em Atirar do soldado" << endl;
 
     }
     else

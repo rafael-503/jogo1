@@ -43,10 +43,11 @@ void Gerenciadores::Gerenciador_Colisoes::incluiProjetil(Projetil* pProj){
 }
 
 void Gerenciadores::Gerenciador_Colisoes::removerProjetil(Projetil* pProj){
-    std::vector<Projetil*>::iterator it = std::find(vetor_Projeteis.begin(), vetor_Projeteis.end(), pProj);
-    if (it != vetor_Projeteis.end())
-        vetor_Projeteis.erase(it);
-
+    if (pProj) {
+        std::vector<Projetil*>::iterator it = std::find(vetor_Projeteis.begin(), vetor_Projeteis.end(), pProj);
+        if (it != vetor_Projeteis.end())
+            vetor_Projeteis.erase(it);
+    }
 }
 void Gerenciadores::Gerenciador_Colisoes::testa_colisoes() {
     ColisaoInimigoObstaculo();
@@ -59,19 +60,24 @@ void Gerenciadores::Gerenciador_Colisoes::testa_colisoes() {
 
 sf::Vector2f Gerenciadores::Gerenciador_Colisoes::Calcula_colisao(Entidade* pEnti1, Entidade* pEnti2) {
 
-    sf::Vector2f tamanho_1 = pEnti1->getSize(), tamanho_2 = pEnti2->getSize();
-    sf::Vector2f pos_1 = pEnti1->getPosition(), pos_2 = pEnti2->getPosition();
-    sf::Vector2f distanciaCentros(
-        fabs((pos_1.x + (tamanho_1.x / 2.0f)) - (pos_2.x + (tamanho_2.x / 2.0f))),
-        fabs((pos_1.y + (tamanho_1.y / 2.0f)) - (pos_2.y + (tamanho_2.y / 2.0f)))
-    );
-    //calcula Distancia das extremidades fazendo Distancia dos centros menos a metade dos tamanhos
-    sf::Vector2f DistanciaExtremidades(
-        distanciaCentros.x - (tamanho_1.x / 2.0f + tamanho_2.x / 2.0f),
-        distanciaCentros.y - (tamanho_1.y / 2.0f + tamanho_2.y / 2.0f)
-    );
-    return DistanciaExtremidades;
-
+    if (pEnti1 != NULL && pEnti2 != NULL) {
+        sf::Vector2f tamanho_1 = pEnti1->getSize(), tamanho_2 = pEnti2->getSize();
+        sf::Vector2f pos_1 = pEnti1->getPosition(), pos_2 = pEnti2->getPosition();
+        sf::Vector2f distanciaCentros(
+            fabs((pos_1.x + (tamanho_1.x / 2.0f)) - (pos_2.x + (tamanho_2.x / 2.0f))),
+            fabs((pos_1.y + (tamanho_1.y / 2.0f)) - (pos_2.y + (tamanho_2.y / 2.0f)))
+        );
+        //calcula Distancia das extremidades fazendo Distancia dos centros menos a metade dos tamanhos
+        sf::Vector2f DistanciaExtremidades(
+            distanciaCentros.x - (tamanho_1.x / 2.0f + tamanho_2.x / 2.0f),
+            distanciaCentros.y - (tamanho_1.y / 2.0f + tamanho_2.y / 2.0f)
+        );
+        return DistanciaExtremidades;
+    }
+    else {
+        cout << "pEnti1 ou pEnti2 nulos em calcular colisao" << endl;
+        return sf::Vector2f(0.0f, 0.0f);
+    }
 }
 
 void Gerenciadores::Gerenciador_Colisoes::setJogador(Personagens::Jogador* pJogaAux){
@@ -272,8 +278,8 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
                 if(pObs){
                     DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pObs), static_cast<Entidade*>(vetor_Projeteis[i]));
                     /// se Projetil colide com obstculo ele é destruido
-                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                        vetor_Projeteis[i]->ApagarProjetil();
+                    //if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                        //vetor_Projeteis[i]->ApagarProjetil();
                 }
                 else
                     cout << "ponteiro nulo na Lista do gereniador de colisões" << endl;
@@ -287,16 +293,14 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
                     vetor_Projeteis[i]->AcertouJogador(pJogadores.first);
             }
             if(pJogadores.second){
-            DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(vetor_Projeteis[i]));
-            if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                vetor_Projeteis[i]->AcertouJogador(pJogadores.second);
+                DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(vetor_Projeteis[i]));
+                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                    vetor_Projeteis[i]->AcertouJogador(pJogadores.second);
             }
         }
         else
             cout << "Projetl Nulo na Lista" << endl;
     }
-
-
 }
 
 void Gerenciadores::Gerenciador_Colisoes::RetirarInimigo(Entidades::Personagens::Inimigo* pInimigo){
@@ -309,25 +313,37 @@ void Gerenciadores::Gerenciador_Colisoes::RetirarInimigo(Entidades::Personagens:
         std::cout << "Inimigo não encontrado no vetor em RetirarElemento do Gerenciador_Colisoes" << std::endl;
 }
 void Gerenciadores::Gerenciador_Colisoes::RetirarJogador(Entidades::Personagens::Jogador* pJogador){
-
+    if (pJogador) {
+        if (pJogador == pJogadores.first)
+            pJogadores.first = NULL;
+        if (pJogador == pJogadores.second)
+            pJogadores.second = NULL;
+    }
+    else
+        cout << "erro ao retirar os jogadores" << endl;
 }
-void Gerenciadores::Gerenciador_Colisoes::RetirarObstaculo(Entidades::Obstaculos::Obstaculo* pObs){
-    lista_obstaculos.remove(pObs);
 
+void Gerenciadores::Gerenciador_Colisoes::RetirarObstaculo(Entidades::Obstaculos::Obstaculo* pObs){
+    if (pObs)
+        lista_obstaculos.remove(pObs);
+    else
+        cout << "erro ao retirar obstaculo" << endl;
 }
 
 void Gerenciadores::Gerenciador_Colisoes::RetirarElemento(Entidades::Entidade* pEnti){
-    int ID_aux = pEnti->getID();
-    if(ID_aux == 1)
-        RetirarJogador(dynamic_cast<Entidades::Personagens::Jogador*>(pEnti));
-    else if(ID_aux <= 4)
-        RetirarInimigo(dynamic_cast<Entidades::Personagens::Inimigo*>(pEnti));
-    else if(ID_aux <= 7)
-        RetirarObstaculo(dynamic_cast<Entidades::Obstaculos::Obstaculo*>(pEnti));
-    else if(ID_aux == 8)
-        removerProjetil(dynamic_cast<Entidades::Projetil*>(pEnti));
+    if (pEnti) {
+        int ID_aux = pEnti->getID();
+        if (ID_aux == 1)
+            RetirarJogador(dynamic_cast<Entidades::Personagens::Jogador*>(pEnti));
+        else if (ID_aux <= 4)
+            RetirarInimigo(dynamic_cast<Entidades::Personagens::Inimigo*>(pEnti));
+        else if (ID_aux <= 7)
+            RetirarObstaculo(dynamic_cast<Entidades::Obstaculos::Obstaculo*>(pEnti));
+        else if (ID_aux == 8)
+            removerProjetil(dynamic_cast<Entidades::Projetil*>(pEnti));
+        else
+            cout << "ID invalido em RetirarElemento do Gerenciador_Colisoes" << endl;
+    }
     else
-        cout << "ID invalido em RetirarElemento do Gerenciador_Colisoes" << endl;
-
+        cout << "erro ao retirar elementos" << endl;
 }
-

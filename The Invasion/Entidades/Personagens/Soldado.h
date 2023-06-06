@@ -16,6 +16,8 @@ namespace Entidades {
             Fases::Fase* pFase;
             float raioTiroMAX;
             float raioTiroMIN;
+            sf::Clock relogioAtirar;
+
         public:
             Soldado(sf::Vector2f pos, Fases::Fase* pFaseAux = NULL, sf::Vector2f tam_corpo = sf::Vector2f(80.0f, 80.0f));
             ~Soldado();

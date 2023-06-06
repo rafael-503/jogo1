@@ -48,8 +48,8 @@ void Fase::removerProjetil(Entidade* pEnti){
     if(pEnti){
         listaPersonagens.remover(pEnti);
         Projetil* pProj = dynamic_cast<Projetil*>(pEnti);
-        if(pProj)
-            pColisao->removerProjetil(dynamic_cast<Projetil*>(pEnti));
+        if (pProj)
+            pColisao->removerProjetil(pProj);
         else
             cout << "Erro ao converter de Entidade para projetil" << endl;
     }
@@ -156,6 +156,7 @@ void Fase::construtorPersonagens(const std::string& tipo, const sf::Vector2f& po
     else if (tipo == "Soldado") {
         Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(pos);
         pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
+        pSoldado->setFase(this);
     }
     else if (tipo == "Lenhador") {
         Entidades::Personagens::Lenhador* pLenhador = new Entidades::Personagens::Lenhador(pos);
