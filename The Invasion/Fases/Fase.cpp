@@ -102,11 +102,11 @@ void Fase::CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam){
     if(id == 1)
         ConstrutorJogador(pos);
     else if(id == 2)
-        construtorPersonagens("Lenhador", NULL, pos);
+        construtorPersonagens("Lenhador", pos);
     else if(id == 3)
-        construtorPersonagens("Cachorro", NULL, pos);
+        construtorPersonagens("Cachorro", pos);
     else if(id == 4)
-        construtorPersonagens("Soldado", NULL, pos);
+        construtorPersonagens("Soldado", pos);
     else if(id == 5)
         construtorObstaculos("Plataforma", pos, tam);
     else if(id == 6)
@@ -145,5 +145,69 @@ int Fase::getPontuacao() const{
         cout << "pJogador1 nulo em Fase::getPontuacao" << endl;
 
 }
+void Fase::construtorPersonagens(const std::string& tipo, const sf::Vector2f& pos) {
+    Entidades::Entidade* pEntidade = NULL;
+    Entidades::Personagens::Inimigo* pInimigo = NULL;
+
+    if (tipo == "Cachorro") {
+        Entidades::Personagens::Cachorro* pCachorro = new Entidades::Personagens::Cachorro(pos);
+        pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pCachorro);
+    }
+    else if (tipo == "Soldado") {
+        Entidades::Personagens::Soldado* pSoldado = new Entidades::Personagens::Soldado(pos);
+        pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pSoldado);
+    }
+    else if (tipo == "Lenhador") {
+        Entidades::Personagens::Lenhador* pLenhador = new Entidades::Personagens::Lenhador(pos);
+        pInimigo = static_cast<Entidades::Personagens::Inimigo*>(pLenhador);
+    }
+    else {
+        cout << "Erro: Tipo de personagem invalido" << endl;
+        return;
+    }
+
+    if (pInimigo) {
+        pColisao->incluiInimigo(pInimigo);
+        pEntidade = static_cast<Entidade*>(pInimigo);
+        listaPersonagens.inserir(pEntidade);
+    }
+}
+void Fase::construtorObstaculos(const std::string& tipo, const sf::Vector2f& pos, sf::Vector2f tam) {
+    Entidades::Obstaculos::Obstaculo* pObstaculo = NULL;
+    Entidade* pEntidade = NULL;
+
+    if (tipo == "Caixa")
+        pObstaculo = new Entidades::Obstaculos::Caixa(pos);
+    else if (tipo == "Espinhos")
+        pObstaculo = new Entidades::Obstaculos::Espinhos(pos);
+    else if (tipo == "Plataforma")
+        pObstaculo = new Entidades::Obstaculos::Plataforma(pos, tam);
+    else {
+        cout << "Erro: Tipo de obstaculo invalido" << endl;
+        return;
+    }
+
+    if (pObstaculo) {
+        pColisao->incluiObstaculo(pObstaculo);
+        pEntidade = static_cast<Entidade*>(pObstaculo);
+        listaObstaculos.inserir(pEntidade);
+    }
+}
+
+void Fase::criarJogadores(){
+
+    Entidades::Entidade* pEntidade = NULL;
+    pJogador1= new Entidades::Personagens::Jogador(sf::Vector2f(10.0f, 0.0f));
+    if(!eh_1_jogador){
+        pJogador2 = new Entidades::Personagens::Jogador(sf::Vector2f(10.0f, 0.0f), sf::Vector2f(60.0f, 80.0f), JOGADOR2);
+        pEntidade = static_cast<Entidade*> (pJogador2);
+        listaPersonagens.inserir(pEntidade);
+        pColisao->setJogador(pJogador2);
+    }
+    Inimigo::setPairpJogadores(pJogador1, pJogador2);
+    pEntidade = static_cast<Entidade*> (pJogador1);
+    listaPersonagens.inserir(pEntidade);
+    pColisao->setJogador(pJogador1);
 
 
+}

@@ -40,11 +40,18 @@ namespace Fases {
 			int getPontuacao() const;
 			void CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam);
             void ConstrutorJogador(sf::Vector2f pos);
-            virtual void construtorObstaculos(const std::string& tipo, const sf::Vector2f& pos, sf::Vector2f tam = sf::Vector2f(200.0f, 50.0f)) = 0;
-            virtual void construtorPersonagens(const std::string& tipo, Entidades::Personagens::Jogador* pJogador, const sf::Vector2f& pos) = 0;
-			virtual void executar() = 0;
-			virtual void esvaziar() = 0;
+            void construtorObstaculos(const std::string& tipo, const sf::Vector2f& pos, sf::Vector2f tam = sf::Vector2f(200.0f, 50.0f));
+            void construtorPersonagens(const std::string& tipo, const sf::Vector2f& pos);
+            void criarJogadores();
 			virtual void criarPersonagens() = 0;
 			virtual void criarObstaculos() = 0;
+            virtual void criarCachorros() = 0;
+            virtual void criarSoldado() = 0;
+            virtual void criarLenhadores() = 0;
+            virtual void criarPlataformas() = 0;
+            virtual void criarCaixas() = 0;
+            virtual void executar() = 0;
+			virtual void esvaziar() = 0;
+
 	};
 }
