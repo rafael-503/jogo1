@@ -13,6 +13,8 @@ namespace Entidades {
             Lenhador(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(100.0f, 100.0f));
             ~Lenhador();
             void danar(Jogador* pJog);
+            void salvar();
+
         };
     }
 }

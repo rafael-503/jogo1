@@ -15,6 +15,7 @@ namespace Entidades {
             void setVida(int AuxVida);
             int getVida() const;
             bool getVivo() const;
+            virtual void salvar() = 0;
             virtual void executar() = 0;
         };
     }

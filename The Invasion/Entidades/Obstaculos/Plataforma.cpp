@@ -91,3 +91,13 @@ void Plataforma::ColidirPlataforma(Entidade* pEnti, sf::Vector2f DistExtremidade
 
 }
 
+void Plataforma::salvar(){
+    ofstream GravadorPlataforma("Plataforma.txt", ios_base::app);
+    if (GravadorPlataforma.is_open()) {
+        GravadorPlataforma << getPosition().x << ' ' << getPosition().y << ' ' << curador << ' ' << danoso <<  endl;
+        GravadorPlataforma.close();
+    }
+    else
+        cout << "Erro ao abrir o arquivo." << endl;
+}
+

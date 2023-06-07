@@ -29,6 +29,8 @@ namespace Entidades {
             void moveAleatorio();
             virtual void executar();
             virtual void danar(Jogador* pJog) = 0;
+            virtual void salvar() = 0;
+
         };
     }
 }

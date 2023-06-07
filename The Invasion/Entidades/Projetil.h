@@ -25,5 +25,6 @@ namespace Entidades{
             void setFase(Fases::Fase* pFaseAux);
             void AcertouJogador(Entidades::Personagens::Jogador* pJog);
             void ApagarProjetil();
+            void salvar();
     };
 }

@@ -89,3 +89,18 @@ void ListaEntidades::apagarElemento(Entidades::Entidade* pEnti, Gerenciadores::G
     pColisao->RetirarElemento(pEnti);
     delete pEnti;
 }
+void ListaEntidades::SalvarEntidades(){
+
+
+
+
+    for (int i = 0; i < LEs.getSize(); i++){
+        if(LEs[i])
+            LEs[i]->salvar();
+        else
+            cout << "Entidade nula em SalvarEntidades" << endl;
+
+    }
+
+
+}

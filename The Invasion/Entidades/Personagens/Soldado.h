@@ -26,6 +26,8 @@ namespace Entidades {
             void executar();
             void setFase(Fases::Fase* pFaseAux);
             void danar(Jogador* pJog);
+            void salvar();
+
         };
     }
 }

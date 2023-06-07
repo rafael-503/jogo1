@@ -31,6 +31,7 @@ namespace Entidades{
         void setSuspensoNoAR(bool aux);
         void mover(float moveX, float moveY);
         void setVelocidade_y(float aux);
+        virtual void salvar() = 0;
 
     };
 }

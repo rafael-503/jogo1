@@ -40,7 +40,7 @@ void Soldado::executar(){
 
         if (Dist > raioTiroMIN && Dist < raioTiroMAX)
             Atirar();
-    
+
     }
     else
         cout << "pair_pJogadores NULOS em soldado" << endl;
@@ -102,5 +102,15 @@ void Soldado::setFase(Fases::Fase* pFaseAux){
         pFase = pFaseAux;
     else
         cout << "Passadp pFase nulo em setFase do soldado" << endl;
+}
+
+void Soldado::salvar(){
+    ofstream GravadorSoldado("Soldado.txt", ios_base::app);
+    if (GravadorSoldado.is_open()) {
+        GravadorSoldado << getPosition().x << ' ' << getPosition().y << ' ' << dano <<  endl;
+        GravadorSoldado.close();
+    }
+    else
+        cout << "Erro ao abrir o arquivo." << std::endl;
 }
 

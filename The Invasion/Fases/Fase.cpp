@@ -77,8 +77,31 @@ void Fase::AdicionarProjetil(sf::Vector2f pos){
 }
 void Fase::SalvarFase(std::ofstream* pGravadorFase){
 
+    /// Limpando os Arquivos
+    ofstream Platadorma("Platadorma.txt", std::ios_base::trunc);
+    Platadorma.close();
+    ofstream Soldado("Soldado.txt", std::ios_base::trunc);
+    Soldado.close();
+    ofstream Lenhador("Lenhador.txt", std::ios_base::trunc);
+    Lenhador.close();
+    ofstream Jogador("Jogador.txt", std::ios_base::trunc);
+    Jogador.close();
+    ofstream Caixa("Caixa.txt", std::ios_base::trunc);
+    Caixa.close();
+    ofstream Cachorro("Cachorro.txt", std::ios_base::trunc);
+    Cachorro.close();
+    ofstream Espinhos("Espinhos.txt", std::ios_base::trunc);
+    Espinhos.close();
+    ofstream Missil("Missil.txt", std::ios_base::trunc);
+    Missil.close();
+
     listaPersonagens.GravarSe(pGravadorFase);
     listaObstaculos.GravarSe(pGravadorFase);
+
+    listaPersonagens.SalvarEntidades();
+    listaObstaculos.SalvarEntidades();
+
+
 }
 void Fase::RecuperarFase(std::ifstream* pRecuperarFase){
 
