@@ -4,7 +4,7 @@ using namespace Estados;
 
 MenuSalvarPontuacao::MenuSalvarPontuacao(Ranking* pRankingAux): Menu(), pRanking(pRankingAux),
     TextoParabens("PARABENS VOCÊ PASSOU DE FASE", font), TextoInstrucoes("Digite seu nome e pressione Enter para salvar seu Progresso", font),
-    TextoPontuacao("Sua Pontuaco foi:  ", font), TextoNome("Jogador", font), UltimaPontuacao(0)
+    TextoPontuacao("Sua Pontuaco foi:  ", font), TextoNome("", font), UltimaPontuacao(0)
 {
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
     TextoParabens.setScale(1.7f, 1.7f);
@@ -35,7 +35,28 @@ void MenuSalvarPontuacao::TeclaPressionada(const sf::Keyboard::Key tecla){
 
     }
 
+    if(tecla >= 0 && tecla <= 25){
+        int pos_letra, i = 0;
+        for(i = 0; i <= 25; i++)
+            if(tecla == i)
+                pos_letra = i;
+        char letra = 'A' + pos_letra;
+        /// impede de clicar varias vezes sem querer
+        if(UltimaLetra != letra){
+            string textoNomeAux = TextoNome.getString();
+            std::ostringstream oss;
+            oss << textoNomeAux << letra;
+            TextoNome.setString(oss.str());
+            UltimaLetra = letra;
+        }
+    }
+    /// LeftShift reseta ultima letra
+    if(tecla == 38)
+        UltimaLetra = '\0';
+
+
     /// criar algoritimo que coloca letra em TextoNome
+
 }
 
 void MenuSalvarPontuacao::PrimeiroExecutar(){

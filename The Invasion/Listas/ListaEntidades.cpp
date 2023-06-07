@@ -63,6 +63,7 @@ void ListaEntidades::verificarVida(Gerenciadores::Gerenciador_Colisoes* pColisao
                 /// se for o Soldado (chefão) a fase termina
                 else if(pPerso->getID() == 4){
                     pGEstado->guardarPontuacao();
+                    sf::sleep(sf::seconds(1.0f / 2.0f));
                     pGEstado->setEstadoAtual("MenuSalvarPontuacao");
                 }
 
