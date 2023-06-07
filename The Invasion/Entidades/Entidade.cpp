@@ -35,6 +35,13 @@ void Entidade::setVelocidade(sf::Vector2f v) {
 sf::Vector2f Entidades::Entidade::getVelocidade() const {
     return vel;
 }
+void Entidades::Entidade::setPosition(sf::Vector2f pos){
+    corpo.setPosition(pos);
+}
+
+void Entidades::Entidade::setSize(sf::Vector2f tam){
+    corpo.setSize(tam);
+}
 
 void Entidade::efeitoGravidade(){
 

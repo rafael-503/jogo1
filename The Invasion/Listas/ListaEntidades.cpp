@@ -79,6 +79,7 @@ void ListaEntidades::verificarVida(Gerenciadores::Gerenciador_Colisoes* pColisao
 
 }
 void ListaEntidades::GravarSe(ofstream* pArquivo){
+    cout << "Chamando Gravar se" << endl;
     for (int i = 0; i < LEs.getSize(); i++){
         *pArquivo << LEs[i]->getID() << ' ' << LEs[i]->getPosition().x << ' '<< LEs[i]->getPosition().y
             << ' ' <<  LEs[i]->getSize().x << ' ' << LEs[i]->getSize().y << endl;
@@ -90,9 +91,6 @@ void ListaEntidades::apagarElemento(Entidades::Entidade* pEnti, Gerenciadores::G
     delete pEnti;
 }
 void ListaEntidades::SalvarEntidades(){
-
-
-
 
     for (int i = 0; i < LEs.getSize(); i++){
         if(LEs[i])

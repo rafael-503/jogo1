@@ -107,10 +107,25 @@ void Soldado::setFase(Fases::Fase* pFaseAux){
 void Soldado::salvar(){
     ofstream GravadorSoldado("Soldado.txt", ios_base::app);
     if (GravadorSoldado.is_open()) {
-        GravadorSoldado << getPosition().x << ' ' << getPosition().y << ' ' << dano <<  endl;
+        GravadorSoldado << getPosition().x << ' ' << getPosition().y << ' ' << vida << ' ' << dano <<  endl;
         GravadorSoldado.close();
     }
     else
-        cout << "Erro ao abrir o arquivo." << std::endl;
+        cout << "Erro ao abrir o arquivo." << endl;
 }
+
+void Soldado::CarregarSe(string atributos){
+
+    std::istringstream iss(atributos);
+    float posX, posY;
+    iss >>  posX >> posY >> vida >> dano;
+    if (!iss.fail()) {
+        setPosition(sf::Vector2f(posX, posY));
+    }
+    else
+        cout << "Erro ao converter os valores em CarregarSe" << endl;
+
+}
+
+
 

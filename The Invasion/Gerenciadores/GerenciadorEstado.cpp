@@ -82,14 +82,12 @@ void GerenciadorEstado::RecuperareExecutarFase(){
     ifstream RecuperadorFase("Fase.txt", ios::in);
     if (!RecuperadorFase){
         cerr << "Arquivo não pode ser aberto" << endl;
-        fflush ( stdin ); getchar ( );
-        return;
     }
 
     mapEstados["EstadoJogar"] = new Estados::EstadoJogar(&RecuperadorFase);
     setEstadoAtual("EstadoJogar");
 
-    RecuperadorFase.close ();
+    RecuperadorFase.close();
 }
 
 

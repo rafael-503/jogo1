@@ -17,6 +17,7 @@ namespace Entidades {
             virtual void obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistExtremidades, bool colidiu_X) = 0;
             virtual void obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X) = 0;
             virtual void salvar() = 0;
+            virtual void CarregarSe(string atributos) = 0;
 
         };
     }

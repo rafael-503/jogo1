@@ -18,7 +18,7 @@ Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* tex
     else if(danoso)
         textura = pGrafico->carregarTextura(PLATAFORMA4);
     else
-        textura = pGrafico->carregarTextura(text);
+        textura = pGrafico->carregarTextura(PLATAFORMA);
 
     corpo.setTexture(&textura);
     relogioDanoso.restart();
@@ -94,10 +94,30 @@ void Plataforma::ColidirPlataforma(Entidade* pEnti, sf::Vector2f DistExtremidade
 void Plataforma::salvar(){
     ofstream GravadorPlataforma("Plataforma.txt", ios_base::app);
     if (GravadorPlataforma.is_open()) {
-        GravadorPlataforma << getPosition().x << ' ' << getPosition().y << ' ' << curador << ' ' << danoso <<  endl;
+        GravadorPlataforma << getPosition().x << ' ' << getPosition().y << ' ' << getSize().x << ' ' << getSize().y << ' ' << curador << ' ' << danoso <<  endl;
         GravadorPlataforma.close();
     }
     else
         cout << "Erro ao abrir o arquivo." << endl;
 }
 
+void Plataforma::CarregarSe(string atributos){
+
+    std::istringstream iss(atributos);
+    float posX, posY, tamX, tamY;
+    iss >> posX >> posY >> tamX >> tamY >> curador >> danoso;
+    if (!iss.fail()) {
+        setPosition(sf::Vector2f(posX, posY));
+        setSize(sf::Vector2f(tamX, tamY));
+    }
+    else
+        cout << "Erro ao converter os valores em CarregarSe" << endl;
+
+
+    if(curador)
+        textura = pGrafico->carregarTextura(PLATAFORMA5);
+    else if(danoso)
+        textura = pGrafico->carregarTextura(PLATAFORMA4);
+    else
+        textura = pGrafico->carregarTextura(PLATAFORMA);
+}

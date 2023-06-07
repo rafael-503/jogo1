@@ -17,6 +17,8 @@ namespace Entidades {
             bool getVivo() const;
             virtual void salvar() = 0;
             virtual void executar() = 0;
+            virtual void CarregarSe(string atributos) = 0;
+
         };
     }
 }

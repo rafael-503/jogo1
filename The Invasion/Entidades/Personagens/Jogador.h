@@ -4,6 +4,8 @@
 #include "Personagem.h"
 
 #define JOGADOR "The invasion/assets/personagem/jogador/personagem.png"
+#define JOGADOR2 "The invasion/assets/personagem/jogador/personagem2.png"
+
 
 namespace Entidades {
 
@@ -27,6 +29,9 @@ namespace Entidades {
             void setPontuacao(int AuxPontuacao);
             int getPontuacao() const;
             void salvar();
+            void CarregarSe(string atributos);
+            void setJogador2(bool eh_jogador2 = true);
+
 
         };
     }

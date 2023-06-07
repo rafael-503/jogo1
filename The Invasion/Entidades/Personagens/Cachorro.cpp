@@ -38,10 +38,23 @@ void Cachorro::danar(Jogador* pJog) {
 void Cachorro::salvar(){
     ofstream GravadorCachorro("Cachorro.txt", ios_base::app);
     if (GravadorCachorro.is_open()) {
-        GravadorCachorro << getPosition().x << ' ' << getPosition().y << ' ' << manso <<  endl;
+        GravadorCachorro << getPosition().x << ' ' << getPosition().y << ' ' << vida << ' ' << manso <<  endl;
         GravadorCachorro.close();
     }
     else
         cout << "Erro ao abrir o arquivo." << std::endl;
+}
+void Cachorro::CarregarSe(string atributos){
+
+    std::istringstream iss(atributos);
+    float posX, posY;
+    iss >>  posX >> posY >> vida >> manso;
+    if (!iss.fail()) {
+        setPosition(sf::Vector2f(posX, posY));
+    }
+    else
+        cout << "Erro ao converter os valores em CarregarSe" << endl;
+
+
 }
 

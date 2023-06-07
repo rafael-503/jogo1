@@ -72,3 +72,22 @@ void Espinhos::salvar(){
     else
         cout << "Erro ao abrir o arquivo." << std::endl;
 }
+
+void Espinhos::CarregarSe(string atributos){
+
+    std::istringstream iss(atributos);
+    float posX, posY;
+    iss >>  posX >> posY >> curador >> dano;
+    if (!iss.fail()) {
+        setPosition(sf::Vector2f(posX, posY));
+    }
+    else
+        cout << "Erro ao converter os valores em CarregarSe" << endl;
+
+    if(curador){
+        dano = 0;
+        textura = pGrafico->carregarTextura(ESPINHOS2);
+    }
+    else
+        textura = pGrafico->carregarTextura(ESPINHOS);
+}

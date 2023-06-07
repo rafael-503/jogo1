@@ -27,11 +27,14 @@ namespace Entidades{
         virtual string getTipo();
         void setVelocidade(sf::Vector2f v);
         sf::Vector2f getVelocidade() const;
+        void setPosition(sf::Vector2f pos);
+        void setSize(sf::Vector2f tam);
         virtual void executar() = 0;
         void setSuspensoNoAR(bool aux);
         void mover(float moveX, float moveY);
         void setVelocidade_y(float aux);
         virtual void salvar() = 0;
+        virtual void CarregarSe(string atributos) = 0;
 
     };
 }

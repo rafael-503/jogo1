@@ -30,6 +30,8 @@ namespace Entidades {
             virtual void executar();
             virtual void danar(Jogador* pJog) = 0;
             virtual void salvar() = 0;
+            virtual void CarregarSe(string atributos) = 0;
+
 
         };
     }

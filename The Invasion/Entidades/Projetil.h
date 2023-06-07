@@ -26,5 +26,7 @@ namespace Entidades{
             void AcertouJogador(Entidades::Personagens::Jogador* pJog);
             void ApagarProjetil();
             void salvar();
+            void CarregarSe(string atributos);
+
     };
 }

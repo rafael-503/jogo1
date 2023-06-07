@@ -25,10 +25,24 @@ void Lenhador::danar(Jogador* pJog) {
 void Lenhador::salvar(){
     ofstream GravadorLenhador("Lenhador.txt", ios_base::app);
     if (GravadorLenhador.is_open()) {
-        GravadorLenhador << getPosition().x << ' ' << getPosition().y << ' '  << forca <<  endl;
+        GravadorLenhador << getPosition().x << ' ' << getPosition().y << ' '  << vida << ' ' << forca <<  endl;
         GravadorLenhador.close();
     }
     else
         cout << "Erro ao abrir o arquivo." << std::endl;
+}
+void Lenhador::CarregarSe(string atributos){
+
+    std::istringstream iss(atributos);
+    float posX, posY;
+    iss >>  posX >> posY >> vida >> forca;
+    if (!iss.fail()) {
+        setPosition(sf::Vector2f(posX, posY));
+    }
+    else
+        cout << "Erro ao converter os valores em CarregarSe" << endl;
+
+
+
 }
 

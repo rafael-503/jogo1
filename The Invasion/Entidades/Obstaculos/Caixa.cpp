@@ -106,3 +106,21 @@ void Caixa::salvar(){
         cout << "Erro ao abrir o arquivo." << std::endl;
 }
 
+void Caixa::CarregarSe(string atributos){
+
+    std::istringstream iss(atributos);
+    float posX, posY;
+    iss >> posX >> posY >> curador >> peso;
+    if (!iss.fail()) {
+        setPosition(sf::Vector2f(posX, posY));
+    }
+    else
+        cout << "Erro ao converter os valores em CarregarSe" << endl;
+
+    if(curador)
+        textura = pGrafico->carregarTextura(CAIXA2);
+    else
+        textura = pGrafico->carregarTextura(CAIXA);
+}
+
+
