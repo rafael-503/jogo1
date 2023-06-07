@@ -68,3 +68,16 @@ void Projetil::salvar(){
     else
         cout << "Erro ao abrir o arquivo." << endl;
 }
+void Projetil::CarregarSe(string atributos){
+
+    std::istringstream iss(atributos);
+    float posX, posY;
+    iss >>  posX >> posY >> dano;
+    if (!iss.fail()) {
+        setPosition(sf::Vector2f(posX, posY));
+    }
+    else
+        cout << "Erro ao converter os valores em CarregarSe" << endl;
+
+
+}

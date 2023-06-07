@@ -36,13 +36,16 @@ namespace Fases {
 			void removerProjetil(Entidade* pEnti);
 			void AdicionarProjetil(sf::Vector2f pos);
 			void SalvarFase(std::ofstream* pGravadorFase);
-			void RecuperarFase(std::ifstream* pRecuperarFase);
+			void RecuperarFase();
 			int getPontuacao() const;
+			void limparArquivos();
 			void CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam);
             void ConstrutorJogador(sf::Vector2f pos);
             void construtorObstaculos(const std::string& tipo, const sf::Vector2f& pos, sf::Vector2f tam = sf::Vector2f(200.0f, 50.0f));
             void construtorPersonagens(const std::string& tipo, const sf::Vector2f& pos);
             void criarJogadores();
+            void RecuperarObstaculos();
+            void RecuperarPersonagens();
 			virtual void criarPersonagens() = 0;
 			virtual void criarObstaculos() = 0;
             virtual void criarCachorros() = 0;

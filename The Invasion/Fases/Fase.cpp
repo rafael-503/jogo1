@@ -77,47 +77,34 @@ void Fase::AdicionarProjetil(sf::Vector2f pos){
 }
 void Fase::SalvarFase(std::ofstream* pGravadorFase){
 
-    /// Limpando os Arquivos
-    ofstream Platadorma("Platadorma.txt", std::ios_base::trunc);
-    Platadorma.close();
-    ofstream Soldado("Soldado.txt", std::ios_base::trunc);
-    Soldado.close();
-    ofstream Lenhador("Lenhador.txt", std::ios_base::trunc);
-    Lenhador.close();
-    ofstream Jogador("Jogador.txt", std::ios_base::trunc);
-    Jogador.close();
-    ofstream Caixa("Caixa.txt", std::ios_base::trunc);
-    Caixa.close();
-    ofstream Cachorro("Cachorro.txt", std::ios_base::trunc);
-    Cachorro.close();
-    ofstream Espinhos("Espinhos.txt", std::ios_base::trunc);
-    Espinhos.close();
-    ofstream Missil("Missil.txt", std::ios_base::trunc);
-    Missil.close();
-
-    listaPersonagens.GravarSe(pGravadorFase);
-    listaObstaculos.GravarSe(pGravadorFase);
-
+    limparArquivos();
     listaPersonagens.SalvarEntidades();
     listaObstaculos.SalvarEntidades();
 
 
 }
-void Fase::RecuperarFase(std::ifstream* pRecuperarFase){
+void Fase::RecuperarFase(){
 
     pColisao->limpar();
     pJogador1 = NULL;
     pJogador2 = NULL;
     listaPersonagens.esvaziar();
     listaObstaculos.esvaziar();
+    RecuperarPersonagens();
+    RecuperarObstaculos();
 
+
+
+    /*
     while (!pRecuperarFase->eof()){
         int id;
         float posX, posY, tamX, tamY;
         *pRecuperarFase >> id >> posX >> posY >> tamX >> tamY;
         CarregarEntidades(id, sf::Vector2f(posX, posY), sf::Vector2f(tamX, tamY));
     }
-    Inimigo::setPairpJogadores(pJogador1, pJogador2);
+    */
+
+
 
 }
 void Fase::CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam){
@@ -235,3 +222,174 @@ void Fase::criarJogadores(){
 
 
 }
+void Fase::RecuperarObstaculos(){
+
+    string Atributos;
+
+    ifstream RecuperadorCaixa("Caixa.txt", ios::in);
+    if (!RecuperadorCaixa){
+        cerr << "Arquivo não pode ser aberto" << endl;
+    }
+    Entidades::Obstaculos::Caixa* pCaixa = NULL;
+    while (getline(RecuperadorCaixa, Atributos)){
+        pCaixa = new  Entidades::Obstaculos::Caixa(sf::Vector2f(0.0f, 0.0f));
+        pCaixa->CarregarSe(Atributos);
+            if (pCaixa) {
+                pColisao->incluiObstaculo(static_cast<Entidades::Obstaculos::Obstaculo*>(pCaixa));
+                listaObstaculos.inserir(static_cast<Entidade*>(pCaixa));
+            }
+            else
+                cout << "Erro ao carregar caixa em Fase::RecuperarObstaculos" << endl;
+    }
+    RecuperadorCaixa.close();
+
+
+
+
+    ifstream RecuperadorPlataforma("Plataforma.txt", ios::in);
+    if (!RecuperadorPlataforma){
+        cerr << "Arquivo não pode ser aberto" << endl;
+    }
+    Entidades::Obstaculos::Plataforma* pPlataforma = NULL;
+    while (getline(RecuperadorPlataforma, Atributos)){
+        pPlataforma = new  Entidades::Obstaculos::Plataforma(sf::Vector2f(0.0f, 0.0f));
+        pPlataforma->CarregarSe(Atributos);
+            if (pPlataforma) {
+                pColisao->incluiObstaculo(static_cast<Entidades::Obstaculos::Obstaculo*>(pPlataforma));
+                listaObstaculos.inserir(static_cast<Entidade*>(pPlataforma));
+            }
+            else
+                cout << "Erro ao carregar Plataforma em Fase::RecuperarObstaculos" << endl;
+    }
+    RecuperadorPlataforma.close();
+
+
+    ifstream RecuperadorEspinhos("Espinhos.txt", ios::in);
+    if (!RecuperadorEspinhos){
+        cerr << "Arquivo não pode ser aberto" << endl;
+    }
+    Entidades::Obstaculos::Espinhos* pEsp = NULL;
+    while (getline(RecuperadorEspinhos, Atributos)){
+        pEsp = new  Entidades::Obstaculos::Espinhos(sf::Vector2f(0.0f, 0.0f));
+        pEsp->CarregarSe(Atributos);
+            if (pEsp) {
+                pColisao->incluiObstaculo(static_cast<Entidades::Obstaculos::Obstaculo*>(pEsp));
+                listaObstaculos.inserir(static_cast<Entidade*>(pEsp));
+            }
+            else
+                cout << "Erro ao carregar Espinhos em Fase::RecuperarFase" << endl;
+    }
+    RecuperadorEspinhos.close();
+
+}
+
+void Fase::RecuperarPersonagens(){
+
+    string Atributos;
+
+    ifstream RecuperadorJogador("Jogador.txt", ios::in);
+    if (!RecuperadorJogador){
+        cerr << "Arquivo não pode ser aberto" << endl;
+    }
+    Entidades::Personagens::Jogador* pJog = NULL;
+    while (getline(RecuperadorJogador, Atributos)) {
+        pJog = new  Entidades::Personagens::Jogador(sf::Vector2f(0.0f, 0.0f));
+        pJog->CarregarSe(Atributos);
+            if (pJog) {
+                pColisao->setJogador(pJog);
+                listaPersonagens.inserir(static_cast<Entidade*>(pJog));
+                if(pJogador1 == NULL)
+                    pJogador1 = pJog;
+                else if(pJogador2 == NULL){
+                    pJogador2 = pJog;
+                    pJogador2->setJogador2(true);
+                }
+                else
+                    cout << "Erro: Criando mais de dois Jogadores em Fase::RecuperarPersonagens" << endl;
+            }
+            else
+                cout << "Erro ao carregar Jogador em Fase::RecuperarPersonagens" << endl;
+    }
+    RecuperadorJogador.close();
+    Inimigo::setPairpJogadores(pJogador1, pJogador2);
+
+
+    ifstream RecuperadorCachorro("Cachorro.txt", ios::in);
+    if (!RecuperadorCachorro){
+        cerr << "Arquivo não pode ser aberto" << endl;
+    }
+    Entidades::Personagens::Cachorro* pCachorro = NULL;
+    while (getline(RecuperadorCachorro, Atributos)) {
+        pCachorro = new  Entidades::Personagens::Cachorro(sf::Vector2f(0.0f, 0.0f));
+        pCachorro->CarregarSe(Atributos);
+            if (pCachorro) {
+                pColisao->incluiInimigo(static_cast<Entidades::Personagens::Inimigo*>(pCachorro));
+                listaPersonagens.inserir(static_cast<Entidade*>(pCachorro));
+            }
+            else
+                cout << "Erro ao carregar Cachorro em Fase::RecuperarPersonagens" << endl;
+    }
+    RecuperadorCachorro.close();
+
+
+    ifstream RecuperadorSoldado("Soldado.txt", ios::in);
+    if (!RecuperadorSoldado){
+        cerr << "Arquivo não pode ser aberto" << endl;
+    }
+    Entidades::Personagens::Soldado* pSoldado = NULL;
+    while (getline(RecuperadorSoldado, Atributos)) {
+        pSoldado = new  Entidades::Personagens::Soldado(sf::Vector2f(0.0f, 0.0f));
+        pSoldado->CarregarSe(Atributos);
+            if (pSoldado) {
+                pColisao->incluiInimigo(static_cast<Entidades::Personagens::Inimigo*>(pSoldado));
+                listaPersonagens.inserir(static_cast<Entidade*>(pSoldado));
+                pSoldado->setFase(this);
+            }
+            else
+                cout << "Erro ao carregar Soldado em Fase::RecuperarPersonagens" << endl;
+    }
+    RecuperadorSoldado.close();
+
+
+    ifstream RecuperadorLenhador("Lenhador.txt", ios::in);
+    if (!RecuperadorLenhador){
+        cerr << "Arquivo não pode ser aberto" << endl;
+    }
+    Entidades::Personagens::Lenhador* pLenhador = NULL;
+    while (getline(RecuperadorLenhador, Atributos)) {
+        pLenhador = new  Entidades::Personagens::Lenhador(sf::Vector2f(0.0f, 0.0f));
+        pLenhador->CarregarSe(Atributos);
+            if (pLenhador) {
+                pColisao->incluiInimigo(static_cast<Entidades::Personagens::Inimigo*>(pLenhador));
+                listaPersonagens.inserir(static_cast<Entidade*>(pLenhador));
+            }
+            else
+                cout << "Erro ao carregar Lenhador em Fase::RecuperarPersonagens" << endl;
+    }
+    RecuperadorLenhador.close();
+
+}
+
+void Fase::limparArquivos(){
+
+    /// Limpando os Arquivos
+    ofstream Platadorma("Plataforma.txt", std::ios_base::trunc);
+    Platadorma.close();
+    ofstream Soldado("Soldado.txt", std::ios_base::trunc);
+    Soldado.close();
+    ofstream Lenhador("Lenhador.txt", std::ios_base::trunc);
+    Lenhador.close();
+    ofstream Jogador("Jogador.txt", std::ios_base::trunc);
+    Jogador.close();
+    ofstream Caixa("Caixa.txt", std::ios_base::trunc);
+    Caixa.close();
+    ofstream Cachorro("Cachorro.txt", std::ios_base::trunc);
+    Cachorro.close();
+    ofstream Espinhos("Espinhos.txt", std::ios_base::trunc);
+    Espinhos.close();
+    ofstream Missil("Missil.txt", std::ios_base::trunc);
+    Missil.close();
+
+
+}
+

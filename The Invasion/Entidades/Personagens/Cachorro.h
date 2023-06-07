@@ -14,6 +14,7 @@ namespace Entidades {
             ~Cachorro();
             void danar(Jogador* pJog);
             void salvar();
+            void CarregarSe(string atributos);
 
         };
     }

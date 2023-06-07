@@ -42,6 +42,10 @@ void Jogador::Mover_Se(bool Direita, bool pulo, float velY){
             mover(-vel.x, 0.0f);
     }
 }
+void Jogador::setJogador2(bool eh_jogador2){
+    if(eh_jogador2)
+        textura = pGrafico->carregarTextura(JOGADOR2);
+}
 
 
 void Jogador::Atacar(Inimigo* pInimigo) {
@@ -70,9 +74,24 @@ int Jogador::getPontuacao() const {
 void Jogador::salvar(){
     ofstream GravadorJogador("Jogador.txt", ios_base::app);
     if (GravadorJogador.is_open()) {
-        GravadorJogador << getPosition().x << ' ' << getPosition().y << ' ' << forca << ' ' << pontuacao <<  endl;
+        GravadorJogador << getPosition().x << ' ' << getPosition().y << ' ' << vida << ' ' << forca << ' ' << pontuacao <<  endl;
         GravadorJogador.close();
     }
     else
         cout << "Erro ao abrir o arquivo." << std::endl;
 }
+
+
+
+void  Jogador::CarregarSe(string atributos){
+    std::istringstream iss(atributos);
+    float posX, posY;
+    iss >> posX >> posY >> vida >> forca >> pontuacao;
+    if (!iss.fail()) {
+        setPosition(sf::Vector2f(posX, posY));
+    }
+    else
+        cout << "Erro ao converter os valores em CarregarSe" << endl;
+
+}
+

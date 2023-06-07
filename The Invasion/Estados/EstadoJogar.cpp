@@ -23,7 +23,7 @@ EstadoJogar::EstadoJogar(ifstream* pRecuperadorFase){
     else
         pFase = static_cast<Fases::Fase*> (new Fases::Fase2(Eh_1_Jogador));
 
-    pFase->RecuperarFase(pRecuperadorFase);
+    pFase->RecuperarFase();
 	PrimeiroExecutar();
 }
 
