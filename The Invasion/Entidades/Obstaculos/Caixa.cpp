@@ -96,4 +96,13 @@ void Caixa::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtr
 
 }
 
+void Caixa::salvar(){
+    ofstream GravadorCaixa("Caixa.txt", ios_base::app);
+    if (GravadorCaixa.is_open()) {
+        GravadorCaixa << getPosition().x << ' ' << getPosition().y << ' ' << curador << ' ' << peso <<  endl;
+        GravadorCaixa.close();
+    }
+    else
+        cout << "Erro ao abrir o arquivo." << std::endl;
+}
 

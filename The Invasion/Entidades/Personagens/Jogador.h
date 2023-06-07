@@ -26,6 +26,8 @@ namespace Entidades {
             void Atacar(Inimigo* pInimigo);
             void setPontuacao(int AuxPontuacao);
             int getPontuacao() const;
+            void salvar();
+
         };
     }
 }

@@ -27,6 +27,7 @@ namespace Listas{
             void verificarVida(Gerenciadores::Gerenciador_Colisoes* pColisao);
             void apagarElemento(Entidades::Entidade* pEnti, Gerenciadores::Gerenciador_Colisoes* pColisao);
             void GravarSe(ofstream* pArquivo);
+            void SalvarEntidades();
     };
 }
 

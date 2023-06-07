@@ -58,3 +58,13 @@ void Projetil::ApagarProjetil(){
         cout << "pFase Nulo em ApagarProjetil do Projetil" << endl;
 
 }
+
+void Projetil::salvar(){
+    ofstream GravadorMissil("Missil.txt", ios_base::app);
+    if (GravadorMissil.is_open()) {
+        GravadorMissil << getPosition().x << ' ' << getPosition().y << ' ' << dano <<  endl;
+        GravadorMissil.close();
+    }
+    else
+        cout << "Erro ao abrir o arquivo." << endl;
+}

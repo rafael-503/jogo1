@@ -34,3 +34,14 @@ void Cachorro::danar(Jogador* pJog) {
         }
     }
 }
+
+void Cachorro::salvar(){
+    ofstream GravadorCachorro("Cachorro.txt", ios_base::app);
+    if (GravadorCachorro.is_open()) {
+        GravadorCachorro << getPosition().x << ' ' << getPosition().y << ' ' << manso <<  endl;
+        GravadorCachorro.close();
+    }
+    else
+        cout << "Erro ao abrir o arquivo." << std::endl;
+}
+

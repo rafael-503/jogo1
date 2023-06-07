@@ -67,3 +67,12 @@ void Jogador::setPontuacao(int AuxPontuacao) {
 int Jogador::getPontuacao() const {
 	return pontuacao;
 }
+void Jogador::salvar(){
+    ofstream GravadorJogador("Jogador.txt", ios_base::app);
+    if (GravadorJogador.is_open()) {
+        GravadorJogador << getPosition().x << ' ' << getPosition().y << ' ' << forca << ' ' << pontuacao <<  endl;
+        GravadorJogador.close();
+    }
+    else
+        cout << "Erro ao abrir o arquivo." << std::endl;
+}

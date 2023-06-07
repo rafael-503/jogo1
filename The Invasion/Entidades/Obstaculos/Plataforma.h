@@ -21,6 +21,8 @@ namespace Entidades {
             void obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistExtremidades, bool colidiu_X);
             void obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X);
             void ColidirPlataforma(Entidade* pEnti, sf::Vector2f DistExtremidades, bool colidiu_X);
+            void salvar();
+
         };
     }
 }

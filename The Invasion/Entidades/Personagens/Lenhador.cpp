@@ -22,4 +22,13 @@ void Lenhador::danar(Jogador* pJog) {
         }
     }
 }
+void Lenhador::salvar(){
+    ofstream GravadorLenhador("Lenhador.txt", ios_base::app);
+    if (GravadorLenhador.is_open()) {
+        GravadorLenhador << getPosition().x << ' ' << getPosition().y << ' '  << forca <<  endl;
+        GravadorLenhador.close();
+    }
+    else
+        cout << "Erro ao abrir o arquivo." << std::endl;
+}
 
