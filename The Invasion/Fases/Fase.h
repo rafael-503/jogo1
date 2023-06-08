@@ -34,7 +34,7 @@ namespace Fases {
 			void gerenciarColisoes();
 			void TeclaPressionada(const sf::Keyboard::Key tecla);
 			void setPosicaoJogador(const sf::Vector2f& jogadorPos);
-			void removerProjetil(Entidade* pEnti);
+			void removerProjetil(Entidades::Projetil* pMissil);
 			void AdicionarProjetil(sf::Vector2f pos);
 			void SalvarFase(std::ofstream* pGravadorFase);
 			void RecuperarFase();

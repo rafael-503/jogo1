@@ -45,17 +45,18 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
 void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
     pGrafico->atualizarView(jogadorPos);
 }
-void Fase::removerProjetil(Entidade* pEnti){
-    if(pEnti){
-        listaMisseis.remover(pEnti);
-        Projetil* pProj = dynamic_cast<Projetil*>(pEnti);
-        if (pProj)
-            pColisao->removerProjetil(pProj);
+void Fase::removerProjetil(Entidades::Projetil* pMissil){
+
+    if (pMissil){
+        pColisao->removerProjetil(pMissil);
+        Entidade* pEnti = dynamic_cast<Entidade*>(pMissil);
+        if(pEnti)
+            listaMisseis.remover(pEnti);
         else
-            cout << "Erro ao converter de Entidade para projetil" << endl;
+            cout << "Erro ao converter de projetil para Entidade" << endl;
     }
     else
-        cout << "Erro ao converter de Entidade para projetil" << endl;
+        cout << "Recebido missil nulo em Fase::removerMissil" << endl;
 
 }
 
@@ -66,14 +67,18 @@ void Fase::AdicionarProjetil(sf::Vector2f pos){
 
     Entidades::Projetil* pProjetil = NULL;
     pProjetil = new Entidades::Projetil(pos, pJogador1, pJogador2);
-    Entidade* pEntidade = NULL;
-    if(pProjetil)
-        pEntidade = static_cast<Entidades::Entidade*> (pProjetil);
+    if(pProjetil){
+        pColisao->incluiProjetil(pProjetil);
+        pProjetil->setFase(this);
+        Entidade* pEntidade = dynamic_cast<Entidades::Entidade*> (pProjetil);
+        if(pEntidade)
+            listaMisseis.inserir(pEntidade);
+        else
+            cout << "erro ao converter Projetil para entidade em Fase::AdicionarProjetil" << endl;
+    }
     else
         cout << "erro ao criar Projetil" << endl;
-    listaMisseis.inserir(pEntidade);
-    pColisao->incluiProjetil(pProjetil);
-    pProjetil->setFase(this);
+
 
 }
 void Fase::SalvarFase(std::ofstream* pGravadorFase){

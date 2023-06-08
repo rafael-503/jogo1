@@ -53,7 +53,7 @@ void Projetil::AcertouJogador(Entidades::Personagens::Jogador* pJog){
 }
 void Projetil::ApagarProjetil(){
     if (pFase)
-        pFase->removerProjetil(static_cast<Entidade*>(this));
+        pFase->removerProjetil(this);
     else
         cout << "pFase Nulo em ApagarProjetil do Projetil" << endl;
 
