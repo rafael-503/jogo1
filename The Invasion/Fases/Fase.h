@@ -22,6 +22,7 @@ namespace Fases {
 			Gerenciadores::Gerenciador_Colisoes* pColisao;
 			Listas::ListaEntidades listaObstaculos;
 			Listas::ListaEntidades listaPersonagens;
+            Listas::ListaEntidades listaMisseis;
             Entidades::Personagens::Jogador* pJogador1;
 			Entidades::Personagens::Jogador* pJogador2;
             sf::Clock relogioAtirar;
@@ -46,6 +47,7 @@ namespace Fases {
             void criarJogadores();
             void RecuperarObstaculos();
             void RecuperarPersonagens();
+            void RecuperarMisseis();
 			virtual void criarPersonagens() = 0;
 			virtual void criarObstaculos() = 0;
             virtual void criarCachorros() = 0;

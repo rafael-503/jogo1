@@ -29,8 +29,11 @@ void MenuSalvarPontuacao::TeclaPressionada(const sf::Keyboard::Key tecla){
         oss << Texto << textoAux << UltimaPontuacao;
         sf::Text* pTexto = new sf::Text(oss.str(), font);
         pRanking->SalvarTextoPontuacao(pTexto, UltimaPontuacao);
-        string TextoPontuacaoInicial = "Sua Pontuaco foi:  ";
-        TextoPontuacao.setString(TextoPontuacaoInicial);
+
+        /// Reiniciando os textos
+        string textoPontInicial = "Sua Pontuaco foi:  ", textoNomeInicial = "";
+        TextoPontuacao.setString(textoPontInicial);
+        TextoNome.setString(textoNomeInicial);
 
 
     }

@@ -25,9 +25,11 @@ void Fase1::executar() {
 
 	listaPersonagens.executar();
 	listaObstaculos.executar();
+	listaMisseis.executar();
     pColisao->testa_colisoes();
 	listaPersonagens.seDesenhe();
     listaObstaculos.seDesenhe();
+    listaMisseis.seDesenhe();
     if(eh_1_jogador)
         pGrafico->mostrarVidaJogador(pJogador1->getVida(), 0, eh_1_jogador);
     else
@@ -40,6 +42,7 @@ void Fase1::executar() {
 void Fase1::esvaziar() {
 	listaPersonagens.esvaziar();
 	listaObstaculos.esvaziar();
+	listaMisseis.esvaziar();
 }
 
 

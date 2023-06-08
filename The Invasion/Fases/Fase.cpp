@@ -12,6 +12,7 @@ Fase::~Fase() {
 	pColisao = NULL;
 	listaObstaculos.esvaziar();
 	listaPersonagens.esvaziar();
+	listaMisseis.esvaziar();
 }
 
 void Fase::gerenciarColisoes() {
@@ -46,7 +47,7 @@ void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
 }
 void Fase::removerProjetil(Entidade* pEnti){
     if(pEnti){
-        listaPersonagens.remover(pEnti);
+        listaMisseis.remover(pEnti);
         Projetil* pProj = dynamic_cast<Projetil*>(pEnti);
         if (pProj)
             pColisao->removerProjetil(pProj);
@@ -70,7 +71,7 @@ void Fase::AdicionarProjetil(sf::Vector2f pos){
         pEntidade = static_cast<Entidades::Entidade*> (pProjetil);
     else
         cout << "erro ao criar Projetil" << endl;
-    listaPersonagens.inserir(pEntidade);
+    listaMisseis.inserir(pEntidade);
     pColisao->incluiProjetil(pProjetil);
     pProjetil->setFase(this);
 
@@ -80,6 +81,7 @@ void Fase::SalvarFase(std::ofstream* pGravadorFase){
     limparArquivos();
     listaPersonagens.SalvarEntidades();
     listaObstaculos.SalvarEntidades();
+    listaMisseis.SalvarEntidades();
 
 
 }
@@ -90,8 +92,10 @@ void Fase::RecuperarFase(){
     pJogador2 = NULL;
     listaPersonagens.esvaziar();
     listaObstaculos.esvaziar();
+    listaMisseis.esvaziar();
     RecuperarPersonagens();
     RecuperarObstaculos();
+    RecuperarMisseis();
 
 
 
@@ -369,6 +373,31 @@ void Fase::RecuperarPersonagens(){
     RecuperadorLenhador.close();
 
 }
+
+void Fase::RecuperarMisseis(){
+    string Atributos;
+    ifstream RecuperadorMissil("Missil.txt", ios::in);
+    if (!RecuperadorMissil){
+        cerr << "Arquivo não pode ser aberto" << endl;
+    }
+    Entidades::Projetil* pMissil = NULL;
+    while (getline(RecuperadorMissil, Atributos)) {
+        pMissil = new  Entidades::Projetil(sf::Vector2f(0.0f, 0.0f), pJogador1, pJogador2);
+        pMissil->CarregarSe(Atributos);
+            if (pMissil) {
+                pColisao->incluiProjetil(static_cast<Entidades::Projetil*>(pMissil));
+                listaMisseis.inserir(static_cast<Entidade*>(pMissil));
+                pMissil->setFase(this);
+            }
+            else
+                cout << "Erro ao carregar Lenhador em Fase::RecuperarPersonagens" << endl;
+    }
+    RecuperadorMissil.close();
+
+
+
+}
+
 
 void Fase::limparArquivos(){
 

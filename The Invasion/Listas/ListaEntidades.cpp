@@ -70,8 +70,6 @@ void ListaEntidades::verificarVida(Gerenciadores::Gerenciador_Colisoes* pColisao
                 apagarElemento(static_cast<Entidades::Entidade*>(pPerso), pColisao);
             }
         }
-        //ainda a projeteis nessa lista TEMPORARIO
-        else if(LEs[i]->getID() == 8);
         else
             cout << "pPerso nulo em verificarVida" << endl;
 

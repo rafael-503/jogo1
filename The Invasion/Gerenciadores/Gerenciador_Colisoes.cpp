@@ -2,7 +2,7 @@
 
 
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
-Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogadores(NULL, NULL), vetor_Projeteis() {
+Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogadores(NULL, NULL), lista_Misseis() {
 
 }
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes(){
@@ -35,7 +35,7 @@ void Gerenciadores::Gerenciador_Colisoes::incluiObstaculo(Obstaculos::Obstaculo*
 }
 void Gerenciadores::Gerenciador_Colisoes::incluiProjetil(Projetil* pProj){
     if (pProj){
-        vetor_Projeteis.push_back(pProj);
+        lista_Misseis.push_back(pProj);
     }
     else
         cout << "erro: incluindo Projetil nulo no vetor_Personagens do Gerenciador de colisoes" << endl;
@@ -43,11 +43,11 @@ void Gerenciadores::Gerenciador_Colisoes::incluiProjetil(Projetil* pProj){
 }
 
 void Gerenciadores::Gerenciador_Colisoes::removerProjetil(Projetil* pProj){
-    if (pProj) {
-        std::vector<Projetil*>::iterator it = std::find(vetor_Projeteis.begin(), vetor_Projeteis.end(), pProj);
-        if (it != vetor_Projeteis.end())
-            vetor_Projeteis.erase(it);
-    }
+    if (pProj)
+        lista_Misseis.remove(pProj);
+    else
+        cout << "Erro ao remover missel em Gerenciador_Colisoes::removerMissil" << endl;
+
 }
 void Gerenciadores::Gerenciador_Colisoes::testa_colisoes() {
     ColisaoInimigoObstaculo();
@@ -93,7 +93,7 @@ void Gerenciadores::Gerenciador_Colisoes::setJogador(Personagens::Jogador* pJoga
 }
 
 void Gerenciadores::Gerenciador_Colisoes::limpar(){
-    vetor_Projeteis.clear();
+    lista_Misseis.clear();
     vetor_inimigos.clear();
     lista_obstaculos.clear();
     pJogadores.first = NULL;
@@ -265,21 +265,27 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoEntreObstaculos(){
 }
 void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
 
-    list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
-    Obstaculos::Obstaculo* pObs;
     sf::Vector2f DistanciaExtremidades;
 
+    list<Entidades::Projetil*>::iterator it_misseis = lista_Misseis.begin();
+    Entidades::Projetil* pMissil = NULL;
+
+
+    list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
+    Obstaculos::Obstaculo* pObs = NULL;
+
     /// testa colisão entre Projetil e Obstaculo/Jogadores (Projetil não atinge Inimigos)
-    for(int i = 0; i < (int) vetor_Projeteis.size(); i++){
-        if(vetor_Projeteis[i]){
+    while(it_misseis != lista_Misseis.end()){
+        pMissil = *it_misseis;
+        if(pMissil){
             it_obs = lista_obstaculos.begin();
             while(it_obs != lista_obstaculos.end()){
                 pObs = *it_obs;
                 if(pObs){
-                    DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pObs), static_cast<Entidade*>(vetor_Projeteis[i]));
+                    DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pObs), static_cast<Entidade*>(pMissil));
                     /// se Projetil colide com obstculo ele é destruido
-                    //if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                        //vetor_Projeteis[i]->ApagarProjetil();
+                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                        pMissil->ApagarProjetil();
                 }
                 else
                     cout << "ponteiro nulo na Lista do gereniador de colisões" << endl;
@@ -288,18 +294,20 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
 
             /// se Projetil colide com Jogador ele o da Dano
             if(pJogadores.first){
-                DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(vetor_Projeteis[i]));
+                DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(pMissil));
                 if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                    vetor_Projeteis[i]->AcertouJogador(pJogadores.first);
+                    pMissil->AcertouJogador(pJogadores.first);
             }
             if(pJogadores.second){
-                DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(vetor_Projeteis[i]));
+                DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(pMissil));
                 if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
-                    vetor_Projeteis[i]->AcertouJogador(pJogadores.second);
+                    pMissil->AcertouJogador(pJogadores.second);
             }
         }
         else
-            cout << "Projetl Nulo na Lista" << endl;
+            cout << "pMissil Nulo na Lista" << endl;
+        it_misseis++;
+
     }
 }
 

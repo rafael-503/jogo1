@@ -97,19 +97,17 @@ void Ranking::salvarRanking(){
     GravadorRanking.close();
 }
 void Ranking::carregarRanking(){
-    
+
     ifstream RecuperadorRanking("Ranking.txt", ios::in);
     if (!RecuperadorRanking){
-        cerr << "Ranking.txt não pode ser aberto" << endl;
-        fflush (stdin);
-        getchar();
-        return;
+        cout << "Ranking.txt não pode ser aberto" << endl;
+        cout << "Por Favor termine uma fase e salve sua pontuação" << endl;
+
     }
     int pontuacao;
     string texto;
     while (RecuperadorRanking >> texto >> pontuacao){
         /// recolocando pois o espaçamento da string o perde
-        cout << pontuacao << ' ' << texto << endl;
         std::ostringstream oss;
         oss << texto << ' ' << pontuacao;
         sf::Text* pTexto = new sf::Text(oss.str(), font);

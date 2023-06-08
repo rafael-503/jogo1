@@ -17,7 +17,7 @@ namespace Gerenciadores {
         std::pair<Personagens::Jogador*, Personagens::Jogador*> pJogadores;
         vector<Personagens::Inimigo*> vetor_inimigos;
         list<Obstaculos::Obstaculo*> lista_obstaculos;
-        vector<Projetil*> vetor_Projeteis;
+        list<Projetil*> lista_Misseis;
 
     public:
         Gerenciador_Colisoes();
