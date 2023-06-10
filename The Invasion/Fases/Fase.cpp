@@ -2,22 +2,17 @@
 using namespace Fases;
 #define JOGADOR2 "The invasion/assets/personagem/jogador/personagem2.png"
 
-
 Fase::Fase(): eh_1_jogador(true), pColisao(pColisao->getGerenciador_Colisoes()), pJogador1(NULL), pJogador2(NULL), relogioAtirar(){
 	pColisao->limpar();
 }
 
 Fase::~Fase() {
-
 	pColisao = NULL;
 	listaObstaculos.esvaziar();
 	listaPersonagens.esvaziar();
 	listaMisseis.esvaziar();
 }
 
-void Fase::gerenciarColisoes() {
-	//pColisao->Calcula_colisao(listaPersonagens, listaObstaculos);
-}
 void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
     if(pJogador1){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))

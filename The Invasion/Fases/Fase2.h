@@ -10,8 +10,6 @@ namespace Fases {
 	public:
 		Fase2(bool AuxEh_1_jogador = true);
 		~Fase2();
-		void executar();
-		void esvaziar();
 		void criarPersonagens();
 		void criarObstaculos();
         void criarCachorros();
@@ -20,5 +18,7 @@ namespace Fases {
         void criarPlataformas();
         void criarCaixas();
         void criarEspinhos();
+		void executar();
+		void esvaziar();
 	};
 }

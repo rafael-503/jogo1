@@ -6,6 +6,7 @@ namespace Fases {
 	private:
 		const int POS_MIN;
 		const int POS_MAX;
+
 	public:
 		Fase1(bool AuxEh_1_jogador = true);
 		~Fase1();
@@ -18,6 +19,5 @@ namespace Fases {
         void criarCaixas();
         void executar();
         void esvaziar();
-
 	};
 }

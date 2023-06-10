@@ -57,8 +57,8 @@ void Fase2::criarObstaculos() {
 }
 
 void Fase2::criarCachorros(){
-
     construtorPersonagens("Cachorro", sf::Vector2f(800.0f, 200.0f));
+
     // Criacao de inimigos aleatorios
     srand(time(0));
     int numInimigos = rand() % 5 + 3; // Gera numeros entre 3 e 8
@@ -69,14 +69,15 @@ void Fase2::criarCachorros(){
         int posicaoX = x + (diferenca * i);
         construtorPersonagens("Cachorro", sf::Vector2f(posicaoX, 0.0f));
     }
-
 }
+
 void Fase2::criarSoldado(){
     construtorPersonagens("Soldado", sf::Vector2f(3300.0f, 0.0f));
 }
-void Fase2::criarLenhadores(){
 
+void Fase2::criarLenhadores(){
     construtorPersonagens("Lenhador", sf::Vector2f(800.0f, 200.0f));
+
     // Criacao de inimigos aleatorios
     srand(time(0));
     int numInimigos = rand() % 7 + 3; // Gera numeros entre 3 e 11
@@ -88,8 +89,8 @@ void Fase2::criarLenhadores(){
         construtorPersonagens("Lenhador", sf::Vector2f(posicaoX, 0.0f));
     }
 }
-void Fase2::criarPlataformas(){
 
+void Fase2::criarPlataformas(){
     construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 800.0f), sf::Vector2f(25000.0f, 50.0f)); // remover
 
     construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 750.0f), sf::Vector2f(180.0f, 50.0f));
@@ -110,7 +111,6 @@ void Fase2::criarPlataformas(){
     construtorObstaculos("Plataforma", sf::Vector2f(2805.0f, 560.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(3695.0f, 560.0f));
 
-
     // Criacao de obstaculos aleatorios
     srand(time(0));
 
@@ -120,11 +120,9 @@ void Fase2::criarPlataformas(){
         int y = 0 + (rand() % (750 - 0 + 1));
         construtorObstaculos("Plataforma", sf::Vector2f(x - 20 * i, y * i));
     }
-
-
 }
-void Fase2::criarCaixas(){
 
+void Fase2::criarCaixas(){
     construtorObstaculos("Caixa", sf::Vector2f(330.0f, 0.0f));
 
     // Criacao de obstaculos aleatorios
@@ -137,8 +135,8 @@ void Fase2::criarCaixas(){
         construtorObstaculos("Caixa", sf::Vector2f(x + 100 * i, 0.0f));
     }
 }
-void Fase2::criarEspinhos(){
 
+void Fase2::criarEspinhos(){
     construtorObstaculos("Espinhos", sf::Vector2f(10.0f, 705.0f));
     construtorObstaculos("Espinhos", sf::Vector2f(370.0f, 555.0f));
     construtorObstaculos("Espinhos", sf::Vector2f(520.0f, 455.0f));
