@@ -17,7 +17,7 @@ namespace Fases {
         void criarLenhadores();
         void criarPlataformas();
         void criarCaixas();
-        void executar();
-        void esvaziar();
+		void executar();
+		void esvaziar();
 	};
 }
