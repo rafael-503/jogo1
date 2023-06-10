@@ -46,7 +46,7 @@ void GerenciadorGrafico::setView(sf::View view){
     window->setView(view);
 }
 
-sf::View GerenciadorGrafico::getView() {
+sf::View GerenciadorGrafico::getView() const{
 	return view;
 }
 
@@ -154,6 +154,6 @@ void GerenciadorGrafico::mostrarVidaJogador(int vida1, int vida2, bool eh_1_joga
 	desenharElemento(texto1);
 }
 
-sf::Vector2u GerenciadorGrafico::getSize(){
+sf::Vector2u GerenciadorGrafico::getSize() const{
     return window->getSize();
 }

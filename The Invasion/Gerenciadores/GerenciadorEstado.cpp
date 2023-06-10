@@ -14,38 +14,34 @@ GerenciadorEstado::GerenciadorEstado(): EstadoAtual("MenuPrincipal"){
     mapEstados[EstadoAtual]->PrimeiroExecutar();
     mapEstados[EstadoAtual]->setExecutando(true);
 }
-GerenciadorEstado::~GerenciadorEstado(){
 
-}
+GerenciadorEstado::~GerenciadorEstado(){}
+
 GerenciadorEstado* GerenciadorEstado::getGerenciadorEstado(){
     if (pGEstados == NULL)
         pGEstados = new GerenciadorEstado();
     return pGEstados;
 }
-void GerenciadorEstado::executarEstadoAtual(){
-//    if(mapEstados.contains(EstadoAtual))
-        mapEstados[EstadoAtual]->executar();
- //   else
-   //     cout << "mapEstados[EstadoAtual] nulo em executarEstadoAtual" << endl;
 
+void GerenciadorEstado::executarEstadoAtual(){
+        mapEstados[EstadoAtual]->executar();
 }
+
 void GerenciadorEstado::setEstadoAtual(string estadoAux){
     mapEstados[EstadoAtual]->setExecutando(false);
     EstadoAtual = estadoAux;
     mapEstados[EstadoAtual]->PrimeiroExecutar();
     mapEstados[EstadoAtual]->setExecutando(true);
-
 }
+
 void GerenciadorEstado::TeclaPressionada(const sf::Keyboard::Key tecla){
     mapEstados[EstadoAtual]->TeclaPressionada(tecla);
 }
 
 void GerenciadorEstado::guardarPontuacao() {
-
     Estados::EstadoJogar* pJogar = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
     Estados::MenuSalvarPontuacao* pMenuSalvar = dynamic_cast<Estados::MenuSalvarPontuacao*>(mapEstados["MenuSalvarPontuacao"]);
     pMenuSalvar->AdicionarPontuacao(pJogar->getPontuacao());
-
 }
 
 string GerenciadorEstado::getStringEstadoAtual() const{
@@ -56,8 +52,8 @@ void GerenciadorEstado::crieEexecuteEstadoJogar(bool eh_fase1, bool eh_1_jogador
     apagueEstadoJogar();
     mapEstados["EstadoJogar"] = new Estados::EstadoJogar(eh_fase1, eh_1_jogador);
     setEstadoAtual("EstadoJogar");
-
 }
+
 void GerenciadorEstado::apagueEstadoJogar(){
     //deletando EstadoJogar
     MapaStringEstado::iterator iterador = mapEstados.find("EstadoJogar");
@@ -67,16 +63,18 @@ void GerenciadorEstado::apagueEstadoJogar(){
     }
     mapEstados.erase("EstadoJogar");
 }
+
 void GerenciadorEstado::ReiniciarEstadoJogar(){
     Estados::EstadoJogar* pAux = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
     crieEexecuteEstadoJogar(pAux->getEh_fase1(), pAux->getEh_1_Jogador());
 }
+
 void GerenciadorEstado::salvarFase(){
     Estados::EstadoJogar* pAux = dynamic_cast<Estados::EstadoJogar*>(mapEstados["EstadoJogar"]);
     pAux->salvarFase();
 }
-void GerenciadorEstado::RecuperareExecutarFase(){
 
+void GerenciadorEstado::RecuperareExecutarFase(){
     apagueEstadoJogar();
 
     ifstream RecuperadorFase("Fase.txt", ios::in);
@@ -89,5 +87,3 @@ void GerenciadorEstado::RecuperareExecutarFase(){
 
     RecuperadorFase.close();
 }
-
-

@@ -23,7 +23,7 @@ namespace Gerenciadores {
 		void mostrarElementos();
 		void fecharJanela();
 		void setView(sf::View view);
-		sf::View getView();
+		sf::View getView() const;
 		void atualizarView(const sf::Vector2f& jogadorPos);
 		void reiniciarView();
 		const bool verificarJanelaAberta();
@@ -31,6 +31,6 @@ namespace Gerenciadores {
 		void carregarFundo(const char* caminho);
 		void atalizaFundo();
 		void mostrarVidaJogador(int vida1, int vida2 = 0, bool eh_1_jogador = false, sf::Color color = sf::Color::White);
-        sf::Vector2u getSize();
+        sf::Vector2u getSize() const;
 	};
 }

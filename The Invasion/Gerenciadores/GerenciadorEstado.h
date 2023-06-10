@@ -20,6 +20,7 @@ namespace Gerenciadores{
             string EstadoAtual;
             //singleton
             GerenciadorEstado();
+
         public:
             static GerenciadorEstado* pGEstados;
             ~GerenciadorEstado();
@@ -35,5 +36,4 @@ namespace Gerenciadores{
             void salvarFase();
             void RecuperareExecutarFase();
     };
-
 }

@@ -1,16 +1,16 @@
 ﻿#include "Gerenciador_Colisoes.h"
 
-
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
 Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogadores(NULL, NULL), lista_Misseis() {
 
 }
+
 Gerenciadores::Gerenciador_Colisoes::~Gerenciador_Colisoes(){
     cout << "destrutor do Gerenciador de colisoes" << endl;
     delete pGerenciador_Colisoes;
 }
-Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::getGerenciador_Colisoes() {
 
+Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::getGerenciador_Colisoes() {
     if (pGerenciador_Colisoes == NULL)
         pGerenciador_Colisoes = new Gerenciador_Colisoes();
     return pGerenciador_Colisoes;
@@ -27,12 +27,14 @@ void Gerenciadores::Gerenciador_Colisoes::incluiInimigo(Personagens::Inimigo* pI
     else
         cout << "erro: incluindo inimigo nulo no vetor_Personagens do Gerenciador de colisoes" << endl;
 }
+
 void Gerenciadores::Gerenciador_Colisoes::incluiObstaculo(Obstaculos::Obstaculo* pObs) {
     if (pObs)
         lista_obstaculos.push_back(pObs);
     else
         cout << "erro: incluindo ponteiro nulo no vetor_obstaculos do Gerenciador de colisoes" << endl;
 }
+
 void Gerenciadores::Gerenciador_Colisoes::incluiProjetil(Projetil* pProj){
     if (pProj){
         lista_Misseis.push_back(pProj);
@@ -126,8 +128,8 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoJogadorInimigo(){
             }
         }
     }
-
 }
+
 void Gerenciadores::Gerenciador_Colisoes::ColisaoJogadorObstaculo(){
 
     sf::Vector2f DistanciaExtremidades;
@@ -181,11 +183,7 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoJogadorObstaculo(){
             it_obs++;
         }
     }
-
-
 }
-
-
 
 void Gerenciadores::Gerenciador_Colisoes::ColisaoInimigoObstaculo(){
     sf::Vector2f DistanciaExtremidades;
@@ -218,8 +216,8 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoInimigoObstaculo(){
         else
             cout << "Ponteiro Inimigo  nulo no gereniador de colisões" << endl;
     }
-
 }
+
 void Gerenciadores::Gerenciador_Colisoes::ColisaoEntreObstaculos(){
 
     list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
@@ -260,16 +258,14 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoEntreObstaculos(){
             cout << "ponteiro nulo na lista do Gerenciador de colisões" << endl;
         it_obs++;
     }
-
-
 }
+
 void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
 
     sf::Vector2f DistanciaExtremidades;
 
     list<Entidades::Projetil*>::iterator it_misseis = lista_Misseis.begin();
     Entidades::Projetil* pMissil = NULL;
-
 
     list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
     Obstaculos::Obstaculo* pObs = NULL;
@@ -307,7 +303,6 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
         else
             cout << "pMissil Nulo na Lista" << endl;
         it_misseis++;
-
     }
 }
 
@@ -320,6 +315,7 @@ void Gerenciadores::Gerenciador_Colisoes::RetirarInimigo(Entidades::Personagens:
     else
         std::cout << "Inimigo não encontrado no vetor em RetirarElemento do Gerenciador_Colisoes" << std::endl;
 }
+
 void Gerenciadores::Gerenciador_Colisoes::RetirarJogador(Entidades::Personagens::Jogador* pJogador){
     if (pJogador) {
         if (pJogador == pJogadores.first)

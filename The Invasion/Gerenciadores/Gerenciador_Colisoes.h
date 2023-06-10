@@ -39,18 +39,7 @@ namespace Gerenciadores {
         void RetirarJogador(Entidades::Personagens::Jogador* pJogador);
         void RetirarObstaculo(Entidades::Obstaculos::Obstaculo* pObs);
         void RetirarElemento(Entidades::Entidade* pEnti);
-
         sf::Vector2f Calcula_colisao(Entidade* pEnti1, Entidade* pEnti2);
         Gerenciador_Colisoes* getGerenciador_Colisoes();
     };
-
-
-
-
-
-
-
-
-    }
-
-
+}
