@@ -2917,7 +2917,7 @@
 											"top": 718,
 											"width": 362.29638671875,
 											"height": 11,
-											"text": "+getSize(): int const",
+											"text": "+const getSize(): int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3555,7 +3555,7 @@
 											"top": 627,
 											"width": 277,
 											"height": 11,
-											"text": "+getPrimeiroElemento(): const Elemento",
+											"text": "+const getPrimeiroElemento(): Elemento",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3945,7 +3945,7 @@
 											"top": 822,
 											"width": 220.2236328125,
 											"height": 11,
-											"text": "+getAnt(): const Elemento<TE>*",
+											"text": "+const getAnt(): Elemento<TE>*",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3983,7 +3983,7 @@
 											"top": 848,
 											"width": 220.2236328125,
 											"height": 11,
-											"text": "+getProx(): const Elemento<TE>*",
+											"text": "+const getProx(): Elemento<TE>*",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4021,7 +4021,7 @@
 											"top": 874,
 											"width": 220.2236328125,
 											"height": 11,
-											"text": "+getInfo(): const TE*",
+											"text": "+const getInfo(): TE*",
 											"horizontalAlignment": 0
 										}
 									],
@@ -30304,7 +30304,7 @@
 							"_parent": {
 								"$ref": "YYkZRPF0qkGJIB7hIsPnEwAA"
 							},
-							"name": "getSize",
+							"name": "const getSize",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -30312,7 +30312,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGINvcRTSxtwkA="
 									},
-									"type": "int const",
+									"type": "int",
 									"direction": "return"
 								}
 							]
@@ -31946,7 +31946,7 @@
 							"_parent": {
 								"$ref": "vpGcEQLzG0uIgkl9fakFmQAA"
 							},
-							"name": "getPrimeiroElemento",
+							"name": "const getPrimeiroElemento",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -31954,7 +31954,9 @@
 									"_parent": {
 										"$ref": "AAAAAAGIIi6GBpkUdhY="
 									},
-									"type": "const Elemento",
+									"type": {
+										"$ref": "JxlcfUdU10e0KDKeUX0xpAAA"
+									},
 									"direction": "return"
 								}
 							]
@@ -32121,7 +32123,7 @@
 							"_parent": {
 								"$ref": "JxlcfUdU10e0KDKeUX0xpAAA"
 							},
-							"name": "getAnt",
+							"name": "const getAnt",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -32129,7 +32131,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIIjxAblKzhzA="
 									},
-									"type": "const Elemento<TE>*",
+									"type": "Elemento<TE>*",
 									"direction": "return"
 								}
 							]
@@ -32168,7 +32170,7 @@
 							"_parent": {
 								"$ref": "JxlcfUdU10e0KDKeUX0xpAAA"
 							},
-							"name": "getProx",
+							"name": "const getProx",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -32176,7 +32178,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIIjxEQFgpAm4="
 									},
-									"type": "const Elemento<TE>*",
+									"type": "Elemento<TE>*",
 									"direction": "return"
 								}
 							]
@@ -32215,7 +32217,7 @@
 							"_parent": {
 								"$ref": "JxlcfUdU10e0KDKeUX0xpAAA"
 							},
-							"name": "getInfo",
+							"name": "const getInfo",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -32223,7 +32225,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGIIjxIJ12fUHU="
 									},
-									"type": "const TE*",
+									"type": "TE*",
 									"direction": "return"
 								}
 							]
