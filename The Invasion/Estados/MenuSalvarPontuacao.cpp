@@ -19,47 +19,48 @@ MenuSalvarPontuacao::MenuSalvarPontuacao(Ranking* pRankingAux): Menu(), pRanking
 MenuSalvarPontuacao::~MenuSalvarPontuacao(){
 
 }
+
 void MenuSalvarPontuacao::TeclaPressionada(const sf::Keyboard::Key tecla){
 
-
-    if(tecla == sf::Keyboard::Enter){
-        Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("MenuPrincipal");
-        std::ostringstream oss;
-        string Texto = TextoNome.getString(), textoAux = ": ";
-        oss << Texto << textoAux << UltimaPontuacao;
-        sf::Text* pTexto = new sf::Text(oss.str(), font);
-        pRanking->SalvarTextoPontuacao(pTexto, UltimaPontuacao);
-
-        /// Reiniciando os textos
-        string textoPontInicial = "Sua Pontuaco foi:  ", textoNomeInicial = "";
-        TextoPontuacao.setString(textoPontInicial);
-        TextoNome.setString(textoNomeInicial);
-
-
-    }
-
-    if(tecla >= 0 && tecla <= 25){
-        int pos_letra, i = 0;
-        for(i = 0; i <= 25; i++)
-            if(tecla == i)
-                pos_letra = i;
-        char letra = 'A' + pos_letra;
-        /// impede de clicar varias vezes sem querer
-        if(UltimaLetra != letra){
-            string textoNomeAux = TextoNome.getString();
+    try {
+        if (tecla == sf::Keyboard::Enter) {
+            Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("MenuPrincipal");
             std::ostringstream oss;
-            oss << textoNomeAux << letra;
-            TextoNome.setString(oss.str());
-            UltimaLetra = letra;
+            string Texto = TextoNome.getString(), textoAux = ": ";
+            oss << Texto << textoAux << UltimaPontuacao;
+            sf::Text* pTexto = new sf::Text(oss.str(), font);
+            pRanking->SalvarTextoPontuacao(pTexto, UltimaPontuacao);
+
+            /// Reiniciando os textos
+            string textoPontInicial = "Sua Pontuaco foi:  ", textoNomeInicial = "";
+            TextoPontuacao.setString(textoPontInicial);
+            TextoNome.setString(textoNomeInicial);
+
+
         }
+
+        if (tecla >= 0 && tecla <= 25) {
+            int pos_letra, i = 0;
+            for (i = 0; i <= 25; i++)
+                if (tecla == i)
+                    pos_letra = i;
+            char letra = 'A' + pos_letra;
+            /// impede de clicar varias vezes sem querer
+            if (UltimaLetra != letra) {
+                string textoNomeAux = TextoNome.getString();
+                std::ostringstream oss;
+                oss << textoNomeAux << letra;
+                TextoNome.setString(oss.str());
+                UltimaLetra = letra;
+            }
+        }
+        /// LeftShift reseta ultima letra
+        if (tecla == 38)
+            UltimaLetra = '\0';
     }
-    /// LeftShift reseta ultima letra
-    if(tecla == 38)
-        UltimaLetra = '\0';
-
-
-    /// criar algoritimo que coloca letra em TextoNome
-
+    catch (std::exception& e) {
+		std::cout << "Erro ao salvar pontuacao: " << e.what() << std::endl;
+	}
 }
 
 void MenuSalvarPontuacao::PrimeiroExecutar(){
