@@ -2,10 +2,10 @@
 #include "../Gerenciadores/GerenciadorEstado.h"
 using namespace Estados;
 
-MenuSalvarPontuacao::MenuSalvarPontuacao(Ranking* pRankingAux): Menu(), pRanking(pRankingAux),
-    TextoParabens("PARABENS VOCÊ PASSOU DE FASE", font), TextoInstrucoes("Digite seu nome e pressione Enter para salvar seu Progresso", font),
-    TextoPontuacao("Sua Pontuaco foi:  ", font), TextoNome("", font), UltimaPontuacao(0)
-{
+MenuSalvarPontuacao::MenuSalvarPontuacao(Ranking* pRankingAux): Menu(), pRanking(pRankingAux), UltimaLetra(NULL),
+  TextoParabens("PARABENS VOCÊ PASSOU DE FASE", font), TextoInstrucoes("Digite seu nome e pressione Enter para salvar seu Progresso", font),
+  TextoPontuacao("Sua Pontuaco foi:  ", font), TextoNome("", font), UltimaPontuacao(0){
+
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
     TextoParabens.setScale(1.7f, 1.7f);
     TextoNome.setScale(1.2f, 1.2f);
@@ -13,15 +13,11 @@ MenuSalvarPontuacao::MenuSalvarPontuacao(Ranking* pRankingAux): Menu(), pRanking
     TextoPontuacao.setPosition(0.0f, 200.0f);
     TextoInstrucoes.setPosition(0.0f, 300.0f);
     TextoNome.setPosition(500.0f, 450.0f);
-
-
 }
-MenuSalvarPontuacao::~MenuSalvarPontuacao(){
 
-}
+MenuSalvarPontuacao::~MenuSalvarPontuacao(){}
 
 void MenuSalvarPontuacao::TeclaPressionada(const sf::Keyboard::Key tecla){
-
     try {
         if (tecla == sf::Keyboard::Enter) {
             Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("MenuPrincipal");
@@ -35,8 +31,6 @@ void MenuSalvarPontuacao::TeclaPressionada(const sf::Keyboard::Key tecla){
             string textoPontInicial = "Sua Pontuaco foi:  ", textoNomeInicial = "";
             TextoPontuacao.setString(textoPontInicial);
             TextoNome.setString(textoNomeInicial);
-
-
         }
 
         if (tecla >= 0 && tecla <= 25) {
@@ -67,21 +61,18 @@ void MenuSalvarPontuacao::PrimeiroExecutar(){
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
     pGrafico->atualizarView(sf::Vector2f(600.0f, 400.0f));
 }
+
 void MenuSalvarPontuacao::executar(){
     pGrafico->desenharElemento(TextoParabens);
     pGrafico->desenharElemento(TextoInstrucoes);
     pGrafico->desenharElemento(TextoPontuacao);
     pGrafico->desenharElemento(TextoNome);
-
-
 }
+
 void MenuSalvarPontuacao::AdicionarPontuacao(int pontuacao){
     UltimaPontuacao = pontuacao;
     std::ostringstream oss;
     string aux(TextoPontuacao.getString());
     oss << aux << UltimaPontuacao;
     TextoPontuacao.setString(oss.str());
-
 }
-
-

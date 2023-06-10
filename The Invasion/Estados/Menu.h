@@ -20,6 +20,4 @@ namespace Estados{
             virtual void guardarPontuacao(int num);
             void carregarFase2();
     };
-
-
 }

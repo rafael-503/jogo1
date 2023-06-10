@@ -13,6 +13,7 @@ namespace Estados{
             sf::Text TextoNome;
             int UltimaPontuacao;
             char UltimaLetra;
+
         public:
             MenuSalvarPontuacao(Ranking* pRankingAux = NULL);
             ~MenuSalvarPontuacao();
@@ -22,4 +23,3 @@ namespace Estados{
             void executar();
     };
 }
-

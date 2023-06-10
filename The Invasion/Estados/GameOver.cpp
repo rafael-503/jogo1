@@ -19,14 +19,11 @@ BotaoRanking("Ranking", font) {
     BotaoRanking.setPosition(-(tamJanela.x / 2 - tamBotaoRanking.width -700), 650);
 }
 
-GameOver::~GameOver() {
-
-}
+GameOver::~GameOver() {}
 
 void GameOver::PrimeiroExecutar() {
 	pGrafico->carregarFundo("The invasion/assets/fundo/fundo3.png");
     pGrafico->atualizarView(sf::Vector2f(600.0f, 400.0f));
-
 }
 
 void GameOver::executar() {
@@ -71,6 +68,4 @@ void GameOver::executar() {
     pGrafico->desenharElemento(BotaoRanking);
 }
 
-void GameOver::TeclaPressionada(const sf::Keyboard::Key tecla) {
-
-}
+void GameOver::TeclaPressionada(const sf::Keyboard::Key tecla) {}

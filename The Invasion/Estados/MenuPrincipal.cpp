@@ -2,12 +2,9 @@
 #include "MenuPrincipal.h"
 using namespace Estados;
 
-
-
 MenuPrincipal::MenuPrincipal(): Menu(), Tela_inicial(true), BotaoJogar("JOGAR", font),  BotaoRanking("RANKING", font), BotaoSair("SAIR", font),
  BotaoNovoJogo("NOVO JOGO", font), BotaoFase1_Jogador1("Fase 1: 1 Jogador", font), BotaoFase1_Jogador2("Fase 1: 2 Jogadores", font), BotaoFase2_Jogador1("Fase 2: 1 Jogador", font),
- BotaoFase2_Jogador2("Fase 2: 2 Jogadores", font)
-{
+ BotaoFase2_Jogador2("Fase 2: 2 Jogadores", font){
 
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
     //sf::Vector2u tamJanela = pGrafico->getSize();
@@ -31,15 +28,10 @@ MenuPrincipal::MenuPrincipal(): Menu(), Tela_inicial(true), BotaoJogar("JOGAR", 
     BotaoFase1_Jogador2.setPosition(350, 325);
     BotaoFase2_Jogador1.setPosition(350, 450);
     BotaoFase2_Jogador2.setPosition(350, 575);
-
-
 }
-MenuPrincipal::~MenuPrincipal(){
-
-}
+MenuPrincipal::~MenuPrincipal(){}
 
 void MenuPrincipal::executar(){
-
     sf::Vector2i posMouse = sf::Mouse::getPosition(*pGrafico->getWindow());
     sf::Vector2f fPosMouse((float) posMouse.x, (float) posMouse.y);
 
@@ -148,14 +140,11 @@ void MenuPrincipal::executar(){
         pGrafico->desenharElemento(BotaoFase2_Jogador2);
 
     }
-
 }
+
 void MenuPrincipal::PrimeiroExecutar(){
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
     pGrafico->atualizarView(sf::Vector2f(600.0f, 400.0f));
-
-}
-void MenuPrincipal::TeclaPressionada(const sf::Keyboard::Key tecla){
-
 }
 
+void MenuPrincipal::TeclaPressionada(const sf::Keyboard::Key tecla){}

@@ -7,6 +7,7 @@ namespace Estados{
         private:
             sf::Text Botaovoltar;
             sf::Text BotaoSalvar;
+
         public:
             MenuPause();
             ~MenuPause();

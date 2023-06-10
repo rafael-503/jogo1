@@ -1,10 +1,8 @@
 #include "MenuPause.h"
-using namespace Estados;
 #include "../Gerenciadores/GerenciadorEstado.h"
+using namespace Estados;
 
-MenuPause::MenuPause(): Menu(), Botaovoltar("VOLTAR", font), BotaoSalvar("SALVAR", font)
-{
-
+MenuPause::MenuPause(): Menu(), Botaovoltar("VOLTAR", font), BotaoSalvar("SALVAR", font){
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
 
     Botaovoltar.setPosition(495.0f, 390.0f);
@@ -12,21 +10,20 @@ MenuPause::MenuPause(): Menu(), Botaovoltar("VOLTAR", font), BotaoSalvar("SALVAR
     BotaoSalvar.setPosition(500.0f, 300.0f);
     BotaoSalvar.setScale(1.5f, 1.5f);
 }
-MenuPause::~MenuPause(){
 
-}
+MenuPause::~MenuPause(){}
+
 void MenuPause::TeclaPressionada(const sf::Keyboard::Key tecla){
     if(tecla == sf::Keyboard::V)
         Gerenciadores::GerenciadorEstado::pGEstados->setEstadoAtual("EstadoJogar");
 }
+
 void MenuPause::PrimeiroExecutar(){
     pGrafico->carregarFundo("The invasion/assets/fundo/fundo0.png");
     pGrafico->atualizarView(sf::Vector2f(600.0f, 400.0f));
-
 }
+
 void MenuPause::executar(){
-
-
     sf::Vector2i posMouse = sf::Mouse::getPosition(*pGrafico->getWindow());
     sf::Vector2f fPosMouse((float) posMouse.x, (float) posMouse.y);
     sf::FloatRect corpoMouse(fPosMouse, sf::Vector2f(5.0f, 5.0f));
@@ -59,5 +56,4 @@ void MenuPause::executar(){
 
     pGrafico->desenharElemento(Botaovoltar);
     pGrafico->desenharElemento(BotaoSalvar);
-
 }

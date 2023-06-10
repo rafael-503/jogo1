@@ -6,15 +6,12 @@ Ranking::Ranking() :Menu(), BotaoMenuPrincipal("Menu Principal", font), vectorPo
     sf::Vector2u tamJanela(600.f, 400.f);
     BotaoMenuPrincipal.setScale(1.5f, 1.5f);
 
-
     sf::FloatRect tamBotaoMenuPrincipal = BotaoMenuPrincipal.getLocalBounds();
     BotaoMenuPrincipal.setPosition(tamJanela.x / 2 + 500, 700);
     carregarRanking();
 }
 
-Ranking::~Ranking() {
-
-}
+Ranking::~Ranking() {}
 
 void Ranking::PrimeiroExecutar() {
     pGrafico->carregarFundo("The invasion/assets/fundo/fundoRanking.png");
@@ -36,9 +33,6 @@ void Ranking::executar() {
     else
         BotaoMenuPrincipal.setFillColor(sf::Color::White);
 
-
-
-
     /// Mostra as Pontuações
     MultiMapaIntText::const_iterator iterador;
     int i = 0;
@@ -48,16 +42,10 @@ void Ranking::executar() {
         pGrafico->desenharElemento(*iterador->second);
         i++;
     }
-
-
-
     pGrafico->desenharElemento(BotaoMenuPrincipal);
-    //imprimirPontuacao();
 }
 
-void Ranking::TeclaPressionada(const sf::Keyboard::Key tecla) {
-
-}
+void Ranking::TeclaPressionada(const sf::Keyboard::Key tecla) {}
 
 void Ranking::guardarPontuacao(int num) {
     std::ostringstream oss;
@@ -73,10 +61,12 @@ void Ranking::imprimirPontuacao() {
     for (int i = 0; i < (int) vectorPontuacoes.size(); i++)
 		cout << vectorPontuacoes[i]->getString().toAnsiString() << endl;
 }
+
 void Ranking::SalvarTextoPontuacao(sf::Text* pTexto, int pontuacao){
     MapPontuacoes.insert(std::make_pair(pontuacao, pTexto));
     salvarRanking();
 }
+
 void Ranking::salvarRanking(){
 
     std::ofstream GravadorRanking("Ranking.txt", ios::out);
@@ -102,8 +92,8 @@ void Ranking::carregarRanking(){
     if (!RecuperadorRanking){
         cout << "Ranking.txt não pode ser aberto" << endl;
         cout << "Por Favor termine uma fase e salve sua pontuação" << endl;
-
     }
+
     int pontuacao;
     string texto;
     while (RecuperadorRanking >> texto >> pontuacao){

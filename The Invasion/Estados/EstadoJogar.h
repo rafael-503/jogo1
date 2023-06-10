@@ -10,6 +10,7 @@ namespace Estados{
             Fases::Fase* pFase;
             bool Eh_fase1;
             bool Eh_1_Jogador;
+
         public:
             EstadoJogar(bool eh_fase1 = true, bool eh_1_jogador = true);
             EstadoJogar(ifstream* pRecuperadorFase);
@@ -23,5 +24,4 @@ namespace Estados{
             void TeclaPressionada(const sf::Keyboard::Key tecla);
             void carregarFase2();
     };
-
 }

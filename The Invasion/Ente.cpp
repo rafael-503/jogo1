@@ -7,11 +7,8 @@ Ente::Ente(): ID(0){}
 
 Ente::~Ente(){}
 
-void Ente::desenhar() {
+void Ente::desenhar() {}
 
-}
 int Ente::getID() const{
     return ID;
 }
-
-

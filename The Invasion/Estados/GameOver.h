@@ -2,7 +2,6 @@
 #include "Menu.h"
 
 namespace Estados {
-
     class GameOver : public Menu {
     private:
         sf::Text BotaoTentarNovamente;
