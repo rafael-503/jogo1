@@ -30,7 +30,7 @@ void Fase2::executar() {
     listaObstaculos.seDesenhe();
     listaMisseis.seDesenhe();
     if(eh_1_jogador)
-        pGrafico->mostrarVidaJogador(pJogador1->getVida(), 0, eh_1_jogador);
+        pGrafico->mostrarVidaJogador(pJogador1->getVida(), 0, eh_1_jogador, sf::Color::Black);
     else
         pGrafico->mostrarVidaJogador(pJogador1->getVida(), pJogador2->getVida(), eh_1_jogador, sf::Color::Black);
     listaPersonagens.verificarVida(pColisao);
