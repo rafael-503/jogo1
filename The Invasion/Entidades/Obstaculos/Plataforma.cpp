@@ -26,7 +26,6 @@ Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* tex
 
 Plataforma::~Plataforma() {}
 
-
 void Plataforma::executar() {}
 
 void Plataforma::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f DistExtremidades, bool colidiu_X) {
@@ -43,11 +42,10 @@ void Plataforma::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f Dist
         ColidirPlataforma(static_cast<Entidade*> (pJog), DistExtremidades, colidiu_X);
     }
 
-
     else
         cout << "pJog nulo em Obstar do Plataforma" << endl;
-
 }
+
 void Plataforma::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistExtremidades, bool colidiu_X){
     ///Plataforma colidi igual com todos Personagens
     if(pInimigo)
@@ -55,6 +53,7 @@ void Plataforma::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f 
     else
         cout << "pInimigo nulo em Obstar do Plataforma" << endl;
 }
+
 void Plataforma::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X){
     ///Plataforma colidi com a caixa como se fosse um Personagem
     if(pObs->getID() == 6){
@@ -64,6 +63,7 @@ void Plataforma::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f Dis
             cout << "pObs nulo em Obstar do Plataforma" << endl;
     }
 }
+
 void Plataforma::ColidirPlataforma(Entidade* pEnti, sf::Vector2f DistExtremidades, bool colidiu_X){
     if(pEnti){
         if (!colidiu_X) {
@@ -88,7 +88,6 @@ void Plataforma::ColidirPlataforma(Entidade* pEnti, sf::Vector2f DistExtremidade
 
     else
         cout << "pEnti nulo em ColidirPlataforma do Plataforma" << endl;
-
 }
 
 void Plataforma::salvar(){
@@ -112,7 +111,6 @@ void Plataforma::CarregarSe(string atributos){
     }
     else
         cout << "Erro ao converter os valores em CarregarSe" << endl;
-
 
     if(curador)
         textura = pGrafico->carregarTextura(PLATAFORMA5);

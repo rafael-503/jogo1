@@ -1,7 +1,7 @@
 #include "Caixa.h"
+#include "../Personagens/Inimigo.h"
 using namespace Entidades;
 using namespace Obstaculos;
-#include "../Personagens/Inimigo.h"
 
 Caixa::Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo), peso(100){
     ID = 6;
@@ -15,7 +15,6 @@ Caixa::Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo
 }
 
 Caixa::~Caixa() {}
-
 
 void Caixa::executar() {
     efeitoGravidade();
@@ -63,7 +62,6 @@ void Caixa::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f DistExtre
             clockInteracao.restart();
         }
     }
-
 }
 void Caixa::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistExtremidades, bool colidiu_X){
     ///inimigo não consegue mover a caixa
@@ -87,14 +85,10 @@ void Caixa::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistE
                 pInimigo->mover(-DistExtremidades.x, 0.0f);
         }
     }
-
     else
         cout << "pInimigo nulo em Obstar da caixa" << endl;
-
 }
-void Caixa::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X){
-
-}
+void Caixa::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X){}
 
 void Caixa::salvar(){
     ofstream GravadorCaixa("Caixa.txt", ios_base::app);
@@ -107,7 +101,6 @@ void Caixa::salvar(){
 }
 
 void Caixa::CarregarSe(string atributos){
-
     std::istringstream iss(atributos);
     float posX, posY;
     iss >> posX >> posY >> curador >> peso;
@@ -122,5 +115,3 @@ void Caixa::CarregarSe(string atributos){
     else
         textura = pGrafico->carregarTextura(CAIXA);
 }
-
-

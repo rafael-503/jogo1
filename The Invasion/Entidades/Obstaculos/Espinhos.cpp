@@ -16,17 +16,12 @@ Espinhos::Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam
     corpo.setTexture(&textura);
 }
 
-Espinhos::~Espinhos() {
+Espinhos::~Espinhos() {}
 
-}
-
-void Espinhos::executar() {
-
-}
+void Espinhos::executar() {}
 
 void Espinhos::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f DistExtremidades, bool colidiu_X){
-
-    /// empurra o Jogador para fora de si devagar e o da dano a cada 5 seguundos após entrar e se espinho for curadpr ele não faz nada
+    /// empurra o Jogador para fora de si devagar e o da dano a cada 5 seguundos após entrar e se espinho for curador ele não faz nada
     if(pJog){
         if(clockInteracao.getElapsedTime().asSeconds() > 5.0f){
             pJog->setVida(pJog->getVida() - dano);
@@ -51,18 +46,14 @@ void Espinhos::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f DistEx
                 pJog->mover(-DistExtremidades.x  / 100, 0.0f);
         }
     }
-
     else
         cout << "pJog nulo em obstar dos Espinhos" << endl;
-
 }
-void Espinhos::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistExtremidades, bool colidiu_X){
 
+void Espinhos::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistExtremidades, bool colidiu_X){}
 
-}
-void Espinhos::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X){
+void Espinhos::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X){}
 
-}
 void Espinhos::salvar(){
     ofstream GravadorEspinhos("Espinhos.txt", ios_base::app);
     if (GravadorEspinhos.is_open()) {
@@ -74,7 +65,6 @@ void Espinhos::salvar(){
 }
 
 void Espinhos::CarregarSe(string atributos){
-
     std::istringstream iss(atributos);
     float posX, posY;
     iss >>  posX >> posY >> curador >> dano;
