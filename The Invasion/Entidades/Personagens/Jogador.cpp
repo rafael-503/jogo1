@@ -8,9 +8,6 @@ using namespace Personagens;
 
 Gerenciadores::GerenciadorEstado* pEstado = Gerenciadores::GerenciadorEstado::getGerenciadorEstado();
 
-void Jogador::inicializa() {
-}
-
 Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Personagem(tam_corpo), vel_padrao(10.0f, 0.0f), forca(2),  pontuacao(0)
 {
     ID = 1;

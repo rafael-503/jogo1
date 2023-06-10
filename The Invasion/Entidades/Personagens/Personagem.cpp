@@ -7,8 +7,8 @@ Entidades::Personagens::Personagem::Personagem(sf::Vector2f tam_corpo) :
     setVelocidade(sf::Vector2f(0.0f, 0.0f));
 }
 
-Entidades::Personagens::Personagem::~Personagem() {
-}
+Entidades::Personagens::Personagem::~Personagem() {}
+
 void Entidades::Personagens::Personagem::setVida(int AuxVida) {
     vida = AuxVida;
     if(vida < 0)
@@ -18,8 +18,7 @@ void Entidades::Personagens::Personagem::setVida(int AuxVida) {
 int Entidades::Personagens::Personagem::getVida() const {
 	return vida;
 }
+
 bool Entidades::Personagens::Personagem::getVivo() const{
     return vivo;
 }
-
-

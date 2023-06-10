@@ -19,9 +19,7 @@ Cachorro::Cachorro(sf::Vector2f pos, sf::Vector2f tam_corpo) : Inimigo(tam_corpo
     }
 }
 
-Cachorro::~Cachorro() {
-
-}
+Cachorro::~Cachorro() {}
 
 void Cachorro::danar(Jogador* pJog) {
     if (pJog) {
@@ -44,8 +42,8 @@ void Cachorro::salvar(){
     else
         cout << "Erro ao abrir o arquivo." << std::endl;
 }
-void Cachorro::CarregarSe(string atributos){
 
+void Cachorro::CarregarSe(string atributos){
     std::istringstream iss(atributos);
     float posX, posY;
     iss >>  posX >> posY >> vida >> manso;
@@ -54,7 +52,4 @@ void Cachorro::CarregarSe(string atributos){
     }
     else
         cout << "Erro ao converter os valores em CarregarSe" << endl;
-
-
 }
-

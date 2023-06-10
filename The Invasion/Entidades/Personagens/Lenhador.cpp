@@ -9,10 +9,7 @@ Lenhador::Lenhador(sf::Vector2f pos, sf::Vector2f tam_corpo) : Inimigo(tam_corpo
     corpo.setTexture(&textura);
 }
 
-Lenhador::~Lenhador() {
-
-
-}
+Lenhador::~Lenhador() {}
 
 void Lenhador::danar(Jogador* pJog) {
     if (pJog) {
@@ -22,6 +19,7 @@ void Lenhador::danar(Jogador* pJog) {
         }
     }
 }
+
 void Lenhador::salvar(){
     ofstream GravadorLenhador("Lenhador.txt", ios_base::app);
     if (GravadorLenhador.is_open()) {
@@ -31,8 +29,8 @@ void Lenhador::salvar(){
     else
         cout << "Erro ao abrir o arquivo." << std::endl;
 }
-void Lenhador::CarregarSe(string atributos){
 
+void Lenhador::CarregarSe(string atributos){
     std::istringstream iss(atributos);
     float posX, posY;
     iss >>  posX >> posY >> vida >> forca;
@@ -41,8 +39,4 @@ void Lenhador::CarregarSe(string atributos){
     }
     else
         cout << "Erro ao converter os valores em CarregarSe" << endl;
-
-
-
 }
-

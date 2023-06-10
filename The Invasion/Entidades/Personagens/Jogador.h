@@ -6,15 +6,12 @@
 #define JOGADOR "The invasion/assets/personagem/jogador/personagem.png"
 #define JOGADOR2 "The invasion/assets/personagem/jogador/personagem2.png"
 
-
 namespace Entidades {
-
     namespace Personagens {
 
         class Inimigo;
         class Jogador : public Personagem {
         private:
-            void inicializa();
             sf::Clock relogioColisao;
             sf::Vector2f vel_padrao;
             int forca;
@@ -31,8 +28,6 @@ namespace Entidades {
             void salvar();
             void CarregarSe(string atributos);
             void setJogador2(bool eh_jogador2 = true);
-
-
         };
     }
 }

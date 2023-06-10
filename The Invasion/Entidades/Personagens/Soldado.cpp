@@ -1,12 +1,10 @@
 #include "Soldado.h"
+#include "../../Fases/Fase.h"
 using namespace Entidades;
 using namespace Personagens;
-#include "../../Fases/Fase.h"
-
 
 Soldado::Soldado(sf::Vector2f pos, Fases::Fase* pFaseAux, sf::Vector2f tam_corpo) : Inimigo(tam_corpo), dano(5), pFase(pFaseAux),
- raioTiroMAX(1100.0f), raioTiroMIN(200.0f)
-{
+ raioTiroMAX(1100.0f), raioTiroMIN(200.0f){
     ID = 4;
     corpo.setPosition(pos);
     textura = pGrafico->carregarTextura(SOLDADO);
@@ -14,9 +12,7 @@ Soldado::Soldado(sf::Vector2f pos, Fases::Fase* pFaseAux, sf::Vector2f tam_corpo
     relogioAtirar.restart();
 }
 
-Soldado::~Soldado() {
-
-}
+Soldado::~Soldado() {}
 
 void Soldado::executar(){
     if (pJogadores.first || pJogadores.second) {
@@ -47,6 +43,7 @@ void Soldado::executar(){
 
     efeitoGravidade();
 }
+
 void Soldado::Afastar_se(){
     if(pJogadores.first || pJogadores.second){
         Jogador* pJogador;
@@ -71,7 +68,6 @@ void Soldado::Afastar_se(){
 }
 
 void Soldado::Atirar(){
-
     if(pJogadores.first || pJogadores.second){
         if(pFase){
             if(relogioAtirar.getElapsedTime().asSeconds() > 8.0f){
@@ -86,8 +82,8 @@ void Soldado::Atirar(){
     }
     else
         cout << "pJogadors NULOS em Atirar do soldado" << endl;
-
 }
+
 void Soldado::danar(Jogador* pJog) {
     if (pJog) {
         if(clockInteracao.getElapsedTime().asSeconds() > 5.0f){
@@ -115,7 +111,6 @@ void Soldado::salvar(){
 }
 
 void Soldado::CarregarSe(string atributos){
-
     std::istringstream iss(atributos);
     float posX, posY;
     iss >>  posX >> posY >> vida >> dano;
@@ -124,8 +119,4 @@ void Soldado::CarregarSe(string atributos){
     }
     else
         cout << "Erro ao converter os valores em CarregarSe" << endl;
-
 }
-
-
-

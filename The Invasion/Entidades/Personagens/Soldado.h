@@ -1,13 +1,12 @@
 #pragma once
-#define SOLDADO "The invasion/assets/inimigo/soldado/soldado.png"
 #include "Inimigo.h"
+#define SOLDADO "The invasion/assets/inimigo/soldado/soldado.png"
 
 namespace Fases{
     class Fase;
 }
 
 namespace Entidades {
-
     namespace Personagens {
 
         class Soldado : public Inimigo {
@@ -28,8 +27,6 @@ namespace Entidades {
             void danar(Jogador* pJog);
             void salvar();
             void CarregarSe(string atributos);
-
-
         };
     }
 }
