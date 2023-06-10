@@ -6,14 +6,13 @@ using namespace Entidades;
 
 namespace Fases{
     class Fase;
-
 }
 
 namespace Listas{
-
     class ListaEntidades{
         private:
             Lista<Entidade> LEs;
+
         public:
             ListaEntidades();
             ~ListaEntidades();
@@ -30,6 +29,3 @@ namespace Listas{
             void SalvarEntidades();
     };
 }
-
-
-

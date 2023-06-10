@@ -13,6 +13,7 @@ namespace Listas {
 			TE* pInfo;
 			Elemento<TE>* pAnt;
 			Elemento<TE>* pProx;
+
 		public:
 			Elemento(TE* pInfo_aux = NULL) :
 				pInfo(pInfo_aux), pAnt(NULL), pProx(NULL) {}
