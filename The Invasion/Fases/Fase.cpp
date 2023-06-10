@@ -26,7 +26,6 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
     else
         cout << "pJogador1 Nulo" << endl;
 
-
     if (pJogador2) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             pJogador2->Mover_Se(false, false);
@@ -37,11 +36,12 @@ void Fase::TeclaPressionada(const sf::Keyboard::Key tecla){
         setPosicaoJogador(pJogador2->getPosition());
     }
 }
+
 void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
     pGrafico->atualizarView(jogadorPos);
 }
-void Fase::removerProjetil(Entidades::Projetil* pMissil){
 
+void Fase::removerProjetil(Entidades::Missil* pMissil){
     if (pMissil){
         pColisao->removerProjetil(pMissil);
         Entidade* pEnti = dynamic_cast<Entidade*>(pMissil);
@@ -52,16 +52,11 @@ void Fase::removerProjetil(Entidades::Projetil* pMissil){
     }
     else
         cout << "Recebido missil nulo em Fase::removerMissil" << endl;
-
 }
 
-
-
-
 void Fase::AdicionarProjetil(sf::Vector2f pos){
-
-    Entidades::Projetil* pProjetil = NULL;
-    pProjetil = new Entidades::Projetil(pos, pJogador1, pJogador2);
+    Entidades::Missil* pProjetil = NULL;
+    pProjetil = new Entidades::Missil(pos, pJogador1, pJogador2);
     if(pProjetil){
         pColisao->incluiProjetil(pProjetil);
         pProjetil->setFase(this);
@@ -73,20 +68,16 @@ void Fase::AdicionarProjetil(sf::Vector2f pos){
     }
     else
         cout << "erro ao criar Projetil" << endl;
-
-
 }
-void Fase::SalvarFase(std::ofstream* pGravadorFase){
 
+void Fase::SalvarFase(std::ofstream* pGravadorFase){
     limparArquivos();
     listaPersonagens.SalvarEntidades();
     listaObstaculos.SalvarEntidades();
     listaMisseis.SalvarEntidades();
-
-
 }
-void Fase::RecuperarFase(){
 
+void Fase::RecuperarFase(){
     pColisao->limpar();
     pJogador1 = NULL;
     pJogador2 = NULL;
@@ -96,23 +87,8 @@ void Fase::RecuperarFase(){
     RecuperarPersonagens();
     RecuperarObstaculos();
     RecuperarMisseis();
-
-
-
-    /*
-    while (!pRecuperarFase->eof()){
-        int id;
-        float posX, posY, tamX, tamY;
-        *pRecuperarFase >> id >> posX >> posY >> tamX >> tamY;
-        CarregarEntidades(id, sf::Vector2f(posX, posY), sf::Vector2f(tamX, tamY));
-    }
-    */
-
-
-
 }
 void Fase::CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam){
-
     if(id == 1)
         ConstrutorJogador(pos);
     else if(id == 2)
@@ -131,10 +107,8 @@ void Fase::CarregarEntidades(int id, sf::Vector2f pos, sf::Vector2f tam){
         AdicionarProjetil(pos);
     else
         cout << "Carregando algo incalido em CarregarEntidades" << endl;
-
-
-
 }
+
 void Fase::ConstrutorJogador(sf::Vector2f pos){
     if(pJogador1 == NULL){
         pJogador1 = new Jogador(pos);
@@ -148,8 +122,8 @@ void Fase::ConstrutorJogador(sf::Vector2f pos){
     }
     else
         cout << "tentando criar mais de 2 Jogadores" << endl;
-
 }
+
 int Fase::getPontuacao() const{
     if(pJogador1 && pJogador2)
         return pJogador1->getPontuacao() + pJogador2->getPontuacao();
@@ -157,8 +131,8 @@ int Fase::getPontuacao() const{
         return pJogador1->getPontuacao();
     else
         cout << "pJogador1 nulo em Fase::getPontuacao" << endl;
-
 }
+
 void Fase::construtorPersonagens(const std::string& tipo, const sf::Vector2f& pos) {
     Entidades::Entidade* pEntidade = NULL;
     Entidades::Personagens::Inimigo* pInimigo = NULL;
@@ -187,6 +161,7 @@ void Fase::construtorPersonagens(const std::string& tipo, const sf::Vector2f& po
         listaPersonagens.inserir(pEntidade);
     }
 }
+
 void Fase::construtorObstaculos(const std::string& tipo, const sf::Vector2f& pos, sf::Vector2f tam) {
     Entidades::Obstaculos::Obstaculo* pObstaculo = NULL;
     Entidade* pEntidade = NULL;
@@ -210,7 +185,6 @@ void Fase::construtorObstaculos(const std::string& tipo, const sf::Vector2f& pos
 }
 
 void Fase::criarJogadores(){
-
     Entidades::Entidade* pEntidade = NULL;
     pJogador1= new Entidades::Personagens::Jogador(sf::Vector2f(10.0f, 0.0f));
     if(!eh_1_jogador){
@@ -223,11 +197,9 @@ void Fase::criarJogadores(){
     pEntidade = static_cast<Entidade*> (pJogador1);
     listaPersonagens.inserir(pEntidade);
     pColisao->setJogador(pJogador1);
-
-
 }
-void Fase::RecuperarObstaculos(){
 
+void Fase::RecuperarObstaculos(){
     string Atributos;
 
     ifstream RecuperadorCaixa("Caixa.txt", ios::in);
@@ -247,9 +219,6 @@ void Fase::RecuperarObstaculos(){
     }
     RecuperadorCaixa.close();
 
-
-
-
     ifstream RecuperadorPlataforma("Plataforma.txt", ios::in);
     if (!RecuperadorPlataforma){
         cerr << "Arquivo não pode ser aberto" << endl;
@@ -267,7 +236,6 @@ void Fase::RecuperarObstaculos(){
     }
     RecuperadorPlataforma.close();
 
-
     ifstream RecuperadorEspinhos("Espinhos.txt", ios::in);
     if (!RecuperadorEspinhos){
         cerr << "Arquivo não pode ser aberto" << endl;
@@ -284,11 +252,9 @@ void Fase::RecuperarObstaculos(){
                 cout << "Erro ao carregar Espinhos em Fase::RecuperarFase" << endl;
     }
     RecuperadorEspinhos.close();
-
 }
 
 void Fase::RecuperarPersonagens(){
-
     string Atributos;
 
     ifstream RecuperadorJogador("Jogador.txt", ios::in);
@@ -317,7 +283,6 @@ void Fase::RecuperarPersonagens(){
     RecuperadorJogador.close();
     Inimigo::setPairpJogadores(pJogador1, pJogador2);
 
-
     ifstream RecuperadorCachorro("Cachorro.txt", ios::in);
     if (!RecuperadorCachorro){
         cerr << "Arquivo não pode ser aberto" << endl;
@@ -334,7 +299,6 @@ void Fase::RecuperarPersonagens(){
                 cout << "Erro ao carregar Cachorro em Fase::RecuperarPersonagens" << endl;
     }
     RecuperadorCachorro.close();
-
 
     ifstream RecuperadorSoldado("Soldado.txt", ios::in);
     if (!RecuperadorSoldado){
@@ -354,7 +318,6 @@ void Fase::RecuperarPersonagens(){
     }
     RecuperadorSoldado.close();
 
-
     ifstream RecuperadorLenhador("Lenhador.txt", ios::in);
     if (!RecuperadorLenhador){
         cerr << "Arquivo não pode ser aberto" << endl;
@@ -371,7 +334,6 @@ void Fase::RecuperarPersonagens(){
                 cout << "Erro ao carregar Lenhador em Fase::RecuperarPersonagens" << endl;
     }
     RecuperadorLenhador.close();
-
 }
 
 void Fase::RecuperarMisseis(){
@@ -380,12 +342,12 @@ void Fase::RecuperarMisseis(){
     if (!RecuperadorMissil){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
-    Entidades::Projetil* pMissil = NULL;
+    Entidades::Missil* pMissil = NULL;
     while (getline(RecuperadorMissil, Atributos)) {
-        pMissil = new  Entidades::Projetil(sf::Vector2f(0.0f, 0.0f), pJogador1, pJogador2);
+        pMissil = new  Entidades::Missil(sf::Vector2f(0.0f, 0.0f), pJogador1, pJogador2);
         pMissil->CarregarSe(Atributos);
             if (pMissil) {
-                pColisao->incluiProjetil(static_cast<Entidades::Projetil*>(pMissil));
+                pColisao->incluiProjetil(static_cast<Entidades::Missil*>(pMissil));
                 listaMisseis.inserir(static_cast<Entidade*>(pMissil));
                 pMissil->setFase(this);
             }
@@ -393,9 +355,6 @@ void Fase::RecuperarMisseis(){
                 cout << "Erro ao carregar Lenhador em Fase::RecuperarPersonagens" << endl;
     }
     RecuperadorMissil.close();
-
-
-
 }
 
 
@@ -418,7 +377,4 @@ void Fase::limparArquivos(){
     Espinhos.close();
     ofstream Missil("Missil.txt", std::ios_base::trunc);
     Missil.close();
-
-
 }
-

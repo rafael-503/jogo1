@@ -96,7 +96,7 @@
     <ClCompile Include="The Invasion\Estados\GameOver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="The Invasion\Entidades\Projetil.cpp">
+    <ClCompile Include="The Invasion\Entidades\Missil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="The Invasion\Estados\Ranking.cpp">
@@ -191,7 +191,7 @@
     <ClInclude Include="The Invasion\Estados\GameOver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="The Invasion\Entidades\Projetil.h">
+    <ClInclude Include="The Invasion\Entidades\Missil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="The Invasion\Estados\Ranking.h">

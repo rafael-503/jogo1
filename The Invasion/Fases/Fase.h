@@ -15,7 +15,7 @@
 #include "../Entidades/Obstaculos/Espinhos.h"
 
 //Projetil
-#include "../Entidades/Projetil.h"
+#include "../Entidades/Missil.h"
 
 namespace Fases {
 	class Fase : public Ente {
@@ -34,7 +34,7 @@ namespace Fases {
 			virtual ~Fase();
 			void TeclaPressionada(const sf::Keyboard::Key tecla);
 			void setPosicaoJogador(const sf::Vector2f& jogadorPos);
-			void removerProjetil(Entidades::Projetil* pMissil);
+			void removerProjetil(Entidades::Missil* pMissil);
 			void AdicionarProjetil(sf::Vector2f pos);
 			void SalvarFase(std::ofstream* pGravadorFase);
 			void RecuperarFase();

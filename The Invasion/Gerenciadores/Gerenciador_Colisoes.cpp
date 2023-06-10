@@ -35,7 +35,7 @@ void Gerenciadores::Gerenciador_Colisoes::incluiObstaculo(Obstaculos::Obstaculo*
         cout << "erro: incluindo ponteiro nulo no vetor_obstaculos do Gerenciador de colisoes" << endl;
 }
 
-void Gerenciadores::Gerenciador_Colisoes::incluiProjetil(Projetil* pProj){
+void Gerenciadores::Gerenciador_Colisoes::incluiProjetil(Missil* pProj){
     if (pProj){
         lista_Misseis.push_back(pProj);
     }
@@ -44,7 +44,7 @@ void Gerenciadores::Gerenciador_Colisoes::incluiProjetil(Projetil* pProj){
 
 }
 
-void Gerenciadores::Gerenciador_Colisoes::removerProjetil(Projetil* pProj){
+void Gerenciadores::Gerenciador_Colisoes::removerProjetil(Missil* pProj){
     if (pProj)
         lista_Misseis.remove(pProj);
     else
@@ -264,8 +264,8 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
 
     sf::Vector2f DistanciaExtremidades;
 
-    list<Entidades::Projetil*>::iterator it_misseis = lista_Misseis.begin();
-    Entidades::Projetil* pMissil = NULL;
+    list<Entidades::Missil*>::iterator it_misseis = lista_Misseis.begin();
+    Entidades::Missil* pMissil = NULL;
 
     list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
     Obstaculos::Obstaculo* pObs = NULL;
@@ -344,7 +344,7 @@ void Gerenciadores::Gerenciador_Colisoes::RetirarElemento(Entidades::Entidade* p
         else if (ID_aux <= 7)
             RetirarObstaculo(dynamic_cast<Entidades::Obstaculos::Obstaculo*>(pEnti));
         else if (ID_aux == 8)
-            removerProjetil(dynamic_cast<Entidades::Projetil*>(pEnti));
+            removerProjetil(dynamic_cast<Entidades::Missil*>(pEnti));
         else
             cout << "ID invalido em RetirarElemento do Gerenciador_Colisoes" << endl;
     }

@@ -38,8 +38,8 @@ void Soldado::executar(){
         else
             Afastar_se();
 
-        if (Dist > raioTiroMIN && Dist < raioTiroMAX)
-            Atirar();
+        //if (Dist > raioTiroMIN && Dist < raioTiroMAX)
+            //Atirar();
 
     }
     else

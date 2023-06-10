@@ -10235,7 +10235,7 @@
 									"fillColor": "#e9e963",
 									"font": "Arial;11;0",
 									"left": 820,
-									"top": 660,
+									"top": 644,
 									"width": 10,
 									"height": 10
 								},
@@ -10262,7 +10262,7 @@
 											"top": 981,
 											"width": 406.333984375,
 											"height": 11,
-											"text": "«Entidade»"
+											"text": "«Entidade - Projétil»"
 										},
 										{
 											"_type": "LabelView",
@@ -10277,7 +10277,7 @@
 											"top": 994,
 											"width": 406.333984375,
 											"height": 11,
-											"text": "Projetil"
+											"text": "Missil"
 										},
 										{
 											"_type": "LabelView",
@@ -10572,7 +10572,7 @@
 									"fillColor": "#e9e963",
 									"font": "Arial;11;0",
 									"left": 820,
-									"top": 660,
+									"top": 644,
 									"width": 10,
 									"height": 10
 								}
@@ -11830,7 +11830,7 @@
 											"top": 1125,
 											"width": 334.18408203125,
 											"height": 11,
-											"text": "«Personagem»"
+											"text": "«Personagem - Abstrato»"
 										},
 										{
 											"_type": "LabelView",
@@ -33116,7 +33116,7 @@
 								"$ref": "WmMPnOmkFUaEn4CHmyLHQAAA"
 							},
 							"name": "Inimigo",
-							"stereotype": "Personagem",
+							"stereotype": "Personagem - Abstrato",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -33997,8 +33997,8 @@
 					"_parent": {
 						"$ref": "IoH8RzmxEE6xOc9zvj2jawAA"
 					},
-					"name": "Projetil",
-					"stereotype": "Entidade",
+					"name": "Missil",
+					"stereotype": "Entidade - Projétil",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
