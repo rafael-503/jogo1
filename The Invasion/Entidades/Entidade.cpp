@@ -4,8 +4,7 @@ using namespace Entidades;
 #include "../Gerenciadores/GerenciadorEstado.h"
 
 Entidade::Entidade(sf::Vector2f tam_corpo) :
-    Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true), clockInteracao()
-{
+  Ente(), corpo(tam_corpo), vel(0.0f, 0.0f), SuspensoNoAR(true), clockInteracao(){
     num = rand() % 100;
     clockInteracao.restart();
 }
@@ -19,12 +18,12 @@ sf::RectangleShape Entidade::getCorpo() {
 const sf::Vector2f Entidade::getPosition() const {
     return corpo.getPosition();
 }
+
 const sf::Vector2f Entidade::getSize() const {
     return corpo.getSize();
-
 }
 
-string Entidade::getTipo() {
+string Entidade::getTipo() const{
     return Tipo;
 }
 
@@ -35,6 +34,7 @@ void Entidade::setVelocidade(sf::Vector2f v) {
 sf::Vector2f Entidades::Entidade::getVelocidade() const {
     return vel;
 }
+
 void Entidades::Entidade::setPosition(sf::Vector2f pos){
     corpo.setPosition(pos);
 }
@@ -44,7 +44,6 @@ void Entidades::Entidade::setSize(sf::Vector2f tam){
 }
 
 void Entidade::efeitoGravidade(){
-
     if(SuspensoNoAR && Gerenciadores::GerenciadorEstado::pGEstados->getStringEstadoAtual() == "EstadoJogar"){
         //cout << "GRAVIDADE" << endl;
         float G = 0.5f;
@@ -56,16 +55,16 @@ void Entidade::efeitoGravidade(){
         vel.y = 0;
 
     SuspensoNoAR = true;
-
 }
 
 void Entidade::setSuspensoNoAR(bool aux){
     SuspensoNoAR = aux;
-
 }
+
 void Entidade::mover(float moveX, float moveY){
     corpo.move(moveX, moveY);
 }
+
 void Entidade::setVelocidade_y(float aux){
     vel.y = aux;
 }

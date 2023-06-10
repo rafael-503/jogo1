@@ -24,7 +24,7 @@ namespace Entidades{
         void efeitoGravidade();
         const sf::Vector2f getPosition() const;
         const sf::Vector2f getSize() const;
-        virtual string getTipo();
+        virtual string getTipo() const;
         void setVelocidade(sf::Vector2f v);
         sf::Vector2f getVelocidade() const;
         void setPosition(sf::Vector2f pos);
@@ -35,6 +35,5 @@ namespace Entidades{
         void setVelocidade_y(float aux);
         virtual void salvar() = 0;
         virtual void CarregarSe(string atributos) = 0;
-
     };
 }

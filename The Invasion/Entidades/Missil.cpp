@@ -6,7 +6,7 @@ using namespace Entidades;
 Missil::Missil(sf::Vector2f posInimigo, Personagens::Jogador* pJogador1, Personagens::Jogador* pJogador2):
   Entidade(sf::Vector2f(15.0f, 7.5f)), vel_projetil(5.0f), pPerseguido(NULL), pFase(NULL), dano(20){
     ID = 8;
-     corpo.setPosition(posInimigo);
+    corpo.setPosition(posInimigo);
     textura = pGrafico->carregarTextura(PROJETIL);
     corpo.setTexture(&textura);
 
