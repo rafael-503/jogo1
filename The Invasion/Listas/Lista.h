@@ -142,5 +142,10 @@ namespace Listas {
 			}
 			return NULL;
 		}
+
+		TL* operator++(int elemento) {
+			inserir(elemento);
+			return *this;
+		}
 	};
 }
