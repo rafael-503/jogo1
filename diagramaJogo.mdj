@@ -29449,6 +29449,20 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAGIrF6fwI9o+OQ="
 							}
+						},
+						{
+							"_type": "UMLTextBoxView",
+							"_id": "AAAAAAGIrI+N+gI30FM=",
+							"_parent": {
+								"$ref": "O5eFn4h62kaG+YUl4qXABgAA"
+							},
+							"fillColor": "#e4e487",
+							"font": "Arial;13;0",
+							"left": 4184,
+							"top": 1832,
+							"width": 273,
+							"height": 89,
+							"text": "Diagrama de classes do jogo The Invasion\nElaborado em 11/06/2023, por:\n - Ariel Wilson\n - Rafael Bergo"
 						}
 					]
 				},
