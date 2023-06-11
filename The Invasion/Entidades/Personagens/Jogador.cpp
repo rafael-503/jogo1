@@ -69,7 +69,7 @@ int Jogador::getPontuacao() const {
 	return pontuacao;
 }
 void Jogador::salvar(){
-    ofstream GravadorJogador("Jogador.txt", ios_base::app);
+    ofstream GravadorJogador("data/Jogador.txt", ios_base::app);
     if (GravadorJogador.is_open()) {
         GravadorJogador << getPosition().x << ' ' << getPosition().y << ' ' << vida << ' ' << forca << ' ' << pontuacao <<  endl;
         GravadorJogador.close();

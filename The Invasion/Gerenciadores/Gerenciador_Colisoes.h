@@ -18,15 +18,18 @@ namespace Gerenciadores {
         vector<Personagens::Inimigo*> vetor_inimigos;
         list<Obstaculos::Obstaculo*> lista_obstaculos;
         list<Missil*> lista_Misseis;
+        vector<Missil*> vetorTeste;
 
     public:
         Gerenciador_Colisoes();
         ~Gerenciador_Colisoes();
+        void RemoverTeste();
         void incluiPersonagem(Personagem* pPerso);
         void incluiInimigo(Inimigo* pInimigo);
         void incluiObstaculo(Obstaculos::Obstaculo* pObs);
         void incluiProjetil(Missil* pProj);
         void removerProjetil(Missil* pProj);
+        void AddFilaRemocao(Missil* pMissil);
         void testa_colisoes();
         void ColisaoInimigoObstaculo();
         void ColisaoJogadorObstaculo();

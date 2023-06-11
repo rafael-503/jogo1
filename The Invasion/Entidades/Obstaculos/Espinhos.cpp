@@ -55,7 +55,7 @@ void Espinhos::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f Di
 void Espinhos::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X){}
 
 void Espinhos::salvar(){
-    ofstream GravadorEspinhos("Espinhos.txt", ios_base::app);
+    ofstream GravadorEspinhos("data/Espinhos.txt", ios_base::app);
     if (GravadorEspinhos.is_open()) {
         GravadorEspinhos << getPosition().x << ' ' << getPosition().y << ' ' << curador << ' ' << dano <<  endl;
         GravadorEspinhos.close();

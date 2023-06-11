@@ -91,7 +91,7 @@ void Plataforma::ColidirPlataforma(Entidade* pEnti, sf::Vector2f DistExtremidade
 }
 
 void Plataforma::salvar(){
-    ofstream GravadorPlataforma("Plataforma.txt", ios_base::app);
+    ofstream GravadorPlataforma("data/Plataforma.txt", ios_base::app);
     if (GravadorPlataforma.is_open()) {
         GravadorPlataforma << getPosition().x << ' ' << getPosition().y << ' ' << getSize().x << ' ' << getSize().y << ' ' << curador << ' ' << danoso <<  endl;
         GravadorPlataforma.close();

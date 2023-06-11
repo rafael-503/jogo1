@@ -77,7 +77,7 @@ void GerenciadorEstado::salvarFase(){
 void GerenciadorEstado::RecuperareExecutarFase(){
     apagueEstadoJogar();
 
-    ifstream RecuperadorFase("Fase.txt", ios::in);
+    ifstream RecuperadorFase("data/Fase.txt", ios::in);
     if (!RecuperadorFase){
         cerr << "Arquivo não pode ser aberto" << endl;
     }

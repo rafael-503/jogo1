@@ -56,7 +56,7 @@ void Missil::ApagarProjetil(){
 }
 
 void Missil::salvar(){
-    ofstream GravadorMissil("Missil.txt", ios_base::app);
+    ofstream GravadorMissil("data/Missil.txt", ios_base::app);
     if (GravadorMissil.is_open()) {
         GravadorMissil << getPosition().x << ' ' << getPosition().y << ' ' << dano <<  endl;
         GravadorMissil.close();

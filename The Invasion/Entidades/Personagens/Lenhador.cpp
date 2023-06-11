@@ -21,7 +21,7 @@ void Lenhador::danar(Jogador* pJog) {
 }
 
 void Lenhador::salvar(){
-    ofstream GravadorLenhador("Lenhador.txt", ios_base::app);
+    ofstream GravadorLenhador("data/Lenhador.txt", ios_base::app);
     if (GravadorLenhador.is_open()) {
         GravadorLenhador << getPosition().x << ' ' << getPosition().y << ' '  << vida << ' ' << forca <<  endl;
         GravadorLenhador.close();

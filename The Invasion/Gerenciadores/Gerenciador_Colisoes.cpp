@@ -1,7 +1,7 @@
 ﻿#include "Gerenciador_Colisoes.h"
 
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
-Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogadores(NULL, NULL), lista_Misseis() {
+Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogadores(NULL, NULL), lista_Misseis(), vetorTeste(){
 
 }
 
@@ -57,6 +57,7 @@ void Gerenciadores::Gerenciador_Colisoes::testa_colisoes() {
     ColisaoJogadorInimigo();
     ColisaoEntreObstaculos();
     ColisaoProjetilEntidade();
+    RemoverTeste();
 
 }
 
@@ -98,6 +99,7 @@ void Gerenciadores::Gerenciador_Colisoes::limpar(){
     lista_Misseis.clear();
     vetor_inimigos.clear();
     lista_obstaculos.clear();
+    vetorTeste.clear();
     pJogadores.first = NULL;
     pJogadores.second = NULL;
 }
@@ -351,3 +353,23 @@ void Gerenciadores::Gerenciador_Colisoes::RetirarElemento(Entidades::Entidade* p
     else
         cout << "erro ao retirar elementos" << endl;
 }
+
+void Gerenciadores::Gerenciador_Colisoes::AddFilaRemocao(Entidades::Missil* pMissil){
+    if(pMissil){
+        vetorTeste.push_back(pMissil);
+        cout << "Teste AddFilaRemocao" << endl;
+    }
+    else
+        cout << "Erro AddFilaRemocao" << endl;
+}
+
+void Gerenciadores::Gerenciador_Colisoes::RemoverTeste(){
+    for(int i = 0; i < (int) vetorTeste.size(); i++){
+        if(vetorTeste[i])
+            removerProjetil(vetorTeste[i]);
+        cout << "Teste N Misseis: " << i << endl;
+    }
+    vetorTeste.clear();
+
+}
+

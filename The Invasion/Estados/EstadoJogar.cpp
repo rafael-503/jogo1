@@ -65,7 +65,7 @@ bool EstadoJogar::getEh_1_Jogador() const{
 }
 
 void EstadoJogar::salvarFase(){
-    std::ofstream GravadorFase("Fase.txt", ios::out);
+    std::ofstream GravadorFase("data/Fase.txt", ios::out);
     if (!GravadorFase){
         cerr << "Arquivo não pode ser aberto" << endl;
         fflush (stdin);

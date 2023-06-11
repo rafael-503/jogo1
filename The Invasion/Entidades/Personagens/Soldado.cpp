@@ -100,7 +100,7 @@ void Soldado::setFase(Fases::Fase* pFaseAux){
 }
 
 void Soldado::salvar(){
-    ofstream GravadorSoldado("Soldado.txt", ios_base::app);
+    ofstream GravadorSoldado("data/Soldado.txt", ios_base::app);
     if (GravadorSoldado.is_open()) {
         GravadorSoldado << getPosition().x << ' ' << getPosition().y << ' ' << vida << ' ' << dano <<  endl;
         GravadorSoldado.close();

@@ -69,7 +69,7 @@ void Ranking::SalvarTextoPontuacao(sf::Text* pTexto, int pontuacao){
 
 void Ranking::salvarRanking(){
 
-    std::ofstream GravadorRanking("Ranking.txt", ios::out);
+    std::ofstream GravadorRanking("data/Ranking.txt", ios::out);
     if (!GravadorRanking){
         cerr << "Ranking.txt não pode ser aberto" << endl;
         fflush (stdin);
@@ -88,7 +88,7 @@ void Ranking::salvarRanking(){
 }
 void Ranking::carregarRanking(){
 
-    ifstream RecuperadorRanking("Ranking.txt", ios::in);
+    ifstream RecuperadorRanking("data/Ranking.txt", ios::in);
     if (!RecuperadorRanking){
         cout << "Ranking.txt não pode ser aberto" << endl;
         cout << "Por Favor termine uma fase e salve sua pontuação" << endl;

@@ -91,7 +91,7 @@ void Caixa::obstar(Entidades::Personagens::Inimigo* pInimigo, sf::Vector2f DistE
 void Caixa::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtremidades, bool colidiu_X){}
 
 void Caixa::salvar(){
-    ofstream GravadorCaixa("Caixa.txt", ios_base::app);
+    ofstream GravadorCaixa("data/Caixa.txt", ios_base::app);
     if (GravadorCaixa.is_open()) {
         GravadorCaixa << getPosition().x << ' ' << getPosition().y << ' ' << curador << ' ' << peso <<  endl;
         GravadorCaixa.close();

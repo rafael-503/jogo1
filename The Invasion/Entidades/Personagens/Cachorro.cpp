@@ -34,7 +34,7 @@ void Cachorro::danar(Jogador* pJog) {
 }
 
 void Cachorro::salvar(){
-    ofstream GravadorCachorro("Cachorro.txt", ios_base::app);
+    ofstream GravadorCachorro("data/Cachorro.txt", ios_base::app);
     if (GravadorCachorro.is_open()) {
         GravadorCachorro << getPosition().x << ' ' << getPosition().y << ' ' << vida << ' ' << manso <<  endl;
         GravadorCachorro.close();
