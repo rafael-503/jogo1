@@ -201,7 +201,7 @@ void Fase::criarJogadores(){
 void Fase::RecuperarObstaculos(){
     string Atributos;
 
-    ifstream RecuperadorCaixa("Caixa.txt", ios::in);
+    ifstream RecuperadorCaixa("data/Caixa.txt", ios::in);
     if (!RecuperadorCaixa){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
@@ -218,7 +218,7 @@ void Fase::RecuperarObstaculos(){
     }
     RecuperadorCaixa.close();
 
-    ifstream RecuperadorPlataforma("Plataforma.txt", ios::in);
+    ifstream RecuperadorPlataforma("data/Plataforma.txt", ios::in);
     if (!RecuperadorPlataforma){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
@@ -235,7 +235,7 @@ void Fase::RecuperarObstaculos(){
     }
     RecuperadorPlataforma.close();
 
-    ifstream RecuperadorEspinhos("Espinhos.txt", ios::in);
+    ifstream RecuperadorEspinhos("data/Espinhos.txt", ios::in);
     if (!RecuperadorEspinhos){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
@@ -256,7 +256,7 @@ void Fase::RecuperarObstaculos(){
 void Fase::RecuperarPersonagens(){
     string Atributos;
 
-    ifstream RecuperadorJogador("Jogador.txt", ios::in);
+    ifstream RecuperadorJogador("data/Jogador.txt", ios::in);
     if (!RecuperadorJogador){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
@@ -282,7 +282,7 @@ void Fase::RecuperarPersonagens(){
     RecuperadorJogador.close();
     Inimigo::setPairpJogadores(pJogador1, pJogador2);
 
-    ifstream RecuperadorCachorro("Cachorro.txt", ios::in);
+    ifstream RecuperadorCachorro("data/Cachorro.txt", ios::in);
     if (!RecuperadorCachorro){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
@@ -299,7 +299,7 @@ void Fase::RecuperarPersonagens(){
     }
     RecuperadorCachorro.close();
 
-    ifstream RecuperadorSoldado("Soldado.txt", ios::in);
+    ifstream RecuperadorSoldado("data/Soldado.txt", ios::in);
     if (!RecuperadorSoldado){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
@@ -317,7 +317,7 @@ void Fase::RecuperarPersonagens(){
     }
     RecuperadorSoldado.close();
 
-    ifstream RecuperadorLenhador("Lenhador.txt", ios::in);
+    ifstream RecuperadorLenhador("data/Lenhador.txt", ios::in);
     if (!RecuperadorLenhador){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
@@ -337,7 +337,7 @@ void Fase::RecuperarPersonagens(){
 
 void Fase::RecuperarMisseis(){
     string Atributos;
-    ifstream RecuperadorMissil("Missil.txt", ios::in);
+    ifstream RecuperadorMissil("data/Missil.txt", ios::in);
     if (!RecuperadorMissil){
         cerr << "Arquivo não pode ser aberto" << endl;
     }
@@ -360,20 +360,20 @@ void Fase::RecuperarMisseis(){
 void Fase::limparArquivos(){
 
     /// Limpando os Arquivos
-    ofstream Platadorma("Plataforma.txt", std::ios_base::trunc);
+    ofstream Platadorma("data/Plataforma.txt", std::ios_base::trunc);
     Platadorma.close();
-    ofstream Soldado("Soldado.txt", std::ios_base::trunc);
+    ofstream Soldado("data/Soldado.txt", std::ios_base::trunc);
     Soldado.close();
-    ofstream Lenhador("Lenhador.txt", std::ios_base::trunc);
+    ofstream Lenhador("data/Lenhador.txt", std::ios_base::trunc);
     Lenhador.close();
-    ofstream Jogador("Jogador.txt", std::ios_base::trunc);
+    ofstream Jogador("data/Jogador.txt", std::ios_base::trunc);
     Jogador.close();
-    ofstream Caixa("Caixa.txt", std::ios_base::trunc);
+    ofstream Caixa("data/Caixa.txt", std::ios_base::trunc);
     Caixa.close();
-    ofstream Cachorro("Cachorro.txt", std::ios_base::trunc);
+    ofstream Cachorro("data/Cachorro.txt", std::ios_base::trunc);
     Cachorro.close();
-    ofstream Espinhos("Espinhos.txt", std::ios_base::trunc);
+    ofstream Espinhos("data/Espinhos.txt", std::ios_base::trunc);
     Espinhos.close();
-    ofstream Missil("Missil.txt", std::ios_base::trunc);
+    ofstream Missil("data/Missil.txt", std::ios_base::trunc);
     Missil.close();
 }
