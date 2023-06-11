@@ -43,7 +43,6 @@ void Fase::setPosicaoJogador(const sf::Vector2f& jogadorPos) {
 
 void Fase::removerProjetil(Entidades::Missil* pMissil){
     if (pMissil){
-        pColisao->removerProjetil(pMissil);
         Entidade* pEnti = dynamic_cast<Entidade*>(pMissil);
         if(pEnti)
             listaMisseis.remover(pEnti);
@@ -347,7 +346,7 @@ void Fase::RecuperarMisseis(){
         pMissil = new  Entidades::Missil(sf::Vector2f(0.0f, 0.0f), pJogador1, pJogador2);
         pMissil->CarregarSe(Atributos);
             if (pMissil) {
-                pColisao->incluiProjetil(pMissil);
+                pColisao->incluiProjetil(static_cast<Entidades::Missil*>(pMissil));
                 listaMisseis.inserir(static_cast<Entidade*>(pMissil));
                 pMissil->setFase(this);
             }
@@ -359,6 +358,7 @@ void Fase::RecuperarMisseis(){
 
 
 void Fase::limparArquivos(){
+
     /// Limpando os Arquivos
     ofstream Platadorma("Plataforma.txt", std::ios_base::trunc);
     Platadorma.close();

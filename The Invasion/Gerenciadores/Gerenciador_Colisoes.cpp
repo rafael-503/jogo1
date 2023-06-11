@@ -263,12 +263,15 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoEntreObstaculos(){
 void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
 
     sf::Vector2f DistanciaExtremidades;
-
     list<Entidades::Missil*>::iterator it_misseis = lista_Misseis.begin();
     Entidades::Missil* pMissil = NULL;
-
     list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
     Obstaculos::Obstaculo* pObs = NULL;
+
+    /// é uma forma de deletar elementos da lista somente depois dos iteradores percorrer a lista inteira
+    /// em alguns compiladores remover um elemento da lista no qual o iterador esta apontafo gera um erro
+    vector<Entidades::Missil*> vetorRemocaoMisseis;
+
 
     /// testa colisão entre Projetil e Obstaculo/Jogadores (Projetil não atinge Inimigos)
     while(it_misseis != lista_Misseis.end()){
@@ -280,8 +283,10 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
                 if(pObs){
                     DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pObs), static_cast<Entidade*>(pMissil));
                     /// se Projetil colide com obstculo ele é destruido
-                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
                         pMissil->ApagarProjetil();
+                        vetorRemocaoMisseis.push_back(pMissil);
+                    }
                 }
                 else
                     cout << "ponteiro nulo na Lista do gereniador de colisões" << endl;
@@ -291,19 +296,29 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
             /// se Projetil colide com Jogador ele o da Dano
             if(pJogadores.first){
                 DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(pMissil));
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
                     pMissil->AcertouJogador(pJogadores.first);
+                    vetorRemocaoMisseis.push_back(pMissil);
+                }
             }
             if(pJogadores.second){
                 DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(pMissil));
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
                     pMissil->AcertouJogador(pJogadores.second);
+                    vetorRemocaoMisseis.push_back(pMissil);
+                }
             }
         }
         else
             cout << "pMissil Nulo na Lista" << endl;
         it_misseis++;
     }
+
+
+    /// retirando os Misseis da lista_misseis após os iteradores
+    for(int i = 0; i < (int) vetorRemocaoMisseis.size(); i++)
+        removerProjetil(vetorRemocaoMisseis[i]);
+
 }
 
 void Gerenciadores::Gerenciador_Colisoes::RetirarInimigo(Entidades::Personagens::Inimigo* pInimigo){
