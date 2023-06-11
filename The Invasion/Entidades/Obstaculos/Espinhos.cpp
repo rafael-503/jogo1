@@ -7,7 +7,7 @@ using namespace Obstaculos;
 Espinhos::Espinhos(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo), dano(10) {
     ID = 7;
     corpo.setPosition(pos);
-    if(curador){
+    if(danoso){
         dano = 0;
         textura = pGrafico->carregarTextura(ESPINHOS2);
     }
@@ -57,7 +57,7 @@ void Espinhos::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistE
 void Espinhos::salvar(){
     ofstream GravadorEspinhos("data/Espinhos.txt", ios_base::app);
     if (GravadorEspinhos.is_open()) {
-        GravadorEspinhos << getPosition().x << ' ' << getPosition().y << ' ' << curador << ' ' << dano <<  endl;
+        GravadorEspinhos << getPosition().x << ' ' << getPosition().y << ' ' << danoso << ' ' << dano <<  endl;
         GravadorEspinhos.close();
     }
     else
@@ -67,17 +67,17 @@ void Espinhos::salvar(){
 void Espinhos::CarregarSe(string atributos){
     std::istringstream iss(atributos);
     float posX, posY;
-    iss >>  posX >> posY >> curador >> dano;
+    iss >>  posX >> posY >> danoso >> dano;
     if (!iss.fail()) {
         setPosition(sf::Vector2f(posX, posY));
     }
     else
         cout << "Erro ao converter os valores em CarregarSe" << endl;
 
-    if(curador){
+    if(!danoso){
         dano = 0;
-        textura = pGrafico->carregarTextura(ESPINHOS2);
+        textura = pGrafico->carregarTextura(ESPINHOS);
     }
     else
-        textura = pGrafico->carregarTextura(ESPINHOS);
+        textura = pGrafico->carregarTextura(ESPINHOS2);
 }

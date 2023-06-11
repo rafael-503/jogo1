@@ -54,7 +54,6 @@ namespace Fases {
             virtual void criarSoldado() = 0;
             virtual void criarLenhadores() = 0;
             virtual void criarPlataformas() = 0;
-            virtual void criarCaixas() = 0;
             virtual void executar() = 0;
 			virtual void esvaziar() = 0;
 	};

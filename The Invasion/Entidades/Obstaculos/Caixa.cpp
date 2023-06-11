@@ -6,7 +6,7 @@ using namespace Obstaculos;
 Caixa::Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo): Obstaculo(pos, tam_corpo), peso(100){
     ID = 6;
     corpo.setPosition(pos);
-    if(curador)
+    if(danoso)
         textura = pGrafico->carregarTextura(CAIXA2);
     else
         textura = pGrafico->carregarTextura(CAIXA);
@@ -57,8 +57,8 @@ void Caixa::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f DistExtre
                     pJog->setVelocidade_y(0.0f);
             }
         }
-        if(curador && clockInteracao.getElapsedTime().asSeconds() > 5){
-            pJog->setVida(pJog->getVida() + 10);
+        if(danoso && clockInteracao.getElapsedTime().asSeconds() > 5){
+            pJog->setVida(pJog->getVida() - 10);
             clockInteracao.restart();
         }
     }
@@ -93,7 +93,7 @@ void Caixa::obstar(Entidades::Obstaculos::Obstaculo* pObs, sf::Vector2f DistExtr
 void Caixa::salvar(){
     ofstream GravadorCaixa("data/Caixa.txt", ios_base::app);
     if (GravadorCaixa.is_open()) {
-        GravadorCaixa << getPosition().x << ' ' << getPosition().y << ' ' << curador << ' ' << peso <<  endl;
+        GravadorCaixa << getPosition().x << ' ' << getPosition().y << ' ' << danoso << ' ' << peso <<  endl;
         GravadorCaixa.close();
     }
     else
@@ -103,14 +103,14 @@ void Caixa::salvar(){
 void Caixa::CarregarSe(string atributos){
     std::istringstream iss(atributos);
     float posX, posY;
-    iss >> posX >> posY >> curador >> peso;
+    iss >> posX >> posY >> danoso >> peso;
     if (!iss.fail()) {
         setPosition(sf::Vector2f(posX, posY));
     }
     else
         cout << "Erro ao converter os valores em CarregarSe" << endl;
 
-    if(curador)
+    if(danoso)
         textura = pGrafico->carregarTextura(CAIXA2);
     else
         textura = pGrafico->carregarTextura(CAIXA);

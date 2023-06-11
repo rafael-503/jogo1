@@ -9,8 +9,7 @@ namespace Entidades {
 
         class Plataforma: public Obstaculo{
         private:
-            int danoso;
-            sf::Clock relogioDanoso;
+            bool curador;
 
         public:
             Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(200.0f, 50.0f), const char* text= PLATAFORMA);

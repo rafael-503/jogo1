@@ -7,7 +7,8 @@ namespace Entidades {
 
         class Obstaculo : public Entidade {
         protected:
-            bool curador;
+            bool danoso;
+            sf::Clock relogioDanoso;
         public:
             Obstaculo(sf::Vector2f pos, sf::Vector2f tam_corpo);
             ~Obstaculo();

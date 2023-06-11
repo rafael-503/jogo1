@@ -51,7 +51,6 @@ void Fase2::criarPersonagens() {
 
 void Fase2::criarObstaculos() {
     criarPlataformas();
-    criarCaixas();
     criarEspinhos();
 }
 
@@ -117,20 +116,6 @@ void Fase2::criarPlataformas() {
         int x = 1000 + (rand() % (2500 - 1000 + 1));
         int y = 0 + (rand() % (750 - 0 + 1));
         construtorObstaculos("Plataforma", sf::Vector2f(x - 20 * i, y * i));
-    }
-}
-
-void Fase2::criarCaixas() {
-    construtorObstaculos("Caixa", sf::Vector2f(450.0f, 0.0f));
-
-    // Criacao de obstaculos aleatorios
-    srand(time(0));
-
-    int numObstaculos = rand() % 6 + 3; // Gera numeros entre 3 e 8
-    for (int i = 1; i < +numObstaculos; i++) {
-        int x = 1000 + (rand() % (2500 - 1000 + 1));
-        int y = 0 + (rand() % (750 - 0 + 1));
-        construtorObstaculos("Caixa", sf::Vector2f(x + 100 * i, 0.0f));
     }
 }
 

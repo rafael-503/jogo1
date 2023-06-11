@@ -16,7 +16,6 @@ namespace Fases {
         void criarSoldado();
         void criarLenhadores();
         void criarPlataformas();
-        void criarCaixas();
         void criarEspinhos();
 		void executar();
 		void esvaziar();

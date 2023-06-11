@@ -4,14 +4,13 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Obstaculo(pos, tam_corpo), danoso(false){
+Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam_corpo, const char* text) : Obstaculo(pos, tam_corpo), curador(false){
     ID = 5;
     corpo.setPosition(pos);
 
-    if (num <=15 && !curador) {
-        danoso = true;
+    if (num <=15 && !danoso) {
+        curador = true;
     }
-    relogioDanoso.restart();
 
     if(curador)
         textura = pGrafico->carregarTextura(PLATAFORMA5);
@@ -32,7 +31,7 @@ void Plataforma::obstar(Entidades::Personagens::Jogador* pJog, sf::Vector2f Dist
     ///Plataforma colidi igual com todos Personagens
     if (pJog) {
         if (danoso && relogioDanoso.getElapsedTime().asSeconds() > 10.0f) {
-            pJog->setVida(pJog->getVida() - 4);
+            pJog->setVida(pJog->getVida() - 10);
         	relogioDanoso.restart();
         }
         if(curador && clockInteracao.getElapsedTime().asSeconds() > 5){
