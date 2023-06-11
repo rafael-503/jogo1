@@ -34,7 +34,7 @@ void Fase2::executar() {
     else
         pGrafico->mostrarVidaJogador(pJogador1->getVida(), pJogador2->getVida(), eh_1_jogador, sf::Color::Black);
     listaPersonagens.verificarVida(pColisao);
-    cout << pJogador1->getPosition().x << ", " <<  pJogador1->getPosition().y << endl;
+    //cout << pJogador1->getPosition().x << ", " <<  pJogador1->getPosition().y << endl;
 }
 
 void Fase2::esvaziar() {
@@ -61,7 +61,7 @@ void Fase2::criarCachorros(){
 
     // Criacao de inimigos aleatorios
     srand(time(0));
-    int numInimigos = rand() % 5 + 3; // Gera numeros entre 3 e 7
+    int numInimigos = rand() % 5 + 3; // Gera numeros entre 3 e 8
     int x = POS_MIN + (rand() % (POS_MAX - POS_MIN + 1)); // Gera numeros entre 500 e 2000
     int diferenca = (POS_MAX - POS_MIN) / (numInimigos - 1); // Diferenca entre as posicoes dos inimigos
 
@@ -92,13 +92,14 @@ void Fase2::criarLenhadores(){
 
 void Fase2::criarPlataformas(){
     construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 800.0f), sf::Vector2f(25000.0f, 50.0f)); // remover
-    construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 120.0f), sf::Vector2f(180.0f, 50.0f));
-    construtorObstaculos("Plataforma", sf::Vector2f(200.0f, 600.0f), sf::Vector2f(180.0f, 50.0f));
+
+    construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 750.0f), sf::Vector2f(180.0f, 50.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(300.0f, 600.0f), sf::Vector2f(180.0f, 50.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(500.0f, 500.0f), sf::Vector2f(180.0f, 50.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(300.0f, 350.0f), sf::Vector2f(230.0f, 50.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(780.0f, 200.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(780.0f, 600.0f), sf::Vector2f(230.0f, 50.0f));
-    construtorObstaculos("Plataforma", sf::Vector2f(1260.0f, 600.0f), sf::Vector2f(230.0f, 50.0f));
+    construtorObstaculos("Plataforma", sf::Vector2f(1000.0f, 600.0f), sf::Vector2f(230.0f, 50.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(1300.0f, 150.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(1500.0f, 150.0f));
 
@@ -109,7 +110,7 @@ void Fase2::criarPlataformas(){
     construtorObstaculos("Plataforma", sf::Vector2f(3000.0f, 600.0f), sf::Vector2f(700.0f, 50.0f)); // soldado
     construtorObstaculos("Plataforma", sf::Vector2f(2805.0f, 560.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(3695.0f, 560.0f));
-    
+
     // Criacao de obstaculos aleatorios
     srand(time(0));
 
@@ -122,12 +123,12 @@ void Fase2::criarPlataformas(){
 }
 
 void Fase2::criarCaixas(){
-    construtorObstaculos("Caixa", sf::Vector2f(450.0f, 0.0f));
+    construtorObstaculos("Caixa", sf::Vector2f(330.0f, 0.0f));
 
     // Criacao de obstaculos aleatorios
     srand(time(0));
 
-    int numObstaculos = rand() % 6 + 3; // Gera numeros entre 3 e 8
+    int numObstaculos = rand() % 5 + 3; // Gera numeros entre 3 e 7
     for (int i = 1; i < +numObstaculos; i++) {
         int x = 1000 + (rand() % (2500 - 1000 + 1));
         int y = 0 + (rand() % (750 - 0 + 1));
@@ -136,9 +137,8 @@ void Fase2::criarCaixas(){
 }
 
 void Fase2::criarEspinhos(){
-    construtorObstaculos("Espinhos", sf::Vector2f(775.0f, 155.0f));
-    construtorObstaculos("Espinhos", sf::Vector2f(1460.0f, 105.0f));
-    construtorObstaculos("Espinhos", sf::Vector2f(1500.0f, 105.0f));
+    construtorObstaculos("Espinhos", sf::Vector2f(10.0f, 705.0f));
+    construtorObstaculos("Espinhos", sf::Vector2f(370.0f, 555.0f));
     construtorObstaculos("Espinhos", sf::Vector2f(520.0f, 455.0f));
     construtorObstaculos("Espinhos", sf::Vector2f(380.0f, 305.0f));
 }

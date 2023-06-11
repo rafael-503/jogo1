@@ -1,7 +1,7 @@
 ﻿#include "Gerenciador_Colisoes.h"
 
 Gerenciadores::Gerenciador_Colisoes* Gerenciadores::Gerenciador_Colisoes::pGerenciador_Colisoes = NULL;
-Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogadores(NULL, NULL), lista_Misseis(), vetorTeste(){
+Gerenciadores::Gerenciador_Colisoes::Gerenciador_Colisoes(): pJogadores(NULL, NULL), lista_Misseis() {
 
 }
 
@@ -57,7 +57,6 @@ void Gerenciadores::Gerenciador_Colisoes::testa_colisoes() {
     ColisaoJogadorInimigo();
     ColisaoEntreObstaculos();
     ColisaoProjetilEntidade();
-    RemoverTeste();
 
 }
 
@@ -99,7 +98,6 @@ void Gerenciadores::Gerenciador_Colisoes::limpar(){
     lista_Misseis.clear();
     vetor_inimigos.clear();
     lista_obstaculos.clear();
-    vetorTeste.clear();
     pJogadores.first = NULL;
     pJogadores.second = NULL;
 }
@@ -265,12 +263,15 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoEntreObstaculos(){
 void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
 
     sf::Vector2f DistanciaExtremidades;
-
     list<Entidades::Missil*>::iterator it_misseis = lista_Misseis.begin();
     Entidades::Missil* pMissil = NULL;
-
     list<Obstaculos::Obstaculo*>::iterator it_obs = lista_obstaculos.begin();
     Obstaculos::Obstaculo* pObs = NULL;
+
+    /// é uma forma de deletar elementos da lista somente depois dos iteradores percorrer a lista inteira
+    /// em alguns compiladores remover um elemento da lista no qual o iterador esta apontafo gera um erro
+    vector<Entidades::Missil*> vetorRemocaoMisseis;
+
 
     /// testa colisão entre Projetil e Obstaculo/Jogadores (Projetil não atinge Inimigos)
     while(it_misseis != lista_Misseis.end()){
@@ -282,8 +283,10 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
                 if(pObs){
                     DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pObs), static_cast<Entidade*>(pMissil));
                     /// se Projetil colide com obstculo ele é destruido
-                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                    if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
                         pMissil->ApagarProjetil();
+                        vetorRemocaoMisseis.push_back(pMissil);
+                    }
                 }
                 else
                     cout << "ponteiro nulo na Lista do gereniador de colisões" << endl;
@@ -293,19 +296,29 @@ void Gerenciadores::Gerenciador_Colisoes::ColisaoProjetilEntidade(){
             /// se Projetil colide com Jogador ele o da Dano
             if(pJogadores.first){
                 DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.first), static_cast<Entidade*>(pMissil));
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
                     pMissil->AcertouJogador(pJogadores.first);
+                    vetorRemocaoMisseis.push_back(pMissil);
+                }
             }
             if(pJogadores.second){
                 DistanciaExtremidades = Calcula_colisao(static_cast<Entidade*>(pJogadores.second), static_cast<Entidade*>(pMissil));
-                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f)
+                if (DistanciaExtremidades.x < 0.0f && DistanciaExtremidades.y < 0.0f){
                     pMissil->AcertouJogador(pJogadores.second);
+                    vetorRemocaoMisseis.push_back(pMissil);
+                }
             }
         }
         else
             cout << "pMissil Nulo na Lista" << endl;
         it_misseis++;
     }
+
+
+    /// retirando os Misseis da lista_misseis após os iteradores
+    for(int i = 0; i < (int) vetorRemocaoMisseis.size(); i++)
+        removerProjetil(vetorRemocaoMisseis[i]);
+
 }
 
 void Gerenciadores::Gerenciador_Colisoes::RetirarInimigo(Entidades::Personagens::Inimigo* pInimigo){
@@ -353,23 +366,3 @@ void Gerenciadores::Gerenciador_Colisoes::RetirarElemento(Entidades::Entidade* p
     else
         cout << "erro ao retirar elementos" << endl;
 }
-
-void Gerenciadores::Gerenciador_Colisoes::AddFilaRemocao(Entidades::Missil* pMissil){
-    if(pMissil){
-        vetorTeste.push_back(pMissil);
-        cout << "Teste AddFilaRemocao" << endl;
-    }
-    else
-        cout << "Erro AddFilaRemocao" << endl;
-}
-
-void Gerenciadores::Gerenciador_Colisoes::RemoverTeste(){
-    for(int i = 0; i < (int) vetorTeste.size(); i++){
-        if(vetorTeste[i])
-            removerProjetil(vetorTeste[i]);
-        cout << "Teste N Misseis: " << i << endl;
-    }
-    vetorTeste.clear();
-
-}
-
