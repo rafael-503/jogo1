@@ -34,9 +34,8 @@ void Soldado::executar(){
         else
             Afastar_se();
 
-        //if (Dist > raioTiroMIN && Dist < raioTiroMAX)
-            //Atirar();
-
+        if (Dist > raioTiroMIN && Dist < raioTiroMAX)
+            Atirar();
     }
     else
         cout << "pair_pJogadores NULOS em soldado" << endl;
