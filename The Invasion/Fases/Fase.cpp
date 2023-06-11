@@ -347,7 +347,7 @@ void Fase::RecuperarMisseis(){
         pMissil = new  Entidades::Missil(sf::Vector2f(0.0f, 0.0f), pJogador1, pJogador2);
         pMissil->CarregarSe(Atributos);
             if (pMissil) {
-                pColisao->incluiProjetil(static_cast<Entidades::Missil*>(pMissil));
+                pColisao->incluiProjetil(pMissil);
                 listaMisseis.inserir(static_cast<Entidade*>(pMissil));
                 pMissil->setFase(this);
             }
@@ -359,7 +359,6 @@ void Fase::RecuperarMisseis(){
 
 
 void Fase::limparArquivos(){
-
     /// Limpando os Arquivos
     ofstream Platadorma("Plataforma.txt", std::ios_base::trunc);
     Platadorma.close();
