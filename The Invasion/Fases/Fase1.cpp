@@ -88,8 +88,6 @@ void Fase1::criarLenhadores(){
 }
 
 void Fase1::criarPlataformas(){
-    construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 800.0f), sf::Vector2f(25000.0f, 50.0f)); // remover
-
     construtorObstaculos("Plataforma", sf::Vector2f(0.0f, 750.0f), sf::Vector2f(180.0f, 50.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(300.0f, 600.0f), sf::Vector2f(180.0f, 50.0f));
     construtorObstaculos("Plataforma", sf::Vector2f(500.0f, 500.0f), sf::Vector2f(180.0f, 50.0f));

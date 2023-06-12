@@ -1,3 +1,4 @@
 Jogador: 780
+WDW: 700
 Teste: 690
 ADAIAAIBJBJHVKHVK: 500
