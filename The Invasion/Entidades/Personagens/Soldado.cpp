@@ -71,7 +71,6 @@ void Soldado::Atirar(){
     if(pJogadores.first || pJogadores.second){
         if(pFase){
             if(relogioAtirar.getElapsedTime().asSeconds() > 8.0f){
-                cout << "Atirou" << endl;
                 pFase->AdicionarProjetil(sf::Vector2f(getPosition().x + corpo.getSize().x, getPosition().y + corpo.getSize().y/2));
                 relogioAtirar.restart();
             }

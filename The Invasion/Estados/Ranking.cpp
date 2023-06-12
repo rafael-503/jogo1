@@ -6,7 +6,6 @@ Ranking::Ranking() :Menu(), BotaoMenuPrincipal("Menu Principal", font), vectorPo
     sf::Vector2u tamJanela(600.f, 400.f);
     BotaoMenuPrincipal.setScale(1.5f, 1.5f);
 
-    sf::FloatRect tamBotaoMenuPrincipal = BotaoMenuPrincipal.getLocalBounds();
     BotaoMenuPrincipal.setPosition(tamJanela.x / 2 + 500, 700);
     carregarRanking();
 }

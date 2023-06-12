@@ -16,8 +16,8 @@ Fase1::~Fase1() {
     pColisao->limpar();
     pColisao = NULL;
     pJogador1 = NULL;
+    pJogador2 = NULL;
     esvaziar();
-    cout << "Fase 1 destruida" << endl;
 }
 
 void Fase1::executar() {
@@ -128,7 +128,6 @@ void Fase1::criarCaixas(){
     int numObstaculos = rand() % 5 + 3; // Gera numeros entre 3 e 7
     for (int i = 1; i < +numObstaculos; i++) {
         int x = 1000 + (rand() % (2500 - 1000 + 1));
-        int y = 0 + (rand() % (750 - 0 + 1));
         construtorObstaculos("Caixa", sf::Vector2f(x + 100 * i, 0.0f));
     }
 }
