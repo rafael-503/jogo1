@@ -25,6 +25,7 @@ EstadoJogar::EstadoJogar(ifstream* pRecuperadorFase){
 }
 
 EstadoJogar::~EstadoJogar(){
+if(pFase)
     delete pFase;
     pFase = NULL;
     Inimigo::limparPairpJogadores();
@@ -68,12 +69,12 @@ bool EstadoJogar::getEh_1_Jogador() const{
 void EstadoJogar::salvarFase(){
     std::ofstream GravadorFase("data/Fase.txt", ios::out);
     if (!GravadorFase){
-        cerr << "Arquivo não pode ser aberto" << endl;
+        cerr << "Arquivo nÃ£o pode ser aberto" << endl;
         fflush (stdin);
         getchar ();
         return;
     }
-    /// Primeira linha tem o se é fase1 ou fase2 e se é 1 ou dois jogadores
+    /// Primeira linha tem o se Ã© fase1 ou fase2 e se Ã© 1 ou dois jogadores
     GravadorFase << Eh_fase1 << ' ' << Eh_1_Jogador << endl;
     pFase->SalvarFase(&GravadorFase);
     GravadorFase.close();
