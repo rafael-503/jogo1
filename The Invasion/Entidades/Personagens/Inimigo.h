@@ -19,7 +19,6 @@ namespace Entidades {
             short move_aleatorio;
             sf::Clock relogioColisao;
             sf::Clock relogioMoveAleatorio;
-
         public:
             Inimigo(sf::Vector2f tam_corpo);
             ~Inimigo();

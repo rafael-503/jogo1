@@ -8,7 +8,6 @@ namespace Entidades {
 		class Caixa : public Obstaculo {
 			private:
 				int peso;
-
 			public:
 				Caixa(sf::Vector2f pos, sf::Vector2f tam_corpo = sf::Vector2f(50.0f, 50.0f));
 				~Caixa();

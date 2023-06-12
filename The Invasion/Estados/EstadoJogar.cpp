@@ -25,6 +25,7 @@ EstadoJogar::EstadoJogar(ifstream* pRecuperadorFase){
 }
 
 EstadoJogar::~EstadoJogar(){
+    delete pFase;
     pFase = NULL;
     Inimigo::limparPairpJogadores();
 }
