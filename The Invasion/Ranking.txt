@@ -1,7 +1,0 @@
-Jogador: 1020
-Jogador2: 800
-Jogador: 570
-Jogador: 540
-Jogador: 500
-Jogador3: 222
-
