@@ -9,14 +9,22 @@ Cada fase apresenta uma variedade de obstáculos, como plataformas, espinhos e c
 Além disso, o jogo conta com um sistema de ranking, que armazena a pontuação dos jogadores baseado no tipo de inimigo eliminado. Após concluir cada fase, os jogadores têm a oportunidade de inserir seu nome no ranking para acompanhar sua evolução ao longo do tempo e desafiar a si mesmos a alcançar pontuações mais altas.
 
 ## Fotos
-![1](https://github.com/rafael-503/jogo/assets/73114569/078f4c86-f334-479f-ba45-2b576d5d9c3b) Menu Principal
-![2](https://github.com/rafael-503/jogo/assets/73114569/31944368-d86f-4978-b45f-34505fa58932) Menu novo jogo
-![3](https://github.com/rafael-503/jogo/assets/73114569/795bac83-eb3b-471b-8588-456da2cdee75) Ranking
-![4](https://github.com/rafael-503/jogo/assets/73114569/e07a925f-ea52-4b25-86f8-4556ef330566) Menu de pause
+| ![Menu Principal](https://github.com/rafael-503/jogo/assets/73114569/078f4c86-f334-479f-ba45-2b576d5d9c3b) | ![Menu novo jogo](https://github.com/rafael-503/jogo/assets/73114569/31944368-d86f-4978-b45f-34505fa58932) |
+| --- | --- |
+| Menu Principal | Menu novo jogo |
 
+| ![Menu de pause](https://github.com/rafael-503/jogo/assets/73114569/e07a925f-ea52-4b25-86f8-4556ef330566) | ![Tela de fim de jogo](https://github.com/rafael-503/jogo/assets/73114569/0306511f-282d-4656-a66d-232033005295) |
+| --- | --- |
+| Menu de pause | Tela de fim de jogo |
 
-![5](https://github.com/rafael-503/jogo/assets/73114569/3f14bce1-714d-454e-afdf-42515b857b92) Fase 1
-![7](https://github.com/rafael-503/jogo/assets/73114569/836c606d-3356-44ba-a3fa-46ade2b16f18) Chefao fase 1
-![6](https://github.com/rafael-503/jogo/assets/73114569/98d9cbec-308a-473b-9ef2-3d54e39bf25e) Fase 2
+| ![Ranking](https://github.com/rafael-503/jogo/assets/73114569/795bac83-eb3b-471b-8588-456da2cdee75) | ![Chefão da fase 1](https://github.com/rafael-503/jogo/assets/73114569/836c606d-3356-44ba-a3fa-46ade2b16f18) |
+| --- | --- |
+| Ranking | Chefão da fase 1 |
 
-![8](https://github.com/rafael-503/jogo/assets/73114569/0306511f-282d-4656-a66d-232033005295) Tela de fim de jogo
+| ![Fase 1](https://github.com/rafael-503/jogo/assets/73114569/3f14bce1-714d-454e-afdf-42515b857b92) |
+| --- |
+| Fase 1 |
+
+| ![Fase 2](https://github.com/rafael-503/jogo/assets/73114569/98d9cbec-308a-473b-9ef2-3d54e39bf25e) |
+| --- |
+| Fase 2 |
